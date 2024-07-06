@@ -1,17 +1,19 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-
+import PostList from "../components/PostList.astro";
 const allPosts = await getCollection("posts");
-console.log(allPosts);
+console.log({allPosts});
 ---
 
 <Layout title="Blog - My Portfolio Blog, Y'all! Time To Write">
-    <main class="px-24 max-sm:px-5 max-w-7xl mx-auto w-full">
-        <h1 class="text-6xl text-teal-900 font-bold mb-5">My Blog Title</h1>
-        <p class="text-zinc-900 text-2xl mb-24 max-sm:mb-14">
-            Subheading Goes Here
-        </p>
-        {allPosts.map((post) => <h2>{post.data.title}</h2>)}
-    </main>
+  <main class="px-24 max-sm:px-5 max-w-7xl mx-auto w-full">
+    <h1 class="text-6xl text-teal-900 font-bold mb-5">My Blog Title</h1>
+
+    <p class="text-zinc-900 text-2xl mb-24 max-sm:mb-14">
+      Subheading Goes Here
+    </p>
+
+    <PostList posts={allPosts} />"
+  </main>
 </Layout>
