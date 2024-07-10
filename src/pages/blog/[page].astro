@@ -1,0 +1,30 @@
+---
+import type { GetStaticPathsOptions, Page } from "astro";
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Main from "../../components/Main.astro";
+import H1 from "../../components/H1.astro";
+import PostList from "../../components/PostList.astro";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const allPosts = await getCollection("posts");
+  return paginate(allPosts, { pageSize: 6 });
+}
+
+type Props = {
+  page: Page;
+};
+
+const { page } = Astro.props;
+const posts = page.data as CollectionEntry<"posts">[];
+---
+
+<Layout title="Blog - My Portfolio Blog, Y'all! Time To Write">
+  <Main>
+    <H1 text="My Blog Title" />
+    <p class="text-zinc-900 text-2xl mb-24 max-sm:mb-14">
+      Subheading Goes Here
+    </p>
+    <PostList posts={posts} />"
+  </Main>
+</Layout>
