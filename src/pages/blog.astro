@@ -4,16 +4,28 @@ import Layout from "../layouts/Layout.astro";
 import PostList from "../components/PostList.astro";
 import Main from "../components/Main.astro";
 import H1 from "../components/H1.astro";
+import Pagination from "../components/Pagination.astro";
 
-const posts = (await getCollection("posts")).slice(0,6);
+const posts = (await getCollection("posts")).slice(0, 6);
 ---
 
-<Layout title="Blog - My Portfolio Blog, Y'all! Time To Write">
+<Layout
+  title="Matt Birch | Web Developer"
+  description=`Transforming ideas into powerful web experiences.
+  I combine technical expertise with creative problem-solving to deliver 
+  websites that not only look great but perform exceptionally.`
+>
   <Main>
     <H1 text="My Blog Title" />
     <p class="text-zinc-900 text-2xl mb-24 max-sm:mb-14">
       Subheading Goes Here
     </p>
-    <PostList posts={posts} />"
+    <div class="mb-12">
+      <Pagination nextURL="/blog/2" />
+    </div>
+    <PostList posts={posts} />
+    <div class="mb-36">
+      <Pagination nextURL="/blog/2" />
+    </div>
   </Main>
 </Layout>

@@ -10,8 +10,8 @@ const postsCollection = defineCollection({
         featured: z.boolean().default(false),
         image: z.string(),
         title: z.string(),
-
-    })
+        description: z.string()
+     })
 });
 //export a single 'collections' object to register the collections. 
 //key should match collection directory name in src/content
