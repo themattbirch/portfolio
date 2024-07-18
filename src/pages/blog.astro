@@ -5,8 +5,11 @@ import PostList from "../components/PostList.astro";
 import Main from "../components/Main.astro";
 import H1 from "../components/H1.astro";
 import Pagination from "../components/Pagination.astro";
+import CategoryList from "../components/CategoryList.astro";
 
 const posts = (await getCollection("posts")).slice(0, 6);
+const allCategories = posts.flatMap((post) => post.data.categories);
+const categories = Array.from(new Set(allCategories));
 ---
 
 <Layout
@@ -16,16 +19,20 @@ const posts = (await getCollection("posts")).slice(0, 6);
   websites that not only look great but perform exceptionally.`
 >
   <Main>
-    <H1 text="My Blog Title" />
+    <H1 text="Matt Birch | Web Developer" />
     <p class="text-zinc-900 text-2xl mb-24 max-sm:mb-14">
-      Subheading Goes Here
+      Transforming ideas into powerful web experiences. I combine technical
+      expertise with creative problem-solving to deliver websites that not only
+      look great but perform exceptionally.
     </p>
-    <div class="mb-12">
-      <Pagination nextURL="/blog/2" />
+      <CategoryList categories={categories} title="Tags" />
     </div>
-    <PostList posts={posts} />
-    <div class="mb-36">
-      <Pagination nextURL="/blog/2" />
-    </div>
-  </Main>
+      <div class="mb-12">
+        <Pagination nextURL="/blog/2" />
+      </div>
+      <PostList posts={posts} />
+      <div class="mb-36">
+        <Pagination nextURL="/blog/2" />
+      </div>
+    </Main>
 </Layout>
