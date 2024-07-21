@@ -6,15 +6,16 @@ type Props = {
 
 const { post } = Astro.props;
 const postUrl = "/blog/" + post.slug;
+import { Image } from "astro:assets"
 ---
 
 <article>
   <a href={postUrl}>
-    <img
+    <Image
       src={post.data.image}
       alt={post.data.title}
-      width={1024}
-      height={1024 / 2}
+      width={600}
+      height={600 / 1.5}
       class="rounded-2xl shadow-xl mb-6 aspect-thumbnail object-cover"
     />
   </a>
