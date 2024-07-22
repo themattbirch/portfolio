@@ -23,7 +23,7 @@
     name="comment"
     id="comment"
     class="border border-teal-900 rounded-lg text-2xl px-6 py-6"
-    data-kw-required
+    data-kw-rules="required"
     data-kw-max-length="255"
   />
   <button
