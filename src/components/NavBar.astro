@@ -1,0 +1,159 @@
+---
+import PortfolioNav from "./PortfolioNav.astro";
+import MenuItems from "./MenuItems.astro";
+import MenuIcon from "./MenuIcon.astro";
+import DropDown from "./DropDown.astro";
+import DropDownItems from "./DropDownItems.astro";
+import OpenIcon from "./OpenIcon.astro";
+import CloseIcon from "./CloseIcon.astro";
+
+const menuItems = [
+  { title: "Home", path: "/" },
+  { title: "About", path: "/about" },
+  {
+    title: "Services",
+    children: [
+      { title: "Web Design", path: "/services/web-design" },
+      { title: "SEO", path: "/services/seo" },
+      { title: "Branding", path: "/services/branding" },
+    ],
+  },
+  { title: "Contact", path: "/contact" },
+];
+
+// Custom SVG paths
+const customOpenIconPath = "M3 12h18M3 6h18M3 18h18";
+const customCloseIconPath = "M6 18L18 6M6 6l12 12";
+---
+
+<PortfolioNav closeOnClick>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex items-center">
+        <a href="/" class="text-2xl font-bold text-gray-900">Your Logo</a>
+      </div>
+
+      <div class="hidden md:flex md:items-center">
+        <MenuItems class="flex space-x-4">
+          {
+            menuItems.map((item) =>
+              !item.children ? (
+                <a
+                  href={item.path}
+                  class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  {item.title}
+                </a>
+              ) : (
+                <DropDown class="group">
+                  <button class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                    <span>{item.title}</span>
+                    <svg
+                      class="ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  <DropDownItems>
+                    <div class="absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
+                      <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
+                        <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                          {item.children.map((child) => (
+                            <a
+                              href={child.path}
+                              class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
+                            >
+                              <div class="ml-4">
+                                <p class="text-base font-medium text-gray-900">
+                                  {child.title}
+                                </p>
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </DropDownItems>
+                </DropDown>
+              )
+            )
+          }
+        </MenuItems>
+      </div>
+
+      <div class="flex items-center md:hidden">
+        <MenuIcon class="w-6 h-6 text-gray-800">
+          <OpenIcon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d={customOpenIconPath}></path>
+            </svg>
+          </OpenIcon>
+          <CloseIcon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d={customCloseIconPath}></path>
+            </svg>
+          </CloseIcon>
+        </MenuIcon>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu, show/hide based on menu state -->
+  <div class="md:hidden hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      {
+        menuItems.map((item) => (
+          <a
+            href={item.path}
+            class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
+          >
+            {item.title}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</PortfolioNav>
+
+<script>
+  // Client-side JavaScript to handle menu toggle
+  const menuIcon = document.querySelector(".astro-navbar-menu-icon");
+  const mobileMenu = document.querySelector(".md\\:hidden");
+
+  if (menuIcon && mobileMenu) {
+    menuIcon.addEventListener("click", () => {
+      menuIcon.classList.toggle("open");
+      mobileMenu.classList.toggle("hidden");
+    });
+  } else {
+    console.warn("Menu icon or mobile menu not found");
+  }
+</script>

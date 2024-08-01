@@ -1,0 +1,75 @@
+/* src/styles/global.css */
+
+@layer base {
+
+    /* Reset some default styles */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Set up some global variables */
+    :root {
+        --primary-color: #3490dc;
+        --secondary-color: #ffed4a;
+        --text-color: #333;
+        --background-color: #fff;
+    }
+
+    /* Dark mode variables */
+    .dark {
+        --text-color: #f0f0f0;
+        --background-color: #333;
+    }
+
+    body {
+        font-family: 'Cabin', sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+@layer components {
+
+    /* Your component styles here */
+    /* For example: */
+    .btn {
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        background-color: var(--primary-color);
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: color-mix(in srgb, var(--primary-color) 80%, black);
+    }
+}
+
+@layer utilities {
+
+    /* Your utility styles here */
+    /* For example: */
+    .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Styles outside of Tailwind layers */
+/* These styles will take precedence over Tailwind classes */
+
+/* NavBar specific styles */
+.hidden {
+    display: none !important;
+}
