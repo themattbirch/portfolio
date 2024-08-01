@@ -5,7 +5,7 @@ import H1 from "../../components/H1.astro";
 import Main from "../../components/Main.astro";
 import Pagination from "../../components/Pagination.astro";
 import PostList from "../../components/PostList.astro";
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
   const allCategories = posts.flatMap((post) => post.data.categories);
@@ -37,7 +37,7 @@ type Props = {
 const { category, posts } = Astro.props;
 ---
 
-<Layout
+<BlogLayout
   title="Matt Birch | Web Developer"
   description=`Transforming ideas into powerful web experiences.
   I combine technical expertise with creative problem-solving to deliver 
@@ -53,7 +53,7 @@ const { category, posts } = Astro.props;
       expertise with creative problem-solving to deliver websites that not only
       look great but perform exceptionally.
     </p>
-      <CategoryList categories={[category]} title="Posts tagged" />
+    <CategoryList categories={[category]} title="Posts tagged" />
     <div class="mb-12">
       <Pagination nextURL="/blog/2" />
     </div>
@@ -62,4 +62,4 @@ const { category, posts } = Astro.props;
       <Pagination nextURL="/blog/2" />
     </div>
   </Main>
-</Layout>
+</BlogLayout>

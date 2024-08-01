@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPathsOptions, Page } from "astro";
 import { type CollectionEntry, getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 import Main from "../../components/Main.astro";
 import H1 from "../../components/H1.astro";
 import PostList from "../../components/PostList.astro";
@@ -23,7 +23,7 @@ const allCategories = posts.flatMap((post) => post.data.categories);
 const categories = Array.from(new Set(allCategories));
 ---
 
-<Layout
+<BlogLayout
   title="Matt Birch | Web Developer"
   description=`Transforming ideas into powerful web experiences.
   I combine technical expertise with creative problem-solving to deliver 
@@ -34,14 +34,13 @@ const categories = Array.from(new Set(allCategories));
     <p class="text-zinc-900 text-2xl mb-24 max-sm:mb-14">
       Subheading Goes Here
     </p>
-      <CategoryList categories={categories} title="Tags" />
-    </div>
-    <div class="mb-12">
-      <Pagination nextURL="/blog/2" />
-    </div>
-    <PostList posts={posts} />
-    <div class="mb-36">
-      <Pagination nextURL="/blog/2" />
-    </div>
+    <CategoryList categories={categories} title="Tags" />
   </Main>
-</Layout>
+  <div class="mb-12">
+    <Pagination nextURL="/blog/2" />
+  </div>
+  <PostList posts={posts} />
+  <div class="mb-36">
+    <Pagination nextURL="/blog/2" />
+  </div>
+</BlogLayout>
