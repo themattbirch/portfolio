@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import * as kwesforms from "kwesforms";
-  
-  onMount(() => {
-    kwesforms.init();
-  });
+ import { onMount } from "svelte";
+ import kwesforms from 'kwesforms';
+
+onMount(() => {
+  (kwesforms as any).init();
+});
 </script>
 
 <form
@@ -16,7 +16,7 @@
   data-kw-show-errors-on="submit"
 >
   <label for="comment" class="text-zinc-900 text-2xl mb-2 mt-10">
-    What's on your mind?
+    Drop Matt a line. Any questions or feedback is welcomed! 
   </label>
   <textarea
     rows="3"
