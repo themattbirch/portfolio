@@ -1,0 +1,28 @@
+---
+// src/components/SkillBadge.astro
+interface Props {
+  name: string;
+  icon: string;
+}
+
+const { name, icon } = Astro.props;
+---
+
+<div
+  class="flex items-center bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1"
+>
+  <i class={`fab fa-${icon} mr-2`}></i>
+  <span>{name}</span>
+</div>
+
+<script>
+  // This script adds Font Awesome for the skill icons
+  if (!document.querySelector("#font-awesome-css")) {
+    const link = document.createElement("link");
+    link.id = "font-awesome-css";
+    link.rel = "stylesheet";
+    link.href =
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css";
+    document.head.appendChild(link);
+  }
+</script>

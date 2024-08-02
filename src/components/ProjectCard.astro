@@ -1,0 +1,78 @@
+---
+// src/components/ProjectCard.astro
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  description: string;
+  imageSrc: string;
+  tags: string[];
+  githubUrl: string;
+  liveUrl: string;
+}
+
+const { title, description, imageSrc, tags, githubUrl, liveUrl } = Astro.props;
+
+// Import image dynamically
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/*.{jpeg,jpg,png,gif}"
+);
+
+// Function to determine if a URL is absolute
+const isAbsoluteUrl = (url: string) => {
+  return url.indexOf("://") > 0 || url.indexOf("//") === 0;
+};
+
+// Determine if links should open in a new tab
+const githubTarget = isAbsoluteUrl(githubUrl) ? "_blank" : undefined;
+const liveTarget = isAbsoluteUrl(liveUrl) ? "_blank" : undefined;
+
+// Add rel="noopener noreferrer" for security when opening in a new tab
+const githubRel = githubTarget === "_blank" ? "noopener noreferrer" : undefined;
+const liveRel = liveTarget === "_blank" ? "noopener noreferrer" : undefined;
+---
+
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+  {
+    imageSrc in images && (
+      <Image
+        src={images[imageSrc]()}
+        alt={title}
+        class="w-full h-48 object-cover"
+        width={400}
+        height={200}
+      />
+    )
+  }
+  <div class="p-6">
+    <h3 class="text-xl font-semibold mb-2">{title}</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
+    <div class="flex flex-wrap gap-2 mb-4">
+      {
+        tags.map((tag) => (
+          <span class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded text-sm">
+            {tag}
+          </span>
+        ))
+      }
+    </div>
+    <div class="flex justify-between">
+      <a
+        href={githubUrl}
+        target={githubTarget}
+        rel={githubRel}
+        class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200"
+      >
+        GitHub
+      </a>
+      <a
+        href={liveUrl}
+        target={liveTarget}
+        rel={liveRel}
+        class="text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-200"
+      >
+        Live Demo
+      </a>
+    </div>
+  </div>
+</div>

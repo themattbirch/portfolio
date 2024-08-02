@@ -1,38 +1,86 @@
 ---
-import { getCollection } from "astro:content";
-import H1 from "../components/H1.astro";
-import Main from "../components/Main.astro";
-import BlogLayout from "../layouts/BlogLayout.astro";
-import FeaturedPost from "../components/FeaturedPost.astro";
-import CategoryList from "../components/CategoryList.astro";
-import PostList from "../components/PostList.astro";
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import SkillBadge from "../components/SkillBadge.astro";
 
-const allPosts = await getCollection("posts");
-const featuredPosts = allPosts.filter((post) => post.data.featured);
-const posts = allPosts.filter((post) => !post.data.featured).slice(0, 4);
-const allCategories = posts.flatMap((post) => post.data.categories);
-const categories = Array.from(new Set(allCategories));
+const projects = [
+  {
+    title: "Client Website 1",
+    description: "A responsive website for a local business",
+    imageSrc: "/src/assets/client-website-1.jpg",
+    tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+    githubUrl: "https://github.com/yourusername/client-website-1",
+    liveUrl: "https://www.clientwebsite1.com",
+  },
+  {
+    title: "E-commerce Platform",
+    description: "A full-featured online store built with React",
+    imageSrc: "/src/assets/ecommerce-platform.jpg",
+    tags: ["React", "Node.js", "MongoDB", "Stripe"],
+    githubUrl: "https://github.com/yourusername/ecommerce-platform",
+    liveUrl: "https://www.ecommerceplatform-example.com",
+  },
+  // Add more projects as needed
+];
+
+const skills = [
+  { name: "HTML", icon: "html5" },
+  { name: "CSS", icon: "css3-alt" },
+  { name: "JavaScript", icon: "js" },
+  { name: "React", icon: "react" },
+  { name: "Astro", icon: "rocket" },
+];
 ---
 
-<BlogLayout>
-  <Main>
-    <H1 text="Matt Birch | Web Developer" />
-    <p class="text-zinc-900 text-2xl mb-24 max-sm:mb-14">
-      Transforming ideas into powerful web experiences. I combine technical
-      expertise with creative problem-solving to deliver websites that not only
-      look great but perform exceptionally.
+<Layout
+  title="Matt Birch | Web Developer"
+  description="Front-end web developer specializing in HTML, CSS, JavaScript, Astro, and React. Creating powerful and performant web experiences."
+>
+  <!-- Welcome section -->
+  <section class="mb-12">
+    <h1 class="text-4xl font-bold mb-4">Welcome to My Portfolio</h1>
+    <p class="text-xl mb-6">
+      I'm Matt Birch, a front-end web developer passionate about creating
+      exceptional web experiences.
     </p>
-    {featuredPosts.map((post) => <FeaturedPost post={post} />)}
-    <hr class="w-full border border-teal-900 mb-16 max-sm:mb-10" />
+    <a
+      href="/contact"
+      class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+      >Get in Touch</a
+    >
+  </section>
 
-    <CategoryList categories={categories} title="Recent Posts" />
-  </Main>
-  <div class="mb-32">
-    <PostList posts={posts} />
-  </div>
-  <div class="flex justify-end mb-60 max-sm:mb-36">
-    <a href="/blog" class="bg-teal-900 text-white py-3 px-6 rounded-xl text-xl">
-      Read More
-    </a>
-  </div>
-</BlogLayout>
+  <!-- Projects section -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">Featured Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {projects.map((project) => <ProjectCard {...project} />)}
+    </div>
+  </section>
+
+  <!-- Skills section -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">My Skills</h2>
+    <div class="flex flex-wrap gap-4">
+      {
+        skills.map((skill) => (
+          <SkillBadge name={skill.name} icon={skill.icon} />
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Connect section -->
+  <section>
+    <h2 class="text-2xl font-semibold mb-4">Let's Connect</h2>
+    <p class="mb-4">
+      I'm always open to new opportunities and collaborations. Feel free to
+      reach out!
+    </p>
+    <a
+      href="/contact"
+      class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200"
+      >Contact Me</a
+    >
+  </section>
+</Layout>

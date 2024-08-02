@@ -1,5 +1,8 @@
-/* src/styles/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Your custom styles start here */
 @layer base {
 
     /* Reset some default styles */
@@ -43,7 +46,6 @@
 @layer components {
 
     /* Your component styles here */
-    /* For example: */
     .btn {
         padding: 0.5rem 1rem;
         border-radius: 0.25rem;
@@ -60,16 +62,12 @@
 @layer utilities {
 
     /* Your utility styles here */
-    /* For example: */
     .text-shadow {
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 }
 
 /* Styles outside of Tailwind layers */
-/* These styles will take precedence over Tailwind classes */
-
-/* NavBar specific styles */
 .hidden {
     display: none !important;
 }
