@@ -1,5 +1,5 @@
 ---
-title: About Page
+title: About Me Page
 date: 06/29/2024
 image: ./images/photoshoot.png
 featured: false
