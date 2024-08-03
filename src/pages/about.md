@@ -1,6 +1,6 @@
 ---
 title: About Me Page
-date: 06/29/2024
+date: 07/29/2024
 image: ./images/photoshoot.png
 featured: false
 author: Matt Birch
