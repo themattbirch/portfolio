@@ -1,103 +1,95 @@
 ---
 import PortfolioNav from "./PortfolioNav.astro";
-import MenuItems from "./MenuItems.astro";
-import MenuIcon from "./MenuIcon.astro";
-import DropDown from "./DropDown.astro";
-import DropDownItems from "./DropDownItems.astro";
 import OpenIcon from "./OpenIcon.astro";
 import CloseIcon from "./CloseIcon.astro";
 
-const menuItems = [
-  { title: "Home", path: "/" },
-  { title: "About", path: "/about" },
-  {
-    title: "Services",
-    children: [
-      { title: "Web Design", path: "/services/web-design" },
-      { title: "SEO", path: "/services/seo" },
-      { title: "Branding", path: "/services/branding" },
-    ],
-  },
-  { title: "Contact", path: "/contact" },
-];
+interface MenuItem {
+  title: string;
+  path?: string;
+  children?: MenuItem[];
+}
+
+interface Props {
+  menuItems: MenuItem[];
+}
+
+const { menuItems } = Astro.props;
 
 // Custom SVG paths
 const customOpenIconPath = "M3 12h18M3 6h18M3 18h18";
 const customCloseIconPath = "M6 18L18 6M6 6l12 12";
 ---
 
-<PortfolioNav closeOnClick>
+<PortfolioNav>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16">
+    <div class="flex justify-between items-center h-16">
       <div class="flex items-center">
-        <a href="/" class="text-2xl font-bold text-gray-900">Your Logo</a>
+        <a href="/" class="text-2xl font-bold text-gray-100">Your Logo</a>
       </div>
-
-      <div class="hidden md:flex md:items-center">
-        <MenuItems class="flex space-x-4">
-          {
-            menuItems.map((item) =>
-              !item.children ? (
-                <a
-                  href={item.path}
-                  class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  {item.title}
-                </a>
-              ) : (
-                <DropDown class="group">
-                  <button class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
-                    <span>{item.title}</span>
-                    <svg
-                      class="ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      aria-hidden="true"
+      <div class="hidden md:block">
+        <nav>
+          <ul class="flex space-x-4">
+            {
+              menuItems.map((item) => (
+                <li class="relative group">
+                  {!item.children ? (
+                    <a
+                      href={item.path}
+                      class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                     >
-                      <path
-                        fill-rule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </button>
-                  <DropDownItems>
-                    <div class="absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
-                      <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                        <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                          {item.children.map((child) => (
+                      {item.title}
+                    </a>
+                  ) : (
+                    <div>
+                      <button class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                        <span>{item.title}</span>
+                        <svg
+                          class="ml-2 h-5 w-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                      <ul class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block">
+                        {item.children.map((child) => (
+                          <li>
                             <a
                               href={child.path}
-                              class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
+                              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             >
-                              <div class="ml-4">
-                                <p class="text-base font-medium text-gray-900">
-                                  {child.title}
-                                </p>
-                              </div>
+                              {child.title}
                             </a>
-                          ))}
-                        </div>
-                      </div>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </DropDownItems>
-                </DropDown>
-              )
-            )
-          }
-        </MenuItems>
+                  )}
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
       </div>
-
-      <div class="flex items-center md:hidden">
-        <MenuIcon class="w-6 h-6 text-gray-800">
+      <div class="md:hidden">
+        <button
+          id="astronav-menu-toggle"
+          class="astronav-toggle"
+          aria-label="Toggle menu"
+        >
           <OpenIcon>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              class="w-6 h-6"
+              class="w-6 h-6 text-gray-100"
             >
               <path
                 stroke-linecap="round"
@@ -112,7 +104,7 @@ const customCloseIconPath = "M6 18L18 6M6 6l12 12";
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              class="w-6 h-6"
+              class="w-6 h-6 text-gray-100 hidden"
             >
               <path
                 stroke-linecap="round"
@@ -121,22 +113,54 @@ const customCloseIconPath = "M6 18L18 6M6 6l12 12";
                 d={customCloseIconPath}></path>
             </svg>
           </CloseIcon>
-        </MenuIcon>
+        </button>
       </div>
     </div>
   </div>
-
-  <!-- Mobile menu, show/hide based on menu state -->
-  <div class="md:hidden hidden">
+  <!-- Mobile menu -->
+  <div class="md:hidden hidden" id="astronav-menu">
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
       {
         menuItems.map((item) => (
-          <a
-            href={item.path}
-            class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
-          >
-            {item.title}
-          </a>
+          <div class="astronav-dropdown">
+            {!item.children ? (
+              <a
+                href={item.path}
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              >
+                {item.title}
+              </a>
+            ) : (
+              <div>
+                <button class="text-gray-300 hover:bg-gray-700 hover:text-white w-full px-3 py-2 rounded-md text-base font-medium text-left flex justify-between items-center">
+                  <span>{item.title}</span>
+                  <svg
+                    class="h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <div class="hidden pl-4">
+                  {item.children.map((child) => (
+                    <a
+                      href={child.path}
+                      class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    >
+                      {child.title}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         ))
       }
     </div>
@@ -144,16 +168,43 @@ const customCloseIconPath = "M6 18L18 6M6 6l12 12";
 </PortfolioNav>
 
 <script>
-  // Client-side JavaScript to handle menu toggle
-  const menuIcon = document.querySelector(".astro-navbar-menu-icon");
-  const mobileMenu = document.querySelector(".md\\:hidden");
+  function setupMobileMenu() {
+    const menuButton = document.getElementById("astronav-menu-toggle");
+    const menuItems = document.getElementById("astronav-menu");
 
-  if (menuIcon && mobileMenu) {
-    menuIcon.addEventListener("click", () => {
-      menuIcon.classList.toggle("open");
-      mobileMenu.classList.toggle("hidden");
+    if (menuButton && menuItems) {
+      console.log("Menu button and items found");
+      menuButton.addEventListener("click", () => {
+        console.log("Menu button clicked");
+        menuItems.classList.toggle("hidden");
+
+        // Toggle between open and close icons
+        const openIcon = menuButton.querySelector("svg:not(.hidden)");
+        const closeIcon = menuButton.querySelector("svg.hidden");
+        if (openIcon && closeIcon) {
+          openIcon.classList.toggle("hidden");
+          closeIcon.classList.toggle("hidden");
+        }
+      });
+    } else {
+      console.warn("Menu button or items not found");
+    }
+
+    const dropdownButtons = document.querySelectorAll(
+      ".astronav-dropdown > div > button"
+    );
+    dropdownButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const target = event.currentTarget as HTMLElement;
+        const dropdownContent = target.nextElementSibling as HTMLElement | null;
+        if (dropdownContent) {
+          dropdownContent.classList.toggle("hidden");
+        }
+      });
     });
-  } else {
-    console.warn("Menu icon or mobile menu not found");
   }
+
+  // Run setup on initial load
+  document.addEventListener("astro:page-load", setupMobileMenu);
+  setupMobileMenu();
 </script>

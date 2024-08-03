@@ -3,71 +3,44 @@
 @tailwind utilities;
 
 /* Your custom styles start here */
-@layer base {
 
-    /* Reset some default styles */
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    /* Set up some global variables */
-    :root {
-        --primary-color: #3490dc;
-        --secondary-color: #ffed4a;
-        --text-color: #333;
-        --background-color: #fff;
-    }
-
-    /* Dark mode variables */
-    .dark {
-        --text-color: #f0f0f0;
-        --background-color: #333;
-    }
-
-    body {
-        font-family: 'Cabin', sans-serif;
-        line-height: 1.6;
-        color: var(--text-color);
-        background-color: var(--background-color);
-    }
-
-    a {
-        color: var(--primary-color);
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
+/* NavBar specific styles */
+.astronav-menu {
+    cursor: pointer;
 }
 
-@layer components {
-
-    /* Your component styles here */
-    .btn {
-        padding: 0.5rem 1rem;
-        border-radius: 0.25rem;
-        background-color: var(--primary-color);
-        color: white;
-        transition: background-color 0.3s ease;
-    }
-
-    .btn:hover {
-        background-color: color-mix(in srgb, var(--primary-color) 80%, black);
-    }
+.astronav-toggle {
+    display: block;
 }
 
-@layer utilities {
-
-    /* Your utility styles here */
-    .text-shadow {
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
+#astronav-menu-items {
+    transition: all 0.3s ease-in-out;
 }
 
-/* Styles outside of Tailwind layers */
-.hidden {
-    display: none !important;
+.astronav-dropdown>div>button {
+    transition: colors 0.2s;
+}
+
+.astronav-dropdown>div>div {
+    transition: all 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.astronav-dropdown>div>div:not(.hidden) {
+    max-height: 100vh;
+    opacity: 1;
+}
+
+/* Media query for mobile styles */
+@media (max-width: 768px) {
+    #astronav-menu-items {
+        background-color: #1f2937;
+        position: absolute;
+        top: 4rem;
+        left: 0;
+        right: 0;
+        z-index: 20;
+    }
 }

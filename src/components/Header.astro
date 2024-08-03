@@ -1,15 +1,35 @@
 ---
-import NavBar from './NavBar.astro';
-import StickyHeader from "./StickyHeader.astro";
+import NavBar from "./NavBar.astro";
+import ThemeToggle from "./ThemeToggle.jsx";
+import { menuItems } from "../config/menu.js";
+
+type MenuItem = {
+  title: string;
+  path?: string;
+  children?: Array<{ title: string; path: string }>;
+};
+
+const typedMenuItems: MenuItem[] = menuItems;
+console.log("Header.astro - Menu Items:", typedMenuItems); // Debugging: Log menu items
 ---
 
+<header
+  class="sticky top-0 border-b z-20 transition-all bg-white dark:bg-gray-800"
+>
+  <div class="py-5 border-transparent">
+    <NavBar menuItems={typedMenuItems}>
+      <ThemeToggle client:load />
+    </NavBar>
+  </div>
+</header>
 
-<StickyHeader
-    class="sticky top-0 border-b z-20 transition-all"
-    scrollY={50}
-    defaultClass="py-5 border-transparent"
-    activeClass="py-2 bg-white/80 border-gray-200 backdrop-blur-lg">
-    <div class="bg-white">
-        <NavBar />
-    </div>
-  </StickyHeader>
+<script>
+  console.log("Header.astro script running");
+  document.addEventListener("astro:page-load", () => {
+    console.log("Page loaded - checking menu items");
+    const menuItems = document.querySelectorAll(
+      ".md\\:flex .flex.space-x-4 > *"
+    );
+    console.log("Number of menu items found:", menuItems.length);
+  });
+</script>

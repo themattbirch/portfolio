@@ -5,6 +5,7 @@ interface Props {
   defaultClass?: string;
   class?: string;
 }
+
 const {
   scrollY = 100,
   defaultClass = "",
@@ -34,29 +35,37 @@ const {
       if (scrollPos > scrollY) {
         header.classList.remove(...replaceArray);
         header.classList.add("is-active", ...classArray);
-        header.setAttribute("active", "");
+        header.setAttribute("data-active", "true");
       }
-      //reduce the scrollY to avoid flickering when scrolling up
+      // Reduce the scrollY to avoid flickering when scrolling up
       if (scrollPos < Math.max(scrollY - 40, 10)) {
         header.classList.remove("is-active", ...classArray);
         header.classList.add(...replaceArray);
-        header.removeAttribute("active");
+        header.removeAttribute("data-active");
       }
     });
   }
 
   // Scroll event throttling as per MDN
   // https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event
-
-  document.addEventListener("scroll", (event) => {
+  function throttledScroll() {
     scrollPos = window.scrollY;
     if (!ticking) {
       window.requestAnimationFrame(() => {
         OnScroll(scrollPos);
         ticking = false;
       });
-
       ticking = true;
     }
+  }
+
+  document.addEventListener("scroll", throttledScroll);
+
+  // Initial check on page load
+  OnScroll(window.scrollY);
+
+  // Clean up event listener on component unmount
+  document.addEventListener("astro:before-swap", () => {
+    document.removeEventListener("scroll", throttledScroll);
   });
 </script>
