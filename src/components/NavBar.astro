@@ -22,13 +22,21 @@ const customOpenIconPath = "M3 12h18M3 6h18M3 18h18";
 <PortfolioNav>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
       <div class="flex-shrink-0 flex items-center">
-        <a href="/" class="text-2xl font-bold text-gray-100">Your Logo</a>
+        <a href="/" class="flex items-center">
+          <img
+            src="/images/lightbluelogo.png"
+            alt="Matt Birch"
+            class="h-6 w-auto sm:h-8 md:h-10 transition-all duration-200"
+          />
+        </a>
       </div>
+
       <!-- Desktop menu -->
       <div class="hidden md:block">
         <nav>
-          <ul class="flex items-center space-x-8">
+          <ul class="flex items-center space-x-4">
             {
               menuItems.map((item) => (
                 <li class="relative group">
@@ -44,7 +52,7 @@ const customOpenIconPath = "M3 12h18M3 6h18M3 18h18";
                       <button class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
                         <span>{item.title}</span>
                         <svg
-                          class="ml-1 -mr-1 h-5 w-5"
+                          class="ml-2 h-5 w-5"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
                           fill="currentColor"
@@ -77,6 +85,7 @@ const customOpenIconPath = "M3 12h18M3 6h18M3 18h18";
           </ul>
         </nav>
       </div>
+
       <!-- Mobile menu button -->
       <div class="md:hidden">
         <button
@@ -92,12 +101,12 @@ const customOpenIconPath = "M3 12h18M3 6h18M3 18h18";
     </div>
   </div>
 
-  <!-- Mobile menu (hidden by default) -->
+  <!-- Mobile menu -->
   <div class="md:hidden hidden" id="mobile-menu">
     <div class="px-2 pt-2 pb-3 space-y-1">
       {
         menuItems.map((item) => (
-          <div>
+          <div class="mobile-menu-item">
             {!item.children ? (
               <a
                 href={item.path}
@@ -106,11 +115,11 @@ const customOpenIconPath = "M3 12h18M3 6h18M3 18h18";
                 {item.title}
               </a>
             ) : (
-              <div class="relative">
-                <button class="mobile-dropdown-toggle text-gray-300 hover:bg-gray-700 hover:text-white w-full px-3 py-2 rounded-md text-base font-medium text-left flex items-center">
+              <div>
+                <button class="mobile-dropdown-toggle w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium flex items-center">
                   <span>{item.title}</span>
                   <svg
-                    class="ml-1 h-5 w-5"
+                    class="h-5 w-5 ml-2 transform transition-transform duration-200"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -123,7 +132,7 @@ const customOpenIconPath = "M3 12h18M3 6h18M3 18h18";
                     />
                   </svg>
                 </button>
-                <div class="hidden pl-4 mt-2">
+                <div class="mobile-dropdown-menu hidden pl-4">
                   {item.children.map((child) => (
                     <a
                       href={child.path}
@@ -164,13 +173,11 @@ const customOpenIconPath = "M3 12h18M3 6h18M3 18h18";
       toggle.addEventListener("click", (event) => {
         const target = event.currentTarget as HTMLElement;
         const dropdownMenu = target.nextElementSibling as HTMLElement | null;
+        const arrow = target.querySelector("svg");
         if (dropdownMenu) {
           dropdownMenu.classList.toggle("hidden");
-          const arrow = target.querySelector("svg");
           if (arrow) {
-            arrow.style.transform = dropdownMenu.classList.contains("hidden")
-              ? "rotate(0deg)"
-              : "rotate(180deg)";
+            arrow.classList.toggle("rotate-180");
           }
         }
       });

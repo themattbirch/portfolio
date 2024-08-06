@@ -1,13 +1,15 @@
 export const menuItems = [
   { title: "Home", path: "/" },
   { title: "About", path: "/about" },
+  { title: "Contact", path: "/contact" },
+
   {
-    title: "Services",
+    title: "Skills",
     children: [
-      { title: "Web Design", path: "/services/web-design" },
-      { title: "SEO", path: "/services/seo" },
+      { title: "EQ", path: "/services/web-design" },
+      { title: "Technical", path: "/services/seo" },
       { title: "Branding", path: "/services/branding" },
     ],
   },
-  { title: "Contact", path: "/contact" },
+  { title: "Work", path: "/projects" },
 ];

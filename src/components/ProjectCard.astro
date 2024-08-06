@@ -18,16 +18,16 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/*.{jpeg,jpg,png,gif}"
 );
 
-// Function to determine if a URL is absolute
+// Function to determine if URL is absolute
 const isAbsoluteUrl = (url: string) => {
   return url.indexOf("://") > 0 || url.indexOf("//") === 0;
 };
 
-// Determine if links should open in a new tab
+// Decide if links should open in a new tab
 const githubTarget = isAbsoluteUrl(githubUrl) ? "_blank" : undefined;
 const liveTarget = isAbsoluteUrl(liveUrl) ? "_blank" : undefined;
 
-// Add rel="noopener noreferrer" for security when opening in a new tab
+// Uses rel=noopener noreferrer to help aid w/ more security when opening in a new tab
 const githubRel = githubTarget === "_blank" ? "noopener noreferrer" : undefined;
 const liveRel = liveTarget === "_blank" ? "noopener noreferrer" : undefined;
 ---
