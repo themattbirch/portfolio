@@ -14,4 +14,7 @@ export default defineConfig({
     // ... other content settings
     fields: [{ name: "slug", type: "string" }],
   },
+  build: {
+    viewTransitions: true,
+  },
 });

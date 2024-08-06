@@ -17,18 +17,18 @@ const { menuItems } = Astro.props;
 
 // Custom SVG paths
 const customOpenIconPath = "M3 12h18M3 6h18M3 18h18";
-const customCloseIconPath = "M6 18L18 6M6 6l12 12";
 ---
 
 <PortfolioNav>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
-      <div class="flex items-center">
+      <div class="flex-shrink-0 flex items-center">
         <a href="/" class="text-2xl font-bold text-gray-100">Your Logo</a>
       </div>
+      <!-- Desktop menu -->
       <div class="hidden md:block">
         <nav>
-          <ul class="flex space-x-4">
+          <ul class="flex items-center space-x-8">
             {
               menuItems.map((item) => (
                 <li class="relative group">
@@ -40,11 +40,11 @@ const customCloseIconPath = "M6 18L18 6M6 6l12 12";
                       {item.title}
                     </a>
                   ) : (
-                    <div>
+                    <div class="relative">
                       <button class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
                         <span>{item.title}</span>
                         <svg
-                          class="ml-2 h-5 w-5"
+                          class="ml-1 -mr-1 h-5 w-5"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
                           fill="currentColor"
@@ -77,52 +77,27 @@ const customCloseIconPath = "M6 18L18 6M6 6l12 12";
           </ul>
         </nav>
       </div>
+      <!-- Mobile menu button -->
       <div class="md:hidden">
         <button
-          id="astronav-menu-toggle"
-          class="astronav-toggle"
-          aria-label="Toggle menu"
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          aria-expanded="false"
         >
-          <OpenIcon>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              class="w-6 h-6 text-gray-100"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d={customOpenIconPath}></path>
-            </svg>
-          </OpenIcon>
-          <CloseIcon>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              class="w-6 h-6 text-gray-100 hidden"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d={customCloseIconPath}></path>
-            </svg>
-          </CloseIcon>
+          <span class="sr-only">Open main menu</span>
+          <OpenIcon class="block" />
+          <CloseIcon class="hidden" />
         </button>
       </div>
     </div>
   </div>
-  <!-- Mobile menu -->
-  <div class="md:hidden hidden" id="astronav-menu">
-    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+
+  <!-- Mobile menu (hidden by default) -->
+  <div class="md:hidden hidden" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1">
       {
         menuItems.map((item) => (
-          <div class="astronav-dropdown">
+          <div>
             {!item.children ? (
               <a
                 href={item.path}
@@ -131,11 +106,11 @@ const customCloseIconPath = "M6 18L18 6M6 6l12 12";
                 {item.title}
               </a>
             ) : (
-              <div>
-                <button class="text-gray-300 hover:bg-gray-700 hover:text-white w-full px-3 py-2 rounded-md text-base font-medium text-left flex justify-between items-center">
+              <div class="relative">
+                <button class="mobile-dropdown-toggle text-gray-300 hover:bg-gray-700 hover:text-white w-full px-3 py-2 rounded-md text-base font-medium text-left flex items-center">
                   <span>{item.title}</span>
                   <svg
-                    class="h-5 w-5"
+                    class="ml-1 h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -148,7 +123,7 @@ const customCloseIconPath = "M6 18L18 6M6 6l12 12";
                     />
                   </svg>
                 </button>
-                <div class="hidden pl-4">
+                <div class="hidden pl-4 mt-2">
                   {item.children.map((child) => (
                     <a
                       href={child.path}
@@ -169,36 +144,34 @@ const customCloseIconPath = "M6 18L18 6M6 6l12 12";
 
 <script>
   function setupMobileMenu() {
-    const menuButton = document.getElementById("astronav-menu-toggle");
-    const menuItems = document.getElementById("astronav-menu");
+    const menuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const openIcon = menuButton?.querySelector(".astronav-open-icon");
+    const closeIcon = menuButton?.querySelector(".astronav-close-icon");
 
-    if (menuButton && menuItems) {
-      console.log("Menu button and items found");
+    if (menuButton && mobileMenu && openIcon && closeIcon) {
       menuButton.addEventListener("click", () => {
-        console.log("Menu button clicked");
-        menuItems.classList.toggle("hidden");
-
-        // Toggle between open and close icons
-        const openIcon = menuButton.querySelector("svg:not(.hidden)");
-        const closeIcon = menuButton.querySelector("svg.hidden");
-        if (openIcon && closeIcon) {
-          openIcon.classList.toggle("hidden");
-          closeIcon.classList.toggle("hidden");
-        }
+        mobileMenu.classList.toggle("hidden");
+        openIcon.classList.toggle("hidden");
+        closeIcon.classList.toggle("hidden");
       });
-    } else {
-      console.warn("Menu button or items not found");
     }
 
-    const dropdownButtons = document.querySelectorAll(
-      ".astronav-dropdown > div > button"
+    const dropdownToggles = document.querySelectorAll(
+      ".mobile-dropdown-toggle"
     );
-    dropdownButtons.forEach((button) => {
-      button.addEventListener("click", (event) => {
+    dropdownToggles.forEach((toggle) => {
+      toggle.addEventListener("click", (event) => {
         const target = event.currentTarget as HTMLElement;
-        const dropdownContent = target.nextElementSibling as HTMLElement | null;
-        if (dropdownContent) {
-          dropdownContent.classList.toggle("hidden");
+        const dropdownMenu = target.nextElementSibling as HTMLElement | null;
+        if (dropdownMenu) {
+          dropdownMenu.classList.toggle("hidden");
+          const arrow = target.querySelector("svg");
+          if (arrow) {
+            arrow.style.transform = dropdownMenu.classList.contains("hidden")
+              ? "rotate(0deg)"
+              : "rotate(180deg)";
+          }
         }
       });
     });
@@ -206,5 +179,7 @@ const customCloseIconPath = "M6 18L18 6M6 6l12 12";
 
   // Run setup on initial load
   document.addEventListener("astro:page-load", setupMobileMenu);
+
+  // Also run setup immediately in case the page is not using View Transitions
   setupMobileMenu();
 </script>

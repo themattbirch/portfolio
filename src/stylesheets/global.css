@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 /* Your custom styles start here */
 
@@ -43,4 +43,15 @@
         right: 0;
         z-index: 20;
     }
+}
+
+.mobile-dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.mobile-dropdown-menu:not(.hidden) {
+    max-height: 500px;
+    /* I need to adjust this value based on the mobile menu content */
 }

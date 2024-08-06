@@ -2,15 +2,12 @@
 import NavBar from "./NavBar.astro";
 import ThemeToggle from "./ThemeToggle.jsx";
 import { menuItems } from "../config/menu.js";
-
 type MenuItem = {
   title: string;
   path?: string;
   children?: Array<{ title: string; path: string }>;
 };
-
 const typedMenuItems: MenuItem[] = menuItems;
-console.log("Header.astro - Menu Items:", typedMenuItems); // Debugging: Log menu items
 ---
 
 <header
@@ -22,14 +19,3 @@ console.log("Header.astro - Menu Items:", typedMenuItems); // Debugging: Log men
     </NavBar>
   </div>
 </header>
-
-<script>
-  console.log("Header.astro script running");
-  document.addEventListener("astro:page-load", () => {
-    console.log("Page loaded - checking menu items");
-    const menuItems = document.querySelectorAll(
-      ".md\\:flex .flex.space-x-4 > *"
-    );
-    console.log("Number of menu items found:", menuItems.length);
-  });
-</script>

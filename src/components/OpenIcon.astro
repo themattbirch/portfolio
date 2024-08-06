@@ -5,6 +5,18 @@ interface Props {
 const { class: className, ...rest } = Astro.props;
 ---
 
-<span class:list={["astronav-open-icon astronav-toggle", className]} {...rest}
-  ><slot /></span
->
+<span class:list={["astronav-open-icon", className]} {...rest}>
+  <svg
+    class="h-6 w-6"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4 6h16M4 12h16M4 18h16"></path>
+  </svg>
+</span>

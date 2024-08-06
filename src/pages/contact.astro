@@ -1,17 +1,20 @@
 ---
 import H1 from "../components/H1.astro";
 import Main from "../components/Main.astro";
-import BlogLayout from "../layouts/BlogLayout.astro";
+import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.svelte";
+
+const pageTitle = "Contact";
+const pageDescription = "Get in touch with us";
 ---
 
-<script src="https://kwesforms.com/v2/kf-script.js" defer></script>
-
-<BlogLayout>
+<Layout title={pageTitle} description={pageDescription}>
   <Main>
-    <H1 text="Contact" />
+    <H1 text={pageTitle} />
     <div class="mb-20">
       <ContactForm client:load />
     </div>
   </Main>
-</BlogLayout>
+</Layout>
+
+<script src="https://kwesforms.com/v2/kf-script.js" defer></script>
