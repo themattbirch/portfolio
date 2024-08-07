@@ -19,16 +19,17 @@ const { menuItems } = Astro.props;
 <PortfolioNav>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
-      <!-- Logo -->
+      <!-- Enhanced Logo -->
       <div class="flex-shrink-0 flex items-center">
-        <a href="/" class="flex items-center">
-          <img
-            src="/images/lightbluelogo.png"
-            alt="Matt Birch"
-            class="h-6 w-auto sm:h-8 md:h-10 transition-all duration-200"
-          />
+        <a href="/" class="flex items-center p-2 rounded-lg logo-container">
+          <span class="text-xl sm:text-2xl font-semibold logo-text">
+            <span class="bracket">&lt;</span>
+            <span class="name">matt birch</span>
+            <span class="bracket">&gt;</span>
+          </span>
         </a>
       </div>
+
       <!-- Desktop menu -->
       <div class="hidden md:block">
         <nav>
@@ -39,16 +40,16 @@ const { menuItems } = Astro.props;
                   {!item.children ? (
                     <a
                       href={item.path}
-                      class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex items-center h-full"
+                      class="text-gray-300 hover:text-white px-4 py-2 rounded-lg inline-flex items-center h-full transition-all duration-200 neumorphic-button"
                     >
-                      {item.title}
+                      <span class="relative z-10">{item.title}</span>
                     </a>
                   ) : (
                     <div class="relative inline-flex items-center h-full">
-                      <button class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium inline-flex items-center">
+                      <button class="text-gray-300 hover:text-white px-4 py-2 rounded-lg inline-flex items-center transition-all duration-200 neumorphic-button">
                         <span>{item.title}</span>
                         <svg
-                          class="ml-2 h-5 w-5"
+                          class="ml-2 h-5 w-5 transform transition-transform duration-200 group-hover:rotate-180"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
                           fill="currentColor"
@@ -61,12 +62,12 @@ const { menuItems } = Astro.props;
                           />
                         </svg>
                       </button>
-                      <ul class="absolute left-0 top-full mt-1 w-24 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block">
+                      <ul class="absolute left-0 top-full mt-2 w-48 rounded-lg shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-200 neumorphic-dropdown">
                         {item.children.map((child) => (
                           <li>
                             <a
                               href={child.path}
-                              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                              class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-150 rounded-lg"
                             >
                               {child.title}
                             </a>
@@ -86,7 +87,7 @@ const { menuItems } = Astro.props;
       <div class="md:hidden">
         <button
           id="mobile-menu-button"
-          class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          class="inline-flex items-center justify-center p-2 rounded-lg text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-200 neumorphic-button"
           aria-expanded="false"
         >
           <span class="sr-only">Open main menu</span>
@@ -94,62 +95,72 @@ const { menuItems } = Astro.props;
           <CloseIcon class="astronav-close-icon hidden h-6 w-6" />
         </button>
       </div>
+    </div>
+  </div>
 
-      <!-- Mobile menu -->
-      <div class="md:hidden hidden" id="mobile-menu">
-        <div class="px-2 pt-2 pb-3 space-y-1">
-          {
-            menuItems.map((item) => (
-              <div class="mobile-menu-item">
-                {!item.children ? (
-                  <a
-                    href={item.path}
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+  <!-- Mobile menu -->
+  <div class="md:hidden hidden" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1 rounded-lg mt-2">
+      {
+        menuItems.map((item, index) => (
+          <div
+            class="mobile-menu-item"
+            style={`animation-delay: ${index * 0.1}s;`}
+          >
+            {!item.children ? (
+              <a
+                href={item.path}
+                class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"
+              >
+                <span class="mobile-link-text">{item.title}</span>
+              </a>
+            ) : (
+              <div class="relative">
+                <button
+                  class="mobile-dropdown-toggle w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium flex items-center justify-between transition-all duration-200"
+                  aria-expanded="false"
+                >
+                  <span class="mobile-link-text">{item.title}</span>
+                  <svg
+                    class="h-5 w-5 ml-2 flex-shrink-0 transform transition-transform duration-200"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
                   >
-                    {item.title}
-                  </a>
-                ) : (
-                  <div class="relative">
-                    <button
-                      class="mobile-dropdown-toggle w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium flex items-center"
-                      aria-expanded="false"
-                    >
-                      <span class="flex-grow">{item.title}</span>
-                      <svg
-                        class="h-5 w-5 ml-2 flex-shrink-0 transform transition-transform duration-200"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 111.414 1.414l-4 4a1 1 01-1.414 0l-4-4a1 1 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+                <div class="mobile-dropdown-menu hidden mt-2 pl-4 space-y-1">
+                  {item.children &&
+                    item.children.map((child, childIndex) => (
+                      <a
+                        href={child.path}
+                        class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200"
+                        style={`animation-delay: ${index * 0.1 + (childIndex + 1) * 0.05}s;`}
                       >
-                        <path
-                          fill-rule="evenodd"
-                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 111.414 1.414l-4 4a1 1 01-1.414 0l-4-4a1 1 010-1.414z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                    <div class="mobile-dropdown-menu hidden mt-2">
-                      {item.children &&
-                        item.children.map((child) => (
-                          <a
-                            href={child.path}
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium pl-8"
-                          >
-                            {child.title}
-                          </a>
-                        ))}
-                    </div>
-                  </div>
-                )}
+                        <span class="mobile-link-text">{child.title}</span>
+                      </a>
+                    ))}
+                </div>
               </div>
-            ))
-          }
-        </div>
-      </div>
+            )}
+          </div>
+        ))
+      }
     </div>
   </div>
 </PortfolioNav>
+
+<style>
+  /* ... (previous styles remain) ... */
+
+  
+</style>
 
 <script>
   function setupMobileMenu() {
