@@ -28,13 +28,23 @@
 
 /* Media query for mobile styles */
 @media (max-width: 768px) {
-    #astronav-menu-items {
+    #mobile-menu {
         background-color: #1f2937;
         position: absolute;
         top: 4rem;
         left: 0;
         right: 0;
         z-index: 20;
+    }
+
+    .mobile-menu-item {
+        margin: 0.5rem 0;
+        /* Add margin for better spacing between items */
+    }
+
+    .mobile-dropdown-menu {
+        margin-left: 1rem;
+        /* Indent the dropdown items */
     }
 }
 

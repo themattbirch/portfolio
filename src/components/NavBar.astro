@@ -56,7 +56,7 @@ const { menuItems } = Astro.props;
                         >
                           <path
                             fill-rule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 111.414 1.414l-4 4a1 1 01-1.414 0l-4-4a1 1 010-1.414z"
                             clip-rule="evenodd"
                           />
                         </svg>
@@ -124,7 +124,7 @@ const { menuItems } = Astro.props;
                       >
                         <path
                           fill-rule="evenodd"
-                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 111.414 1.414l-4 4a1 1 01-1.414 0l-4-4a1 1 010-1.414z"
                           clip-rule="evenodd"
                         />
                       </svg>
@@ -157,13 +157,18 @@ const { menuItems } = Astro.props;
     const mobileMenu = document.getElementById("mobile-menu");
 
     if (mobileMenuButton && mobileMenu) {
+      // Select the open and close icons
       const openIcon = mobileMenuButton.querySelector(".block.h-6.w-6");
       const closeIcon = mobileMenuButton.querySelector(".hidden.h-6.w-6");
 
+      // Add click event listener to the mobile menu button
       mobileMenuButton.addEventListener("click", () => {
+        // Toggle the visibility of the mobile menu
         mobileMenu.classList.toggle("hidden");
+        // Toggle the visibility of the open and close icons
         openIcon?.classList.toggle("hidden");
         closeIcon?.classList.toggle("hidden");
+        // Update the aria-expanded attribute
         mobileMenuButton.setAttribute(
           "aria-expanded",
           mobileMenu.classList.contains("hidden") ? "false" : "true"
@@ -171,18 +176,24 @@ const { menuItems } = Astro.props;
       });
     }
 
+    // Select all dropdown toggle buttons in the mobile menu
     const dropdownToggles = document.querySelectorAll(
       ".mobile-dropdown-toggle"
     );
     dropdownToggles.forEach((toggle) => {
+      // Add click event listener to each dropdown toggle button
       toggle.addEventListener("click", () => {
+        // Select the corresponding dropdown menu
         const dropdownMenu = toggle.nextElementSibling;
         if (dropdownMenu) {
+          // Toggle the visibility of the dropdown menu
           dropdownMenu.classList.toggle("hidden");
+          // Update the aria-expanded attribute
           toggle.setAttribute(
             "aria-expanded",
             dropdownMenu.classList.contains("hidden") ? "false" : "true"
           );
+          // Rotate the arrow icon
           const arrow = toggle.querySelector("svg");
           if (arrow) {
             arrow.classList.toggle("rotate-180");
@@ -192,8 +203,8 @@ const { menuItems } = Astro.props;
     });
   }
 
-  // Run setup immediately
-  setupMobileMenu();
+  // Run setup immediately when the DOM is fully loaded
+  document.addEventListener("DOMContentLoaded", setupMobileMenu);
 
   // Also run setup after Astro page transitions
   document.addEventListener("astro:page-load", setupMobileMenu);
