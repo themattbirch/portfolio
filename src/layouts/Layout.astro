@@ -55,7 +55,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
 
-      <!-- Theme Script -->
+      <!-- Script for theme toggle -->
       <script is:inline>
         if (
           localStorage.getItem("theme") === "dark" ||

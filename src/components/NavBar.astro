@@ -191,9 +191,9 @@ const { menuItems } = Astro.props;
     });
   }
 
-  // Run setup immediately
+  // Run setup on page load
   setupMobileMenu();
 
-  // Re-run setup after Astro page transitions
+  // Run setup again, following Astro page transitions
   document.addEventListener("astro:after-swap", setupMobileMenu);
 </script>

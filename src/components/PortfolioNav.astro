@@ -55,7 +55,7 @@ const { closeOnClick = false } = Astro.props;
       });
     });
 
-    // Clicking away from dropdown will remove the dropdown class
+    // Clicking away from dropdown = remove dropdown class
     document.addEventListener("click", closeAllDropdowns);
 
     if (closeOnClick) {
@@ -72,7 +72,7 @@ const { closeOnClick = false } = Astro.props;
   function toggleDropdownMenu(event, menu, dropdownMenus) {
     toggleMenu(menu);
 
-    // Close one dropdown when selecting another
+    // Closes one dropdown when I'm selecting another
     Array.from(dropdownMenus)
       .filter((el) => el !== menu && !menu.contains(el))
       .forEach(closeMenu);
@@ -84,7 +84,7 @@ const { closeOnClick = false } = Astro.props;
     event.stopPropagation();
     toggleMenu(submenu);
 
-    // Close sibling submenus at the same nesting level
+    // Close sibling submenus @ same nesting level
     const siblingSubmenus = submenu
       .closest(".astronav-dropdown")
       .querySelectorAll(".astronav-dropdown-submenu");
