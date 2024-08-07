@@ -23,14 +23,7 @@
 
 .astronav-dropdown>div>div {
     transition: all 0.3s ease-in-out;
-    max-height: 0;
     overflow: hidden;
-    opacity: 0;
-}
-
-.astronav-dropdown>div>div:not(.hidden) {
-    max-height: 100vh;
-    opacity: 1;
 }
 
 /* Media query for mobile styles */
@@ -46,12 +39,9 @@
 }
 
 .mobile-dropdown-menu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    display: none;
 }
 
 .mobile-dropdown-menu:not(.hidden) {
-    max-height: 500px;
-    /* I need to adjust this value based on the mobile menu content */
+    display: block;
 }

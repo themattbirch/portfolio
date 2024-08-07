@@ -6,9 +6,8 @@ export const menuItems = [
   {
     title: "Skills",
     children: [
-      { title: "EQ", path: "/services/web-design" },
-      { title: "Technical", path: "/services/seo" },
-      { title: "Branding", path: "/services/branding" },
+      { title: "EQ", path: "/skills/soft-skills" },
+      { title: "Technical", path: "/skills/technical-skills" },
     ],
   },
   { title: "Work", path: "/projects" },
