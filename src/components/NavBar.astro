@@ -90,8 +90,8 @@ const { menuItems } = Astro.props;
           aria-expanded="false"
         >
           <span class="sr-only">Open main menu</span>
-          <OpenIcon class="block h-6 w-6" />
-          <CloseIcon class="hidden h-6 w-6" />
+          <OpenIcon class="astronav-open-icon h-6 w-6" />
+          <CloseIcon class="astronav-close-icon hidden h-6 w-6" />
         </button>
       </div>
 
@@ -155,20 +155,14 @@ const { menuItems } = Astro.props;
   function setupMobileMenu() {
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
+    const openIcon = document.querySelector(".astronav-open-icon");
+    const closeIcon = document.querySelector(".astronav-close-icon");
 
-    if (mobileMenuButton && mobileMenu) {
-      // Select the open and close icons
-      const openIcon = mobileMenuButton.querySelector(".block.h-6.w-6");
-      const closeIcon = mobileMenuButton.querySelector(".hidden.h-6.w-6");
-
-      // Add click event listener to the mobile menu button
+    if (mobileMenuButton && mobileMenu && openIcon && closeIcon) {
       mobileMenuButton.addEventListener("click", () => {
-        // Toggle the visibility of the mobile menu
         mobileMenu.classList.toggle("hidden");
-        // Toggle the visibility of the open and close icons
-        openIcon?.classList.toggle("hidden");
-        closeIcon?.classList.toggle("hidden");
-        // Update the aria-expanded attribute
+        openIcon.classList.toggle("hidden");
+        closeIcon.classList.toggle("hidden");
         mobileMenuButton.setAttribute(
           "aria-expanded",
           mobileMenu.classList.contains("hidden") ? "false" : "true"
@@ -176,24 +170,18 @@ const { menuItems } = Astro.props;
       });
     }
 
-    // Select all dropdown toggle buttons in the mobile menu
     const dropdownToggles = document.querySelectorAll(
       ".mobile-dropdown-toggle"
     );
     dropdownToggles.forEach((toggle) => {
-      // Add click event listener to each dropdown toggle button
       toggle.addEventListener("click", () => {
-        // Select the corresponding dropdown menu
         const dropdownMenu = toggle.nextElementSibling;
         if (dropdownMenu) {
-          // Toggle the visibility of the dropdown menu
           dropdownMenu.classList.toggle("hidden");
-          // Update the aria-expanded attribute
           toggle.setAttribute(
             "aria-expanded",
             dropdownMenu.classList.contains("hidden") ? "false" : "true"
           );
-          // Rotate the arrow icon
           const arrow = toggle.querySelector("svg");
           if (arrow) {
             arrow.classList.toggle("rotate-180");
@@ -203,9 +191,9 @@ const { menuItems } = Astro.props;
     });
   }
 
-  // Run setup immediately when the DOM is fully loaded
-  document.addEventListener("DOMContentLoaded", setupMobileMenu);
+  // Run setup immediately
+  setupMobileMenu();
 
-  // Also run setup after Astro page transitions
-  document.addEventListener("astro:page-load", setupMobileMenu);
+  // Re-run setup after Astro page transitions
+  document.addEventListener("astro:after-swap", setupMobileMenu);
 </script>

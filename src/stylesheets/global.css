@@ -31,10 +31,15 @@
     #mobile-menu {
         background-color: #1f2937;
         position: absolute;
-        top: 4rem;
+        top: 100%;
+        /* Change from 4rem to 100% */
         left: 0;
         right: 0;
         z-index: 20;
+        padding-top: 0.5rem;
+        /* Add some padding at the top */
+        padding-bottom: 0.5rem;
+        /* Add some padding at the bottom */
     }
 
     .mobile-menu-item {
