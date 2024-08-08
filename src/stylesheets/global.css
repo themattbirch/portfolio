@@ -5,7 +5,6 @@
 /* Styles begin here */
 
 /*ThemeToggle colors */
-
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
@@ -34,6 +33,7 @@ body {
 .dark .theme-toggle-icon {
     color: #ffffff !important;
 }
+
 /* NavBar styles */
 .astronav-menu {
     cursor: pointer;
@@ -56,94 +56,94 @@ body {
     overflow: hidden;
 }
 
- #mobile-menu .mobile-menu-item:not(:last-child) {
-     margin-bottom: 0.5rem;
- }
+#mobile-menu .mobile-menu-item:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
 
- .neumorphic-button {
-     box-shadow:
-         5px 5px 10px rgba(0, 0, 0, 0.3),
-         -5px -5px 10px rgba(255, 255, 255, 0.05);
-     transition: all 0.3s ease;
- }
+.neumorphic-button {
+    box-shadow:
+        5px 5px 10px rgba(0, 0, 0, 0.3),
+        -5px -5px 10px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
 
- .neumorphic-button:hover,
- .neumorphic-button:focus {
-     box-shadow:
-         inset 5px 5px 10px rgba(0, 0, 0, 0.3),
-         inset -5px -5px 10px rgba(255, 255, 255, 0.05);
- }
+.neumorphic-button:hover,
+.neumorphic-button:focus {
+    box-shadow:
+        inset 5px 5px 10px rgba(0, 0, 0, 0.3),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.05);
+}
 
- .neumorphic-logo {
-     box-shadow:
-         3px 3px 6px rgba(0, 0, 0, 0.3),
-         -3px -3px 6px rgba(255, 255, 255, 0.05);
- }
+.neumorphic-logo {
+    box-shadow:
+        3px 3px 6px rgba(0, 0, 0, 0.3),
+        -3px -3px 6px rgba(255, 255, 255, 0.05);
+}
 
- .neumorphic-dropdown {
-     box-shadow:
-         5px 5px 10px rgba(0, 0, 0, 0.3),
-         -5px -5px 10px rgba(255, 255, 255, 0.05);
- }
+.neumorphic-dropdown {
+    box-shadow:
+        5px 5px 10px rgba(0, 0, 0, 0.3),
+        -5px -5px 10px rgba(255, 255, 255, 0.05);
+}
 
- .neumorphic-mobile-menu {
-     background: rgba(255, 255, 255, 0.05);
-     backdrop-filter: blur(10px);
-     border-radius: 10px;
-     box-shadow:
-         inset 5px 5px 10px rgba(0, 0, 0, 0.3),
-         inset -5px -5px 10px rgba(255, 255, 255, 0.05);
- }
+.neumorphic-mobile-menu {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow:
+        inset 5px 5px 10px rgba(0, 0, 0, 0.3),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.05);
+}
 
- .mobile-menu-item {
-     opacity: 0;
-     transform: translateY(20px);
-     animation: fadeInUp 0.5s ease forwards;
- }
+.mobile-menu-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
 
- @keyframes fadeInUp {
-     to {
-         opacity: 1;
-         transform: translateY(0);
-     }
- }
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
- .mobile-link {
-     position: relative;
-     display: inline-block;
- }
+.mobile-link {
+    position: relative;
+    display: inline-block;
+}
 
- .mobile-link-text {
-     position: relative;
-     z-index: 1;
- }
+.mobile-link-text {
+    position: relative;
+    z-index: 1;
+}
 
- .mobile-link-text::after {
-     content: "";
-     position: absolute;
-     left: 0;
-     bottom: -2px;
-     width: 100%;
-     height: 2px;
-     background-color: #60a5fa;
-     /* Tailwind's blue-400 */
-     transform: scaleX(0);
-     transform-origin: right;
-     transition: transform 0.3s ease;
- }
+.mobile-link-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #60a5fa;
+    /* Tailwind's blue-400 */
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
 
- .mobile-link:hover .mobile-link-text::after {
-     transform: scaleX(1);
-     transform-origin: left;
- }
+.mobile-link:hover .mobile-link-text::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
 
- .mobile-dropdown-toggle svg {
-     transition: transform 0.3s ease;
- }
+.mobile-dropdown-toggle svg {
+    transition: transform 0.3s ease;
+}
 
- .mobile-dropdown-toggle[aria-expanded="true"] svg {
-     transform: rotate(180deg);
- }
+.mobile-dropdown-toggle[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
 
 /* Media query for mobile menu-related styles */
 @media (max-width: 768px) {
@@ -259,4 +259,3 @@ body {
 .logo-container:hover .name {
     animation: subtle-pulse 2s infinite;
 }
-
