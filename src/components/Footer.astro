@@ -12,13 +12,17 @@ const socialLinks = [
 ];
 ---
 
-<footer class="bg-white dark:bg-gray-800 mt-auto border-t">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+<footer class="bg-gray-900 mt-auto">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div
+      class="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-6"
+    >
+    </div>
     <div
       class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
     >
-      <div>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
+      <div class="p-3 rounded-lg">
+        <p class="text-sm text-gray-400">
           &copy; {currentYear} Matt Birch. All rights reserved.
         </p>
       </div>
@@ -29,14 +33,11 @@ const socialLinks = [
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-200 flex items-center"
+              class="neumorphic-button p-2 rounded-full text-gray-400 hover:text-white transition-colors duration-200"
               aria-label={link.name}
             >
-              <i
-                class={`fab fa-${link.icon} text-lg mr-2`}
-                aria-hidden="true"
-              />
-              <span class="text-sm">{link.name}</span>
+              <span class="sr-only">{link.name}</span>
+              <i class={`fab fa-${link.icon} text-xl`} aria-hidden="true" />
             </a>
           ))
         }
@@ -44,3 +45,26 @@ const socialLinks = [
     </div>
   </div>
 </footer>
+
+<style>
+  .neumorphic-inset {
+    background: #2d3748;
+    box-shadow:
+      inset 3px 3px 6px rgba(0, 0, 0, 0.2),
+      inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+  }
+
+  .neumorphic-button {
+    background: #2d3748;
+    box-shadow:
+      3px 3px 6px rgba(0, 0, 0, 0.2),
+      -3px -3px 6px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .neumorphic-button:hover {
+    box-shadow:
+      inset 3px 3px 6px rgba(0, 0, 0, 0.2),
+      inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+  }
+</style>
