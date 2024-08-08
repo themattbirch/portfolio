@@ -4,6 +4,36 @@
 
 /* Styles begin here */
 
+/*ThemeToggle colors */
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+}
+
+.dark {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.theme-toggle-icon {
+    color: var(--text-color);
+}
+
+/* New styles for light theme moon icon */
+:root:not(.dark) .theme-toggle-icon {
+    color: #ffffff;
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.5));
+}
+
+.dark .theme-toggle-icon {
+    color: #ffffff !important;
+}
 /* NavBar styles */
 .astronav-menu {
     cursor: pointer;
@@ -229,3 +259,4 @@
 .logo-container:hover .name {
     animation: subtle-pulse 2s infinite;
 }
+

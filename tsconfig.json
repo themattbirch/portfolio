@@ -11,5 +11,5 @@
     "types": ["astro/client", "svelte"]
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "src/**/*.astro"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
 }
