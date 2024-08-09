@@ -8,6 +8,9 @@
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
+    --primary-color: #3b82f6;
+    --secondary-color: #60a5fa;
+    --transition-duration: 0.3s;
 }
 
 .dark {
@@ -15,16 +18,17 @@
     --text-color: #ffffff;
 }
 
+/* Base styles */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
 }
 
+/* Theme toggle styles */
 .theme-toggle-icon {
     color: var(--text-color);
 }
 
-/* New styles for light theme moon icon */
 :root:not(.dark) .theme-toggle-icon {
     color: #ffffff;
     filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.5));
@@ -60,26 +64,20 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.neumorphic-button {
+/* Neumorphic styles */
+.neumorphic {
     box-shadow:
         5px 5px 10px rgba(0, 0, 0, 0.3),
         -5px -5px 10px rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
+    transition: all var(--transition-duration) ease;
 }
 
-.neumorphic-button:hover,
-.neumorphic-button:focus {
+.neumorphic:hover,
+.neumorphic:focus {
     box-shadow:
         inset 5px 5px 10px rgba(0, 0, 0, 0.3),
         inset -5px -5px 10px rgba(255, 255, 255, 0.05);
 }
-
-.neumorphic-dropdown {
-    box-shadow:
-        5px 5px 10px rgba(0, 0, 0, 0.3),
-        -5px -5px 10px rgba(255, 255, 255, 0.05);
-}
-
 
 /* Mobile Menu styles */
 
@@ -255,4 +253,152 @@ body {
     box-shadow:
         inset 3px 3px 6px rgba(0, 0, 0, 0.2),
         inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+}
+
+/* Dropdown Styles */
+.dropdown-toggle {
+    color: #d1d5db;
+    /* text-gray-300 */
+    padding: 0.5rem 1rem;
+    /* px-4 py-2 */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.dropdown-toggle:hover {
+    color: #ffffff;
+    /* hover:text-white */
+}
+
+.dropdown-toggle svg {
+    margin-left: 0.5rem;
+    /* ml-2 */
+    height: 1.25rem;
+    /* h-5 */
+    width: 1.25rem;
+    /* w-5 */
+    transform: rotate(0deg);
+    transition: transform 0.2s;
+}
+
+.dropdown-toggle.group-hover svg {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 0.5rem;
+    /* mt-2 */
+    width: 12rem;
+    /* w-48 */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    /* shadow-lg */
+    background-color: #1f2937;
+    /* bg-gray-800 */
+    opacity: 0;
+    transform: translateY(0.5rem);
+    visibility: hidden;
+    transition: all 0.2s;
+}
+
+.dropdown-menu.group-hover {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    /* px-4 py-2 */
+    font-size: 0.875rem;
+    /* text-sm */
+    color: #d1d5db;
+    /* text-gray-300 */
+    transition: all 0.15s;
+    border-radius: 0.5rem;
+    /* rounded-lg */
+}
+
+.dropdown-item:hover {
+    background-color: #374151;
+    /* hover:bg-gray-700 */
+    color: #ffffff;
+    /* hover:text-white */
+}
+
+/* Mobile Dropdown Styles */
+/* Mobile Dropdown Styles */
+.mobile-dropdown-toggle,
+.mobile-dropdown-item {
+    width: 100%;
+    text-align: left;
+    color: #d1d5db;
+    /* text-gray-300 */
+    transition: all 0.2s;
+}
+
+.mobile-dropdown-toggle {
+    padding: 0.75rem;
+    /* px-3 py-2 */
+    border-radius: 0.375rem;
+    /* rounded-md */
+    font-size: 1rem;
+    /* text-base */
+    font-weight: 500;
+    /* font-medium */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-dropdown-item {
+    padding: 0.75rem;
+    /* px-3 py-2 */
+    font-size: 0.875rem;
+    /* text-sm */
+    font-weight: 500;
+    /* font-medium */
+    border-radius: 0.375rem;
+    /* rounded-md */
+}
+
+.mobile-dropdown-toggle:hover,
+.mobile-dropdown-item:hover {
+    background-color: #374151;
+    /* hover:bg-gray-700 */
+    color: #ffffff;
+    /* hover:text-white */
+}
+
+.mobile-dropdown-toggle svg {
+    height: 1.25rem;
+    /* h-5 */
+    width: 1.25rem;
+    /* w-5 */
+    margin-left: 0.5rem;
+    /* ml-2 */
+    flex-shrink: 0;
+    transform: rotate(0deg);
+    transition: transform 0.2s;
+}
+
+.mobile-dropdown-menu {
+    display: none;
+    margin-top: 0.5rem;
+    /* mt-2 */
+    padding-left: 1rem;
+    /* pl-4 */
+}
+
+.mobile-dropdown-item-text {
+    margin-left: 0.5rem;
+    /* ml-2 */
 }
