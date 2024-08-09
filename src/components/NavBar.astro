@@ -18,42 +18,117 @@ const { menuItems } = Astro.props;
 ---
 
 <PortfolioNav>
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="flex justify-between items-center h-16">
-    <!-- Enhanced Logo -->
-    <div class="flex-shrink-0 flex items-center">
-      <a href="/" class="flex items-center p-2 rounded-lg logo-container">
-        <span class="text-xl sm:text-2xl font-semibold logo-text">
-          <span class="bracket">&lt;</span>
-          <span class="name">matt birch</span>
-          <span class="bracket">&gt;</span>
-        </span>
-      </a>
-    </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Enhanced Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href="/" class="flex items-center p-2 rounded-lg logo-container">
+          <span class="text-xl sm:text-2xl font-semibold logo-text">
+            <span class="bracket">&lt;</span>
+            <span class="name">matt birch</span>
+            <span class="bracket">&gt;</span>
+          </span>
+        </a>
+      </div>
 
-    <!-- Desktop menu -->
-    <div class="hidden md:block">
-      <nav>
-        <ul class="flex items-center space-x-4">
-          <li class="mr-4">
-            <ThemeToggle client:load />
-          </li>
+      <!-- Desktop menu -->
+      <div class="hidden md:block">
+        <nav>
+          <ul class="flex items-center space-x-4">
+            <li class="mr-4">
+              <ThemeToggle client:load />
+            </li>
+            {
+              menuItems.map((item) => (
+                <li class="relative group">
+                  {!item.children ? (
+                    <a
+                      href={item.path}
+                      class="text-gray-300 hover:text-white px-4 py-2 rounded-lg inline-flex items-center h-full transition-all duration-200 neumorphic-button"
+                    >
+                      <span class="relative z-10">{item.title}</span>
+                    </a>
+                  ) : (
+                    <div class="relative inline-flex items-center h-full">
+                      <button class="text-gray-300 hover:text-white px-4 py-2 rounded-lg inline-flex items-center transition-all duration-200 neumorphic-button">
+                        <span>{item.title}</span>
+                        <svg
+                          class="ml-2 h-5 w-5 transform transition-transform duration-200 group-hover:rotate-180"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 111.414 1.414l-4 4a1 1 01-1.414 0l-4-4a1 1 010-1.414z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                      <ul class="absolute left-0 top-full mt-2 w-48 rounded-lg shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-200 neumorphic-dropdown">
+                        {item.children.map((child) => (
+                          <li>
+                            <a
+                              href={child.path}
+                              class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-150 rounded-lg"
+                            >
+                              {child.title}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Mobile menu and ThemeToggle -->
+      <div class="md:hidden flex items-center">
+        <!-- ThemeToggle Button moved to the left -->
+        <ThemeToggle client:load />
+
+        <!-- Mobile menu button moved to the right -->
+        <button
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center p-2 rounded-lg text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-200 neumorphic-button ml-4"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <OpenIcon class="astronav-open-icon block h-6 w-6" />
+          <CloseIcon class="astronav-close-icon hidden h-6 w-6" />
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 rounded-lg mt-2">
           {
-            menuItems.map((item) => (
-              <li class="relative group">
+            menuItems.map((item, index) => (
+              <div
+                class="mobile-menu-item"
+                style={`animation-delay: ${index * 0.1}s;`}
+              >
                 {!item.children ? (
                   <a
                     href={item.path}
-                    class="text-gray-300 hover:text-white px-4 py-2 rounded-lg inline-flex items-center h-full transition-all duration-200 neumorphic-button"
+                    class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"
                   >
-                    <span class="relative z-10">{item.title}</span>
+                    <span class="mobile-link-text">{item.title}</span>
                   </a>
                 ) : (
-                  <div class="relative inline-flex items-center h-full">
-                    <button class="text-gray-300 hover:text-white px-4 py-2 rounded-lg inline-flex items-center transition-all duration-200 neumorphic-button">
-                      <span>{item.title}</span>
+                  <div class="relative">
+                    <button
+                      class="mobile-dropdown-toggle w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium flex items-center justify-between transition-all duration-200"
+                      aria-expanded="false"
+                    >
+                      <span class="mobile-link-text">{item.title}</span>
                       <svg
-                        class="ml-2 h-5 w-5 transform transition-transform duration-200 group-hover:rotate-180"
+                        class="h-5 w-5 ml-2 flex-shrink-0 transform transition-transform duration-200"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
@@ -66,102 +141,27 @@ const { menuItems } = Astro.props;
                         />
                       </svg>
                     </button>
-                    <ul class="absolute left-0 top-full mt-2 w-48 rounded-lg shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-200 neumorphic-dropdown">
-                      {item.children.map((child) => (
-                        <li>
+                    <div class="mobile-dropdown-menu hidden mt-2 pl-4 space-y-1">
+                      {item.children &&
+                        item.children.map((child, childIndex) => (
                           <a
                             href={child.path}
-                            class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-150 rounded-lg"
+                            class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200"
+                            style={`animation-delay: ${index * 0.1 + (childIndex + 1) * 0.05}s;`}
                           >
-                            {child.title}
+                            <span class="mobile-link-text">{child.title}</span>
                           </a>
-                        </li>
-                      ))}
-                    </ul>
+                        ))}
+                    </div>
                   </div>
                 )}
-              </li>
+              </div>
             ))
           }
-        </ul>
-      </nav>
-    </div>
-
-    <!-- Mobile menu and ThemeToggle -->
-    <div class="md:hidden flex items-center">
-      <!-- ThemeToggle Button moved to the left -->
-      <ThemeToggle client:load />
-
-      <!-- Mobile menu button moved to the right -->
-      <button
-        id="mobile-menu-button"
-        class="inline-flex items-center justify-center p-2 rounded-lg text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-200 neumorphic-button ml-4"
-        aria-expanded="false"
-      >
-        <span class="sr-only">Open main menu</span>
-        <OpenIcon class="astronav-open-icon block h-6 w-6" />
-        <CloseIcon class="astronav-close-icon hidden h-6 w-6" />
-      </button>
-    </div>
-
-    <!-- Mobile menu -->
-    <div class="md:hidden hidden" id="mobile-menu">
-      <div class="px-2 pt-2 pb-3 space-y-1 rounded-lg mt-2">
-        {
-          menuItems.map((item, index) => (
-            <div
-              class="mobile-menu-item"
-              style={`animation-delay: ${index * 0.1}s;`}
-            >
-              {!item.children ? (
-                <a
-                  href={item.path}
-                  class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"
-                >
-                  <span class="mobile-link-text">{item.title}</span>
-                </a>
-              ) : (
-                <div class="relative">
-                  <button
-                    class="mobile-dropdown-toggle w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium flex items-center justify-between transition-all duration-200"
-                    aria-expanded="false"
-                  >
-                    <span class="mobile-link-text">{item.title}</span>
-                    <svg
-                      class="h-5 w-5 ml-2 flex-shrink-0 transform transition-transform duration-200"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 111.414 1.414l-4 4a1 1 01-1.414 0l-4-4a1 1 010-1.414z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </button>
-                  <div class="mobile-dropdown-menu hidden mt-2 pl-4 space-y-1">
-                    {item.children &&
-                      item.children.map((child, childIndex) => (
-                        <a
-                          href={child.path}
-                          class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200"
-                          style={`animation-delay: ${index * 0.1 + (childIndex + 1) * 0.05}s;`}
-                        >
-                          <span class="mobile-link-text">{child.title}</span>
-                        </a>
-                      ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))
-        }
+        </div>
       </div>
     </div>
   </div>
-</div>
 </PortfolioNav>
 
 <script>
