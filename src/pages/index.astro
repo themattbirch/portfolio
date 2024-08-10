@@ -1,75 +1,86 @@
 ---
-// index.astro
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import SkillBadge from "../components/SkillBadge.astro";
 
 const projects = [
   {
     title: "Client Website 1",
     description: "A responsive website for a local business",
-    image: "/images/project1.jpg",
+    imageSrc: "/src/assets/client-website-1.jpg",
     tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
-    githubLink: "#",
-    liveLink: "#",
+    githubUrl: "https://github.com/yourusername/client-website-1",
+    liveUrl: "https://www.clientwebsite1.com",
   },
   {
     title: "E-commerce Platform",
     description: "A full-featured online store built with React",
-    image: "/images/project2.jpg",
+    imageSrc: "/src/assets/ecommerce-platform.jpg",
     tags: ["React", "Node.js", "MongoDB", "Stripe"],
-    githubLink: "#",
-    liveLink: "#",
+    githubUrl: "https://github.com/yourusername/ecommerce-platform",
+    liveUrl: "https://www.ecommerceplatform-example.com",
   },
+  // Add more projects as needed
+];
+
+const skills = [
+  { name: "HTML", icon: "html5" },
+  { name: "CSS", icon: "css3-alt" },
+  { name: "JavaScript", icon: "js" },
+  { name: "React", icon: "react" },
+  { name: "Astro", icon: "rocket" },
 ];
 ---
 
-<Layout title="Matt Birch | Web Developer">
-  <main class="bg-gray-900 text-white">
+<Layout
+  title="Matt Birch | Web Developer"
+  description="Front-end web developer specializing in HTML, CSS, JavaScript, Astro, and React. Creating powerful and performant web experiences."
+>
+  <!-- Welcome section -->
+  <section class="mb-12">
+    <h1 class="text-4xl font-bold mb-4">Welcome to My Portfolio</h1>
+    <p class="text-xl mb-6">
+      I'm Matt Birch, a front-end web developer passionate about creating
+      exceptional web experiences.
+    </p>
+    <a
+      href="/contact"
+      class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+      >Get in Touch</a
+    >
+  </section>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="py-20 grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <section>
-          <h2 class="text-3xl font-bold mb-6">My Skills</h2>
-         
-        </section>
-
-        <section>
-          <h2 class="text-3xl font-bold mb-6">Featured Projects</h2>
-          <div class="space-y-8">
-          </div>
-        </section>
-      </div>
+  <!-- Projects section -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">Featured Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {projects.map((project) => <ProjectCard {...project} />)}
     </div>
+  </section>
 
-    <section class="py-20 bg-gradient-to-r from-gray-800 to-gray-900">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold mb-6 text-center">
-          Let's Create Something Amazing
-        </h2>
-        <p class="text-center mb-8 max-w-2xl mx-auto">
-          I'm passionate about turning ideas into reality. Whether you need a
-          stunning website, AI-powered solutions, or compelling copy, I'm here
-          to help.
-        </p>
-        <div class="flex justify-center space-x-4">
-          <a
-            href="/contact"
-            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition duration-300"
-          >
-            Get in Touch
-          </a>
-          <a
-            href="/projects"
-            class="bg-transparent border border-green-500 text-green-500 hover:bg-green-500 hover:text-white font-bold py-2 px-4 rounded-full transition duration-300"
-          >
-            View All Projects
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
+  <!-- Skills section -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-4">My Skills</h2>
+    <div class="flex flex-wrap gap-4">
+      {
+        skills.map((skill) => (
+          <SkillBadge name={skill.name} icon={skill.icon} />
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Connect section -->
+  <section>
+    <h2 class="text-2xl font-semibold mb-4">Let's Connect</h2>
+    <p class="mb-4">
+      I'm always open to new opportunities and collaborations. Feel free to
+      reach out!
+    </p>
+    <a
+      href="/contact"
+      class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200"
+      >Contact Me</a
+    >
+  </section>
 </Layout>
-
-<style>
-  /* Add any global styles here */
-</style>
