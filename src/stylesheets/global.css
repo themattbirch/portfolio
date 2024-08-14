@@ -20,13 +20,15 @@
 
 /* Base styles */
 body {
+
     background-color: var(--bg-color);
     color: var(--text-color);
 }
 
-/* Theme toggle styles */
+/* Ensure no conflict with Tailwind utility classes */
 .theme-toggle-icon {
     color: var(--text-color);
+    /* Adjust the specificity to ensure it doesn't override Tailwind */
 }
 
 :root:not(.dark) .theme-toggle-icon {
@@ -335,7 +337,6 @@ body {
 }
 
 /* Mobile Dropdown Styles */
-/* Mobile Dropdown Styles */
 .mobile-dropdown-toggle,
 .mobile-dropdown-item {
     width: 100%;
@@ -402,3 +403,4 @@ body {
     margin-left: 0.5rem;
     /* ml-2 */
 }
+
