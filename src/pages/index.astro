@@ -1,6 +1,7 @@
 ---
 const photo = "/images/headshot-tan tee-2.jpg";
 import Layout from "../layouts/Layout.astro";
+import Testimonials from "../components/Testimonials.astro";
 ---
 
 <Layout>
@@ -70,6 +71,18 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </section>
   </div>
+
+  <!-- Testimonials Section -->
+  <section class="bg-gray-100 dark:bg-gray-800 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2
+        class="text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white"
+      >
+        Testimonials
+      </h2>
+      <Testimonials />
+    </div>
+  </section>
 </Layout>
 
 <style>
@@ -79,21 +92,18 @@ import Layout from "../layouts/Layout.astro";
   }
 
   .hero {
-    /* The hero background is handled by the full-width background elements */
     position: relative;
     z-index: 1;
   }
 
-  /* Hero text color logic */
   .hero-text {
-    color: #1a202c; /* Light mode color */
+    color: #1a202c;
   }
 
   :global(.dark) .hero-text {
-    color: #ffffff; /* Dark mode color */
+    color: #ffffff;
   }
 
-  /* Ensure content is above the overlay */
   .hero > div {
     position: relative;
     z-index: 2;

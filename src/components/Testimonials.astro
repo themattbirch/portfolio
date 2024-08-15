@@ -1,0 +1,161 @@
+---
+interface Testimonial {
+  name: string;
+  business: string;
+  quote: string;
+  photoUrl: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: "Jane Doe",
+    business: "Doe Innovations",
+    quote:
+      "Truly exceptional service and project outcomes that exceeded our expectations.",
+    photoUrl: "/images/headshot-tan tee-2.jpg",
+  },
+  {
+    name: "John Smith",
+    business: "Smith Consulting",
+    quote:
+      "A professional approach and great results. Highly recommended web developer.",
+    photoUrl: "/images/headshot-tan tee-2.jpg",
+  },
+];
+---
+
+<div
+  class="swiper-container relative bg-gradient-to-b from-gray-100 to-gray-300 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300"
+>
+  <div class="swiper-wrapper">
+    {
+      testimonials.map((testimonial) => (
+        <div class="swiper-slide">
+          <div class="testimonial-card rounded-lg p-6 shadow-lg text-gray-800 dark:text-white relative overflow-hidden max-w-xs md:max-w-sm lg:max-w-md mx-auto transition-colors duration-300">
+            <div class="testimonial-photo-wrapper">
+              <img
+                src={testimonial.photoUrl}
+                alt={`Headshot of ${testimonial.name}`}
+                class="testimonial-photo w-24 h-24 rounded-full object-cover mx-auto shadow-lg mb-4"
+              />
+            </div>
+            <div class="text-center">
+              <p class="text-2xl font-semibold">{testimonial.name}</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                {testimonial.business}
+              </p>
+              <p class="text-gray-700 dark:text-gray-300 italic mt-4">
+                "{testimonial.quote}"
+              </p>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Swiper Navigation Buttons -->
+  <div class="swiper-button-prev absolute text-gray-800 dark:text-white"></div>
+  <div class="swiper-button-next absolute text-gray-800 dark:text-white"></div>
+
+  <!-- Swiper Pagination -->
+  <div class="swiper-pagination"></div>
+</div>
+
+<script>
+  import Swiper from "swiper/bundle";
+  import "swiper/css/bundle";
+
+  document.addEventListener("astro:page-load", function () {
+    const swiper = new Swiper(".swiper-container", {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      slidesPerView: 1,
+      spaceBetween: 30,
+      effect: "fade",
+      fadeEffect: {
+        crossFade: true,
+      },
+    });
+
+    console.log("Swiper initialized:", swiper);
+  });
+</script>
+
+<style>
+  .swiper-container {
+    width: 100%;
+    height: auto;
+    padding: 2rem 0;
+    overflow: hidden;
+    background: inherit; /* Ensures container inherits the background color */
+  }
+
+  .swiper-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .swiper-slide {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .testimonial-card {
+    background: inherit; /* Inherits the background from the container */
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 44px;
+    height: 44px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+
+  .swiper-button-prev {
+    left: 10px;
+  }
+
+  .swiper-button-next {
+    right: 10px;
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 22px;
+  }
+
+  .swiper-pagination-bullet {
+    background: var(--text-color);
+  }
+
+  .swiper-pagination-bullet-active {
+    background: var(--primary-color);
+  }
+
+  .swiper-pagination {
+    bottom: 10px;
+    z-index: 10;
+  }
+
+  @media (max-width: 640px) {
+    .swiper-slide {
+      flex-direction: column;
+    }
+  }
+</style>
