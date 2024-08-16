@@ -1,0 +1,65 @@
+---
+const skills = [
+  {
+    title: "Front-end Web Developer",
+    description: "Building responsive and dynamic websites.",
+    icon: "fa-code",
+  },
+  {
+    title: "Prompt Engineer",
+    description: "Crafting and optimizing prompts for AI models.",
+    icon: "fa-robot",
+  },
+  {
+    title: "Copywriter",
+    description: "Creating compelling and persuasive content.",
+    icon: "fa-pen-fancy",
+  },
+];
+---
+
+<div
+  class="skills-outer-container bg-gray-900 dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-700 dark:border-gray-600"
+>
+  <div class="skills-container grid grid-cols-1 md:grid-cols-3 gap-8">
+    {
+      skills.map((skill) => (
+        <div class="skill-card bg-gray-800 dark:bg-gray-700 rounded-xl p-6 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl">
+          <div class="icon-wrapper mb-4">
+            <i
+              class={`fas ${skill.icon} text-4xl text-blue-400 dark:text-blue-300`}
+            />
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-white">{skill.title}</h3>
+          <p class="text-gray-300 dark:text-gray-400">{skill.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .skills-outer-container {
+    margin: 2rem auto;
+    max-width: 1200px; /* Adjust this value as needed */
+  }
+  .skills-container {
+    margin: 0 auto;
+  }
+  .skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .icon-wrapper {
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>

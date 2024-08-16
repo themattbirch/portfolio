@@ -2,6 +2,7 @@
 const photo = "/images/headshot-tan tee-2.jpg";
 import Layout from "../layouts/Layout.astro";
 import Testimonials from "../components/Testimonials.astro";
+import Skills from "../components/Skills.astro";
 ---
 
 <Layout>
@@ -83,39 +84,54 @@ import Testimonials from "../components/Testimonials.astro";
       <Testimonials />
     </div>
   </section>
+
+  <!-- Skills Section -->
+  <section class="skills-section py-16 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-center mb-12 skills-title">Skills</h2>
+      <Skills />
+    </div>
+  </section>
+
+  <style>
+    .hero-wrapper {
+      margin-top: -4rem;
+      margin-bottom: -4rem;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text {
+      color: #1a202c;
+    }
+
+    :global(.dark) .hero-text {
+      color: #ffffff;
+    }
+
+    .hero > div {
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonials-section {
+      position: relative;
+      z-index: 1;
+      background-color: #1e293b; /* Dark grey background (Tailwind's gray-800) for light mode */
+    }
+
+    :global(.dark) .testimonials-section {
+      background-color: transparent; /* Transparent background for dark mode */
+    }
+    .skills-title {
+      color: #1a202c; /* Dark color for light mode */
+    }
+
+    :global(.dark) .skills-title {
+      color: #ffffff; /* Light color for dark mode */
+    }
+  </style>
 </Layout>
-
-<style>
-  .hero-wrapper {
-    margin-top: -4rem;
-    margin-bottom: -4rem;
-  }
-
-  .hero {
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-text {
-    color: #1a202c;
-  }
-
-  :global(.dark) .hero-text {
-    color: #ffffff;
-  }
-
-  .hero > div {
-    position: relative;
-    z-index: 2;
-  }
-
-  .testimonials-section {
-    position: relative;
-    z-index: 1;
-    background-color: #1e293b; /* Dark grey background (Tailwind's gray-800) for light mode */
-  }
-
-  :global(.dark) .testimonials-section {
-    background-color: transparent; /* Transparent background for dark mode */
-  }
-</style>
