@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'light';
-    }
-    return 'light';
-  });
+ const [theme, setTheme] = useState(() => {
+  if (typeof window !== 'undefined') {
+    const savedTheme = localStorage.getItem('theme');
+    console.log("Saved theme from localStorage:", savedTheme);  // Check the saved theme
+    return savedTheme || 'light';
+  }
+  return 'light';
+});
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-      localStorage.setItem('theme', theme);
-    }
-  }, [theme]);
+  console.log("useEffect is running");  // Check if the useEffect is firing
+  if (typeof window !== 'undefined') {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    console.log("Document classes:", document.documentElement.classList);  // Log applied classes
+  }
+}, [theme]);
 
   const toggleTheme = () => {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');

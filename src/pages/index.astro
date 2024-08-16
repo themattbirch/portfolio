@@ -73,7 +73,7 @@ import Testimonials from "../components/Testimonials.astro";
   </div>
 
   <!-- Testimonials Section -->
-  <section class="bg-gray-100 dark:bg-gray-800 py-16">
+  <section class="testimonials-section py-16 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2
         class="text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white"
@@ -107,5 +107,15 @@ import Testimonials from "../components/Testimonials.astro";
   .hero > div {
     position: relative;
     z-index: 2;
+  }
+
+  .testimonials-section {
+    position: relative;
+    z-index: 1;
+    background-color: #1e293b; /* Dark grey background (Tailwind's gray-800) for light mode */
+  }
+
+  :global(.dark) .testimonials-section {
+    background-color: transparent; /* Transparent background for dark mode */
   }
 </style>

@@ -24,14 +24,12 @@ const testimonials: Testimonial[] = [
 ];
 ---
 
-<div
-  class="swiper-container relative bg-gradient-to-b from-gray-100 to-gray-300 dark:from-gray-800 dark:to-gray-900 transition-colors duration-300"
->
+<div class="swiper-container relative">
   <div class="swiper-wrapper">
     {
       testimonials.map((testimonial) => (
         <div class="swiper-slide">
-          <div class="testimonial-card rounded-lg p-6 shadow-lg text-gray-800 dark:text-white relative overflow-hidden max-w-xs md:max-w-sm lg:max-w-md mx-auto transition-colors duration-300">
+          <div class="testimonial-card rounded-lg p-6 shadow-lg text-gray-800 dark:text-white relative overflow-hidden max-w-xs md:max-w-sm lg:max-w-md mx-auto">
             <div class="testimonial-photo-wrapper">
               <img
                 src={testimonial.photoUrl}
@@ -54,21 +52,24 @@ const testimonials: Testimonial[] = [
     }
   </div>
 
-  <!-- Swiper Navigation Buttons -->
-  <div class="swiper-button-prev absolute text-gray-800 dark:text-white"></div>
-  <div class="swiper-button-next absolute text-gray-800 dark:text-white"></div>
-
-  <!-- Swiper Pagination -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
   <div class="swiper-pagination"></div>
 </div>
 
 <script>
-  import Swiper from "swiper/bundle";
-  import "swiper/css/bundle";
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
 
-  document.addEventListener("astro:page-load", function () {
-    const swiper = new Swiper(".swiper-container", {
+  function initSwiper() {
+    new Swiper(".swiper-container", {
+      modules: [Navigation, Pagination, Autoplay],
       loop: true,
+      slidesPerView: 1,
+      spaceBetween: 30,
       autoplay: {
         delay: 5000,
         disableOnInteraction: false,
@@ -81,16 +82,14 @@ const testimonials: Testimonial[] = [
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
-      slidesPerView: 1,
-      spaceBetween: 30,
-      effect: "fade",
-      fadeEffect: {
-        crossFade: true,
-      },
     });
+  }
 
-    console.log("Swiper initialized:", swiper);
-  });
+  // Initialize Swiper on page load
+  document.addEventListener("DOMContentLoaded", initSwiper);
+
+  // Re-initialize Swiper when the page content is updated (for Astro view transitions)
+  document.addEventListener("astro:page-load", initSwiper);
 </script>
 
 <style>
@@ -99,63 +98,45 @@ const testimonials: Testimonial[] = [
     height: auto;
     padding: 2rem 0;
     overflow: hidden;
-    background: inherit; /* Ensures container inherits the background color */
-  }
-
-  .swiper-wrapper {
-    display: flex;
-    align-items: center;
   }
 
   .swiper-slide {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .testimonial-card {
-    background: inherit; /* Inherits the background from the container */
+  <style > .hero-wrapper {
+    margin-top: -4rem;
+    margin-bottom: -4rem;
   }
 
-  .swiper-button-prev,
-  .swiper-button-next {
-    width: 44px;
-    height: 44px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
+  .hero {
+    position: relative;
+    z-index: 1;
   }
 
-  .swiper-button-prev {
-    left: 10px;
+  .hero-text {
+    color: #1a202c;
   }
 
-  .swiper-button-next {
-    right: 10px;
+  :global(.dark) .hero-text {
+    color: #ffffff;
   }
 
-  .swiper-button-prev::after,
-  .swiper-button-next::after {
-    font-size: 22px;
+  .hero > div {
+    position: relative;
+    z-index: 2;
   }
 
-  .swiper-pagination-bullet {
-    background: var(--text-color);
+  .testimonials-section {
+    position: relative;
+    z-index: 1;
+    background-color: #1e293b; /* Dark grey background (Tailwind's gray-800) for light mode */
   }
 
-  .swiper-pagination-bullet-active {
-    background: var(--primary-color);
-  }
-
-  .swiper-pagination {
-    bottom: 10px;
-    z-index: 10;
-  }
-
-  @media (max-width: 640px) {
-    .swiper-slide {
-      flex-direction: column;
-    }
+  :global(.dark) .testimonials-section {
+    background-color: transparent; /* Transparent background for dark mode */
   }
 </style>
+

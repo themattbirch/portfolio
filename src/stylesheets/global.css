@@ -16,6 +16,10 @@
 .dark {
     --bg-color: #000000;
     --text-color: #ffffff;
+    --primary-color: #60a5fa;
+        /* Adjust if necessary */
+        --secondary-color: #3b82f6;
+        /* Adjust if necessary */
 }
 
 /* Base styles */
@@ -403,4 +407,3 @@ body {
     margin-left: 0.5rem;
     /* ml-2 */
 }
-
