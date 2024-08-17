@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+// Example projects data
+const projects = [
+  {
+    title: "Project One",
+    description: "A brief description of Project One.",
+    imageSrc: "/images/headshot-tan tee-2.jpg", // Direct path since it's in 'public/images'
+    tags: ["HTML", "CSS", "JavaScript"],
+    githubUrl: "https://github.com/mattbirch/project-one",
+    liveUrl: "https://mattbirch.co/project-one",
+  },
+  {
+    title: "Project Two",
+    description: "A brief description of Project Two.",
+    imageSrc: "/src/assets/project-two.jpg", // Adjust path as needed if in 'src/assets'
+    tags: ["Astro", "Tailwind CSS", "TypeScript"],
+    githubUrl: "https://github.com/mattbirch/project-two",
+    liveUrl: "https://mattbirch.co/project-two",
+  },
+];
+---
+
+<Layout>
+  <!-- Projects Section -->
+  <section class="projects-section py-16 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-center mb-12 projects-title">
+        My Projects
+      </h2>
+      <div class="projects-container space-y-8">
+        {
+          projects.map((project) => (
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              imageSrc={project.imageSrc}
+              tags={project.tags}
+              githubUrl={project.githubUrl}
+              liveUrl={project.liveUrl}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .projects-section {
+      background-color: #f9fafb; /* Light background for light mode */
+    }
+
+    :global(.dark) .projects-section {
+      background-color: #1e293b; /* Dark grey background for dark mode */
+    }
+
+    .projects-title {
+      color: #1a202c; /* Dark color for light mode */
+    }
+
+    :global(.dark) .projects-title {
+      color: #ffffff; /* Light color for dark mode */
+    }
+
+    .projects-container {
+      margin-top: 2rem; /* Add some space between the title and the cards */
+    }
+  </style>
+</Layout>

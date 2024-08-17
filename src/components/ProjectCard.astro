@@ -1,7 +1,4 @@
 ---
-// src/components/ProjectCard.astro
-import { Image } from "astro:assets";
-
 interface Props {
   title: string;
   description: string;
@@ -12,11 +9,6 @@ interface Props {
 }
 
 const { title, description, imageSrc, tags, githubUrl, liveUrl } = Astro.props;
-
-// Import image dynamically
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/*.{jpeg,jpg,png,gif}"
-);
 
 // Function to determine if URL is absolute
 const isAbsoluteUrl = (url: string) => {
@@ -32,18 +24,16 @@ const githubRel = githubTarget === "_blank" ? "noopener noreferrer" : undefined;
 const liveRel = liveTarget === "_blank" ? "noopener noreferrer" : undefined;
 ---
 
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-  {
-    imageSrc in images && (
-      <Image
-        src={images[imageSrc]()}
-        alt={title}
-        class="w-full h-48 object-cover"
-        width={400}
-        height={200}
-      />
-    )
-  }
+<div
+  class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden w-full"
+>
+  <img
+    src={imageSrc}
+    alt={title}
+    class="w-full h-64 object-cover"
+    width={1200}
+    height={300}
+  />
   <div class="p-6">
     <h3 class="text-xl font-semibold mb-2">{title}</h3>
     <p class="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
@@ -76,3 +66,10 @@ const liveRel = liveTarget === "_blank" ? "noopener noreferrer" : undefined;
     </div>
   </div>
 </div>
+
+<style>
+  .project-card {
+    display: block;
+    width: 100%; /* Full width of the container */
+  }
+</style>
