@@ -1,149 +1,166 @@
+---
+interface Skill {
+  name: string;
+  description?: string;
+  icon?: string;
+  level?: string;
+}
+
+const skills: Skill[] = [
+  {
+    name: "HTML",
+    description:
+      "Proficient in creating structured, semantic markup for web pages.",
+    icon: "🖥️",
+    level: "Beginner",
+  },
+  {
+    name: "JavaScript",
+    description:
+      "Skilled in creating interactive web experiences and manipulating the DOM.",
+    icon: "⚙️",
+    level: "Skill",
+  },
+];
+---
+
 <div class="technical-skills-section py-16 transition-colors duration-300">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-4xl font-bold text-center mb-12 skills-title">
-      Technical Skills
-    </h2>
-    <div class="skills-container grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- HTML Skill -->
-      <div
-        class="skill-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6"
-      >
-        <div class="skill-header flex justify-between items-center">
-          <h3 class="text-3xl font-bold text-gray-900 dark:text-white">HTML</h3>
-          <span class="toggle-icon text-2xl">⬇️</span>
-        </div>
-        <div class="skill-subtitle text-xl text-gray-500 dark:text-gray-400">
-          HTL
-        </div>
-        <div class="skill-description mt-4 text-gray-600 dark:text-gray-300">
-          <p>
-            Proficient in creating structured, semantic markup for web pages.
-          </p>
-        </div>
-        <div
-          class="skill-footer mt-4 flex justify-between items-center bg-gray-100 dark:bg-gray-700 p-3 rounded"
-        >
-          <div class="indicator w-3 h-3 rounded-full bg-orange-400"></div>
-          <button class="bg-orange-400 text-white px-4 py-2 rounded"
-            >Hidden</button
-          >
-        </div>
-      </div>
-      <!-- CSS Skill -->
-      <div
-        class="skill-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6"
-      >
-        <div class="skill-header flex justify-between items-center">
-          <h3 class="text-3xl font-bold text-gray-900 dark:text-white">CSS</h3>
-          <span class="toggle-icon text-2xl">⬆️</span>
-        </div>
-        <div class="skill-subtitle text-xl text-gray-500 dark:text-gray-400">
-          CSS
-        </div>
-        <div class="skill-description mt-4 text-gray-600 dark:text-gray-300">
-          <p>
-            Experienced in styling web pages, including responsive design and
-            animations.
-          </p>
-        </div>
-        <div
-          class="skill-footer mt-4 flex justify-between items-center bg-gray-100 dark:bg-gray-700 p-3 rounded"
-        >
-          <div class="indicator w-3 h-3 rounded-full bg-blue-400"></div>
-          <button class="bg-blue-400 text-white px-4 py-2 rounded"
-            >Deployable</button
-          >
-        </div>
-      </div>
-      <!-- JavaScript Skill -->
-      <div
-        class="skill-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6"
-      >
-        <div class="skill-header flex justify-between items-center">
-          <h3 class="text-3xl font-bold text-gray-900 dark:text-white">
-            JavaScript
-          </h3>
-          <span class="toggle-icon text-2xl">⬇️</span>
-        </div>
-        <div class="skill-subtitle text-xl text-gray-500 dark:text-gray-400">
-          JavaScript
-        </div>
-        <div class="skill-description mt-4 text-gray-600 dark:text-gray-300">
-          <p>
-            Skilled in creating interactive web experiences and manipulating the
-            DOM.
-          </p>
-        </div>
-        <div
-          class="skill-footer mt-4 flex justify-between items-center bg-gray-100 dark:bg-gray-700 p-3 rounded"
-        >
-          <div class="indicator w-3 h-3 rounded-full bg-yellow-400"></div>
-          <button class="bg-yellow-400 text-white px-4 py-2 rounded"
-            >Deployed</button
-          >
-        </div>
-      </div>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div
+      class="skills-container grid grid-cols-1 sm:grid-cols-2 gap-8 bg-white dark:bg-transparent"
+    >
+      {
+        skills.map((skill, index) => (
+          <div class="skill-card bg-white dark:bg-gray-800 rounded-lg shadow-md border border-transparent dark:border-gray-700">
+            <button
+              class="skill-header w-full text-left p-4 flex justify-between items-center"
+              data-skill-toggle={index}
+            >
+              <div class="flex items-center">
+                <div class="icon-wrapper mr-3">
+                  <span class="icon text-4xl">{skill.icon}</span>
+                </div>
+                <div class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                  {skill.name}
+                </div>
+              </div>
+              <span class="toggle-icon text-xl text-gray-500 dark:text-gray-200">
+                ▼
+              </span>
+            </button>
+            <div class="skill-content hidden">
+              <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-b-lg">
+                <p class="text-gray-600 dark:text-gray-300">
+                  {skill.description}
+                </p>
+                <div class="button-wrapper mt-4">
+                  <button class="skill-level-btn">{skill.level}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </div>
 
 <style>
-  .technical-skills-section {
-    background-color: #f9fafb;
-  }
-
-  :global(.dark) .technical-skills-section {
-    background-color: #1e293b;
-  }
-
-  .skills-title {
-    color: #1a202c;
-  }
-
-  :global(.dark) .skills-title {
-    color: #ffffff;
+  .icon-wrapper {
+    background-color: #6b7280;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .skill-card {
-    transition: transform 0.3s ease-in-out;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .skill-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   }
 
   .skill-header {
     cursor: pointer;
-    display: flex;
-    justify-content: space-between;
   }
 
-  .skill-header h3 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0;
+  .skill-content {
+    display: none;
   }
 
-  .skill-subtitle {
-    font-size: 1.25rem;
-    color: #4b5563;
-    margin-top: 0.5rem;
+  .skill-content.active {
+    display: block;
   }
 
-  .skill-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
+  .skill-level-btn {
+    background-color: #10b981;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
   }
 
-  .skill-footer .indicator {
-    width: 0.75rem;
-    height: 0.75rem;
-    border-radius: 50%;
+  .skill-level-btn:hover {
+    background-color: #059669;
   }
 
-  .skill-card .toggle-icon {
-    font-size: 1.5rem;
+  .toggle-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .skill-header[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg);
   }
 </style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const skillCards = document.querySelectorAll<HTMLElement>(".skill-card");
+
+    skillCards.forEach((card, index) => {
+      const header = card.querySelector(".skill-header");
+      const content = card.querySelector<HTMLElement>(".skill-content");
+      const icon = card.querySelector<HTMLElement>(".toggle-icon");
+
+      header?.addEventListener("click", () => {
+        const isExpanded = content?.classList.contains("active");
+
+        // Close all cards
+        skillCards.forEach((otherCard, otherIndex) => {
+          if (otherIndex !== index) {
+            const otherContent =
+              otherCard.querySelector<HTMLElement>(".skill-content");
+            const otherIcon =
+              otherCard.querySelector<HTMLElement>(".toggle-icon");
+            if (otherContent && otherIcon) {
+              otherContent.style.maxHeight = "0px";
+              otherContent.classList.remove("active");
+              otherIcon.textContent = "▼";
+            }
+          }
+        });
+
+        // Toggle the clicked card
+        if (content && icon) {
+          if (isExpanded) {
+            content.style.maxHeight = "0px";
+            content.classList.remove("active");
+            icon.textContent = "▼";
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            content.classList.add("active");
+            icon.textContent = "▲";
+          }
+        }
+      });
+    });
+  });
+</script>

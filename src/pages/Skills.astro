@@ -4,17 +4,13 @@ import TechnicalSkills from "../components/TechnicalSkills.astro";
 ---
 
 <Layout>
-  <!-- Projects Section -->
-  <section class="projects-section py-16 transition-colors duration-300">
+  <section class="skills-page-section py-16 bg-gray-100 dark:bg-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-4xl font-bold text-center mb-12 projects-title">
-        My Skillz
-      </h2>
-      <div class="projects-container space-y-8">
-                   <TechnicalSkills     />
-          
-      </div>
+      <TechnicalSkills />
     </div>
   </section>
 
+  <style>
+    /* Remove any conflicting styles */
+  </style>
 </Layout>

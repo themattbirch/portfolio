@@ -85,61 +85,66 @@ import SkillsCard from "../components/SkillsCard.astro";
         <Testimonials />
       </div>
     </div>
+  </section>
 
-    <!-- Skills Section -->
-    <section class="skills-section py-16 transition-colors duration-300">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl font-bold text-center mb-12 skills-title">
-          Skills
-        </h2>
+  <!-- Skills Section -->
+  <section class="skills-section py-16 w-full transition-colors duration-300">
+    <div class="mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12 skills-title">Skills</h2>
+      <div class="skills-container mx-auto">
         <SkillsCard />
       </div>
-    </section>
-
-    <style>
-      .hero-wrapper {
-        margin-top: -4rem;
-        margin-bottom: -4rem;
-      }
-
-      .hero {
-        position: relative;
-        z-index: 1;
-      }
-
-      .hero-text {
-        color: #1a202c;
-      }
-
-      :global(.dark) .hero-text {
-        color: #ffffff;
-      }
-
-      .hero > div {
-        position: relative;
-        z-index: 2;
-      }
-
-      .testimonials-section {
-        position: relative;
-        z-index: 1;
-        background-color: #1e293b; /* Dark grey background (Tailwind's gray-800) for light mode */
-      }
-
-      :global(.dark) .testimonials-section {
-        background-color: transparent; /* Transparent background for dark mode */
-      }
-      .skills-title {
-        color: #1a202c; /* Dark color for light mode */
-      }
-
-      :global(.dark) .skills-title {
-        color: #ffffff; /* Light color for dark mode */
-      }
-
-      .testimonials-container {
-        margin-top: 2rem; /* Add some space between the title and the container */
-      }
-    </style>
+    </div>
   </section>
 </Layout>
+
+<style>
+  .hero-wrapper {
+    margin-top: -4rem;
+    margin-bottom: -4rem;
+  }
+
+  .hero {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-text {
+    color: #1a202c;
+  }
+
+  :global(.dark) .hero-text {
+    color: #ffffff;
+  }
+
+  .hero > div {
+    position: relative;
+    z-index: 2;
+  }
+
+  .testimonials-section {
+    position: relative;
+    z-index: 1;
+    background-color: #1e293b; /* Dark grey background (Tailwind's gray-800) for light mode */
+    border: 2px solid #2d3748; /* Add a border for better visibility */
+    border-radius: 12px; /* Optional: to give it a rounded appearance */
+  }
+
+  :global(.dark) .testimonials-section {
+    background-color: #1f2937; /* Tailwind's gray-800 */
+    border: 2px solid #4b5563; /* Add a lighter border for dark mode */
+    border-radius: 12px; /* Optional: to match the rounded appearance */
+  }
+
+  .skills-title {
+    color: #1a202c; /* Dark color for light mode */
+  }
+
+  :global(.dark) .skills-title {
+    color: #ffffff; /* Light color for dark mode */
+  }
+
+  .testimonials-container {
+    margin-top: 2rem; /* Add some space between the title and the container */
+  }
+</style>
