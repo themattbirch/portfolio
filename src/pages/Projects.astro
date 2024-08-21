@@ -5,11 +5,11 @@ import ProjectCard from "../components/ProjectCard.astro";
 // Example projects data
 const projects = [
   {
-    title: "Project One",
-    description: "A brief description of Project One.",
-    imageSrc: "/images/headshot-tan tee-2.jpg", // Direct path since it's in 'public/images'
-    tags: ["HTML", "CSS", "JavaScript"],
-    githubUrl: "https://github.com/mattbirch/project-one",
+    title: "Gormania",
+    description: "Website that highlights this sht business.",
+    imageSrc: "/images/gormania.png", // Direct path since it's in 'public/images'
+    tags: ["Georgia Boyz"],
+    completed: "https://github.com/mattbirch/project-one",
     liveUrl: "https://mattbirch.co/project-one",
   },
   {
@@ -17,30 +17,35 @@ const projects = [
     description: "A brief description of Project Two.",
     imageSrc: "/src/assets/project-two.jpg", // Adjust path as needed if in 'src/assets'
     tags: ["Astro", "Tailwind CSS", "TypeScript"],
-    githubUrl: "https://github.com/mattbirch/project-two",
+    completed: "https://github.com/mattbirch/project-two",
     liveUrl: "https://mattbirch.co/project-two",
   },
 ];
 ---
 
 <Layout>
-  <!-- Projects Section -->
-  <section class="projects-section py-16 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-4xl font-bold text-center mb-12 projects-title">
+  <section
+    class="projects-section py-8 sm:py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300"
+  >
+    <div class="max-w-7xl mx-auto">
+      <h1
+        class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 projects-title"
+      >
         My Projects
       </h1>
-      <div class="projects-container space-y-8">
+      <div class="projects-container space-y-8 sm:space-y-12">
         {
           projects.map((project) => (
-            <ProjectCard
-              title={project.title}
-              description={project.description}
-              imageSrc={project.imageSrc}
-              tags={project.tags}
-              githubUrl={project.githubUrl}
-              liveUrl={project.liveUrl}
-            />
+            <div class="mb-8 sm:mb-12">
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                imageSrc={project.imageSrc}
+                tags={project.tags}
+                completed={project.completed}
+                liveUrl={project.liveUrl}
+              />
+            </div>
           ))
         }
       </div>
@@ -53,7 +58,7 @@ const projects = [
     }
 
     :global(.dark) .projects-section {
-      background-color: #1e293b; /* Dark grey background for dark mode */
+      background-color: #000000; /* Dark black background for dark mode */
     }
 
     .projects-title {

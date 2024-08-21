@@ -4,11 +4,11 @@ interface Props {
   description: string;
   imageSrc: string;
   tags: string[];
-  githubUrl: string;
+  completed: string;
   liveUrl: string;
 }
 
-const { title, description, imageSrc, tags, githubUrl, liveUrl } = Astro.props;
+const { title, description, imageSrc, tags, completed, liveUrl } = Astro.props;
 
 // Function to determine if URL is absolute
 const isAbsoluteUrl = (url: string) => {
@@ -16,28 +16,32 @@ const isAbsoluteUrl = (url: string) => {
 };
 
 // Decide if links should open in a new tab
-const githubTarget = isAbsoluteUrl(githubUrl) ? "_blank" : undefined;
 const liveTarget = isAbsoluteUrl(liveUrl) ? "_blank" : undefined;
 
 // Uses rel=noopener noreferrer to help aid w/ more security when opening in a new tab
-const githubRel = githubTarget === "_blank" ? "noopener noreferrer" : undefined;
 const liveRel = liveTarget === "_blank" ? "noopener noreferrer" : undefined;
 ---
 
 <div
-  class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden w-full"
+  class="project-card bg-gray-100 dark:bg-transparent border border-gray-300 dark:border-gray-700 rounded-lg shadow-md overflow-hidden w-full transition-colors duration-300"
 >
-  <img
-    src={imageSrc}
-    alt={title}
-    class="w-full h-64 object-cover"
-    width={1200}
-    height={300}
-  />
-  <div class="p-6">
-    <h3 class="text-xl font-semibold mb-2">{title}</h3>
+  <div class="p-8">
+    <div class="image-container mb-8">
+      <img
+        src={imageSrc}
+        alt={title}
+        class="project-image"
+        width={1200}
+        height={500}
+      />
+    </div>
+    <h3
+      class="text-xl pt-8 text-blue-800 dark:text-blue-200 font-semibold mb-6"
+    >
+      {title}
+    </h3>
     <p class="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
-    <div class="flex flex-wrap gap-2 mb-4">
+    <div class="flex flex-wrap gap-2 mb-6">
       {
         tags.map((tag) => (
           <span class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-1 rounded text-sm">
@@ -46,22 +50,16 @@ const liveRel = liveTarget === "_blank" ? "noopener noreferrer" : undefined;
         ))
       }
     </div>
-    <div class="flex justify-between">
-      <a
-        href={githubUrl}
-        target={githubTarget}
-        rel={githubRel}
-        class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200"
-      >
-        GitHub
-      </a>
+    <div class="flex justify-between text-blue-800 dark:text-blue-200">
+      Completed On: April 21, 1985
+
       <a
         href={liveUrl}
         target={liveTarget}
         rel={liveRel}
         class="text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-200"
       >
-        Live Demo
+        Link
       </a>
     </div>
   </div>
@@ -70,6 +68,29 @@ const liveRel = liveTarget === "_blank" ? "noopener noreferrer" : undefined;
 <style>
   .project-card {
     display: block;
-    width: 100%; /* Full width of the container */
+    width: 100%;
+    background-color: #1f2937; /* Light mode gray background (Tailwind's gray-100) */
+    color: var(--text-color); /* Use the global text color */
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  :global(.dark) .project-card {
+    background-color: #1f2937; /* Dark mode background to be transparent (black) */
+  }
+
+  .image-container {
+    width: 100%;
+    max-height: 300px; /* Adjust this value to set your desired maximum height */
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 </style>
