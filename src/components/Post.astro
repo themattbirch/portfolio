@@ -6,7 +6,7 @@ type Props = {
 
 const { post } = Astro.props;
 const postUrl = "/blog/" + post.slug;
-import { Image } from "astro:assets"
+import { Image } from "astro:assets";
 ---
 
 <article>
@@ -22,12 +22,19 @@ import { Image } from "astro:assets"
 
   <a
     href={postUrl}
-    class="text-4xl text-zinc-900 mb-4 font-semibold inline-block"
+    class="post-title text-4xl text-zinc-900 mb-4 font-semibold inline-block"
   >
     <h2>{post.data.title}</h2>
   </a>
 
-  <p class="text-zinc-500 text-2xl mb-9 line-clamp-2">
+  <p class="post-text text-zinc-500 text-2xl mb-9 line-clamp-2">
     {post.body.slice(0, 200)}...
   </p>
- </article>
+</article>
+
+<style>
+  :global(.dark) .post-title,
+  :global(.dark) .post-text {
+    color: #ffffff;
+  }
+</style>

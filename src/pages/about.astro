@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const pageTitle = "About";
 ---
 
 <Layout
@@ -7,11 +8,13 @@ import Layout from "../layouts/Layout.astro";
   description="Learn about Matt Birch's journey as a front-end web developer, his skills, and his approach to creating exceptional web experiences."
 >
   <!-- About Section -->
-  <section class="about-wrapper">
-    <div
-      class="about-content relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center"
+  <section class="about-content max-w-7xl mx-auto py-8 sm:py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300 w-full text-center"
     >
-      <h1 class="text-4xl font-bold mb-12 about-text">About Me</h1>
+      <h1
+        class="h1-text text-4xl text-teal-900 sm:text-4xl font-bold text-center mb-8 sm:mb-12"
+      >
+        {pageTitle}
+      </h1>
       <img
         src="/images/headshot-tan tee-2.jpg"
         alt="Matt Birch"
@@ -35,26 +38,10 @@ import Layout from "../layouts/Layout.astro";
       </p>
     </div>
   </section>
-
-  <style>
-    .about-wrapper {
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .about-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .about-text {
-      color: #1a202c;
-    }
-
-    :global(.dark) .about-text {
-      color: #ffffff;
-    }
-  </style>
 </Layout>
+
+<style>
+  :global(.dark) .h1-text {
+    color: #ffffff;
+  }
+</style>

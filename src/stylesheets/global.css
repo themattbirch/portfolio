@@ -30,7 +30,6 @@ body {
 }
 
 
-
 /* Ensure no conflict with Tailwind utility classes */
 .theme-toggle-icon {
     color: var(--text-color);

@@ -21,19 +21,20 @@ const projects = [
     liveUrl: "https://mattbirch.co/project-two",
   },
 ];
+const pageTitle = "My Projects";
 ---
 
 <Layout>
   <section
-    class="projects-section py-8 sm:py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300"
+    class="projects-section py-8 sm:py-16 transition-colors duration-300"
   >
     <div class="max-w-7xl mx-auto">
       <h1
-        class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 projects-title"
+        class="h1-text text-4xl text-teal-900 sm:text-4xl font-bold text-center mb-8 sm:mb-12"
       >
-        My Projects
+        {pageTitle}
       </h1>
-      <div class="projects-container space-y-8 sm:space-y-12">
+      <div class="projects-container">
         {
           projects.map((project) => (
             <div class="mb-8 sm:mb-12">
@@ -53,14 +54,6 @@ const projects = [
   </section>
 
   <style>
-    .projects-section {
-      background-color: #f9fafb; /* Light background for light mode */
-    }
-
-    :global(.dark) .projects-section {
-      background-color: #000000; /* Dark black background for dark mode */
-    }
-
     .projects-title {
       color: #1a202c; /* Dark color for light mode */
     }
@@ -71,6 +64,10 @@ const projects = [
 
     .projects-container {
       margin-top: 2rem; /* Add some space between the title and the cards */
+    }
+
+    :global(.dark) .h1-text {
+      color: #ffffff;
     }
   </style>
 </Layout>
