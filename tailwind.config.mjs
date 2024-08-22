@@ -2,6 +2,8 @@ import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
 export default {
+  mode: "jit", // Enable JIT mode
+
   content: [
     "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
     "./components/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
@@ -16,10 +18,10 @@ export default {
         thumbnail: "1.5",
       },
       fontFamily: {
-        sans: ["Cabin", ...defaultTheme.fontFamily.sans],
+        sans: ["Source Sans 3", "sans-serif"],
+        serif: ["PT Serif", "serif"],
       },
       colors: {
-        // You can add custom colors for dark mode here if needed
         dark: {
           bg: "#1a202c",
           text: "#f7fafc",
@@ -27,5 +29,6 @@ export default {
       },
     },
   },
+
   plugins: [require("@tailwindcss/typography")],
 };
