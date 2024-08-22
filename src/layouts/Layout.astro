@@ -9,6 +9,7 @@ export interface Props {
   description?: string;
   ogImage?: string;
   image?: any;
+  fullWidth?: boolean;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   description = "Transforming ideas into powerful web experiences. I combine technical expertise with creative problem-solving to deliver websites that not only look great but perform exceptionally.",
   ogImage = "/images/default-og-image.jpg",
   image,
+  fullWidth = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -64,13 +66,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body>
     <Header />
-    <main>
-      <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8 lg:py-10"
-      >
+       <main class={fullWidth ? "w-full" : "max-w-8xl mx-auto"}>
         <slot />
-      </div>
-    </main>
+      </main>
     <Footer />
   </body>
 </html>
