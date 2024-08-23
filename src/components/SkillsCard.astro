@@ -18,10 +18,10 @@ const skills = [
 ];
 ---
 
-<div class="skills-outer-container bg-gray-900 dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-700 dark:border-gray-600">
+<div class="skills-outer-container bg-gray-900 dark:bg-gray-800 rounded-full p-8 shadow-lg border border-gray-700 dark:border-gray-600">
   <div class="skills-container grid grid-cols-1 lg:grid-cols-3 gap-8">
     {skills.map((skill) => (
-      <div class="skill-card bg-gray-800 dark:bg-gray-700 rounded-xl p-6 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl">
+      <div class="skill-card bg-gray-800 dark:bg-gray-700 rounded-full p-6 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl">
         <div class="icon-wrapper mb-4">
           <i class={`fas ${skill.icon} text-4xl text-teal-400 dark:text-teal-300`}></i>
         </div>

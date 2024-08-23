@@ -39,9 +39,12 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'BAveria Serif Libre', serif;
+    font-family: 'PT Serif', serif;
 }
 
+.h2-text {
+color: #1e293b
+ }
 /* Ensure no conflict with Tailwind utility classes */
 .theme-toggle-icon {
     color: var(--text-color);
