@@ -1,26 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
+import ProjectTest from "../components/ProjectTest.astro";
 
-// Example projects data
 const projects = [
   {
     title: "Gormania",
     description: "Website that highlights this sht business.",
-    imageSrc: "/images/gormania.png", // Direct path since it's in 'public/images'
-    tags: ["Georgia Boyz"],
-    completed: "https://github.com/mattbirch/project-one",
-    liveUrl: "https://mattbirch.co/project-one",
+    imageSrc: "/images/gormania.png",
+    category: "Web Development",
+    keyFeatures: ["Feature A", "Feature B", "Feature C"],
   },
-  {
-    title: "Project Two",
-    description: "A brief description of Project Two.",
-    imageSrc: "/src/assets/project-two.jpg", // Adjust path as needed if in 'src/assets'
-    tags: ["Astro", "Tailwind CSS", "TypeScript"],
-    completed: "https://github.com/mattbirch/project-two",
-    liveUrl: "https://mattbirch.co/project-two",
-  },
+  // Add more projects as needed
 ];
+
 const pageTitle = "My Projects";
 ---
 
@@ -30,23 +22,20 @@ const pageTitle = "My Projects";
   >
     <div class="max-w-7xl mx-auto">
       <h1
-        class="h1-text heading-text text-4xl text-teal-900 sm:text-4xl font-bold text-center mb-8 sm:mb-12"
+        class="h1-text heading-text text-4xl text-teal-300 sm:text-4xl font-bold text-center mb-8 sm:mb-12"
       >
         {pageTitle}
       </h1>
-      <div class="projects-container">
+      <div class="projects-container space-y-16">
         {
           projects.map((project) => (
-            <div class="mb-8 sm:mb-12">
-              <ProjectCard
-                title={project.title}
-                description={project.description}
-                imageSrc={project.imageSrc}
-                tags={project.tags}
-                completed={project.completed}
-                liveUrl={project.liveUrl}
-              />
-            </div>
+            <ProjectTest
+              title={project.title}
+              description={project.description}
+              imageSrc={project.imageSrc}
+              category={project.category}
+              keyFeatures={project.keyFeatures}
+            />
           ))
         }
       </div>
@@ -56,6 +45,6 @@ const pageTitle = "My Projects";
 
 <style>
   .projects-container {
-    margin-top: 2rem; /* Add some space between the title and the cards */
+    margin-top: 2rem;
   }
 </style>
