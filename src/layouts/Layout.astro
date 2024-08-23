@@ -80,6 +80,28 @@ const canonicalURL = Astro.url.href;
     <!-- Link to external theme toggle script -->
     <script src="/scripts/theme-toggle.js" defer></script>
 
+    <!-- JSON-LD -->
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "{Astro.url.href}",
+        "name": "{title}",
+        "description": "{description}",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Matt Birch"
+        },
+        "image": {
+          "@type": "ImageObject",
+          "url": "{new URL(ogImage, Astro.url)}",
+          "width": 1200,
+          "height": 630
+        }
+      }
+    </script>
+
     <ViewTransitions />
   </head>
   <body>

@@ -23,49 +23,45 @@ const {
 </header>
 
 <script define:vars={{ scrollY, defaultClass, activeClass }}>
-  let scrollPos = 0;
   let ticking = false;
 
-  function OnScroll(scrollPos) {
+  function updateHeaderState(scrollPos) {
     const headers = document.querySelectorAll(".astronav-sticky-header");
-    const classArray = activeClass.split(" ");
-    const replaceArray = defaultClass.split(" ");
-
     headers.forEach((header) => {
-      if (scrollPos > scrollY) {
+      const isActive = scrollPos > scrollY;
+      header.classList.toggle("is-active", isActive);
+      header.setAttribute("data-active", isActive.toString());
+
+      const classArray = activeClass.split(" ");
+      const replaceArray = defaultClass.split(" ");
+
+      if (isActive) {
         header.classList.remove(...replaceArray);
-        header.classList.add("is-active", ...classArray);
-        header.setAttribute("data-active", "true");
-      }
-      // Reduce the scrollY to avoid flickering when scrolling up
-      if (scrollPos < Math.max(scrollY - 40, 10)) {
-        header.classList.remove("is-active", ...classArray);
+        header.classList.add(...classArray);
+      } else {
+        header.classList.remove(...classArray);
         header.classList.add(...replaceArray);
-        header.removeAttribute("data-active");
       }
     });
   }
 
-  // Scroll event throttling as per MDN
-  // https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event
-  function throttledScroll() {
-    scrollPos = window.scrollY;
+  function handleScroll() {
     if (!ticking) {
       window.requestAnimationFrame(() => {
-        OnScroll(scrollPos);
+        updateHeaderState(window.scrollY);
         ticking = false;
       });
       ticking = true;
     }
   }
 
-  document.addEventListener("scroll", throttledScroll);
+  document.addEventListener("scroll", handleScroll);
 
-  // Initial check on page load
-  OnScroll(window.scrollY);
+  // Initial state on page load
+  updateHeaderState(window.scrollY);
 
   // Clean up event listener on component unmount
   document.addEventListener("astro:before-swap", () => {
-    document.removeEventListener("scroll", throttledScroll);
+    document.removeEventListener("scroll", handleScroll);
   });
 </script>
