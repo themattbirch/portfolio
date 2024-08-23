@@ -22,11 +22,11 @@ const skills = [
   class="skills-outer-container bg-gray-900 dark:bg-gray-800 rounded-full p-12 shadow-lg border border-gray-700 dark:border-gray-600"
 >
   <div
-    class="skills-container grid grid-cols-1 lg:grid-cols-3 gap-12 justify-center"
+    class="skills-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center"
   >
     {
       skills.map((skill) => (
-        <div class="skill-card bg-gray-800 dark:bg-gray-700 rounded-full p-8 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl">
+        <div class="skill-card bg-gray-900 rounded-full p-8 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl">
           <div class="icon-wrapper mb-4">
             <i
               class={`fas ${skill.icon} text-4xl text-teal-400 dark:text-teal-300`}
@@ -55,22 +55,24 @@ const skills = [
 
   .skills-container {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping of the cards on smaller screens */
+    justify-content: space-around; /* Evenly space the cards horizontally */
+    gap: 40px; /* Add padding between skill cards on mobile */
   }
 
   .skill-card {
-    width: 380px; /* Increased width */
-    height: 340px; /* Match the height to the width */
+    width: 340px; /* Set the width */
+    height: 340px; /* Set the height to match the width */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     box-shadow:
       0 10px 20px rgba(50, 50, 93, 0.2),
-      0 10px 20px rgba(0, 0, 0, 0.15); /* Subtle dual shadow */
+      0 10px 20px rgba(0, 0, 0, 0.15);
     transition:
       box-shadow 0.3s ease,
-      transform 0.3s ease; /* Smooth transition for hover effect */
+      transform 0.3s ease;
     border: 2px solid #1f2937;
     padding: 2rem;
   }
@@ -78,8 +80,8 @@ const skills = [
   .skill-card:hover {
     box-shadow:
       0 15px 30px rgba(50, 50, 93, 0.3),
-      0 15px 30px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
-    transform: scale(1.05); /* Slight scale effect on hover */
+      0 15px 30px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
   }
 
   .icon-wrapper {

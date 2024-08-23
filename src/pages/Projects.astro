@@ -30,7 +30,7 @@ const pageTitle = "My Projects";
   >
     <div class="max-w-7xl mx-auto">
       <h1
-        class="h1-text text-4xl text-teal-900 sm:text-4xl font-bold text-center mb-8 sm:mb-12"
+        class="h1-text heading-text text-4xl text-teal-900 sm:text-4xl font-bold text-center mb-8 sm:mb-12"
       >
         {pageTitle}
       </h1>
@@ -52,22 +52,10 @@ const pageTitle = "My Projects";
       </div>
     </div>
   </section>
-
-  <style>
-    .projects-title {
-      color: #1a202c; /* Dark color for light mode */
-    }
-
-    :global(.dark) .projects-title {
-      color: #ffffff; /* Light color for dark mode */
-    }
-
-    .projects-container {
-      margin-top: 2rem; /* Add some space between the title and the cards */
-    }
-
-    :global(.dark) .h1-text {
-      color: #ffffff;
-    }
-  </style>
 </Layout>
+
+<style>
+  .projects-container {
+    margin-top: 2rem; /* Add some space between the title and the cards */
+  }
+</style>

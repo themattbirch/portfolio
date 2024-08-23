@@ -66,9 +66,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body>
     <Header />
-       <main class={fullWidth ? "w-full" : "max-w-8xl mx-auto"}>
-        <slot />
-      </main>
+    <main class={fullWidth ? "w-full" : "max-w-8xl mx-auto"}>
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>
