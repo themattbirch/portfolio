@@ -6,6 +6,10 @@ interface Testimonial {
   photoUrl: string;
 }
 
+interface Props {
+  testimonials?: Testimonial[];
+}
+
 const testimonials: Testimonial[] = [
   {
     name: "Jane Doe",
@@ -27,28 +31,33 @@ const testimonials: Testimonial[] = [
 <div class="swiper-container relative">
   <div class="swiper-wrapper">
     {
-      testimonials.map((testimonial) => (
-        <div class="swiper-slide">
-          <div class="testimonial-card rounded-lg p-6 shadow-lg text-gray-800 dark:text-white relative overflow-hidden max-w-xs md:max-w-sm lg:max-w-md mx-auto">
-            <div class="testimonial-photo-wrapper">
-              <img
-                src={testimonial.photoUrl}
-                alt={`Headshot of ${testimonial.name}`}
-                class="testimonial-photo w-24 h-24 rounded-full object-cover mx-auto shadow-lg mb-4"
-              />
-            </div>
-            <div class="text-center">
-              <p class="text-2xl font-semibold">{testimonial.name}</p>
-              <p class="text-sm text-gray-600 dark:text-gray-400">
-                {testimonial.business}
-              </p>
-              <p class="text-gray-700 dark:text-gray-300 italic mt-4">
-                "{testimonial.quote}"
-              </p>
+      testimonials && testimonials.length > 0 ? (
+        testimonials.map((testimonial) => (
+          <div class="swiper-slide">
+            <div class="testimonial-card rounded-lg p-6 shadow-lg text-gray-800 dark:text-white relative overflow-hidden max-w-xs md:max-w-sm lg:max-w-md mx-auto">
+              <div class="testimonial-photo-wrapper">
+                <img
+                  src={testimonial.photoUrl}
+                  alt={`Headshot of ${testimonial.name}`}
+                  class="testimonial-photo w-24 h-24 rounded-full object-cover mx-auto shadow-lg mb-4"
+                  loading="lazy"
+                />
+              </div>
+              <div class="text-center">
+                <p class="text-2xl font-semibold">{testimonial.name}</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  {testimonial.business}
+                </p>
+                <p class="text-gray-700 dark:text-gray-300 italic mt-4">
+                  "{testimonial.quote}"
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      ))
+        ))
+      ) : (
+        <p>No testimonials available.</p>
+      )
     }
   </div>
 
@@ -106,7 +115,7 @@ const testimonials: Testimonial[] = [
     align-items: center;
   }
 
-  <style > .hero-wrapper {
+  .hero-wrapper {
     margin-top: -4rem;
     margin-bottom: -4rem;
   }
@@ -139,4 +148,3 @@ const testimonials: Testimonial[] = [
     background-color: transparent; /* Transparent background for dark mode */
   }
 </style>
-

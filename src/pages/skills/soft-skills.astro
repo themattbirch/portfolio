@@ -1,19 +1,29 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import SoftSkillsComponent from "../../components/SoftSkills.astro";
+import SkillsComponent from "@/components/SkillsComponent.astro";
+import SkillsLayout from "@/components/SkillsLayout.astro";
 
 const pageTitle = "Soft Skills";
+
+const skills = [
+  {
+    name: "Empathy",
+    description:
+      "Proficient in creating structured, semantic markup for web pages.",
+    icon: "🖥️",
+    level: "Beginner",
+  },
+  {
+    name: "Awareness",
+    description:
+      "Skilled in creating interactive web experiences and manipulating the DOM.",
+    icon: "⚙️",
+    level: "Skill",
+  },
+];
 ---
 
-<Layout>
-  <section class="py-8 sm:py-16 bg-gray-100 dark:bg-transparent">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1
-        class="h1-text heading-text text-4xl text-teal-900 sm:text-4xl font-bold text-center mb-8 sm:mb-16"
-      >
-        {pageTitle}
-      </h1>
-      <SoftSkillsComponent />
-    </div>
-  </section>
-</Layout>
+<SkillsLayout
+  pageTitle={pageTitle}
+  skills={skills}
+  SkillsComponent={SkillsComponent}
+/>

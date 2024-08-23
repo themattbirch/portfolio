@@ -26,7 +26,7 @@ const skills = [
   >
     {
       skills.map((skill) => (
-        <div class="skill-card bg-gray-900 rounded-full p-8 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl">
+        <div class="skill-card bg-gray-900 rounded-full p-8 hover:scale-105 hover:shadow-xl">
           <div class="icon-wrapper mb-4">
             <i
               class={`fas ${skill.icon} text-4xl text-teal-400 dark:text-teal-300`}
@@ -50,19 +50,12 @@ const skills = [
 <style>
   .skills-outer-container {
     margin: 2rem auto;
-    max-width: 1600px; /* Increase max-width to make the container wider */
-  }
-
-  .skills-container {
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping of the cards on smaller screens */
-    justify-content: space-around; /* Evenly space the cards horizontally */
-    gap: 40px; /* Add padding between skill cards on mobile */
+    max-width: 1600px;
   }
 
   .skill-card {
-    width: 340px; /* Set the width */
-    height: 340px; /* Set the height to match the width */
+    width: 340px;
+    height: 340px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,13 +70,6 @@ const skills = [
     padding: 2rem;
   }
 
-  .skill-card:hover {
-    box-shadow:
-      0 15px 30px rgba(50, 50, 93, 0.3),
-      0 15px 30px rgba(0, 0, 0, 0.25);
-    transform: scale(1.05);
-  }
-
   .icon-wrapper {
     background: rgba(20, 184, 166, 0.1);
     border-radius: 50%;
@@ -92,21 +78,11 @@ const skills = [
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
-  }
-
-  .icon-wrapper i {
-    color: #14b8a6;
   }
 
   .skill-card h3 {
     color: #14b8a6;
-    margin-bottom: 1rem;
     font-size: 1.75rem;
-  }
-
-  .skill-card p {
-    margin-bottom: 2rem;
   }
 
   .skill-card button {
@@ -115,9 +91,5 @@ const skills = [
     padding: 0.75rem 1.5rem;
     border-radius: 9999px;
     transition: background-color 0.3s ease;
-  }
-
-  .skill-card button:hover {
-    background-color: #0f766e;
   }
 </style>

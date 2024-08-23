@@ -1,33 +1,22 @@
 ---
-interface Skill {
+export interface Skill {
   name: string;
   description?: string;
   icon?: string;
   level?: string;
 }
 
-const skills: Skill[] = [
-  {
-    name: "HTML",
-    description:
-      "Proficient in creating structured, semantic markup for web pages.",
-    icon: "🖥️",
-    level: "Beginner",
-  },
-  {
-    name: "JavaScript",
-    description:
-      "Skilled in creating interactive web experiences and manipulating the DOM.",
-    icon: "⚙️",
-    level: "Skill",
-  },
-];
+interface Props {
+  skills: Skill[];
+}
+
+const { skills } = Astro.props;
 ---
 
-<section class="padding-bottom:16 transition-colors duration-300">
+<section class="pb-16 transition-colors duration-300">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div
-      class="skills-container grid grid-cols-1 sm:grid-cols-2 gap-8 bg-white dark:bg-transparent"
+      class="grid grid-cols-1 sm:grid-cols-2 gap-8 bg-white dark:bg-transparent"
     >
       {
         skills.map((skill, index) => (
@@ -168,10 +157,7 @@ const skills: Skill[] = [
     });
   }
 
-  // Ensure the script initializes on page load and theme changes
   document.addEventListener("astro:page-load", initializeSkillToggles);
   window.addEventListener("themeChange", initializeSkillToggles);
-
-  // Also initialize immediately in case the event listeners didn't catch the event
   initializeSkillToggles();
 </script>

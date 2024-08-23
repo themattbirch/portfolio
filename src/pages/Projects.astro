@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ProjectTest from "../components/ProjectTest.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
 
 const projects = [
   {
@@ -29,7 +29,7 @@ const pageTitle = "My Projects";
       <div class="projects-container space-y-16">
         {
           projects.map((project) => (
-            <ProjectTest
+            <ProjectCard
               title={project.title}
               description={project.description}
               imageSrc={project.imageSrc}
