@@ -94,9 +94,7 @@ import SkillsCard from "../components/SkillsCard.astro";
     <!-- Testimonials Section -->
     <section class="py-24">
       <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2
-          class="text-4xl font-bold text-center mb-12 testimonials-title pb-2 relative"
-        >
+        <h2 class="h2-text text-4xl font-bold text-center mb-12 pb-2 relative">
           Testimonials
           <span
             class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"
@@ -158,9 +156,7 @@ import SkillsCard from "../components/SkillsCard.astro";
     <!-- Skills Section (Full Width) -->
     <section class="skills-section py-24 w-full transition-colors duration-300">
       <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-        <h2
-          class="text-4xl font-bold text-center mb-12 skills-title pb-2 relative"
-        >
+        <h2 class="h2-text text-4xl font-bold text-center mb-12 pb-2 relative">
           Skills
           <span
             class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"
@@ -186,29 +182,30 @@ import SkillsCard from "../components/SkillsCard.astro";
         </form>
       </div>
     </section>
+  </section>
+</Layout>
 
-    <style>
-      .testimonials-title {
-        color: #1a202c; /* Dark color for light mode */
-      }
+<style>
+  :global(.dark) .testimonial-container::before,
+  :global(.dark) .testimonial-container::after {
+    background-color: #111827; /* Dark background for dark mode */
+  }
 
-      :global(.dark) .testimonials-title {
-        color: #ffffff; /* Light color for dark mode */
-      }
-
-      .testimonial-container {
-        position: relative;
-      }
-
-      .testimonial-content {
-        position: relative;
-        z-index: 1;
-      }
-
-      :global(.dark) .testimonial-container::before,
-      :global(.dark) .testimonial-container::after {
-        background-color: #111827; /* Dark background for dark mode */
-      }
-    </style>
-  </section></Layout
->
+  .testimonial-container {
+    position: relative;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+  }
+  .testimonial-container {
+    position: relative;
+    box-shadow:
+      0 10px 20px rgba(50, 50, 93, 0.2),
+      0 10px 20px rgba(0, 0, 0, 0.15); /* Subtler dual shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+  }
+  .testimonial-container:hover {
+    box-shadow:
+      0 15px 30px rgba(50, 50, 93, 0.3),
+      0 15px 30px rgba(0, 0, 0, 0.25); /* Slightly stronger shadow on hover */
+  }
+</style>

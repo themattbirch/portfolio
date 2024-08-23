@@ -21,7 +21,21 @@
         --secondary-color: #3b82f6;
         /* Adjust if necessary */
 }
+/* Ensuring h2 in light mode gets the correct color */
+:root {
+    --h2-light-color: #1e293b;
+    /* Your desired h2 color in light mode */
+}
 
+:root:not(.dark) h2.h2-text {
+    color: var(--h2-light-color);
+    /* Apply the light color only in light mode */
+}
+
+:root.dark h2.h2-text {
+    color: #ffffff;
+    /* Apply white color in dark mode */
+}
 /* Base styles */
 body {
 
