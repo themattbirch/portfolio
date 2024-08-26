@@ -26,6 +26,7 @@ const canonicalURL = Astro.url.href;
 <!doctype html>
 <html lang="en" class="min-h-screen">
   <head>
+  
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="favicon.png" type="image/png" />
@@ -103,6 +104,32 @@ const canonicalURL = Astro.url.href;
     </script>
 
     <ViewTransitions />
+    <script>
+      // This script handles theme changes globally
+      function handleThemeChange() {
+        const isDark = document.documentElement.classList.contains('dark');
+        document.documentElement.style.setProperty('--bg-image', `var(--${isDark ? 'darkBackground' : 'lightBackground'})`);
+      }
+
+      // Initial theme setup
+      handleThemeChange();
+
+      // Watch for theme changes
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            handleThemeChange();
+          }
+        });
+      });
+
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
+
+      document.addEventListener('astro:after-swap', handleThemeChange);
+    </script>
   </head>
   <body>
     <Header />
@@ -110,5 +137,30 @@ const canonicalURL = Astro.url.href;
       <slot />
     </main>
     <Footer />
+    <script>
+      // This script sets the initial theme based on localStorage or user preference
+      function getInitialTheme(): string {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme") || "light";
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      }
+
+      const theme = getInitialTheme();
+
+      if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+
+      window.localStorage.setItem("theme", theme);
+    </script>
   </body>
 </html>

@@ -1,0 +1,114 @@
+---
+const lightBackground = "/images/hero-background-light-theme.jpg";
+const darkBackground = "/images/hero-background-dark-theme.jpg";
+const headshot = "/images/my headshot avatar.png";
+---
+
+<section
+  class="hero-section relative flex items-center justify-center min-h-[calc(100vh-12rem)] overflow-hidden"
+>
+  <!-- Background Image -->
+  <div
+    id="hero-background"
+    class="absolute inset-0 z-0 w-full h-full bg-cover bg-center transition-all duration-300"
+  >
+  </div>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Profile Image -->
+    <div
+      class="relative w-[200px] h-[200px] mb-6 mx-auto rounded-full transition-colors duration-300"
+      id="profile-container"
+    >
+      <img
+        src={headshot}
+        alt="Matt Birch"
+        class="w-full h-full object-cover rounded-full shadow-lg"
+        loading="lazy"
+      />
+    </div>
+    <!-- Hero Heading -->
+    <h1
+      class="text-4xl md:text-5xl font-bold leading-tight mb-4 transition-colors duration-300"
+      id="hero-heading"
+    >
+      A Web Developer You Can Trust
+    </h1>
+    <!-- Subheading -->
+    <p
+      class="text-xl md:text-2xl font-medium mb-6 transition-colors duration-300"
+      id="hero-subheading"
+    >
+      I'm a web developer who creates beautiful and functional websites. Let's
+      build something together.
+    </p>
+    <!-- Call to Action Button -->
+    <a
+      href="#contact"
+      class="inline-block bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-full shadow-lg transition-all duration-300"
+    >
+      Get In Touch
+    </a>
+  </div>
+</section>
+
+<style>
+  #hero-background {
+    background-image: url("{lightBackground}");
+  }
+  @media (prefers-color-scheme: dark) {
+    #hero-background {
+      background-image: url("{darkBackground}");
+    }
+  }
+</style>
+
+<script define:vars={{ lightBackground, darkBackground }}>
+  // JavaScript to handle theme changes after initial load
+  function updateTheme() {
+    const isDarkMode = document.documentElement.classList.contains("dark");
+    const heroBackground = document.getElementById("hero-background");
+
+    if (heroBackground) {
+      const backgroundImage = isDarkMode ? darkBackground : lightBackground;
+      if (heroBackground.style.backgroundImage !== `url(${backgroundImage})`) {
+        heroBackground.style.backgroundImage = `url(${backgroundImage})`;
+      }
+    }
+  }
+
+  // Debouncing function
+  function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
+
+  const debouncedUpdateTheme = debounce(updateTheme, 100);
+
+  // Watch for theme changes
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "class"
+      ) {
+        debouncedUpdateTheme();
+      }
+    });
+  });
+
+  // Initial theme setup
+  updateTheme();
+
+  // Start observing the document for changes in the class attribute
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+
+  document.addEventListener("astro:after-swap", updateTheme);
+</script>
