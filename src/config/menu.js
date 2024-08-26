@@ -11,4 +11,5 @@ export const menuItems = [
     ],
   },
   { title: "Work", path: "/projects" },
+  { title: "Blog", path: "/blog" },
 ];
