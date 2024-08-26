@@ -15,7 +15,9 @@ const { prevURL, nextURL } = Astro.props;
       >
         Previous
       </a>
-    ) : <div/>
+    ) : (
+      <div />
+    )
   }
   {
     nextURL ? (
@@ -25,6 +27,8 @@ const { prevURL, nextURL } = Astro.props;
       >
         Next
       </a>
-    ) : <div/>
+    ) : (
+      <div />
+    )
   }
 </div>

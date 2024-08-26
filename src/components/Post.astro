@@ -10,31 +10,22 @@ import { Image } from "astro:assets";
 ---
 
 <article>
-  <a href={postUrl}>
+  <a href={postUrl} aria-label={`Read more about ${post.data.title}`}>
     <Image
       src={post.data.image}
       alt={post.data.title}
       width={600}
       height={600 / 1.5}
       class="rounded-2xl shadow-xl mb-6 aspect-thumbnail object-cover"
+      loading="lazy"
     />
   </a>
 
-  <a
-    href={postUrl}
-    class="post-title text-4xl text-zinc-900 mb-4 font-semibold inline-block"
-  >
-    <h2>{post.data.title}</h2>
-  </a>
+  <h2 class="dark:text-darkModeText text-4xl mb-4 font-semibold">
+    <a href={postUrl}>{post.data.title}</a>
+  </h2>
 
-  <p class="post-text text-zinc-500 text-2xl mb-9 line-clamp-2">
+  <p class="dark:text-darkModeText text-2xl mb-9 line-clamp-2">
     {post.body.slice(0, 200)}...
   </p>
 </article>
-
-<style>
-  :global(.dark) .post-title,
-  :global(.dark) .post-text {
-    color: #ffffff;
-  }
-</style>

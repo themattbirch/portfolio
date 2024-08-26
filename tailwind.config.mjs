@@ -14,6 +14,9 @@ export default {
 
   theme: {
     extend: {
+      colors: {
+       darkModeText: '#ffffff',
+      },
       aspectRatio: {
         thumbnail: "1.5",
       },

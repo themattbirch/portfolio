@@ -26,7 +26,6 @@ const canonicalURL = Astro.url.href;
 <!doctype html>
 <html lang="en" class="min-h-screen">
   <head>
-  
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="favicon.png" type="image/png" />
@@ -107,8 +106,11 @@ const canonicalURL = Astro.url.href;
     <script>
       // This script handles theme changes globally
       function handleThemeChange() {
-        const isDark = document.documentElement.classList.contains('dark');
-        document.documentElement.style.setProperty('--bg-image', `var(--${isDark ? 'darkBackground' : 'lightBackground'})`);
+        const isDark = document.documentElement.classList.contains("dark");
+        document.documentElement.style.setProperty(
+          "--bg-image",
+          `var(--${isDark ? "darkBackground" : "lightBackground"})`
+        );
       }
 
       // Initial theme setup
@@ -117,7 +119,10 @@ const canonicalURL = Astro.url.href;
       // Watch for theme changes
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
-          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          if (
+            mutation.type === "attributes" &&
+            mutation.attributeName === "class"
+          ) {
             handleThemeChange();
           }
         });
@@ -125,10 +130,10 @@ const canonicalURL = Astro.url.href;
 
       observer.observe(document.documentElement, {
         attributes: true,
-        attributeFilter: ['class'],
+        attributeFilter: ["class"],
       });
 
-      document.addEventListener('astro:after-swap', handleThemeChange);
+      document.addEventListener("astro:after-swap", handleThemeChange);
     </script>
   </head>
   <body>

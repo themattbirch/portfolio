@@ -3,49 +3,35 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import PostList from "../components/PostList.astro";
 import Main from "../components/Main.astro";
-import Pagination from "../components/Pagination.astro";
 import CategoryList from "../components/CategoryList.astro";
+import Pagination from "@/components/Pagination.astro";
 
 const posts = (await getCollection("posts")).slice(0, 6);
 const allCategories = posts.flatMap((post) => post.data.categories);
 const categories = Array.from(new Set(allCategories));
-const pageTitle = "My Blog";
+const pageTitle = "Matt Birch's Web Development Blog";
+const blogDescription =
+  "Transforming ideas into powerful web experiences. I combine technical expertise with creative problem-solving to deliver websites that not only look great but perform exceptionally.";
 ---
 
 <Layout>
   <Main>
-    <section
-      class="about-content max-w-7xl mx-auto py-8 sm:py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300 w-full text-center"
-    >
-      <h1
-        class="h1-text heading-text text-4xl text-teal-900 sm:text-4xl font-bold text-center mb-8 sm:mb-12"
-      >
-        {pageTitle}
-      </h1>
-      <p class="blog-text text-zinc-900 text-2xl mb-24 max-sm:mb-14">
-        Transforming ideas into powerful web experiences. I combine technical
-        expertise with creative problem-solving to deliver websites that not
-        only look great but perform exceptionally.
-      </p>
+    <div class="max-w-screen-xl mx-auto">
+      <!-- Added container for content alignment -->
+      <header class="text-center mb-12">
+        <h1 class="h1-text text-4xl font-bold mb-6">
+          {pageTitle}
+        </h1>
+        <p class="dark:text-darkModeText text-xl mb-12">
+          {blogDescription}
+        </p>
+      </header>
       <CategoryList categories={categories} title="Tags" />
-    </section>
-    <div class="mb-12">
-      <Pagination nextURL="/blog/2" />
-    </div>
-    <PostList posts={posts} />
-    <div class="mb-36">
-      <Pagination nextURL="/blog/2" />
+      <PostList posts={posts} />
+      <div class="mt-12 flex justify-end">
+        <!-- Added flex container for pagination -->
+        <Pagination nextURL="/blog/2" />
+      </div>
     </div>
   </Main>
-
-  <style>
-    :global(.dark) .h1-text,
-    :global(.dark) .tags-text,
-    :global(.dark) .category-text,
-    :global(.dark) .post-title,
-    :global(.dark) .post-text,
-    :global(.dark) .blog-text {
-      color: #ffffff;
-    }
-  </style>
 </Layout>

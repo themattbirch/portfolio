@@ -6,6 +6,7 @@ import Main from "../../components/Main.astro";
 import Pagination from "../../components/Pagination.astro";
 import PostList from "../../components/PostList.astro";
 import Layout from "../../layouts/Layout.astro";
+
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
   const allCategories = posts.flatMap((post) => post.data.categories);
@@ -35,31 +36,32 @@ type Props = {
 };
 
 const { category, posts } = Astro.props;
+const pageTitle = "Matt Birch | Web Developer";
+const pageDescription =
+  "Transforming ideas into powerful web experiences. I combine technical expertise with creative problem-solving to deliver websites that not only look great but perform exceptionally.";
 ---
 
-<Layout
-  title="Matt Birch | Web Developer"
-  description=`Transforming ideas into powerful web experiences.
-  I combine technical expertise with creative problem-solving to deliver 
-  websites that not only look great but perform exceptionally.`
->
+<Layout title={`${pageTitle} - ${category} Posts`}>
   <Main>
-    <a href="/blog" class="text-zinc-500 text-2xl mb-16 underline block">
-      ←Back to all blogs</a
-    >
-    <H1 text="Matt Birch | Web Developer" />
-    <p class="text-zinc-900 text-2xl mb-24 max-sm:mb-14">
-      Transforming ideas into powerful web experiences. I combine technical
-      expertise with creative problem-solving to deliver websites that not only
-      look great but perform exceptionally.
-    </p>
-    <CategoryList categories={[category]} title="Posts tagged" />
-    <div class="mb-12">
-      <Pagination nextURL="/blog/2" />
-    </div>
-    <PostList posts={posts} />
-    <div class="mb-36">
-      <Pagination nextURL="/blog/2" />
+    <div class="max-w-screen-xl mx-auto">
+      <a href="/blog" class="text-zinc-500 text-2xl mb-16 underline block">
+        ←Back to all blogs
+      </a>
+      <h1 class="h1-text text-4xl font-bold mb-6">
+        {pageTitle}
+        <h1></h1>
+        <p class="dark:text-darkModeText text-2xl mb-24 max-sm:mb-14">
+          {pageDescription}
+        </p>
+        <CategoryList categories={[category]} title="Posts tagged" />
+        <div class="mb-12 flex justify-end">
+          <Pagination nextURL="/blog/2" />
+        </div>
+        <PostList posts={posts} />
+        <div class="mb-36 flex justify-end">
+          <Pagination nextURL="/blog/2" />
+        </div>
+      </h1>
     </div>
   </Main>
 </Layout>
