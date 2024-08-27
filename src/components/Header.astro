@@ -11,9 +11,7 @@ type MenuItem = {
 const typedMenuItems: MenuItem[] = menuItems;
 ---
 
-<header
-  class="sticky top-0 border-b z-20 transition-all bg-white dark:bg-gray-800"
->
+<header class="sticky top-0 z-20 transition-all bg-slate-900">
   <div class="py-5">
     <NavBar menuItems={typedMenuItems}>
       <ThemeToggle client:load />
