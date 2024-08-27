@@ -10,6 +10,10 @@
     --secondary-color: #60a5fa;
     --transition-duration: 0.3s;
     --heading-light-color: #1e293b;
+        --testimonial-bg: #1e293b; /* Tailwind's gray-800 */
+    --testimonial-text: #ffffff;
+    --skills-bg: #111827; /* Tailwind's gray-900 */
+    --skills-text: #ffffff;
 }
 
 .dark {
@@ -18,6 +22,12 @@
     --primary-color: #60a5fa;
     --secondary-color: #3b82f6;
     --heading-light-color: #ffffff;
+    --testimonial-bg: #0f172a;
+        /* Tailwind's gray-900 */
+        --testimonial-text: #ffffff;
+        --skills-bg: #1e293b;
+        /* Tailwind's gray-800 */
+        --skills-text: #ffffff;
 }
 
 /* General Body Styles */
@@ -217,7 +227,7 @@ h6 {
 /* Mobile Menu Styles */
 @media (max-width: 768px) {
     #mobile-menu {
-        background-color: #020617;
+        background-color: #0F172A;
         position: absolute;
         top: 100%;
         left: 0;
