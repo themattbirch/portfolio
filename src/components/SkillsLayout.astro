@@ -1,6 +1,4 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-
 interface Props {
   pageTitle: string;
   skills: Array<{
@@ -15,15 +13,14 @@ interface Props {
 const { pageTitle, skills, SkillsComponent } = Astro.props;
 ---
 
-<Layout>
-  <section class="py-8 sm:py-16 bg-gray-100 dark:bg-transparent">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1
-        class="h1-text heading-text text-4xl text-teal-900 sm:text-4xl font-bold text-center mb-8 sm:mb-16"
-      >
-        {pageTitle}
-      </h1>
-      <SkillsComponent skills={skills} />
-    </div>
-  </section>
-</Layout>
+<section class="py-8 sm:py-16 bg-gray-100 dark:bg-black">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="h2-text heading-text font-bold text-center mb-8 sm:mb-16">
+      Why These Skills Matter
+    </h2>
+    <SkillsComponent
+      skills={skills}
+      class="flex flex-wrap gap-0 bg-gray-100 dark:bg-black"
+    />
+  </div>
+</section>

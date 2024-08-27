@@ -1,6 +1,6 @@
 ---
 import SkillsComponent from "@/components/SkillsComponent.astro";
-import SkillsLayout from "@/components/SkillsLayout.astro";
+import Layout from "@/layouts/Layout.astro";
 
 const pageTitle = "Soft Skills";
 
@@ -22,8 +22,43 @@ const skills = [
 ];
 ---
 
-<SkillsLayout
-  pageTitle={pageTitle}
-  skills={skills}
-  SkillsComponent={SkillsComponent}
-/>
+<Layout>
+  <!-- Introduction Text Section -->
+  <section
+    class="text-center mx-auto py-8 sm:py-16 bg-gray-100 dark:bg-black dark:text-white"
+  >
+    <div class="max-w-screen-xl mx-auto">
+      <h1 class="h1-text heading-text font-bold mb-4">
+        Why These Skills Matter
+      </h1>
+      <p class="text-lg">
+        Understanding and refining these soft skills is crucial for professional
+        growth, fostering strong team dynamics, and ensuring project success.
+      </p>
+    </div>
+  </section>
+
+  <!-- SkillsLayout Section -->
+  <section class="py-8 sm:py-16 bg-gray-100 dark:bg-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="h2-text heading-text font-bold text-center mb-8 sm:mb-16">
+        {pageTitle}
+      </h2>
+      <SkillsComponent skills={skills} />
+    </div>
+  </section>
+
+  <!-- Image or Additional Content Section -->
+  <section
+    class="relative w-full h-96 bg-cover bg-center py-24"
+    style="background-image: url('/images/headshot-tan-tee-2.jpg');"
+  >
+    <!-- Optionally add text or elements on top of the image -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-white text-center text-2xl">
+        "Soft skills are the backbone of effective collaboration and
+        communication in any team."
+      </p>
+    </div>
+  </section>
+</Layout>
