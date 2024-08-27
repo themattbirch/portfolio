@@ -3,17 +3,13 @@
 @import 'tailwindcss/utilities';
 
 /* Theme and Color Variables */
+/* Global CSS */
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
     --primary-color: #3b82f6;
-    --secondary-color: #60a5fa;
-    --transition-duration: 0.3s;
-    --heading-light-color: #1e293b;
-        --testimonial-bg: #1e293b; /* Tailwind's gray-800 */
-    --testimonial-text: #ffffff;
-    --skills-bg: #111827; /* Tailwind's gray-900 */
-    --skills-text: #ffffff;
+    --secondary-color: #60a5fa; 
+    --testimonial-text: #000000;
 }
 
 .dark {
@@ -21,13 +17,30 @@
     --text-color: #ffffff;
     --primary-color: #60a5fa;
     --secondary-color: #3b82f6;
-    --heading-light-color: #ffffff;
-    --testimonial-bg: #0f172a;
-        /* Tailwind's gray-900 */
-        --testimonial-text: #ffffff;
-        --skills-bg: #1e293b;
-        /* Tailwind's gray-800 */
-        --skills-text: #ffffff;
+    --testimonial-text: #ffffff;
+}
+
+.testimonial-container {
+background-color: white;
+    /* Light mode background color */
+    transition: background-color 0.3s ease;
+    padding: 2rem;
+    position: relative;
+    box-shadow:
+        0 10px 20px rgba(50, 50, 93, 0.2),
+        0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
+}
+
+.testimonial-container:hover {
+    box-shadow:
+        0 15px 30px rgba(50, 50, 93, 0.3),
+        0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.dark .testimonial-container {
+    background-color: #b91c1c;
+    /* Dark mode background color */
 }
 
 /* General Body Styles */
