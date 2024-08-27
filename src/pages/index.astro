@@ -25,6 +25,7 @@ import Layout from "../layouts/Layout.astro";
 import Testimonials from "../components/Testimonials.astro";
 import SkillsCard from "../components/SkillsCard.astro";
 import Hero from "../components/Hero.astro";
+import SkillsSection from "../components/SkillsSection.jsx";
 ---
 
 <link rel="preload" href="/images/hero-background-dark-theme.jpg" as="image" />
@@ -87,6 +88,8 @@ import Hero from "../components/Hero.astro";
       </div>
     </section>
 
+    <SkillsSection client:load />
+
     <!-- Skills Section -->
     <section class="skills-section py-24 w-full transition-colors duration-300">
       <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
@@ -121,6 +124,7 @@ import Hero from "../components/Hero.astro";
 
 <style>
   .testimonial-container {
+    margin-top: 6rem;
     position: relative;
     box-shadow:
       0 10px 20px rgba(50, 50, 93, 0.2),
