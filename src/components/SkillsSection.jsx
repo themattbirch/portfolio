@@ -63,7 +63,7 @@ const SkillsSection = () => {
                     Skills
 
               <span
-          class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"
               >
               </span>
       </h2>
