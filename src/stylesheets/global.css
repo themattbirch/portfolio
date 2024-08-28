@@ -29,7 +29,7 @@
 }
 
 .testimonial-container {
-background-color: white;
+    background-color: white;
     /* Light mode background color */
     transition: background-color 0.3s ease;
     padding: 2rem;
@@ -132,26 +132,6 @@ h6 {
     opacity: 0.3;
     filter: blur(40px);
 }
-
-/* Hero Text Rotations */
-.hero-text-rotated-left {
-    transform: rotate(-15deg);
-}
-
-.hero-text-rotated-right {
-    transform: rotate(15deg);
-}
-
-/* CTA Button */
-.cta-button {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
 /* Neumorphic Styles */
 .neumorphic {
     box-shadow:
@@ -169,15 +149,11 @@ h6 {
 
 /* Neumorphic Button Styles */
 /* Light Mode Neumorphic Buttons */
-/* Light Mode Neumorphic Buttons */
-/* Light Mode Neumorphic Buttons */
-/* Light Mode Neumorphic Buttons */
-/* Neumorphic Button Styles */
 .neumorphic-button {
     background: #0F172A;
     /* Tailwind's slate-800 */
     color: #f1f5f9;
-    /* Tailwind's slate-100 for white text */
+    /* Tailwind's slate-100 (white text) */
     box-shadow:
         2px 2px 4px rgba(0, 0, 0, 0.3),
         -2px -2px 4px rgba(255, 255, 255, 0.1);
@@ -186,7 +162,7 @@ h6 {
 
 .neumorphic-button:hover {
     background: #1F2937;
-    /* Tailwind's slate-700 for slightly lighter on hover */
+    /* Tailwind's slate-700 (slightly lighter on hover) */
     box-shadow:
         inset 2px 2px 4px rgba(0, 0, 0, 0.3),
         inset -2px -2px 4px rgba(255, 255, 255, 0.1);
@@ -208,14 +184,17 @@ h6 {
 
 .dark .neumorphic-button:hover {
     background: #243356;
-    /* Slightly Darker on hover ((custom: similar to Tailwind gray-600)) */
+    /* Slightly lighter on hover (custom: similar to Tailwind gray-600) */
     box-shadow:
         inset 3px 3px 6px rgba(0, 0, 0, 0.5),
         inset -3px -3px 6px rgba(255, 255, 255, 0.05);
 }
+
 /* Logo Styles */
 .logo-text {
     color: #73c778;
+    display: inline-block;
+        transition: all 0.3s ease;
 }
 
 .logo-container {
@@ -239,11 +218,6 @@ h6 {
 
 .logo-container:hover::after {
     opacity: 0.3;
-}
-
-.logo-text {
-    display: inline-block;
-    transition: all 0.3s ease;
 }
 
 .logo-container:hover .logo-text {
@@ -270,7 +244,7 @@ h6 {
 /* Theme Toggle Icon */
 .theme-toggle-icon {
     color: #ffffff;
-    /* Make the icon white in both light and dark modes */
+    /* Makes icon white in both light & dark modes */
     filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.5));
     transition: stroke 0.3s ease, color 0.3s ease;
 }

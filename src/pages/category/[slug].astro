@@ -1,7 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import CategoryList from "../../components/CategoryList.astro";
-import H1 from "../../components/H1.astro";
 import Main from "../../components/Main.astro";
 import Pagination from "../../components/Pagination.astro";
 import PostList from "../../components/PostList.astro";
@@ -49,7 +48,7 @@ const pageDescription =
       </a>
       <h1 class="h1-text text-4xl font-bold mb-6">
         {pageTitle}
-        <h1></h1>
+        </h1>
         <p class="dark:text-darkModeText text-2xl mb-24 max-sm:mb-14">
           {pageDescription}
         </p>
@@ -61,7 +60,6 @@ const pageDescription =
         <div class="mb-36 flex justify-end">
           <Pagination nextURL="/blog/2" />
         </div>
-      </h1>
     </div>
   </Main>
 </Layout>

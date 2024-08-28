@@ -31,113 +31,106 @@ import SkillsSection from "../components/SkillsSection.jsx";
 <link rel="preload" href="/images/hero-background-dark-theme.jpg" as="image" />
 <link rel="preload" href="/images/hero-background-light-theme.jpg" as="image" />
 <Layout fullWidth={true}>
-  <div class="space-y-24">
-    <!-- Hero Section -->
+  <!-- Hero Section -->
+  <section>
     <Hero />
+  </section>
 
-    <!-- Unique Sales Proposition Section -->
-    <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold mb-6">What Sets Me Apart</h2>
-      <p class="text-lg mb-4">
-        As a front-end web developer, I bring a unique blend of technical
-        expertise and creative problem-solving to every project. Here's what
-        differentiates me:
-      </p>
-      <ul class="list-disc list-inside space-y-2">
-        <li>Mastery of modern web technologies and frameworks</li>
-        <li>User-centric design approach for intuitive interfaces</li>
-        <li>Strong focus on performance optimization and accessibility</li>
-        <li>Collaborative mindset and excellent communication skills</li>
-      </ul>
-    </section>
+  <!-- Unique Sales Proposition Section -->
+  <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="h2-text heading-text font-bold mb-6">What Sets Me Apart</h2>
+    <p class="text-lg mb-4">
+      As a front-end web developer, I bring a unique blend of technical
+      expertise and creative problem-solving to every project. Here's what
+      differentiates me:
+    </p>
+    <ul class="list-disc list-inside space-y-2">
+      <li>Mastery of modern web technologies and frameworks</li>
+      <li>User-centric design approach for intuitive interfaces</li>
+      <li>Strong focus on performance optimization and accessibility</li>
+      <li>Collaborative mindset and excellent communication skills</li>
+    </ul>
+  </section>
 
-    <section
-      class="testimonials-section py-24 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8"
+  <section
+    class="testimonials-section py-12 sm:py-16 md:py-24 w-full px-4 sm:px-6 lg:px-8"
+  >
+    <h2
+      class="h2-text heading-text text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 pb-2 relative"
     >
+      Testimonials
+      <span
+        class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 sm:w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"
+      ></span>
+    </h2>
+    <div
+      class="testimonial-container overflow-hidden max-w-screen-xl mx-auto rounded-full"
+    >
+      <div class="testimonial-content w-full rounded-full">
+        <Testimonials />
+      </div>
+    </div>
+  </section>
+
+  <!-- What I Can Do for You Section -->
+  <section class="py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold mb-6">What I Can Do for You</h2>
+    <p class="text-lg mb-4">
+      My goal is to transform your digital presence and help your business
+      thrive online. Here's how I can help:
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {
+        services.map((service) => (
+          <div>
+            <h3 class="text-xl font-semibold mb-2">{service.title}</h3>
+            <p>{service.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <SkillsSection client:load />
+
+  <!-- Skills Section -->
+  <section class="skills-section py-24 w-full transition-colors duration-300">
+    <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
       <h2
         class="h2-text heading-text text-4xl font-bold text-center mb-12 pb-2 relative"
       >
-        Testimonials
+        Skills
         <span
           class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"
         ></span>
       </h2>
-      <div class="testimonial-container rounded-full overflow-hidden">
-        <div class="testimonial-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Testimonials />
-        </div>
+      <div class="skills-container mx-auto">
+        <SkillsCard />
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- What I Can Do for You Section -->
-    <section class="py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold mb-6">What I Can Do for You</h2>
-      <p class="text-lg mb-4">
-        My goal is to transform your digital presence and help your business
-        thrive online. Here's how I can help:
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {
-          services.map((service) => (
-            <div>
-              <h3 class="text-xl font-semibold mb-2">{service.title}</h3>
-              <p>{service.description}</p>
-            </div>
-          ))
-        }
-      </div>
-    </section>
-
-    <SkillsSection client:load />
-
-    <!-- Skills Section -->
-    <section class="skills-section py-24 w-full transition-colors duration-300">
-      <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-        <h2
-          class="h2-text heading-text text-4xl font-bold text-center mb-12 pb-2 relative"
-        >
-          Skills
-          <span
-            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"
-          ></span>
-        </h2>
-        <div class="skills-container mx-auto">
-          <SkillsCard />
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold mb-6">Let's Work Together</h2>
-      <p class="text-lg mb-8">
-        Ready to take your web presence to the next level? I'm here to help you
-        create a stunning, functional website that drives results. Get in touch
-        today, and let's discuss how we can bring your vision to life.
-      </p>
-      <form class="space-y-4">
-        <!-- Form fields remain unchanged -->
-      </form>
-    </section>
-  </div>
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold mb-6">Let's Work Together</h2>
+    <p class="text-lg mb-8">
+      Ready to take your web presence to the next level? I'm here to help you
+      create a stunning, functional website that drives results. Get in touch
+      today, and let's discuss how we can bring your vision to life.
+    </p>
+    <form class="space-y-4">
+      <!-- Form fields remain unchanged -->
+    </form>
+  </section>
 </Layout>
 
 <style>
-  .testimonial-container {
-    margin-top: 6rem;
-    position: relative;
-    box-shadow:
-      0 10px 20px rgba(50, 50, 93, 0.2),
-      0 10px 20px rgba(0, 0, 0, 0.15);
-    transition: box-shadow 0.3s ease;
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: var(--swiper-navigation-color, var(--testimonial-text));
   }
-  .testimonial-container:hover {
-    box-shadow:
-      0 15px 30px rgba(50, 50, 93, 0.3),
-      0 15px 30px rgba(0, 0, 0, 0.25);
-  }
-  :global(.dark) .testimonial-container::before,
-  :global(.dark) .testimonial-container::after {
-    background-color: #111827;
+
+  .swiper-pagination-bullet {
+    background: var(--swiper-pagination-color, var(--testimonial-text));
   }
 </style>
