@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { ChevronRight, Code, Bot, PenTool } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCode, faRobot, faPenFancy, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-const SkillCard = ({ icon: Icon, title, description, color }) => (
-  <div className={`bg-blue-50 dark:bg-zinc-900 rounded-lg p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-t-4 ${color.border}`}>
+const SkillCard = ({ icon, title, description, color, extraClass }) => (
+  <div className={`bg-gradient-to-r from-blue-100 to-blue-50 dark:from-zinc-900 dark:to-zinc-800 rounded-lg p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-t-4 ${color.border} ${extraClass}`}>
     <div className="flex justify-between items-start mb-4">
-      <Icon className={`${color.icon} w-12 h-12`} />
+      <FontAwesomeIcon icon={icon} className={`${color.icon} w-12 h-12`} />
       <div className={`${color.text} text-xs font-semibold px-2 py-1 rounded-full bg-opacity-20 ${color.bgOpacity}`}>
         Expert
       </div>
@@ -13,7 +14,7 @@ const SkillCard = ({ icon: Icon, title, description, color }) => (
     <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
     <button className={`${color.text} flex items-center hover:underline group`}>
       Learn More 
-      <ChevronRight className="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+      <FontAwesomeIcon icon={faChevronRight} className="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
     </button>
   </div>
 );
@@ -23,7 +24,7 @@ const SkillsSection = () => {
 
   const skills = [
     {
-      icon: Code,
+      icon: faCode,
       title: "Front-end Web Developer",
       description: "Building responsive and dynamic websites with modern frameworks.",
       color: {
@@ -31,10 +32,11 @@ const SkillsSection = () => {
         icon: "text-blue-500",
         text: "text-blue-600 dark:text-blue-400",
         bgOpacity: "bg-blue-500"
-      }
+      },
+      extraClass: ""
     },
     {
-      icon: Bot,
+      icon: faRobot,
       title: "Prompt Engineer",
       description: "Crafting and optimizing prompts for cutting-edge AI models.",
       color: {
@@ -42,10 +44,11 @@ const SkillsSection = () => {
         icon: "text-green-500",
         text: "text-green-600 dark:text-green-400",
         bgOpacity: "bg-green-500"
-      }
+      },
+      extraClass: "md:mt-8" // Adds margin-top to this card in medium screens and above
     },
     {
-      icon: PenTool,
+      icon: faPenFancy,
       title: "Copywriter",
       description: "Creating compelling and persuasive content that converts.",
       color: {
@@ -53,19 +56,19 @@ const SkillsSection = () => {
         icon: "text-purple-500",
         text: "text-purple-600 dark:text-purple-400",
         bgOpacity: "bg-purple-500"
-      }
+      },
+      extraClass: ""
     }
   ];
 
   return (
     <section className="skills-section py-16">
       <h2 className="h2-text heading-text text-4xl font-bold text-center mb-12 pb-2 relative">
-                    Skills
-
-              <span
+        Skills
+        <span
           className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"
-              >
-              </span>
+        >
+        </span>
       </h2>
       <div className="py-24 bg-white dark:bg-gray-900 relative overflow-hidden">
         <div className="max-w-screen-xl mx-auto px-4 relative z-10">
