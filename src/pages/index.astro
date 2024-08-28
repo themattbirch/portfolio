@@ -25,6 +25,7 @@ import Layout from "../layouts/Layout.astro";
 import Testimonials from "../components/Testimonials.astro";
 import Hero from "../components/Hero.astro";
 import SkillsSection from "../components/SkillsSection.jsx";
+import CTASection from "../components/CTASection.astro";
 ---
 
 <link rel="preload" href="/images/hero-background-dark-theme.jpg" as="image" />
@@ -93,17 +94,7 @@ import SkillsSection from "../components/SkillsSection.jsx";
   <SkillsSection client:load />
 
   <!-- Contact Section -->
-  <section id="contact" class="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-bold mb-6">Let's Work Together</h2>
-    <p class="text-lg mb-8">
-      Ready to take your web presence to the next level? I'm here to help you
-      create a stunning, functional website that drives results. Get in touch
-      today, and let's discuss how we can bring your vision to life.
-    </p>
-    <form class="space-y-4">
-      <!-- Form fields remain unchanged -->
-    </form>
-  </section>
+  <CTASection />
 </Layout>
 
 <style>

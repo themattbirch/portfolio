@@ -17,6 +17,15 @@
     --skills-card-bg: linear-gradient(to bottom right, #ffffff, #f3f4f6);
     --skills-text: #1f2937;
     --skills-card-border: #3b82f6;
+    --cta-bg-from: theme('colors.indigo.500');
+        --cta-bg-via: theme('colors.blue.600');
+        --cta-bg-to: theme('colors.cyan.500');
+        --cta-heading-text: theme('colors.indigo.100');
+        --cta-subtext: theme('colors.white');
+        --cta-button-bg: theme('colors.white');
+        --cta-button-text: theme('colors.blue.700');
+        --cta-button-hover-bg: theme('colors.indigo.100');
+        --cta-button-hover-text: theme('colors.blue.800');
 }
 
 .dark {
@@ -32,7 +41,17 @@
     --skills-card-bg: linear-gradient(to bottom right, #1f2937, #111827);
     --skills-text: #f3f4f6;
     --skills-card-border: #60a5fa;
+    --cta-bg-from: theme('colors.indigo.700');
+        --cta-bg-via: theme('colors.blue.800');
+        --cta-bg-to: theme('colors.cyan.700');
+        --cta-heading-text: theme('colors.indigo.100');
+        --cta-subtext: theme('colors.white');
+        --cta-button-bg: theme('colors.indigo.100');
+        --cta-button-text: theme('colors.blue.800');
+        --cta-button-hover-bg: theme('colors.white');
+        --cta-button-hover-text: theme('colors.blue.900');
 }
+
 
 .testimonial-card {
     background: var(--testimonial-bg-light);
