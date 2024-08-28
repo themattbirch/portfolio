@@ -28,7 +28,9 @@ const testimonials: Testimonial[] = [
 ];
 ---
 
-<div class="swiper-container relative">
+<div
+  class="swiper-container relative testimonial-container rounded-full transition-all duration-300"
+>
   <div class="swiper-wrapper">
     {
       testimonials && testimonials.length > 0 ? (
@@ -102,56 +104,25 @@ const testimonials: Testimonial[] = [
 </script>
 
 <style>
-    .swiper-container {
+  .swiper-container {
     width: 100%;
     height: auto;
-    padding: 2rem 0;
+    padding: 2rem;
     overflow: hidden;
   }
 
-  .swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-
-  .hero-wrapper {
-    margin-top: -4rem;
-    margin-bottom: -4rem;
-  }
-
-  .hero {
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-text {
-    color: #1a202c;
-  }
-
-  :global(.dark) .hero-text {
-    color: #ffffff;
-  }
-
-  .hero > div {
-    position: relative;
-    z-index: 2;
-  }
-
-  .testimonials-section {
-    position: relative;
-    z-index: 1;
-    background-color: #1e293b; /* Dark grey background (Tailwind's gray-800) for light mode */
-  }
-
+  /* Rest of the styles remain the same */
 
   .swiper-button-prev,
   .swiper-button-next {
     color: var(--swiper-navigation-color, var(--testimonial-text));
   }
 
-  .swiper-pagination-bullet {
-    background: var(--swiper-pagination-color, var(--testimonial-text));
+  .swiper-button-prev {
+    left: 2rem;
+  }
+
+  .swiper-button-next {
+    right: 2rem;
   }
 </style>

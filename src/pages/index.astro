@@ -23,7 +23,6 @@ const services = [
 ];
 import Layout from "../layouts/Layout.astro";
 import Testimonials from "../components/Testimonials.astro";
-import SkillsCard from "../components/SkillsCard.astro";
 import Hero from "../components/Hero.astro";
 import SkillsSection from "../components/SkillsSection.jsx";
 ---
@@ -65,11 +64,9 @@ import SkillsSection from "../components/SkillsSection.jsx";
       ></span>
     </h2>
     <div
-      class="testimonial-container overflow-hidden max-w-screen-xl mx-auto rounded-full"
+      class="testimonial-container overflow-hidden rounded-full max-w-screen-xl mx-auto"
     >
-      <div class="testimonial-content w-full rounded-full">
-        <Testimonials />
-      </div>
+      <Testimonials />
     </div>
   </section>
 

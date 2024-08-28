@@ -48,18 +48,18 @@ const pageDescription =
       </a>
       <h1 class="h1-text text-4xl font-bold mb-6">
         {pageTitle}
-        </h1>
-        <p class="dark:text-darkModeText text-2xl mb-24 max-sm:mb-14">
-          {pageDescription}
-        </p>
-        <CategoryList categories={[category]} title="Posts tagged" />
-        <div class="mb-12 flex justify-end">
-          <Pagination nextURL="/blog/2" />
-        </div>
-        <PostList posts={posts} />
-        <div class="mb-36 flex justify-end">
-          <Pagination nextURL="/blog/2" />
-        </div>
+      </h1>
+      <p class="dark:text-darkModeText text-2xl mb-24 max-sm:mb-14">
+        {pageDescription}
+      </p>
+      <CategoryList categories={[category]} title="Posts tagged" />
+      <div class="mb-12 flex justify-end">
+        <Pagination nextURL="/blog/2" />
+      </div>
+      <PostList posts={posts} />
+      <div class="mb-36 flex justify-end">
+        <Pagination nextURL="/blog/2" />
+      </div>
     </div>
   </Main>
 </Layout>
