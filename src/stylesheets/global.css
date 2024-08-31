@@ -173,7 +173,7 @@
     }
 }
 
-/* New styles for SkillsSection */
+/* Update existing styles */
 .skills-section {
     background-color: var(--skills-bg);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -184,6 +184,9 @@
     border-top: 4px solid var(--skills-card-border);
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1rem;
+    /* Add spacing between the dropdown elements */
 }
 
 .skill-card:hover {
@@ -203,6 +206,51 @@
     color: var(--primary-color);
 }
 
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.skill-title {
+    margin-bottom: 0;
+    /* Remove bottom margin if any */
+}
+
+.toggle-icon {
+    margin-left: auto;
+    transform: translateY(-50%);
+    /* Aligns the icon vertically in the middle */
+    transition: transform 0.3s ease;
+}
+
+.skill-header[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg) translateY(-50%);
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 640px) {
+    .skill-card {
+        margin-bottom: 3.5rem;
+        /* Even more space on mobile */
+    }
+
+    .skill-header {
+        flex-direction: column;
+        align-items: flex-start;
+                padding: 0.75rem;
+    }
+
+    .skill-title {
+        margin-bottom: 0.5rem;
+    }
+
+    .skill-content {
+        padding: 1rem 0.75rem;
+        /* Slightly reduced horizontal padding on mobile */
+    }
+}
 /* General Body Styles */
 body {
     background-color: var(--bg-color);

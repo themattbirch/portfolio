@@ -17,7 +17,27 @@ const skills = [
     icon: "⚙️",
     level: "Skill",
   },
+  {
+    name: "Communication",
+    description: "Excellent communication skills, both written and verbal.",
+    icon: "💬",
+    level: "Expert",
+  },
+  {
+    name: "Teamwork",
+    description: "Strong ability to work in collaborative environments.",
+    icon: "🤝",
+    level: "Advanced",
+  },
+  // Add more skills as needed
 ];
+
+// Split the skills array into two parts
+const half = Math.ceil(skills.length / 2);
+const skillsPart1 = skills.slice(0, half);
+const skillsPart2 = skills.slice(half);
+
+const teamworkphoto = "/images/teamwork.jpeg";
 const pageTitle = "Soft Skills";
 const pageDescription = "The emotional quotient sklills I've built.";
 ---
@@ -38,27 +58,39 @@ const pageDescription = "The emotional quotient sklills I've built.";
     </div>
   </section>
 
-  <!-- SkillsLayout Section -->
+  <!-- SkillsComponent with Split Part 1 -->
   <section class="py-8 sm:py-16 bg-gray-100 dark:bg-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="h2-text heading-text font-bold text-center mb-8 sm:mb-16">
         {pageTitle}
       </h2>
-      <SkillsComponent skills={skills} />
+      <SkillsComponent skills={skillsPart1} />
     </div>
   </section>
 
   <!-- Image or Additional Content Section -->
   <section
-    class="relative w-full h-96 bg-cover bg-center py-24"
-    style="background-image: url('/images/headshot-tan-tee-2.jpg');"
+    class="about-content max-w-screen-2xl mx-auto py-8 sm:py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300 w-full text-center"
   >
+    <div class="flex justify-center mb-8">
+      <img
+        src={teamworkphoto}
+        alt="animated image"
+        class="w-full h-auto"
+        width="100%"
+        height="auto"
+      />
+    </div>
     <!-- Optionally add text or elements on top of the image -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-white text-center text-2xl">
-        "Soft skills are the backbone of effective collaboration and
-        communication in any team."
-      </p>
+      <p class="text-white text-center text-2xl">"Text."</p>
+    </div>
+  </section>
+
+  <!-- SkillsComponent with Split Part 2 -->
+  <section class="py-8 sm:py-16 bg-gray-100 dark:bg-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SkillsComponent skills={skillsPart2} />
     </div>
   </section>
 </Layout>
