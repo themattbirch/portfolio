@@ -1,12 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-const pageTitle = "About";
+const headshot = "/images/headshot-tan-tee-2.jpg";
+const laptop = "/images/new-illustration.png";
+const pageTitle = "About Matt Birch | Web Developer";
+const pageDescription =
+  "Learn about Matt Birch's journey as a front-end web developer, his skills, and his approach to creating exceptional web experiences.";
 ---
 
-<Layout
-  title="About Matt Birch | Web Developer"
-  description="Learn about Matt Birch's journey as a front-end web developer, his skills, and his approach to creating exceptional web experiences."
->
+<Layout title={pageTitle} description={pageDescription}>
   <!-- About Section -->
   <section
     class="about-content max-w-screen-xl mx-auto py-8 sm:py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300 w-full text-center"
@@ -16,26 +17,89 @@ const pageTitle = "About";
     >
       {pageTitle}
     </h1>
-    <img
-      src="/images/headshot-tan-tee-2.jpg"
-      alt="Matt Birch"
-      class="rounded-full w-48 h-48 mx-auto mb-6 shadow-lg"
-    />
+  </section>
+
+  <!-- Image Container with Centering -->
+  <section
+    class="about-content max-w-screen-xl mx-auto py-8 sm:py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300 w-full text-center"
+  >
+    <div class="flex justify-center mb-8">
+      <div
+        class="rounded-full p-1 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 shadow-[0_10px_20px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_20px_rgba(255,255,255,0.1)] transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0_20px_30px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_20px_30px_rgba(255,255,255,0.2)]"
+      >
+        <img
+          src={headshot}
+          alt="Matt Birch headshot"
+          class="w-48 h-48 sm:w-64 sm:h-64 rounded-full border border-gray-200 dark:border-gray-700"
+          width="256"
+          height="256"
+        />
+      </div>
+    </div>
     <p class="text-lg mb-6 leading-relaxed max-w-2xl mx-auto about-text">
       Hello! I'm Matt Birch, a passionate front-end web developer with expertise
       in HTML, CSS, JavaScript, Astro, and React.
     </p>
+  </section>
+
+  <!-- My Journey Text Section -->
+
+  <section
+    class="about-content max-w-screen-2xl mx-auto py-8 sm:py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300 w-full text-center"
+  >
     <h2 class="text-2xl font-semibold mb-4 about-text">My Journey</h2>
     <p class="text-lg mb-6 leading-relaxed max-w-2xl mx-auto about-text">
-      <!-- Add your personal journey here -->
+      GARCON
     </p>
-    <h2 class="text-2xl font-semibold mb-4 about-text">My Approach</h2>
+  </section>
+
+  <!-- Image Amd Text Section -->
+
+  <section
+    class="about-content max-w-screen-2xl mx-auto py-8 sm:py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300 w-full text-center"
+  >
+    <div class="flex justify-center mb-8">
+      <img
+        src={laptop}
+        alt="animated image"
+        class="w-full h-auto"
+        width="100%"
+        height="auto"
+      />
+    </div>
+    <h2 class="text-2xl font-semibold mb-4 about-text">My Journey</h2>
     <p class="text-lg mb-6 leading-relaxed max-w-2xl mx-auto about-text">
-      <!-- Describe your approach to web development -->
+      GARCON
     </p>
-    <h2 class="text-2xl font-semibold mb-4 about-text">Let's Connect</h2>
-    <p class="text-lg mb-6 leading-relaxed max-w-2xl mx-auto about-text">
-      <!-- Add links to your social profiles and contact information -->
-    </p>
+  </section>
+
+  <!-- Combined CTA and Background Image Section -->
+  <section
+    class="relative w-full bg-cover bg-center"
+    style="background-image: url('/images/me_rocks.png'); height: 100vh;"
+  >
+    <div class="absolute inset-0 bg-black bg-opacity-10"></div>
+    <div
+      class="absolute top-[4%] left-1/2 transform -translate-x-1/2 w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+    >
+      <div
+        class="bg-black bg-opacity-5 backdrop-blur-sm py-8 px-8 rounded-xl inline-block"
+      >
+        <h3
+          class="text-3xl sm:text-4xl font-bold mb-2 tracking-tight text-black"
+        >
+          You know where to find me.
+        </h3>
+        <p class="text-xl sm:text-2xl mb-6 text-black">You can hire me.</p>
+        <a
+          href="/contact"
+          class="inline-block bg-teal-500 text-white
+        hover:bg-teal-600 font-semibold rounded-full px-8 py-3 transition-colors
+        duration-300 transform hover:scale-105 shadow-lg"
+        >
+          Let's Connect
+        </a>
+      </div>
+    </div>
   </section>
 </Layout>

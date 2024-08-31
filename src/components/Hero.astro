@@ -17,16 +17,29 @@ const headshot = "/images/my headshot avatar.png";
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-start">
         <div class="max-w-2xl">
+          <img
+            src={headshot}
+            alt="Matt Birch headshot"
+            class="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-lg"
+            width="128"
+            height="128"
+          />
           <h2
-            class="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl md:text-7xl mb-4 opacity-0 transform translate-y-4 transition-all duration-1000"
+            class="text-5xl mt-6 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl md:text-7xl mb-2 opacity-0 transform translate-y-4 transition-all duration-1000"
             id="heroTitle"
           >
-            <span class="block text-blue-600 dark:text-blue-400"
-              >Matt Birch</span
+            <span
+              class="inline-block pb-2 border-b-4 border-gray-300 dark:border-gray-600"
             >
+              <span
+                class="bg-gradient-to-r from-blue-600 to-blue-400 dark:from-blue-400 dark:to-blue-200 text-transparent bg-clip-text"
+                >Matt Birch</span
+              >
+            </span>
           </h2>
+
           <p
-            class="mt-3 text-xl text-gray-700 dark:text-gray-300 sm:mt-5 sm:text-2xl max-w-xl opacity-0 transform translate-y-4 transition-all duration-1000 delay-500"
+            class="mt-6 text-xl text-gray-700 dark:text-gray-300 sm:mt-8 sm:text-2xl max-w-xl opacity-0 transform translate-y-4 transition-all duration-1000 delay-500"
             id="heroTagline"
           >
             Getting the job <span
@@ -34,15 +47,17 @@ const headshot = "/images/my headshot avatar.png";
               >done</span
             > today!
           </p>
+
           <div
-            class="mt-8 opacity-0 transform translate-y-4 transition-all duration-1000 delay-1000"
+            class="mt-10 opacity-0 transform translate-y-4 transition-all duration-1000 delay-1000"
             id="heroCta"
           >
             <a
               href="#contact"
-              class="inline-block bg-blue-600 hover:bg-blue-700
-            text-white font-bold py-3 px-6 rounded-full transition-colors
-            duration-300 transform hover:scale-105"
+              class="inline-block bg-gradient-to-r from-blue-600
+            to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white
+            font-bold py-4 px-8 rounded-full transition-all duration-300
+            transform hover:scale-105 hover:shadow-lg"
             >
               Get in Touch
             </a>
@@ -51,15 +66,7 @@ const headshot = "/images/my headshot avatar.png";
       </div>
     </div>
 
-    <div class="absolute bottom-0 right-0 mb-8 mr-8 z-10">
-      <img
-        src={headshot}
-        alt="Matt Birch headshot"
-        class="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-lg"
-        width="128"
-        height="128"
-      />
-    </div>
+    <div class="absolute bottom-0 right-0 mb-8 mr-8 z-10"></div>
 
     <script define:vars={{ lightBackground, darkBackground }}>
       function updateTheme() {

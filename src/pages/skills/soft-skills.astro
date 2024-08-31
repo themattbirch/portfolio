@@ -2,8 +2,6 @@
 import SkillsComponent from "@/components/SkillsComponent.astro";
 import Layout from "@/layouts/Layout.astro";
 
-const pageTitle = "Soft Skills";
-
 const skills = [
   {
     name: "Empathy",
@@ -20,9 +18,11 @@ const skills = [
     level: "Skill",
   },
 ];
+const pageTitle = "Soft Skills";
+const pageDescription = "The emotional quotient sklills I've built.";
 ---
 
-<Layout>
+<Layout title={pageTitle} description={pageDescription}>
   <!-- Introduction Text Section -->
   <section
     class="text-center mx-auto py-8 sm:py-16 bg-gray-100 dark:bg-black dark:text-white"

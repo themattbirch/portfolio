@@ -17,16 +17,26 @@
     --skills-card-bg: linear-gradient(to bottom right, #ffffff, #f3f4f6);
     --skills-text: #1f2937;
     --skills-card-border: #3b82f6;
-    --cta-bg-from: theme('colors.indigo.500');
-        --cta-bg-via: theme('colors.blue.600');
-        --cta-bg-to: theme('colors.cyan.500');
-        --cta-heading-text: theme('colors.indigo.100');
-        --cta-subtext: theme('colors.white');
-        --cta-button-bg: theme('colors.white');
-        --cta-button-text: theme('colors.blue.700');
-        --cta-button-hover-bg: theme('colors.indigo.100');
-        --cta-button-hover-text: theme('colors.blue.800');
-}
+    --cta-bg-from: #dbeafe;
+        /* blue-100 */
+        --cta-bg-via: #e0e7ff;
+        /* indigo-100 */
+        --cta-bg-to: #f3e8ff;
+        /* purple-100 */
+        --cta-bg-opacity: 0.3;
+        --cta-backdrop: #ffffff;
+        --cta-backdrop-opacity: 0.5;
+        --cta-content-bg: #ffffff;
+        --cta-heading-text: #1f2937;
+        /* gray-800 */
+        --cta-subtext: #4b5563;
+        /* gray-600 */
+        --cta-button-bg: #2563eb;
+        /* blue-600 */
+        --cta-button-text: #ffffff;
+        --cta-button-hover-bg: #1d4ed8;
+        /* blue-700 */
+    }
 
 .dark {
     --bg-color: #000000;
@@ -41,16 +51,26 @@
     --skills-card-bg: linear-gradient(to bottom right, #1f2937, #111827);
     --skills-text: #f3f4f6;
     --skills-card-border: #60a5fa;
-    
-  --cta-bg-from: theme('colors.indigo.700');
-  --cta-bg-via: theme('colors.blue.800');
-  --cta-bg-to: theme('colors.cyan.700');
-  --cta-heading-text: theme('colors.indigo.100');
-  --cta-subtext: theme('colors.white');
-  --cta-button-bg: theme('colors.indigo.100');
-  --cta-button-text: theme('colors.blue.800');
-  --cta-button-hover-bg: theme('colors.white');
-  --cta-button-hover-text: theme('colors.blue.900');
+--cta-bg-from: #1e3a8a;
+    /* blue-900 */
+    --cta-bg-via: #312e81;
+    /* indigo-900 */
+    --cta-bg-to: #4c1d95;
+    /* purple-900 */
+    --cta-bg-opacity: 0.3;
+    --cta-backdrop: #000000;
+    --cta-backdrop-opacity: 0.5;
+    --cta-content-bg: #1f2937;
+    /* gray-800 */
+    --cta-heading-text: #f3f4f6;
+    /* gray-100 */
+    --cta-subtext: #d1d5db;
+    /* gray-300 */
+    --cta-button-bg: #3b82f6;
+    /* blue-500 */
+    --cta-button-text: #ffffff;
+    --cta-button-hover-bg: #2563eb;
+    /* blue-600 */
 }
 
 
