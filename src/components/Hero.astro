@@ -11,6 +11,7 @@ const headshot = "/images/my headshot avatar.png";
     id="hero-background"
     class="absolute inset-0 z-0 bg-cover bg-center transition-all duration-300"
   >
+    <div class="hero-gradient-overlay"></div>
   </div>
 
   <div class="relative z-10 w-full">
@@ -67,77 +68,75 @@ const headshot = "/images/my headshot avatar.png";
     </div>
 
     <div class="absolute bottom-0 right-0 mb-8 mr-8 z-10"></div>
-
-    <script define:vars={{ lightBackground, darkBackground }}>
-      function updateTheme() {
-        const isDarkMode = document.documentElement.classList.contains("dark");
-        const heroBackground = document.getElementById("hero-background");
-
-        if (heroBackground) {
-          const backgroundImage = isDarkMode ? darkBackground : lightBackground;
-          if (
-            heroBackground.style.backgroundImage !== `url(${backgroundImage})`
-          ) {
-            heroBackground.style.backgroundImage = `url(${backgroundImage})`;
-          }
-        }
-      }
-
-      function debounce(func, wait) {
-        let timeout;
-        return function (...args) {
-          clearTimeout(timeout);
-          timeout = setTimeout(() => func.apply(this, args), wait);
-        };
-      }
-
-      const debouncedUpdateTheme = debounce(updateTheme, 100);
-
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (
-            mutation.type === "attributes" &&
-            mutation.attributeName === "class"
-          ) {
-            debouncedUpdateTheme();
-          }
-        });
-      });
-
-      updateTheme();
-
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["class"],
-      });
-
-      document.addEventListener("astro:after-swap", updateTheme);
-
-      function animateHeroElements() {
-        const elements = ["heroTitle", "heroTagline", "heroCta"];
-        elements.forEach((id, index) => {
-          setTimeout(() => {
-            const element = document.getElementById(id);
-            if (element) {
-              element.classList.remove("opacity-0", "translate-y-4");
-            }
-          }, index * 500);
-        });
-      }
-
-      // Run animation on initial page load
-      document.addEventListener("DOMContentLoaded", animateHeroElements);
-
-      // Run animation on subsequent navigation
-      document.addEventListener("astro:page-load", animateHeroElements);
-    </script>
-
-    <style>
-      @media (max-width: 640px) {
-        .relative.h-screen {
-          height: calc(100vh - 4rem);
-        }
-      }
-    </style>
   </div>
 </div>
+
+<script define:vars={{ lightBackground, darkBackground }}>
+  function updateTheme() {
+    const isDarkMode = document.documentElement.classList.contains("dark");
+    const heroBackground = document.getElementById("hero-background");
+
+    if (heroBackground) {
+      const backgroundImage = isDarkMode ? darkBackground : lightBackground;
+      if (heroBackground.style.backgroundImage !== `url(${backgroundImage})`) {
+        heroBackground.style.backgroundImage = `url(${backgroundImage})`;
+      }
+    }
+  }
+
+  function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
+
+  const debouncedUpdateTheme = debounce(updateTheme, 100);
+
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "class"
+      ) {
+        debouncedUpdateTheme();
+      }
+    });
+  });
+
+  updateTheme();
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+
+  document.addEventListener("astro:after-swap", updateTheme);
+
+  function animateHeroElements() {
+    const elements = ["heroTitle", "heroTagline", "heroCta"];
+    elements.forEach((id, index) => {
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.classList.remove("opacity-0", "translate-y-4");
+        }
+      }, index * 500);
+    });
+  }
+
+  // Run animation on initial page load
+  document.addEventListener("DOMContentLoaded", animateHeroElements);
+
+  // Run animation on subsequent navigation
+  document.addEventListener("astro:page-load", animateHeroElements);
+</script>
+
+<style>
+  @media (max-width: 640px) {
+    .relative.h-screen {
+      height: calc(100vh - 4rem);
+    }
+  }
+</style>
