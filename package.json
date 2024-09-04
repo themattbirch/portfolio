@@ -22,6 +22,7 @@
     "@next/font": "^14.2.6",
     "@types/markdown-it": "^14.1.1",
     "@types/sanitize-html": "^2.11.0",
+    "astro-icon": "^1.1.1",
     "astro-navbar": "^2.3.3",
     "date-fns": "^3.6.0",
     "kwesforms": "^2.2.9",

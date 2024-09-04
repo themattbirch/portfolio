@@ -62,14 +62,11 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section className="skills-section py-16">
-      <h2 className="h2-text heading-text text-4xl font-bold text-center mb-12 pb-2 relative">
-        Skills
-        <span
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"
-        >
-        </span>
-      </h2>
+    <section class="skills-section py-12 sm:py-16 bg-white dark:bg-gray-900">
+  <h2 class="h2-text heading-text text-4xl font-bold text-center mb-12 pb-2 relative">
+    Skills
+    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"></span>
+  </h2>
       <div className="py-24 bg-white dark:bg-gray-900 relative overflow-hidden">
         <div className="max-w-screen-xl mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

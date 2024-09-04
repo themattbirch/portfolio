@@ -15,6 +15,14 @@ export default {
   theme: {
     extend: {
       colors: {
+        beige: {
+          50: '#FFF8E7',
+          100: '#FDF2D0',
+          200: '#FAE8B9',
+          300: '#F7DE9B',
+          400: '#F2CE76',
+          500: '#ECC34D',
+        },
         darkModeText: "#ffffff",
       },
       aspectRatio: {
