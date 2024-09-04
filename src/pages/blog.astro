@@ -14,25 +14,24 @@ const blogDescription =
   "Transforming ideas into powerful web experiences. I combine technical expertise with creative problem-solving to deliver websites that not only look great but perform exceptionally.";
 ---
 
-  <Layout title={pageTitle} description={blogDescription}>
-    <Main>
-      <div class="max-w-screen-xl mx-auto">
-        <!-- Added container for content alignment -->
-        <header class="text-center mb-12">
-          <h1 class="h1-text text-4xl font-bold mb-6">
-            {pageTitle}
-          </h1>
-          <p class="dark:text-darkModeText text-xl mb-12">
-            {blogDescription}
-          </p>
-        </header>
-        <CategoryList categories={categories} title="Tags" />
-        <PostList posts={posts} />
-        <div class="mt-12 flex justify-end">
-          <!-- Added flex container for pagination -->
-          <Pagination nextURL="/blog/2" />
-        </div>
+<Layout title={pageTitle} description={blogDescription}>
+  <Main>
+    <div class="max-w-screen-xl mx-auto">
+      <!-- Added container for content alignment -->
+      <header class="text-center mb-12">
+        <h1 class="h1-text heading-text text-center mb-8 md:mb-12">
+          {pageTitle}
+        </h1>
+        <p class="dark:text-darkModeText text-xl mb-12">
+          {blogDescription}
+        </p>
+      </header>
+      <CategoryList categories={categories} title="Tags" />
+      <PostList posts={posts} />
+      <div class="mt-12 flex justify-end">
+        <!-- Added flex container for pagination -->
+        <Pagination nextURL="/blog/2" />
       </div>
-    </Main>
-  </Layout>
+    </div>
+  </Main>
 </Layout>

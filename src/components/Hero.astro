@@ -1,5 +1,4 @@
 ---
-
 const lightBackground = "/images/hero-background-light-theme-toggle.png";
 const darkBackground = "/images/hero-background-dark-theme-toggle.png";
 const headshot = "/images/my headshot avatar.png";
@@ -16,7 +15,8 @@ const headshot = "/images/my headshot avatar.png";
   <div class="relative z-10 w-full">
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-start">
-        <div class="max-w-2xl">
+        <div class="max-w-2xl mt-10 sm:mt-24">
+          <!-- Adjusted the margin-top for mobile -->
           <img
             src={headshot}
             alt="Matt Birch headshot"
@@ -24,8 +24,8 @@ const headshot = "/images/my headshot avatar.png";
             width="128"
             height="128"
           />
-          <h2
-            class="text-5xl mt-6 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl md:text-7xl mb-2 opacity-0 transform translate-y-4 transition-all duration-1000"
+          <h1
+            class="mt-6 font-extrabold tracking-tight text-gray-900 dark:text-white text-5xl sm:text-6xl md:text-7xl lg:text-7xl mb-2 opacity-0 transform translate-y-4 transition-all duration-1000"
             id="heroTitle"
           >
             <span
@@ -36,10 +36,10 @@ const headshot = "/images/my headshot avatar.png";
                 >Matt Birch</span
               >
             </span>
-          </h2>
+          </h1>
 
           <p
-            class="mt-6 text-xl text-gray-700 dark:text-gray-300 sm:mt-8 sm:text-2xl max-w-xl opacity-0 transform translate-y-4 transition-all duration-1000 delay-500"
+            class="mt-6 text-2xl sm:text-3xl md:text-4xl text-gray-700 dark:text-gray-300 sm:mt-8 max-w-xl opacity-0 transform translate-y-4 transition-all duration-1000 delay-500"
             id="heroTagline"
           >
             Getting the job <span
@@ -125,10 +125,7 @@ const headshot = "/images/my headshot avatar.png";
     });
   }
 
-  // Run animation on initial page load
   document.addEventListener("DOMContentLoaded", animateHeroElements);
-
-  // Run animation on subsequent navigation
   document.addEventListener("astro:page-load", animateHeroElements);
 </script>
 

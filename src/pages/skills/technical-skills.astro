@@ -37,7 +37,7 @@ const skillsPart1 = skills.slice(0, half);
 const skillsPart2 = skills.slice(half);
 
 const teamworkphoto = "/images/teamwork.jpeg";
-const pageTitle = "Technical Skills";
+const pageTitle = "Technical Skills I've Learned";
 const pageDescription = "The technical skills I possess.";
 ---
 
@@ -46,9 +46,9 @@ const pageDescription = "The technical skills I possess.";
   <section
     class="text-center mx-auto py-8 sm:py-16 bg-gray-100 dark:bg-black dark:text-white"
   >
-    <div class="max-w-screen-xl mx-auto">
-      <h1 class="h1-text heading-text font-bold mb-4">
-        Why These Skills Matter
+    <div class="max-w-screen mx-auto">
+      <h1 class="h1-text heading-text text-center mb-8 md:mb-12">
+        {pageTitle}
       </h1>
       <p class="text-lg">
         Understanding and refining these soft skills is crucial for professional
@@ -61,7 +61,7 @@ const pageDescription = "The technical skills I possess.";
   <section class="py-8 sm:py-16 bg-gray-100 dark:bg-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="h2-text heading-text font-bold text-center mb-8 sm:mb-16">
-        {pageTitle}
+        Technical Skills
       </h2>
       <SkillsComponent skills={skillsPart1} />
     </div>

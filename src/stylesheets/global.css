@@ -4,6 +4,14 @@
 
 /* Theme and Color Variables */
 /* Global CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
@@ -257,6 +265,7 @@ body {
     color: var(--text-color);
     font-family: 'Source Sans 3', sans-serif;
 }
+
 
 h1,
 h2,
@@ -530,3 +539,4 @@ h6 {
         transform: scale(1.05);
     }
 }
+
