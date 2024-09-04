@@ -5,12 +5,6 @@
 /* Theme and Color Variables */
 /* Global CSS */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 
 :root {
     --bg-color: #ffffff;
@@ -44,6 +38,8 @@
         --cta-button-text: #ffffff;
         --cta-button-hover-bg: #1d4ed8;
         /* blue-700 */
+        -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
     }
 
 .dark {
@@ -274,6 +270,7 @@ h4,
 h5,
 h6 {
     font-family: 'PT Serif', serif;
+    text-wrap: balance;
 }
 
 .heading-text {
