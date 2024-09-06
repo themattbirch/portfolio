@@ -4,7 +4,7 @@ const darkBackground = "/images/hero-background-dark-theme-toggle.png";
 const headshot = "/images/my headshot avatar.png";
 ---
 
-<div class="relative h-screen flex items-center overflow-hidden">
+<div class="relative h-screen flex items-center overflow-hidden pb-16">
   <div
     id="hero-background"
     class="absolute inset-0 z-0 bg-cover bg-center transition-all duration-300"
@@ -131,6 +131,18 @@ const headshot = "/images/my headshot avatar.png";
   @media (max-width: 640px) {
     .relative.h-screen {
       height: calc(100vh - 4rem);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 </style>
