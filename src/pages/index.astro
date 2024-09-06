@@ -26,8 +26,10 @@ import Testimonials from "../components/Testimonials.astro";
 import Hero from "../components/Hero.astro";
 import SkillsSection from "../components/SkillsSection.jsx";
 import CTASection from "../components/CTASection.astro";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-const meSunglasses = "/images/me-mountains-sunglasses-removebg-preview.png";
+const meSunglasses = "/images/white-red-white-2.png";
 ---
 
 <Layout fullWidth={true}>
@@ -54,27 +56,85 @@ const meSunglasses = "/images/me-mountains-sunglasses-removebg-preview.png";
     </ul>
   </section>
 
-  <section
-    class="testimonials-section py-12 sm:py-16 md:py-24 w-full px-4 sm:px-6 lg:px-8"
+    <!-- What I Can Do For You Section -->
+
+  <section class="py-16 sm:py-24 bg-gray-50 dark:bg-gray-900">
+  <div
+    class="max-w-[1700px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8"
   >
-    <h2
-      class="h2-text heading-text text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 pb-2 relative"
-    >
-      Testimonials
-      <span
+    <!-- Text Column -->
+    <div class="w-full lg:w-3/4 mb-8 lg:mb-0">
+      <!-- Add mb-8 for spacing between text and image in smaller screens -->
+      <h2 class="h2-text mb-6 text-gray-800 dark:text-gray-100">
+        What I Can Do for You
+      </h2>
+      <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
+        My goal is to transform your digital presence and help your business
+        thrive online. Here's how I can help:
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        {
+          services.map((service) => (
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+              <!-- Container for title and icon -->
+              <div class="flex items-center group">
+                <!-- Hover effect for title -->
+                <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                  {service.title}
+                </h3>
+                <!-- Hover effect for icon -->
+                <FontAwesomeIcon
+                  icon={faChevronRight}
+                  className="w-6 h-6 ml-2 text-blue-500 dark:text-blue-400 p-2 rounded-full transition-all duration-300 group-hover:bg-blue-100 dark:group-hover:bg-blue-900 group-hover:scale-110 group-hover:shadow-md"
+                />
+              </div>
+              <p class="text-gray-600 dark:text-gray-300">
+                {service.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Image Column -->
+   <div class="w-full lg:w-1/4 flex justify-center">
+  <img
+    src={meSunglasses}
+    alt="Web developer wearing sunglasses"
+    class="rounded-lg w-4/5 h-auto object-cover"
+  />
+</div>
+  </div>
+</section>
+
+
+  <section
+    class="testimonials-section max-w-7xl py-12 sm:py-16 md:py-24 mx-auto px-4 sm:px-6 lg:px-8"
+  >
+    <h2 class="h2-text mb-8 sm:mb-12 pb-2 relative">
+      Just ask my clients what they think...
+      <!-- <span
         class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 sm:w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"
-      ></span>
+      ></span> --->
     </h2>
     <div
-      class="testimonial-container overflow-hidden rounded-full max-w-screen-xl mx-auto"
+      class="testimonial-container overflow-hidden rounded-full max-w-7xl mx-auto"
     >
       <Testimonials />
     </div>
   </section>
 
+  <!-- Skills Section Wrapper with Background Color -->
+  <section class="bg-gray-50 dark:bg-gray-900 py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SkillsSection client:load />
+    </div>
+  </section>
+
   <!-- More Text Will Go Here -->
   <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="h2-text heading-text font-bold mb-6">About Me</h2>
+    <h2 class="h2-text font-bold mb-6">About Me</h2>
     <p class="text-lg mb-4">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -96,52 +156,6 @@ const meSunglasses = "/images/me-mountains-sunglasses-removebg-preview.png";
       </li>
       <li>Vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</li>
     </ul>
-  </section>
-
-  <!-- Skills Section -->
-  <SkillsSection client:load />
-
-  <!-- What I Can Do for You Section -->
-  <section
-    class="py-24 w-full bg-white dark:bg-gray-900 transition-colors duration-300"
-  >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col lg:flex-row items-center lg:items-start gap-12">
-        <!-- Image Column -->
-        <div class="w-full md:w-1/4 flex justify-center">
-          <img
-            src={meSunglasses}
-            alt="Web developer wearing sunglasses"
-            class="rounded-lg w-full h-auto object-cover"
-          />
-        </div>
-
-        <!-- Text Column -->
-        <div class="w-full md:w-3/4">
-          <h2 class="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100">
-            What I Can Do for You
-          </h2>
-          <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
-            My goal is to transform your digital presence and help your business
-            thrive online. Here's how I can help:
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {
-              services.map((service) => (
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                  <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">
-                    {service.title}
-                  </h3>
-                  <p class="text-gray-600 dark:text-gray-300">
-                    {service.description}
-                  </p>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- Contact Section -->

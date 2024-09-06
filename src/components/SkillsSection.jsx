@@ -62,30 +62,27 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section class="skills-section py-12 sm:py-16 bg-white dark:bg-gray-900">
-  <h2 class="h2-text heading-text text-4xl font-bold text-center mb-12 pb-2 relative">
-    Skills
-    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"></span>
-  </h2>
-      <div className="py-24 bg-white dark:bg-gray-900 relative overflow-hidden">
-        <div className="max-w-screen-xl mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {skills.map((skill, index) => (
-              <div
-                key={index}
-                className={`transform transition-all duration-300 ${
-                  hoveredIndex === index ? 'scale-105 z-20' : hoveredIndex !== null ? 'scale-95 opacity-75' : ''
-                }`}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                <SkillCard {...skill} />
-              </div>
-            ))}
+   <section className="skills-section py-12 sm:py-16">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="h2-text mb-12 pb-2 text-left">Skills</h2> 
+    <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {skills.map((skill, index) => (
+          <div
+            key={index}
+            className={`transform transition-all duration-300 ${
+              hoveredIndex === index ? 'scale-105 z-20' : hoveredIndex !== null ? 'scale-95 opacity-75' : ''
+            }`}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <SkillCard {...skill} />
           </div>
-        </div>
+        ))}
       </div>
-    </section>
+    </div>
+  </div>
+</section>
   );
 };
 

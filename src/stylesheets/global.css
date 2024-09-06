@@ -79,16 +79,20 @@
 
 
 .testimonial-card {
-    background: var(--testimonial-bg-light);
-    color: var(--testimonial-text-light);
-    border: 1px solid transparent;
-    /* Transparent border for Light Mode */
-    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+background: #172554;
+    color: var(--testimonial-text-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Subtle, light border */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1),
+            0 4px 8px rgba(66, 153, 225, 0.2);
+        /* Light blue shadow */
+        transition: box-shadow 0.3s ease;
     }
 
 .testimonial-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
+box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2),
+        0 6px 12px rgba(66, 153, 225, 0.3);
+    /* More prominent blue glow */}
 
 .dark .testimonial-card {
     background: var(--testimonial-bg-dark);
@@ -104,7 +108,7 @@
 }
 
 .testimonial-container {
-    background: linear-gradient(to bottom right, #ffffff, #f3f4f6);
+    background: #172554;
     border: 0.5px solid rgba(0, 0, 0, 0.05);
     /* Subtle, less pronounced border */
     box-shadow:
@@ -179,9 +183,14 @@
 
 /* Update existing styles */
 .skills-section {
-    background-color: var(--skills-bg);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Update existing styles */
+.dark .skills-section {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 
 .skill-card {
     background: var(--skills-card-bg);
@@ -275,7 +284,6 @@ h6 {
 
 .heading-text {
     text-align: center;
-    font-weight: 600;
 }
 
 /* h1 using clamp for responsive scaling */
@@ -283,6 +291,7 @@ h6 {
     font-size: clamp(2rem, 5vw + 1rem, 3.5rem);
     /* Will scale between 2rem and 3.5rem */
     line-height: 1.2;
+    font-weight: 600;
 }
 
 /* h2 using clamp for responsive scaling */
@@ -290,6 +299,7 @@ h6 {
     font-size: clamp(1.75rem, 4vw + 1rem, 2.5rem);
     /* Will scale between 1.75rem and 2.5rem */
     line-height: 1.3;
+    font-weight: 600;
 }
 
 /* Background Gradients */
