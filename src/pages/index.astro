@@ -29,7 +29,7 @@ import CTASection from "../components/CTASection.astro";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-const meSunglasses = "/images/white-red-white-2.png";
+const meSunglasses = "/images/Black Red Upward Pointing Smile.png";
 ---
 
 <Layout fullWidth={true}>
@@ -38,29 +38,12 @@ const meSunglasses = "/images/white-red-white-2.png";
     <Hero />
   </section>
 
-  <!-- Unique Sales Proposition Section -->
-  <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="h2-text font-bold mb-6">
-      Why I'm Different Than Other Web Developers
-    </h2>
-    <p class="text-lg mb-4">
-      As a front-end web developer, I bring a unique blend of technical
-      expertise and creative problem-solving to every project. Here's what
-      differentiates me:
-    </p>
-    <ul class="list-disc list-inside space-y-2">
-      <li>Mastery of modern web technologies and frameworks</li>
-      <li>User-centric design approach for intuitive interfaces</li>
-      <li>Strong focus on performance optimization and accessibility</li>
-      <li>Collaborative mindset and excellent communication skills</li>
-    </ul>
-  </section>
 
     <!-- What I Can Do For You Section -->
 
-  <section class="py-16 sm:py-24 bg-gray-50 dark:bg-gray-900">
+  <section class="py-16 sm:py-24 what-i-add dark:bg-gray-900">
   <div
-    class="max-w-[1700px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8"
+    class="max-w-screen-2xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-between gap-8"
   >
     <!-- Text Column -->
     <div class="w-full lg:w-3/4 mb-8 lg:mb-0">
@@ -108,11 +91,30 @@ const meSunglasses = "/images/white-red-white-2.png";
   </div>
 </section>
 
+  <!-- Unique Sales Proposition Section -->
+  <section class="py-24 max-w-screen-2xl mx-auto px-4 sm:px-6">
+    <h2 class="h2-text mb-6">
+      Why I'm Different Than Other Web Developers
+    </h2>
+    <p class="text-lg mb-4">
+      As a front-end web developer, I bring a unique blend of technical
+      expertise and creative problem-solving to every project. Here's what
+      differentiates me:
+    </p>
+    <ul class="list-disc list-inside space-y-2">
+      <li>Mastery of modern web technologies and frameworks</li>
+      <li>User-centric design approach for intuitive interfaces</li>
+      <li>Strong focus on performance optimization and accessibility</li>
+      <li>Collaborative mindset and excellent communication skills</li>
+    </ul>
+  </section>
+
+
 
   <section
-    class="testimonials-section max-w-7xl py-12 sm:py-16 md:py-24 mx-auto px-4 sm:px-6 lg:px-8"
+    class="testimonials-section max-w-7xl py-12 sm:py-16 md:py-24 mx-auto px-4 sm:px-6"
   >
-    <h2 class="h2-text mb-8 sm:mb-12 pb-2 relative">
+    <h2 class="h2-text text-center mb-8 sm:mb-12 pb-2 relative">
       Just ask my clients what they think...
       <!-- <span
         class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 sm:w-48 h-1 bg-gradient-to-r from-transparent via-current to-transparent"
@@ -125,16 +127,10 @@ const meSunglasses = "/images/white-red-white-2.png";
     </div>
   </section>
 
-  <!-- Skills Section Wrapper with Background Color -->
-  <section class="bg-gray-50 dark:bg-gray-900 py-12 sm:py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SkillsSection client:load />
-    </div>
-  </section>
-
-  <!-- More Text Will Go Here -->
-  <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="h2-text font-bold mb-6">About Me</h2>
+  
+  <!-- Skills About -->
+  <section class="py-24 max-w-screen-2xl mx-auto px-4 sm:px-6">
+    <h2 class="h2-text font-bold mb-6">Lead-In To Skills About Me</h2>
     <p class="text-lg mb-4">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -158,6 +154,14 @@ const meSunglasses = "/images/white-red-white-2.png";
     </ul>
   </section>
 
+  <!-- Skills Section Wrapper with Background Color -->
+  <section class="bg-gray-50 dark:bg-gray-900 py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <SkillsSection client:load />
+    </div>
+  </section>
+
+
   <!-- Contact Section -->
   <CTASection />
 </Layout>
@@ -170,5 +174,9 @@ const meSunglasses = "/images/white-red-white-2.png";
 
   .swiper-pagination-bullet {
     background: var(--swiper-pagination-color, var(--testimonial-text));
+  }
+
+  .what-i-add {
+    background: #E8EEF4;
   }
 </style>
