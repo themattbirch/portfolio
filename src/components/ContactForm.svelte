@@ -16,8 +16,8 @@
   data-kw-show-errors-on="submit"
 >
   <div class="form-group">
-    <label for="comment" class="form-label">
-      Drop Matt a line. Any questions or feedback are welcomed!
+    <label for="comment" class="form-label text-center">
+      Drop me a line. Any questions or feedback are welcomed!
     </label>
     <textarea
       rows="5"
@@ -30,7 +30,7 @@
     ></textarea>
   </div>
   <div class="flex justify-end">
-    <button type="submit" class="form-button"> Send </button>
+    <button type="submit" class="form-button">Send</button>
   </div>
 </form>
 
@@ -39,28 +39,6 @@
     width: 100%;
     max-width: 40rem;
     margin: 0 auto;
-    background-image: linear-gradient(to right, #dbeafe, #eff6ff);
-    box-shadow:
-      0 4px 6px rgba(0, 0, 0, 0.1),
-      0 2px 4px rgba(0, 0, 0, 0.06);
-    border-radius: 0.5rem;
-    padding: 2rem;
-    border: 1px solid #bfdbfe;
-    transition: background-image 0.3s ease;
-  }
-
-  .form-container:hover {
-    background-image: linear-gradient(to right, #bfdbfe, #dbeafe);
-  }
-
-  /* Dark mode styles */
-  :global(.dark) .form-container {
-    background-image: linear-gradient(to right, #1e3a8a, #2563eb);
-    border-color: #3b82f6;
-  }
-
-  :global(.dark) .form-container:hover {
-    background-image: linear-gradient(to right, #1e40af, #3b82f6);
   }
 
   .form-group {
@@ -69,22 +47,17 @@
 
   .form-label {
     display: block;
-    color: #1e40af;
+    color: #111827;
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
   }
 
-  /* Dark mode adjustments for label */
-  :global(.dark) .form-label {
-    color: #cbd5e0 !important; /* Lighter gray for better visibility in Dark Mode */
-  }
-
   .form-textarea {
     width: 100%;
-    border-width: 2px;
-    border-color: #3b82f6;
-    background-color: #ffffff;
+    border: 2px solid #4a5568;
+    background-color: #2d3748;
+    color: #e2e8f0;
     border-radius: 0.5rem;
     font-size: 1.125rem;
     padding: 0.75rem 1rem;
@@ -92,34 +65,22 @@
       border-color 0.3s ease,
       background-color 0.3s ease;
     outline: none;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
   .form-textarea:focus {
-    border-color: #2563eb;
-    background-color: #eff6ff;
+    border-color: #63b3ed;
+    background-color: #2c5282;
+    color: #f1f5f9;
   }
 
-  /* Dark mode adjustments for textarea */
-  /* Dark mode adjustments for textarea */
-  :global(.dark) .form-container .form-textarea {
-    background-color: #3b536a !important; /* Lighter background for Dark Mode */
-    border-color: #63b3ed !important;
-    color: #e2e8f0 !important;
-  }
-
-  :global(.dark) .form-container .form-textarea:focus {
-    background-color: #4a637b !important; /* Slightly darker when focused for contrast */
-    border-color: #63b3ed !important;
-  }
-
-  :global(.dark) .form-container .form-textarea::placeholder {
-    color: #a0aec0 !important;
+  .form-textarea::placeholder {
+    color: #e4e4e7;
   }
 
   .form-button {
-    background-color: #3b82f6;
-    color: white;
+    background-color: #2563eb;
+    color: #e2e8f0;
     font-size: 1.125rem;
     font-weight: 600;
     padding: 0.5rem 1.5rem;
@@ -130,10 +91,25 @@
   }
 
   .form-button:hover {
-    background-color: #2563eb;
+    background-color: #3182ce;
   }
 
-  /* Dark mode adjustments for button */
+  /* Dark mode adjustments */
+  :global(.dark) .form-label {
+    color: #f7fafc;
+  }
+
+  :global(.dark) .form-textarea {
+    background-color: #1a202c;
+    border-color: #4a5568;
+    color: #f7fafc;
+  }
+
+  :global(.dark) .form-textarea:focus {
+    border-color: #63b3ed;
+    background-color: #2c5282;
+  }
+
   :global(.dark) .form-button {
     background-color: #63b3ed;
     color: #1a202c;

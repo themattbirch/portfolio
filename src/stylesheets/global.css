@@ -11,7 +11,7 @@
     --text-color: #000000;
     --primary-color: #3b82f6;
     --secondary-color: #60a5fa;
-    --testimonial-bg-light: linear-gradient(to bottom right, #ffffff, #f3f4f6);
+    --testimonial-bg-light: linear-gradient(to bottom right, #ffffff, #e6ebf2);
     --testimonial-bg-dark: linear-gradient(to bottom right, #1f2937, #111827);
     --testimonial-text-light: #1f2937;
     --testimonial-text-dark: #f3f4f6;
@@ -79,8 +79,8 @@
 
 
 .testimonial-card {
-background: #172554;
-    color: var(--testimonial-text-dark);
+background: var(--testimonial-bg-light);
+    color: var(--testimonial-text-light);
     border: 1px solid rgba(255, 255, 255, 0.1);
         /* Subtle, light border */
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1),
@@ -108,7 +108,7 @@ box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2),
 }
 
 .testimonial-container {
-    background: #172554;
+    background: var(--testimonial-bg-light);
     border: 0.5px solid rgba(0, 0, 0, 0.05);
     /* Subtle, less pronounced border */
     box-shadow:
@@ -465,6 +465,28 @@ h6 {
     transition: stroke 0.3s ease, color 0.3s ease;
 }
 
+
+/*Other Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
 
 
 /* Mobile Menu Styles */

@@ -75,6 +75,8 @@ const canonicalURL = Astro.url.href;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
 
+    <slot name="head" />
+
     <!-- Link to external theme toggle script -->
     <script src="/scripts/theme-toggle.js" defer></script>
 

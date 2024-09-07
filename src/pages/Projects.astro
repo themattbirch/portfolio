@@ -65,26 +65,23 @@ const laptop = "/images/me-mountains-sunglasses.png";
 
 <Layout title={pageTitle} description={pageDescription}>
   <section
-    class="text-center mx-auto py-8 sm:py-16 dark:text-white bg-gradient-to-b from-white to-beige-50 dark:from-gray-900 dark:to-black transition-colors duration-300"
+    class="text-center mx-auto py-16 sm:py-24 dark:text-white bg-gradient-to-b from-white to-beige-50 dark:from-gray-900 dark:to-black transition-colors duration-300"
   >
     <div class="max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="h1-text heading-text text-center mb-8 md:mb-12">
+      <h1 class="h1-text heading-text text-center mb-8 md:mb-12 fade-in">
         {pageTitle}
       </h1>
       <p class="text-lg text-gray-600 dark:text-gray-300">
         Understanding and refining these soft skills is crucial for professional
         growth, fostering strong team dynamics, and ensuring project success.
       </p>
-      <p class="text-lg text-gray-600 dark:text-gray-300">
-        WRITE MORE AND MORE
-      </p>
     </div>
   </section>
 
   <section
-    class="projects-section bg-beige-50 dark:bg-black py-8 sm:py-12 md:py-16 transition-colors duration-300"
+    class="projects-section bg-beige-50 dark:bg-black py-8 sm:py-16 transition-colors duration-300"
   >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
       <h2 class="h2-text heading-text text-center mb-12 md:mb-24">
         Here are just a few projects I've built.
       </h2>
@@ -174,3 +171,47 @@ const laptop = "/images/me-mountains-sunglasses.png";
     margin-top: 2rem;
   }
 </style>
+
+<script>
+  function handleFadeIn() {
+    const fadeIns = document.querySelectorAll(".fade-in");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target); // Stop observing once visible
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -100px 0px", // Start fading in slightly before the element is in view
+      }
+    );
+
+    fadeIns.forEach((fadeIn) => {
+      // Check if the element is already visible (e.g., on page load)
+      const rect = fadeIn.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        fadeIn.classList.add("visible");
+      } else {
+        observer.observe(fadeIn);
+      }
+    });
+  }
+
+  // Run on initial load
+  document.addEventListener("DOMContentLoaded", handleFadeIn);
+
+  // Run on each page navigation (for SPA-like behavior)
+  document.addEventListener("astro:page-load", handleFadeIn);
+
+  // Fallback for browsers that don't support IntersectionObserver
+  if (!("IntersectionObserver" in window)) {
+    document
+      .querySelectorAll(".fade-in")
+      .forEach((el) => el.classList.add("visible"));
+  }
+</script>
