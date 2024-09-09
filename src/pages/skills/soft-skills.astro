@@ -43,98 +43,134 @@ const pageDescription = "The emotional quotient sklills I've built.";
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <!-- Introduction Text Section -->
-  <section
-    class="text-center mx-auto py-16 sm:py-24 bg-gray-100 dark:bg-black dark:text-white"
-  >
-    <div class="max-w-screen mx-auto">
-      <h1 class="h1-text heading-text text-center mb-8 md:mb-12 fade-in">
-        {pageTitle}
-      </h1>
-      <p class="text-lg">
-        Understanding and refining these soft skills is crucial for professional
-        growth, fostering strong team dynamics, and ensuring project success.
-      </p>
-    </div>
-  </section>
+  <div class="horizontal-gradient-wrapper-1">
+    <!-- Introduction Text Section -->
+    <section class="text-center mx-auto py-16 sm:py-24 dark:text-white">
+      <div class="max-w-screen mx-auto">
+        <h1 class="h1-text heading-text text-center mb-8 md:mb-12 fade-in">
+          {pageTitle}
+        </h1>
+        <p class="text-lg">
+          Understanding and refining these soft skills is crucial for
+          professional growth, fostering strong team dynamics, and ensuring
+          project success.
+        </p>
+      </div>
+    </section>
+  </div>
 
-  <!-- SkillsComponent with Split Part 1 -->
-  <section class="py-8 sm:py-16 bg-gray-100 dark:bg-black fade-in">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="h2-text heading-text font-bold text-center mb-8 sm:mb-16">
-        Soft Skills
-      </h2>
-      <SkillsComponent skills={skillsPart1} />
-    </div>
-  </section>
+  <div class="horizontal-gradient-wrapper-2">
+    <!-- SkillsComponent with Split Part 1 -->
+    <section class="py-8 sm:py-16 fade-in">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="h2-text heading-text font-bold text-center mb-8 sm:mb-16">
+          A few soft skills...
+        </h2>
+        <SkillsComponent skills={skillsPart1} />
+      </div>
+    </section>
 
-  <!-- Image or Additional Content Section -->
-  <section
-    class="about-content max-w-screen-2xl mx-auto py-8 sm:py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300 w-full text-center"
-  >
-    <div class="flex justify-center mb-8">
-      <img
-        src={teamworkphoto}
-        alt="animated image"
-        class="w-full h-auto"
-        width="100%"
-        height="auto"
-      />
-    </div>
-    <!-- Optionally add text or elements on top of the image -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-white text-center text-2xl">"Text."</p>
-    </div>
-  </section>
+    <!-- Image or Additional Content Section -->
+    <section
+      class="about-content max-w-screen-2xl mx-auto py-8 sm:py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300 w-full text-center"
+    >
+      <div class="flex justify-center mb-8">
+        <img
+          src={teamworkphoto}
+          alt="animated image"
+          class="w-full h-auto"
+          width="100%"
+          height="auto"
+        />
+      </div>
+      <!-- Optionally add text or elements on top of the image -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-white text-center text-2xl">"Text."</p>
+      </div>
+    </section>
+  </div>
 
-  <!-- SkillsComponent with Split Part 2 -->
-  <section class="py-8 sm:py-16 bg-gray-100 dark:bg-black">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <SkillsComponent skills={skillsPart2} />
-    </div>
-  </section>
+  <div class="horizontal-gradient-wrapper-3">
+    <!-- SkillsComponent with Split Part 2 -->
+    <section class="py-8 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="h2-text heading-text font-bold text-center mb-8 sm:mb-16">
+          A few more...
+        </h2>
+        <SkillsComponent skills={skillsPart2} />
+      </div>
+    </section>
+  </div>
+
+  <style>
+    .horizontal-gradient-wrapper-1 {
+      background: linear-gradient(to bottom, #dde4ee, #ffffff);
+    }
+
+    .horizontal-gradient-wrapper-2 {
+      background: linear-gradient(to bottom, #ffffff, #dde4ee);
+    }
+
+    .horizontal-gradient-wrapper-3 {
+      background: linear-gradient(to bottom, #dde4ee, #ffffff);
+    }
+
+    /* Dark mode gradient */
+    :global(.dark) .horizontal-gradient-wrapper-1 {
+      background: linear-gradient(to bottom, #1f2937, #3b536a);
+    }
+
+    :global(.dark) .horizontal-gradient-wrapper-2 {
+      background: linear-gradient(to bottom, #3b536a, #1f2937);
+    }
+
+    /* Dark mode gradient */
+    :global(.dark) .horizontal-gradient-wrapper-3 {
+      background: linear-gradient(to bottom, #1f2937, #3b536a);
+    }
+  </style>
+
+  <script>
+    function handleFadeIn() {
+      const fadeIns = document.querySelectorAll(".fade-in");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target); // Stop observing once visible
+            }
+          });
+        },
+        {
+          threshold: 0.2,
+          rootMargin: "0px 0px -100px 0px", // Start fading in slightly before the element is in view
+        }
+      );
+
+      fadeIns.forEach((fadeIn) => {
+        // Check if the element is already visible (e.g., on page load)
+        const rect = fadeIn.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          fadeIn.classList.add("visible");
+        } else {
+          observer.observe(fadeIn);
+        }
+      });
+    }
+
+    // Run on initial load
+    document.addEventListener("DOMContentLoaded", handleFadeIn);
+
+    // Run on each page navigation (for SPA-like behavior)
+    document.addEventListener("astro:page-load", handleFadeIn);
+
+    // Fallback for browsers that don't support IntersectionObserver
+    if (!("IntersectionObserver" in window)) {
+      document
+        .querySelectorAll(".fade-in")
+        .forEach((el) => el.classList.add("visible"));
+    }
+  </script>
 </Layout>
-
-<script>
-  function handleFadeIn() {
-    const fadeIns = document.querySelectorAll(".fade-in");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target); // Stop observing once visible
-          }
-        });
-      },
-      {
-        threshold: 0.2,
-        rootMargin: "0px 0px -100px 0px", // Start fading in slightly before the element is in view
-      }
-    );
-
-    fadeIns.forEach((fadeIn) => {
-      // Check if the element is already visible (e.g., on page load)
-      const rect = fadeIn.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        fadeIn.classList.add("visible");
-      } else {
-        observer.observe(fadeIn);
-      }
-    });
-  }
-
-  // Run on initial load
-  document.addEventListener("DOMContentLoaded", handleFadeIn);
-
-  // Run on each page navigation (for SPA-like behavior)
-  document.addEventListener("astro:page-load", handleFadeIn);
-
-  // Fallback for browsers that don't support IntersectionObserver
-  if (!("IntersectionObserver" in window)) {
-    document
-      .querySelectorAll(".fade-in")
-      .forEach((el) => el.classList.add("visible"));
-  }
-</script>

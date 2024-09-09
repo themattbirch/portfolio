@@ -42,7 +42,7 @@
   }
 
   .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .form-label {
@@ -50,7 +50,7 @@
     color: #111827;
     font-size: 1.25rem;
     font-weight: 600;
-    margin-bottom: 0.75rem;
+    margin-bottom: 24px;
   }
 
   .form-textarea {

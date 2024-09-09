@@ -60,11 +60,10 @@ const projects = [
 
 const pageTitle = "My Projects";
 const pageDescription = "All about my portfolio of work.";
-const laptop = "/images/me-mountains-sunglasses.png";
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <div class="horizontal-gradient-wrapper">
+  <div class="horizontal-gradient-wrapper-1">
     <section
       class="text-center mx-auto py-16 sm:py-24 transition-colors duration-300"
     >
@@ -79,14 +78,19 @@ const laptop = "/images/me-mountains-sunglasses.png";
         </p>
       </div>
     </section>
+  </div>
 
+  <div class="horizontal-gradient-wrapper-2">
     <section
-      class="projects-section py-8 sm:py-16 transition-colors duration-300"
+      class="projects-section pb-16 sm:pb-24 transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
-        <h2 class="h2-text heading-text text-center mb-12 md:mb-24">
-          Here are just a few projects I've built.
-        </h2>
+        <div class="text-center mb-12 md:mb-24">
+          <h2 class="h2-text heading-text inline-block">
+            Here are just a few projects I've built.
+          </h2>
+          <div class="w-24 h-1 bg-gray-300 dark:bg-gray-700 mx-auto mt-4"></div>
+        </div>
         <div class="space-y-12 sm:space-y-24">
           {
             projects.map((project) => (
@@ -103,7 +107,9 @@ const laptop = "/images/me-mountains-sunglasses.png";
         </div>
       </div>
     </section>
+  </div>
 
+  <div class="horizontal-gradient-wrapper-3">
     <section
       class="call-to-action py-16 sm:py-24 transition-colors duration-300"
     >
@@ -175,15 +181,32 @@ const laptop = "/images/me-mountains-sunglasses.png";
     margin-top: 2rem;
   }
 
-  .horizontal-gradient-wrapper {
+  .horizontal-gradient-wrapper-1 {
+    background: linear-gradient(to top, #ffffff, #b5c3d9);
+  }
+
+  .horizontal-gradient-wrapper-2 {
     background: linear-gradient(to bottom, #ffffff, #d0d9e7, #ffffff);
     min-height: 100vh;
-    padding: 2rem 0;
+  }
+
+  .horizontal-gradient-wrapper-3 {
+    background: linear-gradient(to bottom, #ffffff, #b5c3d9);
   }
 
   /* Dark mode gradient */
-  :global(.dark) .horizontal-gradient-wrapper {
-    background: linear-gradient(to right, #1f2937, #3b536a);
+
+  :global(.dark) .horizontal-gradient-wrapper-1 {
+    background: linear-gradient(to top, #1f2937, #3b536a);
+  }
+
+  :global(.dark) .horizontal-gradient-wrapper-2 {
+    background: linear-gradient(to bottom, #1f2937, #4d6c8a, #1f2937);
+  }
+
+  /* Dark mode gradient */
+  :global(.dark) .horizontal-gradient-wrapper-3 {
+    background: linear-gradient(to bottom, #1f2937, #3b536a);
   }
 </style>
 
