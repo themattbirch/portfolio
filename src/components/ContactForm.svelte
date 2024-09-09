@@ -30,7 +30,7 @@
     ></textarea>
   </div>
   <div class="flex justify-end">
-    <button type="submit" class="form-button">Send</button>
+    <button type="submit" class="form-button font-bold">Send</button>
   </div>
 </form>
 
@@ -47,7 +47,7 @@
 
   .form-label {
     display: block;
-    color: #111827;
+    color: #2d3748;
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 24px;
@@ -56,7 +56,7 @@
   .form-textarea {
     width: 100%;
     border: 2px solid #4a5568;
-    background-color: #2d3748;
+    background-color: #0f172a;
     color: #e2e8f0;
     border-radius: 0.5rem;
     font-size: 1.125rem;
@@ -67,31 +67,54 @@
     outline: none;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
+/* Light Mode Focus State */
+.form-textarea:focus {
+  background-color: #e2e8f0; /* Light background on focus */
+  border-color: #63b3ed;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6);
+  color: #1a202c;
+}
 
-  .form-textarea:focus {
-    border-color: #63b3ed;
-    background-color: #2c5282;
-    color: #f1f5f9;
-  }
+/* Placeholder Disappears in Light Mode on Focus */
+.form-textarea:focus::placeholder {
+  color: transparent;
+}
+
+/* Dark Mode Default State */
+:global(.dark) .form-textarea {
+  background-color: #2d3748; /* Lightened dark mode background */
+  color: #f7fafc;
+  border-color: #4a5568;
+}
+
+/* Dark Mode Focus State */
+:global(.dark) .form-textarea:focus {
+  background-color: #374151; /* Lighter background for better contrast */
+  color: #f7fafc;
+  border-color: #63b3ed;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6); /* Focus shadow */
+}
+
+/* Placeholder Disappears in Dark Mode on Focus */
+:global(.dark) .form-textarea:focus::placeholder {
+  color: transparent;
+}
 
   .form-textarea::placeholder {
     color: #e4e4e7;
   }
 
   .form-button {
-    background-color: #2563eb;
-    color: #e2e8f0;
-    font-size: 1.125rem;
-    font-weight: 600;
-    padding: 0.5rem 1.5rem;
-    border-radius: 0.5rem;
+    background-color: #1e3a8a;
+    color: #fafafa;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
     transition: background-color 0.3s ease;
-    outline: none;
     cursor: pointer;
   }
 
   .form-button:hover {
-    background-color: #3182ce;
+    background-color: #14295d;
   }
 
   /* Dark mode adjustments */
@@ -99,20 +122,9 @@
     color: #f7fafc;
   }
 
-  :global(.dark) .form-textarea {
-    background-color: #1a202c;
-    border-color: #4a5568;
-    color: #f7fafc;
-  }
-
-  :global(.dark) .form-textarea:focus {
-    border-color: #63b3ed;
-    background-color: #2c5282;
-  }
-
   :global(.dark) .form-button {
     background-color: #63b3ed;
-    color: #1a202c;
+    color: #fafafa;
   }
 
   :global(.dark) .form-button:hover {
