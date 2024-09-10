@@ -50,11 +50,9 @@ const pageDescription = "The technical skills I possess.";
           {pageTitle}
         </h1>
         <p class="text-lg">
-          <p class="text-lg">
-            Understanding and refining these soft skills is crucial for
-            professional growth, fostering strong team dynamics, and ensuring
-            project success.
-          </p>
+          Understanding and refining these soft skills is crucial for
+          professional growth, fostering strong team dynamics, and ensuring
+          project success.
         </p>
       </div>
     </section>
@@ -65,7 +63,7 @@ const pageDescription = "The technical skills I possess.";
     <section class="py-6 sm:py-12 fade-in">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="h2-text heading-text font-bold text-center mb-8 sm:mb-16">
-          A few technical skills...
+          Knowledge Of...
         </h2>
         <SkillsComponent skills={skillsPart1} />
       </div>
@@ -75,9 +73,22 @@ const pageDescription = "The technical skills I possess.";
     <section class="py-6 sm:py-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="h2-text heading-text font-bold text-center mb-8 sm:mb-16">
-          A few more...
+          More skills I possess
         </h2>
         <SkillsComponent skills={skillsPart2} />
+      </div>
+    </section>
+
+    <section class="text-center mx-auto py-16 sm:py-24 dark:text-white">
+      <div class="max-w-screen mx-auto">
+        <h2 class="h2-text heading-text text-center mb-8 md:mb-12">
+          Also familiar with...
+        </h2>
+        <p class="text-lg">
+          Understanding and refining these soft skills is crucial for
+          professional growth, fostering strong team dynamics, and ensuring
+          project success.
+        </p>
       </div>
     </section>
   </div>
@@ -91,22 +102,13 @@ const pageDescription = "The technical skills I possess.";
       background: linear-gradient(to bottom, #ffffff, #dde4ee);
     }
 
-    .horizontal-gradient-wrapper-3 {
-      background: linear-gradient(to bottom, #dde4ee, #ffffff);
-    }
-
     /* Dark mode gradient */
     :global(.dark) .horizontal-gradient-wrapper-1 {
-      background: linear-gradient(to bottom, #1f2937, #3b536a);
+      background: linear-gradient(to bottom, #1f2937, #374d62);
     }
 
     :global(.dark) .horizontal-gradient-wrapper-2 {
-      background: linear-gradient(to bottom, #3b536a, #1f2937);
-    }
-
-    /* Dark mode gradient */
-    :global(.dark) .horizontal-gradient-wrapper-3 {
-      background: linear-gradient(to bottom, #1f2937, #3b536a);
+      background: linear-gradient(to bottom, #374d62, #1f2937);
     }
   </style>
 

@@ -15,23 +15,37 @@ const blogDescription =
 ---
 
 <Layout title={pageTitle} description={blogDescription}>
-  <Main>
-    <div class="max-w-screen-xl mx-auto">
-      <!-- Added container for content alignment -->
-      <header class="text-center mb-12">
-        <h1 class="h1-text heading-text text-center mb-8 md:mb-12">
-          {pageTitle}
-        </h1>
-        <p class="dark:text-darkModeText text-xl mb-12">
-          {blogDescription}
-        </p>
-      </header>
-      <CategoryList categories={categories} title="Tags" />
-      <PostList posts={posts} />
-      <div class="mt-12 flex justify-end">
-        <!-- Added flex container for pagination -->
-        <Pagination nextURL="/blog/2" />
+  <div class="horizontal-gradient-wrapper">
+    <Main>
+      <div class="max-w-screen-xl mx-auto">
+        <!-- Added container for content alignment -->
+        <header class="text-center mb-12">
+          <h1 class="h1-text heading-text text-center mb-8 md:mb-12">
+            {pageTitle}
+          </h1>
+          <p class="dark:text-darkModeText text-xl mb-12">
+            {blogDescription}
+          </p>
+        </header>
+        <CategoryList categories={categories} title="Tags" />
+        <PostList posts={posts} />
+        <div class="mt-12 flex justify-end">
+          <!-- Added flex container for pagination -->
+          <Pagination nextURL="/blog/2" />
+        </div>
       </div>
-    </div>
-  </Main>
+    </Main>
+  </div>
 </Layout>
+
+<style>
+  .horizontal-gradient-wrapper {
+    background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
+    min-height: 100vh;
+  }
+
+  /* Dark mode gradient */
+  :global(.dark) .horizontal-gradient-wrapper {
+    background: linear-gradient(to bottom, #1f2937, #45617c, #1f2937);
+  }
+</style>
