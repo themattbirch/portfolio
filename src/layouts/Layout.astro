@@ -82,25 +82,49 @@ const canonicalURL = Astro.url.href;
 
     <!-- JSON-LD -->
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "url": "{Astro.url.href}",
-        "name": "{title}",
-        "description": "{description}",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Matt Birch"
-        },
-        "image": {
-          "@type": "ImageObject",
-          "url": "{new URL(ogImage, Astro.url)}",
-          "width": 1200,
-          "height": 630
-        }
+   <script define:vars={{ url: Astro.url.href, title, description, ogImage }} type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": url,
+    "name": title,
+    "description": description,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Matt Birch"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": new URL(ogImage, url).toString(),
+      "width": 1200,
+      "height": 630
+    }
+  }
+</script>
+
+
+  <script type="module">
+    // This script sets the initial theme based on localStorage or user preference
+    function getInitialTheme() {
+      if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+        return localStorage.getItem("theme") || "light";
       }
-    </script>
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+      }
+      return "light";
+    }
+
+    const theme = getInitialTheme();
+
+    if (theme === "light") {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
+
+    window.localStorage.setItem("theme", theme);
+  </script>
 
     <ViewTransitions />
     <script>
