@@ -77,9 +77,6 @@ const canonicalURL = Astro.url.href;
 
     <slot name="head" />
 
-    <!-- Link to external theme toggle script -->
-    <script src="/scripts/theme-toggle.js" defer></script>
-
     <!-- JSON-LD -->
 
    <script define:vars={{ url: Astro.url.href, title, description, ogImage }} type="application/ld+json">
@@ -101,64 +98,55 @@ const canonicalURL = Astro.url.href;
     }
   }
 </script>
-
-
-  <script type="module">
-    // This script sets the initial theme based on localStorage or user preference
+<!-- Prevent flash of incorrect theme -->
+   <script is:inline>
+  (function() {
     function getInitialTheme() {
-      if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-        return localStorage.getItem("theme") || "light";
+      let theme;
+      try {
+        theme = localStorage.getItem('theme');
+      } catch (err) {
+        console.error('Error accessing localStorage:', err);
       }
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return "dark";
+      
+      if (theme === 'dark' || theme === 'light') {
+        return theme;
       }
-      return "light";
+      
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      
+      return 'light'; // Default fallback
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+      document.documentElement.style.colorScheme = theme;
     }
 
     const theme = getInitialTheme();
+    applyTheme(theme);
 
-    if (theme === "light") {
-      document.documentElement.classList.remove("dark");
-    } else {
-      document.documentElement.classList.add("dark");
-    }
-
-    window.localStorage.setItem("theme", theme);
-  </script>
-
-    <ViewTransitions />
-    <script>
-      // This script handles theme changes globally
-      function handleThemeChange() {
-        const isDark = document.documentElement.classList.contains("dark");
-        document.documentElement.style.setProperty(
-          "--bg-image",
-          `var(--${isDark ? "darkBackground" : "lightBackground"})`
-        );
+    // Allow external control for theme updates
+    window.updateTheme = function(newTheme) {
+      applyTheme(newTheme);
+      try {
+        localStorage.setItem('theme', newTheme);
+      } catch (err) {
+        console.error('Error setting localStorage:', err);
       }
+    };
 
-      // Initial theme setup
-      handleThemeChange();
-
-      // Watch for theme changes
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (
-            mutation.type === "attributes" &&
-            mutation.attributeName === "class"
-          ) {
-            handleThemeChange();
-          }
-        });
+    // Listen for system preference changes if localStorage is not set
+    if (!localStorage.getItem('theme') && window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function(e) {
+        window.updateTheme(e.matches ? 'dark' : 'light');
       });
-
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["class"],
-      });
-
-      document.addEventListener("astro:after-swap", handleThemeChange);
-    </script>
+    }
+  })();
+</script>
+   <ViewTransitions />
   </head>
   <body>
     <Header />
@@ -166,30 +154,15 @@ const canonicalURL = Astro.url.href;
       <slot />
     </main>
     <Footer />
+
+     
     <script>
-      // This script sets the initial theme based on localStorage or user preference
-      function getInitialTheme(): string {
-        if (
-          typeof localStorage !== "undefined" &&
-          localStorage.getItem("theme")
-        ) {
-          return localStorage.getItem("theme") || "light";
+      document.addEventListener('astro:after-swap', () => {
+        const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        if (typeof window.updateTheme === 'function') {
+          window.updateTheme(theme);
         }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
-        }
-        return "light";
-      }
-
-      const theme = getInitialTheme();
-
-      if (theme === "light") {
-        document.documentElement.classList.remove("dark");
-      } else {
-        document.documentElement.classList.add("dark");
-      }
-
-      window.localStorage.setItem("theme", theme);
+      });
     </script>
   </body>
 </html>

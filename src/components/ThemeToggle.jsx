@@ -1,14 +1,12 @@
 import React, { useEffect, useState, useCallback } from "react";
 
 const ThemeToggle = () => {
-  const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState("light"); // Default to light theme
-
-  useEffect(() => {
-    setMounted(true);
-    const storedTheme = localStorage.getItem("theme") || "light";
-    setTheme(storedTheme);
-  }, []);
+  const [theme, setTheme] = useState(() => {
+    if (typeof localStorage !== "undefined") {
+      return localStorage.getItem("theme") || "light";
+    }
+    return "light";
+  });
 
   const applyTheme = useCallback((newTheme) => {
     document.documentElement.classList.toggle("dark", newTheme === "dark");
@@ -22,10 +20,8 @@ const ThemeToggle = () => {
   }, []);
 
   useEffect(() => {
-    if (mounted) {
-      applyTheme(theme);
-    }
-  }, [theme, applyTheme, mounted]);
+    applyTheme(theme);
+  }, [theme, applyTheme]);
 
   const toggleTheme = useCallback(() => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
@@ -68,24 +64,14 @@ const ThemeToggle = () => {
     </svg>
   );
 
-  // Render a placeholder or the correct icon based on mounted state
-  const iconToRender = !mounted ? (
-    <span className="h-6 w-6 block" /> // Placeholder
-  ) : theme === "light" ? (
-    <LightModeIcon />
-  ) : (
-    <DarkModeIcon />
-  );
-
   return (
     <button
       onClick={toggleTheme}
       className="theme-toggle bg-transparent border-none cursor-pointer p-2 transition-colors duration-300"
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
-      {iconToRender}
+      {theme === 'light' ? <LightModeIcon /> : <DarkModeIcon />}
     </button>
   );
-};
-
+}
 export default ThemeToggle;
