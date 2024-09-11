@@ -108,24 +108,27 @@ const meHeroImg = "/images/matt-hero-image.png";
 
 
 <!-- Unique Sales Proposition Area -->
-  <section class="py-24 max-w-screen-2xl mx-auto px-4 sm:px-6 maxlength=4">
-    <h2 class="h2-text mb-6">
-      ...They Know Why I'm Different Than Other Web Developers
-    </h2>
-    <div class="why-different">
-    <p class="text-lg mb-4">
-      As a front-end web developer, I bring a unique blend of technical
-      expertise and creative problem-solving to every project. Here's what
-      differentiates me:
-    </p>
-    <ul class="list-disc list-inside space-y-2">
-      <li>Mastery of modern web technologies and frameworks</li>
-      <li>User-centric design approach for intuitive interfaces</li>
-      <li>Strong focus on performance optimization and accessibility</li>
-      <li>Collaborative mindset and excellent communication skills</li>
-    </ul>
+<section class="py-24 max-w-screen-2xl mx-auto px-4 sm:px-6">
+  <h2 class="h2-text mb-6">
+    ...They Know Why I'm Different Than Other Web Developers
+  </h2>
+  <div class="px-4 sm:px-6 max-w-3xl"> <!-- Reduced max-width for content -->
+    <!-- Flexbox container for the two columns -->
+    <div class="flex justify-between space-x-4"> <!-- Reduced space between the two columns -->
+      <!-- Left column: 2 list items -->
+      <ul class="list-disc space-y-4 w-1/2">
+        <li>Mastery of modern web technologies and frameworks</li>
+        <li>User-centric design approach for intuitive interfaces</li>
+      </ul>
+
+      <!-- Right column: 2 list items -->
+      <ul class="list-disc space-y-4 w-1/2">
+        <li>Strong focus on performance optimization and accessibility</li>
+        <li>Collaborative mindset and excellent communication skills</li>
+      </ul>
     </div>
-    </section>
+  </div>
+</section>
 
     <!-- Skills Section Wrapper with Background Color -->
   <section class="bg-[#e6ebf2] dark:bg-gray-900 py-12 sm:py-16">
@@ -197,12 +200,13 @@ const meHeroImg = "/images/matt-hero-image.png";
   }
 
 .why-different  {
-    width: 70ch;
+    width: 270ch;
     overflow: hidden;
     white-space: wrap;
         text-overflow: ellipsis;
 
 }
+
  .icon-checkmark {
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
