@@ -1,7 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import CategoryList from "../../components/CategoryList.astro";
-import Main from "../../components/Main.astro";
 import Pagination from "../../components/Pagination.astro";
 import PostList from "../../components/PostList.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -41,7 +40,9 @@ const pageDescription =
 ---
 
 <Layout title={`${pageTitle} - ${category} Posts`}>
-  <Main>
+  <section
+    class="max-w-screen-2xl mx-auto py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8"
+  >
     <div class="max-w-screen-xl mx-auto">
       <a href="/blog" class="text-zinc-500 text-2xl mb-16 underline block">
         ←Back to all blogs
@@ -61,5 +62,5 @@ const pageDescription =
         <Pagination nextURL="/blog/2" />
       </div>
     </div>
-  </Main>
+  </section>
 </Layout>

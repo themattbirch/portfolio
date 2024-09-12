@@ -17,7 +17,7 @@
 >
   <div class="form-group">
     <label for="comment" class="form-label text-center">
-      Drop me a line. Any questions or feedback are welcomed!
+      Drop me a line. Any questions or feedback are welcome!
     </label>
     <textarea
       rows="5"
@@ -67,38 +67,38 @@
     outline: none;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
-/* Light Mode Focus State */
-.form-textarea:focus {
-  background-color: #e2e8f0; /* Light background on focus */
-  border-color: #63b3ed;
-  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6);
-  color: #1a202c;
-}
+  /* Light Mode Focus State */
+  .form-textarea:focus {
+    background-color: #e2e8f0; /* Light background on focus */
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6);
+    color: #1a202c;
+  }
 
-/* Placeholder Disappears in Light Mode on Focus */
-.form-textarea:focus::placeholder {
-  color: transparent;
-}
+  /* Placeholder Disappears in Light Mode on Focus */
+  .form-textarea:focus::placeholder {
+    color: transparent;
+  }
 
-/* Dark Mode Default State */
-:global(.dark) .form-textarea {
-  background-color: #2d3748; /* Lightened dark mode background */
-  color: #f7fafc;
-  border-color: #4a5568;
-}
+  /* Dark Mode Default State */
+  :global(.dark) .form-textarea {
+    background-color: #2d3748; /* Lightened dark mode background */
+    color: #f7fafc;
+    border-color: #4a5568;
+  }
 
-/* Dark Mode Focus State */
-:global(.dark) .form-textarea:focus {
-  background-color: #374151; /* Lighter background for better contrast */
-  color: #f7fafc;
-  border-color: #63b3ed;
-  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6); /* Focus shadow */
-}
+  /* Dark Mode Focus State */
+  :global(.dark) .form-textarea:focus {
+    background-color: #374151; /* Lighter background for better contrast */
+    color: #f7fafc;
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6); /* Focus shadow */
+  }
 
-/* Placeholder Disappears in Dark Mode on Focus */
-:global(.dark) .form-textarea:focus::placeholder {
-  color: transparent;
-}
+  /* Placeholder Disappears in Dark Mode on Focus */
+  :global(.dark) .form-textarea:focus::placeholder {
+    color: transparent;
+  }
 
   .form-textarea::placeholder {
     color: #e4e4e7;

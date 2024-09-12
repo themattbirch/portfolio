@@ -2,7 +2,6 @@
 import type { GetStaticPathsOptions, Page } from "astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import Main from "../../components/Main.astro";
 import PostList from "../../components/PostList.astro";
 import Pagination from "../../components/Pagination.astro";
 import CategoryList from "../../components/CategoryList.astro";
@@ -26,7 +25,9 @@ const blogDescription =
 ---
 
 <Layout title={pageTitle} description={blogDescription}>
-  <Main>
+  <section
+    class="max-w-screen-2xl mx-auto py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8"
+  >
     <div class="max-w-screen-xl mx-auto">
       <header class="text-center mb-12">
         <h1 class="h1-text heading-text text-center mb-8 md:mb-12">
@@ -45,5 +46,5 @@ const blogDescription =
         <Pagination prevURL={page.url.prev} nextURL={page.url.next} />
       </div>
     </div>
-  </Main>
+  </section>
 </Layout>

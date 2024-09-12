@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import Main from "../../components/Main.astro";
 import TableOfContents from "../../components/TableOfContents.astro";
 import Share from "../../components/Share.astro";
 import { Image } from "astro:assets";
@@ -29,7 +28,9 @@ const { Content, headings } = await post.render();
   ogImage={post.data.image.src}
   image={post.data.image}
 >
-  <Main>
+  <section
+    class="max-w-screen-2xl mx-auto py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8"
+  >
     <div class="max-w-screen-xl mx-auto">
       <article>
         <nav>
@@ -63,5 +64,5 @@ const { Content, headings } = await post.render();
         </div>
       </article>
     </div>
-  </Main>
+  </section>
 </Layout>

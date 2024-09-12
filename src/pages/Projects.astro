@@ -65,7 +65,7 @@ const pageDescription = "All about my portfolio of work.";
 <Layout title={pageTitle} description={pageDescription}>
   <div class="horizontal-gradient-wrapper-1">
     <section
-      class="text-center mx-auto py-16 sm:py-24 transition-colors duration-300"
+      class="text-center mx-auto py-16 sm:py-24 md:py-32 px-8 sm:px-10 md:px-12"
     >
       <div class="max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="h1-text heading-text text-center mb-8 md:mb-12 fade-in">
@@ -81,17 +81,15 @@ const pageDescription = "All about my portfolio of work.";
   </div>
 
   <div class="horizontal-gradient-wrapper-2">
-    <section
-      class="projects-section pb-16 sm:pb-24 transition-colors duration-300"
-    >
+    <section class="projects-section">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
-        <div class="text-center mb-12 md:mb-24">
+        <div class="text-center mb-16 sm:mb-24 md:mb-32">
           <h2 class="h2-text heading-text inline-block">
             Here are just a few projects I've built.
           </h2>
           <div class="w-24 h-1 bg-gray-300 dark:bg-gray-700 mx-auto mt-4"></div>
         </div>
-        <div class="space-y-12 sm:space-y-24">
+        <div class="space-y-16 md:space-y-24">
           {
             projects.map((project) => (
               <ProjectCard
@@ -110,9 +108,7 @@ const pageDescription = "All about my portfolio of work.";
   </div>
 
   <div class="horizontal-gradient-wrapper-3">
-    <section
-      class="call-to-action py-16 sm:py-24 transition-colors duration-300"
-    >
+    <section class="call-to-action py-16 sm:py-24 md:py-32">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2
           class="h2-text heading-text text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6"

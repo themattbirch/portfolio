@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import PostList from "../components/PostList.astro";
-import Main from "../components/Main.astro";
 import CategoryList from "../components/CategoryList.astro";
 import Pagination from "@/components/Pagination.astro";
 
@@ -16,7 +15,9 @@ const blogDescription =
 
 <Layout title={pageTitle} description={blogDescription}>
   <div class="horizontal-gradient-wrapper">
-    <Main>
+    <section
+      class="max-w-screen-2xl mx-auto py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8"
+    >
       <div class="max-w-screen-xl mx-auto">
         <!-- Added container for content alignment -->
         <header class="text-center mb-12">
@@ -34,7 +35,7 @@ const blogDescription =
           <Pagination nextURL="/blog/2" />
         </div>
       </div>
-    </Main>
+    </section>
   </div>
 </Layout>
 
