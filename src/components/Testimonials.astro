@@ -12,18 +12,32 @@ interface Props {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Jane Doe",
-    business: "Doe Innovations",
+    name: "Dr. Jay Cho",
+    business: "Active Care",
     quote:
-      "Truly exceptional service and project outcomes that exceeded our expectations.",
-    photoUrl: "/images/headshot-tan-tee-2.jpg",
+      "Matt made a new website for my business and it was the best choice I made so far, because it looks great. Very reasonable and a very professional business. And made it all in time even an with urgent request",
+    photoUrl: "/images/cho-headshot.png",
   },
   {
-    name: "John Smith",
-    business: "Smith Consulting",
+    name: "Chris Gordon",
+    business: "CGN",
     quote:
-      "A professional approach and great results. Highly recommended web developer.",
-    photoUrl: "/images/headshot-tan-tee-2.jpg",
+      "Excellent work! I have a terrific new website that is everything I wanted. I was guided through the whole process in a collaborative process. Matt Birch was patient and professional. My highest recommendation!",
+    photoUrl: "/images/cg-headshot.jpg",
+  },
+  {
+    name: "Bridget Costello",
+    business: "Lynch's Landing",
+    quote:
+      "I can't say enough about how swift and professional our experience with this company has been. Matt created a beautiful new website for our business. We are very happy with his work.",
+    photoUrl: "/images/bc-headshot.jpg",
+  },
+  {
+    name: "Ann Gorman",
+    business: "Blacktop Ohio",
+    quote:
+      "Matt was great to work with, I love the website he built for me, I have already recommended Optimize Web Solutions to a few of my family members who are business owners.",
+    photoUrl: "/images/ag-headshot.jpg",
   },
 ];
 ---
@@ -36,7 +50,7 @@ const testimonials: Testimonial[] = [
       testimonials && testimonials.length > 0 ? (
         testimonials.map((testimonial) => (
           <div class="swiper-slide">
-            <div class="testimonial-card rounded-full p-6 shadow-lg text-white relative overflow-hidden max-w-xs md:max-w-sm lg:max-w-md mx-auto">
+            <div class="testimonial-card rounded-full p-6 shadow-lg text-white relative overflow-hidden max-w-xs md:max-w-md lg:max-w-lg mx-auto">
               <div class="testimonial-photo-wrapper">
                 <img
                   src={testimonial.photoUrl}
@@ -50,7 +64,9 @@ const testimonials: Testimonial[] = [
                 <p class="text-sm text-gray-500 dark:text-gray-400">
                   {testimonial.business}
                 </p>
-                <p class="text-gray-600 italic mt-4">"{testimonial.quote}"</p>
+                <p class="text-gray-600 dark:text-gray-200 italic mt-4">
+                  "{testimonial.quote}"
+                </p>
               </div>
             </div>
           </div>

@@ -105,7 +105,7 @@
   }
 
   .form-button {
-    background-color: #1e3a8a;
+    background-color: #1e40af;
     color: #fafafa;
     padding: 0.75rem 1.5rem;
     border-radius: 0.375rem;
@@ -114,7 +114,7 @@
   }
 
   .form-button:hover {
-    background-color: #14295d;
+    background-color: #1e3a8a;
   }
 
   /* Dark mode adjustments */
