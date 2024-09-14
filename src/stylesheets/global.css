@@ -89,10 +89,23 @@ background: var(--testimonial-bg-light);
         transition: box-shadow 0.3s ease;
     }
 
+
 .testimonial-card:hover {
 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2),
         0 6px 12px rgba(66, 153, 225, 0.3);
     /* More prominent blue glow */}
+
+        .testimonial-card p {
+            margin-bottom: 1rem;
+            /* Add space below the name and business fields */
+            line-height: 1.5;
+            /* Improve readability */
+        }
+    
+        .testimonial-card p:last-of-type {
+            margin-bottom: 2rem;
+            /* Add more space for the description on the bottom */
+        }
 
 .dark .testimonial-card {
     background: var(--testimonial-bg-dark);
@@ -145,6 +158,7 @@ box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2),
         /* More pronounced shadow on hover */
         0 6px 10px -2px rgba(0, 0, 0, 0.3);
 }
+
 
 /*Media quieries for padding */
 
@@ -429,7 +443,6 @@ h6 {
     animation: subtle-pulse 2s infinite;
 }
 
-/* Hero section transition gradient */
 
 .hero-gradient-overlay {
     position: absolute;
@@ -452,9 +465,50 @@ h6 {
             rgba(17, 24, 39, 0.8) 100%
             /* Subtle darkening */
         );
-     transition: background 0.5s ease;
-        filter: none;
+    transition: background 0.5s ease;
+    filter: none;
 }
+
+.hero-dim-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: opacity 0.3s ease;
+    display: none;
+}
+
+ @media (max-width: 1024px) {
+
+     /* Styles that apply ONLY in light mode */
+     :root:not(.dark) .hero-title span.gradient-text {
+         color: #1e40af;
+         /* Darker blue for light mode */
+         text-shadow:
+             2px 2px 4px rgba(0, 0, 0, 0.3),
+             -2px -2px 4px rgba(0, 0, 0, 0.3);
+         line-height: 1.3;
+     }
+
+     /* Light mode styles for the overlay */
+     :root:not(.dark) .hero-dim-overlay {
+         display: block;
+         background-color: rgba(0, 0, 0, 0.4);
+     }
+
+     .hero-tagline {
+         color: #f0f0f0 !important;
+         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+     }
+
+     .hero-pulse {
+         animation: none !important;
+     }
+ }
+
+ /* Styles specific to dark mode for hero-dim-overlay */
+ .dark .hero-dim-overlay {
+     background-color: transparent;
+ }
 
 
 /* Theme Toggle Icon */

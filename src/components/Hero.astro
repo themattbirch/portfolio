@@ -9,28 +9,30 @@ const darkBackground = "/images/hero-background-dark-theme-toggle.png";
     class="absolute inset-0 z-0 bg-cover bg-center transition-all duration-300"
   >
     <div class="hero-gradient-overlay"></div>
+    <div class="hero-dim-overlay"></div>
   </div>
 
   <div class="relative z-10 w-full">
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-start">
-        <div class="max-w-2xl mt-10 sm:mt-24">
+        <div class="max-w-3xl mt-16 sm:mt-32">
           <h1
-            class="mt-6 font-extrabold tracking-tight text-gray-900 dark:text-white text-5xl sm:text-6xl md:text-7xl lg:text-7xl mb-2 opacity-0 transform translate-y-4 transition-all duration-1000"
+            class="hero-title mt-6 font-extrabold tracking-tight text-5xl md:text-6xl lg:text-7xl mb-2 opacity-0 transform translate-y-4 transition-all duration-1000 sm:max-w-sm md:max-w-md lg:max-w-full"
             id="heroTitle"
           >
             <span
-              class="bg-gradient-to-r from-blue-600 to-blue-400 dark:from-blue-400 dark:to-blue-200 text-transparent bg-clip-text"
-              >A Front-End Web Developer</span
+              class="gradient-text bg-gradient-to-r from-blue-600 to-blue-400 lg:text-transparent text-blue-600 bg-clip-text"
             >
+              A Front-End Web Developer
+            </span>
           </h1>
 
           <p
-            class="mt-6 text-2xl sm:text-3xl md:text-4xl text-gray-700 dark:text-gray-300 sm:mt-8 max-w-xl opacity-0 transform translate-y-4 transition-all duration-1000 delay-500"
+            class="hero-tagline mt-6 text-2xl sm:text-3xl md:text-4xl text-gray-700 dark:text-gray-300 sm:mt-8 max-w-2xl opacity-0 transform translate-y-4 transition-all duration-1000 delay-500"
             id="heroTagline"
           >
-            Who can write code <span
-              class="text-blue-600 dark:text-blue-400 font-bold animate-pulse"
+            Who can write clean code <span
+              class="hero-pulse text-blue-800 lg:text-blue-600 dark:text-blue-400 font-bold animate-pulse"
               >and</span
             > copy!
           </p>
@@ -53,85 +55,106 @@ const darkBackground = "/images/hero-background-dark-theme-toggle.png";
       </div>
     </div>
   </div>
-
-  <script define:vars={{ lightBackground, darkBackground }}>
-    function updateTheme() {
-      const isDarkMode = document.documentElement.classList.contains("dark");
-      const heroBackground = document.getElementById("hero-background");
-
-      if (heroBackground) {
-        const backgroundImage = isDarkMode ? darkBackground : lightBackground;
-        if (
-          heroBackground.style.backgroundImage !== `url(${backgroundImage})`
-        ) {
-          heroBackground.style.backgroundImage = `url(${backgroundImage})`;
-        }
-      }
-    }
-
-    function debounce(func, wait) {
-      let timeout;
-      return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-      };
-    }
-
-    const debouncedUpdateTheme = debounce(updateTheme, 100);
-
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (
-          mutation.type === "attributes" &&
-          mutation.attributeName === "class"
-        ) {
-          debouncedUpdateTheme();
-        }
-      });
-    });
-
-    updateTheme();
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    document.addEventListener("astro:after-swap", updateTheme);
-
-    function animateHeroElements() {
-      const elements = ["heroTitle", "heroTagline", "heroCta"];
-      elements.forEach((id, index) => {
-        setTimeout(() => {
-          const element = document.getElementById(id);
-          if (element) {
-            element.classList.remove("opacity-0", "translate-y-4");
-          }
-        }, index * 500);
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", animateHeroElements);
-    document.addEventListener("astro:page-load", animateHeroElements);
-  </script>
-
-  <style>
-    @media (max-width: 640px) {
-      .relative.h-screen {
-        height: calc(100vh - 4rem);
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
 </div>
+
+<script define:vars={{ lightBackground, darkBackground }}>
+  function updateTheme() {
+    const isDarkMode = document.documentElement.classList.contains("dark");
+    const heroBackground = document.getElementById("hero-background");
+
+    if (heroBackground) {
+      const backgroundImage = isDarkMode ? darkBackground : lightBackground;
+      if (heroBackground.style.backgroundImage !== `url(${backgroundImage})`) {
+        heroBackground.style.backgroundImage = `url(${backgroundImage})`;
+      }
+    }
+  }
+
+  function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
+
+  const debouncedUpdateTheme = debounce(updateTheme, 100);
+
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "class"
+      ) {
+        debouncedUpdateTheme();
+      }
+    });
+  });
+
+  updateTheme();
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+
+  document.addEventListener("astro:after-swap", updateTheme);
+
+  function animateHeroElements() {
+    const elements = ["heroTitle", "heroTagline", "heroCta"];
+    elements.forEach((id, index) => {
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.classList.remove("opacity-0", "translate-y-4");
+        }
+      }, index * 500);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", animateHeroElements);
+  document.addEventListener("astro:page-load", animateHeroElements);
+</script>
+
+<style>
+  /*hero background dim on smaller sizes */
+  @media (min-width: 1280px) {
+    #hero-background {
+      background-position: 100% center;
+      /* Background fully visible on large screens */
+    }
+  }
+
+  @media (max-width: 1024px) {
+    #hero-background {
+      background-position: 90% center;
+      /* Moves the background to the right for medium screens */
+    }
+  }
+
+  @media (max-width: 768px) {
+    #hero-background {
+      background-position: 80% center;
+      /* Shifts the background more to the right for smaller screens */
+    }
+  }
+
+  @media (max-width: 640px) {
+    #hero-background {
+      background-position: 50% center;
+      /* Further shift for very small screens */
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

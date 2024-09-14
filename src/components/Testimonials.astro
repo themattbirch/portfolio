@@ -15,7 +15,7 @@ const testimonials: Testimonial[] = [
     name: "Dr. Jay Cho",
     business: "Active Care",
     quote:
-      "Matt made a new website for my business and it was the best choice I made so far, because it looks great. Very reasonable and a very professional business. And made it all in time even an with urgent request",
+      "Matt made a new website for my business. It was the best choice I've made so far, because it looks great. Very reasonable and very professional. And he made it all in time even with an urgent request.",
     photoUrl: "/images/cho-headshot.png",
   },
   {
@@ -36,7 +36,7 @@ const testimonials: Testimonial[] = [
     name: "Ann Gorman",
     business: "Blacktop Ohio",
     quote:
-      "Matt was great to work with, I love the website he built for me, I have already recommended Optimize Web Solutions to a few of my family members who are business owners.",
+      "Matt was great to work with, I love the website he built for me, I have already recommended him to a few of my family members who are also business owners.",
     photoUrl: "/images/ag-headshot.jpg",
   },
 ];
@@ -107,6 +107,11 @@ const testimonials: Testimonial[] = [
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
+      // Disable dragging for the cards while keeping Swiper interaction
+      allowSlideNext: true,
+      allowSlidePrev: true,
+      noSwiping: true, // Disable swiping on specific elements
+      noSwipingClass: "testimonial-card", // Prevent swiping on testimonial-card
     });
   }
 
