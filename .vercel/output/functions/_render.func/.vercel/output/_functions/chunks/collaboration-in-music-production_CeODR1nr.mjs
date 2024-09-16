@@ -1,5 +1,5 @@
 async function getMod() {
-						return import('./making-a-home-studio_Df5NGQHp.mjs');
+						return import('./collaboration-in-music-production_CFQHEMV3.mjs');
 					}
 					const collectedLinks = [];
 					const collectedStyles = [];

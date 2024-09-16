@@ -1,8 +1,8 @@
 /* empty css                                    */
-import { a as createComponent, r as renderTemplate, d as renderComponent, m as maybeRenderHead } from '../../chunks/astro/server_BdPs8nE1.mjs';
+import { a as createComponent, r as renderTemplate, d as renderComponent, m as maybeRenderHead } from '../../chunks/astro/server_o7j8RNAz.mjs';
 import 'kleur/colors';
-import { $ as $$SkillsComponent } from '../../chunks/SkillsComponent_BmvwgGmq.mjs';
-import { $ as $$Layout } from '../../chunks/Layout_qQrcV-bM.mjs';
+import { $ as $$SkillsComponent } from '../../chunks/SkillsComponent_dG5sXqX8.mjs';
+import { $ as $$Layout } from '../../chunks/Layout_VL9LN_d4.mjs';
 /* empty css                                          */
 export { renderers } from '../../renderers.mjs';
 

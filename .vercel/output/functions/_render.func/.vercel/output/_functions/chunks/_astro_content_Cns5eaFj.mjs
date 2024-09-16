@@ -1,7 +1,7 @@
 import { Traverse } from 'neotraverse/modern';
 import pLimit from 'p-limit';
-import { r as removeBase, i as isRemotePath, V as VALID_INPUT_FORMATS, A as AstroError, U as UnknownContentCollectionError, p as prependForwardSlash } from './astro/assets-service_a7QtJEvQ.mjs';
-import { a as createComponent, f as renderUniqueStylesheet, g as renderScriptElement, h as createHeadAndContent, r as renderTemplate, d as renderComponent, u as unescapeHTML } from './astro/server_BdPs8nE1.mjs';
+import { r as removeBase, i as isRemotePath, V as VALID_INPUT_FORMATS, A as AstroError, U as UnknownContentCollectionError, p as prependForwardSlash } from './astro/assets-service_CvUDTk0q.mjs';
+import { a as createComponent, f as renderUniqueStylesheet, g as renderScriptElement, h as createHeadAndContent, r as renderTemplate, d as renderComponent, u as unescapeHTML } from './astro/server_o7j8RNAz.mjs';
 import 'kleur/colors';
 import * as devalue from 'devalue';
 
@@ -309,7 +309,7 @@ createCollectionToGlobResultMap({
 });
 
 let lookupMap = {};
-lookupMap = {"posts":{"type":"content","entries":{"collaboration-in-music-production":"/src/content/posts/collaboration-in-music-production.md","behind-the-scenes-with-our-artists":"/src/content/posts/behind-the-scenes-with-our-artists.md","creating-a-successful-music-brand":"/src/content/posts/creating-a-successful-music-brand.md","gear-is-insanely-expensive":"/src/content/posts/gear-is-insanely-expensive.md","guitar-solos-are-still-awesome":"/src/content/posts/guitar-solos-are-still-awesome.md","making-a-home-studio":"/src/content/posts/making-a-home-studio.md","live-music-is-crucial":"/src/content/posts/live-music-is-crucial.md","the-art-of-music-production":"/src/content/posts/the-art-of-music-production.md","the-importance-of-audio-quality":"/src/content/posts/the-importance-of-audio-quality.md","tune-your-snare-drum":"/src/content/posts/tune-your-snare-drum.md"}}};
+lookupMap = {"posts":{"type":"content","entries":{"behind-the-scenes-with-our-artists":"/src/content/posts/behind-the-scenes-with-our-artists.md","collaboration-in-music-production":"/src/content/posts/collaboration-in-music-production.md","creating-a-successful-music-brand":"/src/content/posts/creating-a-successful-music-brand.md","gear-is-insanely-expensive":"/src/content/posts/gear-is-insanely-expensive.md","guitar-solos-are-still-awesome":"/src/content/posts/guitar-solos-are-still-awesome.md","making-a-home-studio":"/src/content/posts/making-a-home-studio.md","live-music-is-crucial":"/src/content/posts/live-music-is-crucial.md","the-importance-of-audio-quality":"/src/content/posts/the-importance-of-audio-quality.md","the-art-of-music-production":"/src/content/posts/the-art-of-music-production.md","tune-your-snare-drum":"/src/content/posts/tune-your-snare-drum.md"}}};
 
 new Set(Object.keys(lookupMap));
 
@@ -322,7 +322,7 @@ function createGlobLookup(glob) {
 	};
 }
 
-const renderEntryGlob = /* #__PURE__ */ Object.assign({"/src/content/posts/behind-the-scenes-with-our-artists.md": () => import('./behind-the-scenes-with-our-artists_8CfBkuSp.mjs'),"/src/content/posts/collaboration-in-music-production.md": () => import('./collaboration-in-music-production_O_cpD60-.mjs'),"/src/content/posts/creating-a-successful-music-brand.md": () => import('./creating-a-successful-music-brand_oxrbJfYP.mjs'),"/src/content/posts/gear-is-insanely-expensive.md": () => import('./gear-is-insanely-expensive_DlHLuHJq.mjs'),"/src/content/posts/guitar-solos-are-still-awesome.md": () => import('./guitar-solos-are-still-awesome_vw7VlQzE.mjs'),"/src/content/posts/live-music-is-crucial.md": () => import('./live-music-is-crucial_B_NVKoWE.mjs'),"/src/content/posts/making-a-home-studio.md": () => import('./making-a-home-studio_CRiZR9Qg.mjs'),"/src/content/posts/the-art-of-music-production.md": () => import('./the-art-of-music-production_zUVzJ5L0.mjs'),"/src/content/posts/the-importance-of-audio-quality.md": () => import('./the-importance-of-audio-quality_DcExHU7d.mjs'),"/src/content/posts/tune-your-snare-drum.md": () => import('./tune-your-snare-drum_Bd2b5WkG.mjs')});
+const renderEntryGlob = /* #__PURE__ */ Object.assign({"/src/content/posts/behind-the-scenes-with-our-artists.md": () => import('./behind-the-scenes-with-our-artists_C8x5_xAg.mjs'),"/src/content/posts/collaboration-in-music-production.md": () => import('./collaboration-in-music-production_CeODR1nr.mjs'),"/src/content/posts/creating-a-successful-music-brand.md": () => import('./creating-a-successful-music-brand_D0wbdzlI.mjs'),"/src/content/posts/gear-is-insanely-expensive.md": () => import('./gear-is-insanely-expensive_fwTuyFi9.mjs'),"/src/content/posts/guitar-solos-are-still-awesome.md": () => import('./guitar-solos-are-still-awesome_DKNPqhm8.mjs'),"/src/content/posts/live-music-is-crucial.md": () => import('./live-music-is-crucial_C9FE2TrU.mjs'),"/src/content/posts/making-a-home-studio.md": () => import('./making-a-home-studio_DoZcHwFP.mjs'),"/src/content/posts/the-art-of-music-production.md": () => import('./the-art-of-music-production_B3XmAjD9.mjs'),"/src/content/posts/the-importance-of-audio-quality.md": () => import('./the-importance-of-audio-quality_CBA662BB.mjs'),"/src/content/posts/tune-your-snare-drum.md": () => import('./tune-your-snare-drum_DE7eAsGF.mjs')});
 const collectionToRenderEntryMap = createCollectionToGlobResultMap({
 	globResult: renderEntryGlob,
 	contentDir,

@@ -1,5 +1,5 @@
-import { A as AstroError, h as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, j as ExpectedImageOptions, k as ExpectedImage, l as ExpectedNotESMImage, m as resolveSrc, n as isRemoteImage, o as isESMImportedImage, q as isLocalService, D as DEFAULT_HASH_PROPS, s as InvalidImageService, t as ImageMissingAlt } from './astro/assets-service_a7QtJEvQ.mjs';
-import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, s as spreadAttributes } from './astro/server_BdPs8nE1.mjs';
+import { A as AstroError, g as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, h as ExpectedImageOptions, j as ExpectedImage, k as ExpectedNotESMImage, l as resolveSrc, m as isRemoteImage, n as isESMImportedImage, o as isLocalService, D as DEFAULT_HASH_PROPS, q as InvalidImageService, s as ImageMissingAlt } from './astro/assets-service_CvUDTk0q.mjs';
+import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, s as spreadAttributes } from './astro/server_o7j8RNAz.mjs';
 import * as mime from 'mrmime';
 import 'clsx';
 
@@ -841,8 +841,8 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './build-service_ojdJLjLV.mjs'
-    ).catch((e) => {
+      './astro/assets-service_CvUDTk0q.mjs'
+    ).then(n => n.a0).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
       throw error;
@@ -1009,7 +1009,7 @@ const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
   })} <img${addAttribute(fallbackImage.src, "src")}${spreadAttributes(imgAdditionalAttributes)}${spreadAttributes(fallbackImage.attributes)}> </picture>`;
 }, "/Users/mattb/Desktop/Projects/Files/portfolio/node_modules/astro/components/Picture.astro", void 0);
 
-const imageConfig = {"service":{"entrypoint":"@astrojs/vercel/build-image-service","config":{"sizes":[640,750,828,1080,1200,1920,2048,3840],"domains":[],"remotePatterns":[]}},"domains":[],"remotePatterns":[]};
+const imageConfig = {"service":{"entrypoint":"astro/assets/services/sharp","config":{}},"domains":[],"remotePatterns":[]};
 					const getImage = async (options) => await getImage$1(options, imageConfig);
 
 export { $$Image as $, getConfiguredImageService as g, imageConfig as i };

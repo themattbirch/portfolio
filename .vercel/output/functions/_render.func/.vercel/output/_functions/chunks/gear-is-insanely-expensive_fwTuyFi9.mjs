@@ -1,5 +1,5 @@
 async function getMod() {
-						return import('./live-music-is-crucial_BP7xs2LW.mjs');
+						return import('./gear-is-insanely-expensive_DMhY_Ay4.mjs');
 					}
 					const collectedLinks = [];
 					const collectedStyles = [];

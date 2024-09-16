@@ -1,5 +1,5 @@
 async function getMod() {
-						return import('./the-art-of-music-production_CoFicyEG.mjs');
+						return import('./creating-a-successful-music-brand_hwCH9xD5.mjs');
 					}
 					const collectedLinks = [];
 					const collectedStyles = [];

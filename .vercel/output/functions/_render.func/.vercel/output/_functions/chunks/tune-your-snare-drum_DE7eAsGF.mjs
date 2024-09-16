@@ -1,5 +1,5 @@
 async function getMod() {
-						return import('./gear-is-insanely-expensive_sw31Lx0i.mjs');
+						return import('./tune-your-snare-drum_C-D5fR0g.mjs');
 					}
 					const collectedLinks = [];
 					const collectedStyles = [];

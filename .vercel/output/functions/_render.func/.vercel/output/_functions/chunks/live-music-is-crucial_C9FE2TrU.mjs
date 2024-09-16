@@ -1,5 +1,5 @@
 async function getMod() {
-						return import('./behind-the-scenes-with-our-artists_Cm59xC3h.mjs');
+						return import('./live-music-is-crucial_RY8MD_ps.mjs');
 					}
 					const collectedLinks = [];
 					const collectedStyles = [];

@@ -1,5 +1,5 @@
 async function getMod() {
-						return import('./creating-a-successful-music-brand_BlwvmFnQ.mjs');
+						return import('./the-art-of-music-production_DoFx-Ua2.mjs');
 					}
 					const collectedLinks = [];
 					const collectedStyles = [];

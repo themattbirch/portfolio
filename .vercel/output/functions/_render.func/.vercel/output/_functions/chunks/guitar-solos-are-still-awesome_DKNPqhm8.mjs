@@ -1,5 +1,5 @@
 async function getMod() {
-						return import('./tune-your-snare-drum_DkGjQ0t0.mjs');
+						return import('./guitar-solos-are-still-awesome_0dkWtUxi.mjs');
 					}
 					const collectedLinks = [];
 					const collectedStyles = [];

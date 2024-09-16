@@ -1,5 +1,5 @@
 async function getMod() {
-						return import('./guitar-solos-are-still-awesome_B931xLdU.mjs');
+						return import('./behind-the-scenes-with-our-artists_BmECJk2g.mjs');
 					}
 					const collectedLinks = [];
 					const collectedStyles = [];

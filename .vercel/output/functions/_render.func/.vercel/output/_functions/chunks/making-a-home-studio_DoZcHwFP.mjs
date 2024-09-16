@@ -1,5 +1,5 @@
 async function getMod() {
-						return import('./the-importance-of-audio-quality_C_9wn1Sm.mjs');
+						return import('./making-a-home-studio_CZYwRydZ.mjs');
 					}
 					const collectedLinks = [];
 					const collectedStyles = [];
