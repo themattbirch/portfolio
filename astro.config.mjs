@@ -8,9 +8,9 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   integrations: [tailwind(), svelte(), react(), icon()],
   site: "https://mattbirch.co",
-  image: {
-    service: { entrypoint: "astro/assets/services/sharp" },
-  },
+  //image: {
+    //service: { entrypoint: "astro/assets/services/sharp" },
+  // },
   content: {
     fields: [{ name: "slug", type: "string" }],
   },

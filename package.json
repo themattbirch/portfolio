@@ -10,12 +10,10 @@
     "astro": "astro",
     "clean": "rm -rf node_modules .astro dist",
     "vercel-build": "cp -R node_modules/react ./api/node_modules/react && cp -R node_modules/react-dom ./api/node_modules/react-dom && vercel build"
-
   },
-
   "engines": {
-  "node": ">=16.x"
-},
+    "node": ">=16.x"
+  },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "@astrojs/react": "^3.6.1",

@@ -3,7 +3,7 @@ import 'kleur/colors';
 import 'clsx';
 /* empty css                         */
 import { jsx, jsxs } from 'react/jsx-runtime';
-import { useState, useCallback, useEffect as useEffect$1 } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 const $$Astro$5 = createAstro("https://mattbirch.co");
 const $$ViewTransitions = createComponent(($$result, $$props, $$slots) => {
@@ -200,12 +200,7 @@ const $$CloseIcon = createComponent(($$result, $$props, $$slots) => {
 
 const LogTestComponent = () => {
   useEffect(() => {
-    try {
-      const React = require("react");
-      console.log("React loaded successfully:", React.version);
-    } catch (error) {
-      console.error("Error loading React:", error);
-    }
+    console.log("React loaded successfully:", React.version);
   }, []);
   return /* @__PURE__ */ jsx("div", { children: "Check console for logs." });
 };
@@ -227,7 +222,7 @@ const ThemeToggle = () => {
       });
     }
   }, []);
-  useEffect$1(() => {
+  useEffect(() => {
     applyTheme(theme);
   }, [theme, applyTheme]);
   const toggleTheme = useCallback(() => {

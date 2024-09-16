@@ -1,9 +1,9 @@
 /* empty css                                    */
 import { c as createAstro, a as createComponent, r as renderTemplate, d as renderComponent, m as maybeRenderHead } from '../../chunks/astro/server_BdPs8nE1.mjs';
 import 'kleur/colors';
-import { g as getCollection } from '../../chunks/_astro_content_DOyTg295.mjs';
+import { g as getCollection } from '../../chunks/_astro_content_--6x6Q5Z.mjs';
 import { $ as $$CategoryList, a as $$Pagination, b as $$PostList } from '../../chunks/CategoryList_6Iv0Qh67.mjs';
-import { $ as $$Layout } from '../../chunks/Layout_CIcsmlPM.mjs';
+import { $ as $$Layout } from '../../chunks/Layout_qQrcV-bM.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const $$Astro = createAstro("https://mattbirch.co");
