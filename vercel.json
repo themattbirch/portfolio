@@ -1,0 +1,19 @@
+{
+  "build": {
+    "env": {
+      "MY_SECRET": "your-secret-here"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/old-path",
+      "destination": "/new-path"
+    }
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "memory": 512,
+      "maxDuration": 10
+    }
+  }
+}
