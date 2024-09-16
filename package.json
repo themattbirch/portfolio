@@ -10,6 +10,10 @@
     "astro": "astro",
     "clean": "rm -rf node_modules .astro dist"
   },
+
+  "engines": {
+  "node": ">=16.x"
+},
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "@astrojs/react": "^3.6.1",

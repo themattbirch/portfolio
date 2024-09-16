@@ -1,7 +1,7 @@
 /* empty css                                 */
 import { a as createComponent, r as renderTemplate, d as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_BdPs8nE1.mjs';
 import 'kleur/colors';
-import { g as getCollection } from '../chunks/_astro_content_U_3YCS-x.mjs';
+import { g as getCollection } from '../chunks/_astro_content_MaEFqbiu.mjs';
 import { $ as $$Layout } from '../chunks/Layout_phRzp8g5.mjs';
 import { $ as $$CategoryList, b as $$PostList, a as $$Pagination } from '../chunks/CategoryList_6Iv0Qh67.mjs';
 /* empty css                                */
