@@ -3,7 +3,7 @@ import 'kleur/colors';
 import 'clsx';
 /* empty css                         */
 import { jsx, jsxs } from 'react/jsx-runtime';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect as useEffect$1 } from 'react';
 
 const $$Astro$5 = createAstro("https://mattbirch.co");
 const $$ViewTransitions = createComponent(($$result, $$props, $$slots) => {
@@ -198,6 +198,18 @@ const $$CloseIcon = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<span${addAttribute(["astronav-close-icon", className], "class:list")}${spreadAttributes(rest)}> <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </span>`;
 }, "/Users/mattb/Desktop/Projects/Files/portfolio/src/components/CloseIcon.astro", void 0);
 
+const LogTestComponent = () => {
+  useEffect(() => {
+    try {
+      const React = require("react");
+      console.log("React loaded successfully:", React.version);
+    } catch (error) {
+      console.error("Error loading React:", error);
+    }
+  }, []);
+  return /* @__PURE__ */ jsx("div", { children: "Check console for logs." });
+};
+
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(() => {
     if (typeof localStorage !== "undefined") {
@@ -215,7 +227,7 @@ const ThemeToggle = () => {
       });
     }
   }, []);
-  useEffect(() => {
+  useEffect$1(() => {
     applyTheme(theme);
   }, [theme, applyTheme]);
   const toggleTheme = useCallback(() => {
@@ -261,15 +273,18 @@ const ThemeToggle = () => {
       ]
     }
   );
-  return /* @__PURE__ */ jsx(
-    "button",
-    {
-      onClick: toggleTheme,
-      className: "theme-toggle bg-transparent border-none cursor-pointer p-2 transition-colors duration-300",
-      "aria-label": `Switch to ${theme === "light" ? "dark" : "light"} mode`,
-      children: theme === "light" ? /* @__PURE__ */ jsx(LightModeIcon, {}) : /* @__PURE__ */ jsx(DarkModeIcon, {})
-    }
-  );
+  return /* @__PURE__ */ jsxs("div", { children: [
+    /* @__PURE__ */ jsx(
+      "button",
+      {
+        onClick: toggleTheme,
+        className: "theme-toggle bg-transparent border-none cursor-pointer p-2 transition-colors",
+        "aria-label": `Switch to ${theme === "light" ? "dark" : "light"} mode`,
+        children: theme === "light" ? /* @__PURE__ */ jsx(LightModeIcon, {}) : /* @__PURE__ */ jsx(DarkModeIcon, {})
+      }
+    ),
+    /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx(LogTestComponent, {}) })
+  ] });
 };
 
 const $$Astro$1 = createAstro("https://mattbirch.co");

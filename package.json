@@ -8,7 +8,9 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "clean": "rm -rf node_modules .astro dist"
+    "clean": "rm -rf node_modules .astro dist",
+    "vercel-build": "cp -R node_modules/react ./api/node_modules/react && cp -R node_modules/react-dom ./api/node_modules/react-dom && vercel build"
+
   },
 
   "engines": {

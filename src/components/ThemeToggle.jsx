@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
+import LogTestComponent from './LogTestComponent'; 
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(() => {
@@ -65,13 +66,22 @@ const ThemeToggle = () => {
   );
 
   return (
+  <div>
     <button
       onClick={toggleTheme}
-      className="theme-toggle bg-transparent border-none cursor-pointer p-2 transition-colors duration-300"
+      className="theme-toggle bg-transparent border-none cursor-pointer p-2 transition-colors"
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
       {theme === 'light' ? <LightModeIcon /> : <DarkModeIcon />}
     </button>
-  );
+    <div>
+      <LogTestComponent />
+    </div>
+  </div>
+);
 }
+
+
+
 export default ThemeToggle;
+
