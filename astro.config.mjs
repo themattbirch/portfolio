@@ -17,6 +17,4 @@ export default defineConfig({
   build: {
     viewTransitions: true,
   },
-  output: "server",
-  adapter: vercel(),
 });
