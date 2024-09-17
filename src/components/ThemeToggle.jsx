@@ -1,16 +1,12 @@
 import { useEffect, useState, useCallback } from "react";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState(() => {
-    if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("theme") || "light";
-    }
-    return "light";
-  });
+  const [theme, setTheme] = useState(null);
 
   const applyTheme = useCallback((newTheme) => {
     document.documentElement.classList.toggle("dark", newTheme === "dark");
     localStorage.setItem("theme", newTheme);
+    // Reinitialize any other scripts if necessary
     if (window.initializeSkillToggles) {
       requestAnimationFrame(() => {
         console.log("Reinitializing skill toggles after theme change");
@@ -18,14 +14,29 @@ const ThemeToggle = () => {
       });
     }
   }, []);
+useEffect(() => {
+  // Get the theme from localStorage or default to 'light'
+  let savedTheme = "light";
+  if (typeof localStorage !== "undefined") {
+    savedTheme = localStorage.getItem("theme") || "light";
+  }
+  setTheme(savedTheme);
+}, []);
 
   useEffect(() => {
-    applyTheme(theme);
+    if (theme) {
+      applyTheme(theme);
+    }
   }, [theme, applyTheme]);
 
   const toggleTheme = useCallback(() => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   }, []);
+
+  if (theme === null) {
+    // Render nothing or a loading state until the theme is set
+    return null;
+  }
 
   const LightModeIcon = () => (
     <svg
@@ -64,8 +75,9 @@ const ThemeToggle = () => {
     </svg>
   );
 
-   return (
-      <button
+   
+  return (
+    <button
       onClick={toggleTheme}
       className="theme-toggle bg-transparent border-none cursor-pointer p-2 transition-colors"
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
@@ -74,6 +86,5 @@ const ThemeToggle = () => {
     </button>
   );
 };
-
 
 export default ThemeToggle;

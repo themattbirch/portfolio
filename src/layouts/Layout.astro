@@ -14,7 +14,7 @@ export interface Props {
 
 const {
   title = "Matt Birch | Web Developer",
-  description = "Transforming ideas into powerful web experiences. I combine technical expertise with creative problem-solving to deliver websites that not only look great but perform exceptionally.",
+  description = "Transforming ideas into powerful web experiences...",
   ogImage = "/images/default-og-image.jpg",
   fullWidth = false,
 } = Astro.props;
@@ -77,54 +77,22 @@ const canonicalURL = Astro.url.href;
 
     <slot name="head" />
 
- 
-<!-- Prevent flash of incorrect theme -->
-<script is:inline>
+   <!-- Simplified Theme Script -->
+   <script is:inline>
 (function() {
-function getInitialTheme() {
-let theme;
-try {
-theme = localStorage.getItem('theme');
-} catch (err) {
-console.error('Error accessing localStorage:', err);
-}
-
-  if (theme === 'dark' || theme === 'light') {
+  function getInitialTheme() {
+    let theme = 'light'; // Default to 'light'
+    try {
+      theme = localStorage.getItem('theme') || 'light';
+    } catch (err) {
+      console.error('Error accessing localStorage:', err);
+    }
     return theme;
   }
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
-  }
-
-  return 'light'; // Default fallback
-}
-
-function applyTheme(theme) {
+  const theme = getInitialTheme();
   document.documentElement.classList.toggle('dark', theme === 'dark');
   document.documentElement.style.colorScheme = theme;
-}
-
-const theme = getInitialTheme();
-applyTheme(theme);
-
-// Allow external control for theme updates
-window.updateTheme = function(newTheme) {
-  applyTheme(newTheme);
-  try {
-    localStorage.setItem('theme', newTheme);
-  } catch (err) {
-    console.error('Error setting localStorage:', err);
-  }
-};
-
-// Listen for system preference changes if localStorage is not set
-if (!localStorage.getItem('theme') && window.matchMedia) {
-  window.matchMedia('(prefers-color-scheme: dark)').addListener(function(e) {
-    window.updateTheme(e.matches ? 'dark' : 'light');
-  });
-}
-
 })();
 </script>
 
@@ -159,14 +127,6 @@ if (!localStorage.getItem('theme') && window.matchMedia) {
     </main>
     <Footer />
 
-     
-    <script>
-      document.addEventListener('astro:after-swap', () => {
-        const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        if (typeof window.updateTheme === 'function') {
-          window.updateTheme(theme);
-        }
-      });
-    </script>
+    
   </body>
 </html>
