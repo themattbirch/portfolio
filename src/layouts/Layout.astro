@@ -77,60 +77,56 @@ const canonicalURL = Astro.url.href;
 
     <slot name="head" />
 
-
-<script is:inline>
-  (function() {
-    const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-  })();
-</script>
-
+ 
 <!-- Prevent flash of incorrect theme -->
 <script is:inline>
-  (function() {
-    // Fetch stored theme or system preference
-    function getInitialTheme() {
-      let theme = 'light'; // Default fallback theme
-      try {
-        theme = localStorage.getItem('theme');
-      } catch (err) {
-        console.error('Error accessing localStorage:', err);
-      }
+(function() {
+function getInitialTheme() {
+let theme;
+try {
+theme = localStorage.getItem('theme');
+} catch (err) {
+console.error('Error accessing localStorage:', err);
+}
 
-      if (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        theme = 'dark';
-      }
+  if (theme === 'dark' || theme === 'light') {
+    return theme;
+  }
 
-      return theme || 'light'; // Ensure a valid theme is returned
-    }
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  }
 
-    function applyTheme(theme) {
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-      document.documentElement.style.colorScheme = theme;
-    }
+  return 'light'; // Default fallback
+}
 
-    const theme = getInitialTheme();
-    applyTheme(theme);
+function applyTheme(theme) {
+  document.documentElement.classList.toggle('dark', theme === 'dark');
+  document.documentElement.style.colorScheme = theme;
+}
 
-    // Allow external control for theme updates
-    window.updateTheme = function(newTheme) {
-      applyTheme(newTheme);
-      try {
-        localStorage.setItem('theme', newTheme);
-      } catch (err) {
-        console.error('Error setting localStorage:', err);
-      }
-    };
+const theme = getInitialTheme();
+applyTheme(theme);
 
-    // Listen for system preference changes
-    if (!localStorage.getItem('theme') && window.matchMedia) {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-        window.updateTheme(e.matches ? 'dark' : 'light');
-      });
-    }
-  })();
+// Allow external control for theme updates
+window.updateTheme = function(newTheme) {
+  applyTheme(newTheme);
+  try {
+    localStorage.setItem('theme', newTheme);
+  } catch (err) {
+    console.error('Error setting localStorage:', err);
+  }
+};
+
+// Listen for system preference changes if localStorage is not set
+if (!localStorage.getItem('theme') && window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addListener(function(e) {
+    window.updateTheme(e.matches ? 'dark' : 'light');
+  });
+}
+
+})();
 </script>
-
 
     <!-- JSON-LD -->
 
