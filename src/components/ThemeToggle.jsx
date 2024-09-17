@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(() => {
     if (typeof localStorage !== "undefined") {
       return localStorage.getItem("theme") || "light";
     }
-    return "light";
+    return "light"; // Default fallback for SSR
   });
 
   const applyTheme = useCallback((newTheme) => {
@@ -64,7 +64,7 @@ const ThemeToggle = () => {
     </svg>
   );
 
-   return (
+  return (
     <div>
       <button
         onClick={toggleTheme}
@@ -77,7 +77,4 @@ const ThemeToggle = () => {
   );
 };
 
-
-
 export default ThemeToggle;
-

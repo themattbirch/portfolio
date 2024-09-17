@@ -77,34 +77,34 @@ const canonicalURL = Astro.url.href;
 
     <slot name="head" />
 
+
+<script is:inline>
+  (function() {
+    const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+  })();
+</script>
+
 <!-- Prevent flash of incorrect theme -->
 <script is:inline>
   (function() {
+    // Fetch stored theme or system preference
     function getInitialTheme() {
-      // Default to 'light' if localStorage is unavailable
-      let theme = 'light';
-      
-      // Try accessing localStorage
+      let theme = 'light'; // Default fallback theme
       try {
         theme = localStorage.getItem('theme');
       } catch (err) {
-        console.warn('localStorage is not accessible, falling back to system preference.');
-      }
-      
-      // Use system preference if no theme is stored
-      if (!theme || (theme !== 'dark' && theme !== 'light')) {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          theme = 'dark';
-        } else {
-          theme = 'light';
-        }
+        console.error('Error accessing localStorage:', err);
       }
 
-      return theme;
+      if (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        theme = 'dark';
+      }
+
+      return theme || 'light'; // Ensure a valid theme is returned
     }
 
     function applyTheme(theme) {
-      document.documentElement.setAttribute('', theme);
       document.documentElement.classList.toggle('dark', theme === 'dark');
       document.documentElement.style.colorScheme = theme;
     }
@@ -112,17 +112,17 @@ const canonicalURL = Astro.url.href;
     const theme = getInitialTheme();
     applyTheme(theme);
 
-    // Store theme and allow updates after the page has loaded
+    // Allow external control for theme updates
     window.updateTheme = function(newTheme) {
       applyTheme(newTheme);
       try {
         localStorage.setItem('theme', newTheme);
       } catch (err) {
-        console.warn('localStorage is not accessible. Theme change will not persist.');
+        console.error('Error setting localStorage:', err);
       }
     };
 
-    // Listen for system preference changes and update theme dynamically
+    // Listen for system preference changes
     if (!localStorage.getItem('theme') && window.matchMedia) {
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
         window.updateTheme(e.matches ? 'dark' : 'light');
