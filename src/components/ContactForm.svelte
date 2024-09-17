@@ -3,7 +3,12 @@
   import kwesforms from "kwesforms";
 
   onMount(() => {
-    (kwesforms as any).init();
+    if (kwesforms && typeof kwesforms.init === 'function') {
+      console.log("Initializing KwesForms...");
+      kwesforms.init();
+    } else {
+      console.error("KwesForms not available");
+    }
   });
 </script>
 
