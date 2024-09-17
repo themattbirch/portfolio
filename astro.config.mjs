@@ -7,7 +7,7 @@ import icon from "astro-icon";
 export default defineConfig({
   integrations: [tailwind(), svelte(), react(), icon()],
   site: "https://mattbirch.co",
-  
+
   content: {
     fields: [{ name: "slug", type: "string" }],
   },
