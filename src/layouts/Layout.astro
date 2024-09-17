@@ -77,6 +77,61 @@ const canonicalURL = Astro.url.href;
 
     <slot name="head" />
 
+<!-- Prevent flash of incorrect theme -->
+<script is:inline>
+  (function() {
+    function getInitialTheme() {
+      // Default to 'light' if localStorage is unavailable
+      let theme = 'light';
+      
+      // Try accessing localStorage
+      try {
+        theme = localStorage.getItem('theme');
+      } catch (err) {
+        console.warn('localStorage is not accessible, falling back to system preference.');
+      }
+      
+      // Use system preference if no theme is stored
+      if (!theme || (theme !== 'dark' && theme !== 'light')) {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          theme = 'dark';
+        } else {
+          theme = 'light';
+        }
+      }
+
+      return theme;
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+      document.documentElement.style.colorScheme = theme;
+    }
+
+    const theme = getInitialTheme();
+    applyTheme(theme);
+
+    // Store theme and allow updates after the page has loaded
+    window.updateTheme = function(newTheme) {
+      applyTheme(newTheme);
+      try {
+        localStorage.setItem('theme', newTheme);
+      } catch (err) {
+        console.warn('localStorage is not accessible. Theme change will not persist.');
+      }
+    };
+
+    // Listen for system preference changes and update theme dynamically
+    if (!localStorage.getItem('theme') && window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        window.updateTheme(e.matches ? 'dark' : 'light');
+      });
+    }
+  })();
+</script>
+
+
     <!-- JSON-LD -->
 
    <script define:vars={{ url: Astro.url.href, title, description, ogImage }} type="application/ld+json">
@@ -98,54 +153,7 @@ const canonicalURL = Astro.url.href;
     }
   }
 </script>
-<!-- Prevent flash of incorrect theme -->
-   <script is:inline>
-  (function() {
-    function getInitialTheme() {
-      let theme;
-      try {
-        theme = localStorage.getItem('theme');
-      } catch (err) {
-        console.error('Error accessing localStorage:', err);
-      }
-      
-      if (theme === 'dark' || theme === 'light') {
-        return theme;
-      }
-      
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-      
-      return 'light'; // Default fallback
-    }
 
-    function applyTheme(theme) {
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-      document.documentElement.style.colorScheme = theme;
-    }
-
-    const theme = getInitialTheme();
-    applyTheme(theme);
-
-    // Allow external control for theme updates
-    window.updateTheme = function(newTheme) {
-      applyTheme(newTheme);
-      try {
-        localStorage.setItem('theme', newTheme);
-      } catch (err) {
-        console.error('Error setting localStorage:', err);
-      }
-    };
-
-    // Listen for system preference changes if localStorage is not set
-    if (!localStorage.getItem('theme') && window.matchMedia) {
-      window.matchMedia('(prefers-color-scheme: dark)').addListener(function(e) {
-        window.updateTheme(e.matches ? 'dark' : 'light');
-      });
-    }
-  })();
-</script>
    <ViewTransitions />
   </head>
   <body>

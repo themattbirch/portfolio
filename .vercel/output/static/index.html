@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="en" class="min-h-screen"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="/mb-favicon.png" type="image/png"><meta name="generator" content="Astro v4.15.6"><title>Matt Birch | Web Developer</title><meta name="description" content="Transforming ideas into powerful web experiences. I combine technical expertise with creative problem-solving to deliver websites that not only look great but perform exceptionally."><link rel="canonical" href="https://mattbirch.co/"><!-- Preload critical FontAwesome stylesheet --><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.rel='stylesheet'" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript><!-- Preconnect to Google Fonts for faster loading --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><!-- Load Google Fonts asynchronously --><link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" media="print"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://mattbirch.co/"><meta property="og:title" content="Matt Birch | Web Developer"><meta property="og:description" content="Transforming ideas into powerful web experiences. I combine technical expertise with creative problem-solving to deliver websites that not only look great but perform exceptionally."><meta property="og:image" content="https://mattbirch.co/images/default-og-image.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://mattbirch.co/"><meta property="twitter:title" content="Matt Birch | Web Developer"><meta property="twitter:description" content="Transforming ideas into powerful web experiences. I combine technical expertise with creative problem-solving to deliver websites that not only look great but perform exceptionally."><meta property="twitter:image" content="https://mattbirch.co/images/default-og-image.jpg"><!-- JSON-LD --><script type="application/ld+json">(function(){const url = "https://mattbirch.co/";
+const title = "Matt Birch | Web Developer";
+const description = "Transforming ideas into powerful web experiences. I combine technical expertise with creative problem-solving to deliver websites that not only look great but perform exceptionally.";
+const ogImage = "/images/default-og-image.jpg";
+
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": url,
+    "name": title,
+    "description": description,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Matt Birch"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": new URL(ogImage, url).toString(),
+      "width": 1200,
+      "height": 630
+    }
+  }
+})();</script><!-- Prevent flash of incorrect theme --><script>
+  (function() {
+    function getInitialTheme() {
+      let theme;
+      try {
+        theme = localStorage.getItem('theme');
+      } catch (err) {
+        console.error('Error accessing localStorage:', err);
+      }
+      
+      if (theme === 'dark' || theme === 'light') {
+        return theme;
+      }
+      
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      
+      return 'light'; // Default fallback
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+      document.documentElement.style.colorScheme = theme;
+    }
+
+    const theme = getInitialTheme();
+    applyTheme(theme);
+
+    // Allow external control for theme updates
+    window.updateTheme = function(newTheme) {
+      applyTheme(newTheme);
+      try {
+        localStorage.setItem('theme', newTheme);
+      } catch (err) {
+        console.error('Error setting localStorage:', err);
+      }
+    };
+
+    // Listen for system preference changes if localStorage is not set
+    if (!localStorage.getItem('theme') && window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function(e) {
+        window.updateTheme(e.matches ? 'dark' : 'light');
+      });
+    }
+  })();
+</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/hoisted.CadXE96n.css">
+<link rel="stylesheet" href="/_astro/about.D6xBK5ip.css">
+<style>.swiper-container[data-astro-cid-aadlzisc]{width:100%;height:auto;padding:2rem;overflow:hidden}.swiper-button-prev[data-astro-cid-aadlzisc],.swiper-button-next[data-astro-cid-aadlzisc]{color:var(--swiper-navigation-color, var(--testimonial-text))}.swiper-button-prev[data-astro-cid-aadlzisc]{left:2rem}.swiper-button-next[data-astro-cid-aadlzisc]{right:2rem}#hero-background[data-astro-cid-bbe6dxrz]{background-image:url(/_astro/hero-background-light-theme-toggle.B_ZJR_QT.png);transition:background-image .5s ease}@media (max-width: 1024px){:root:not(.dark) #hero-background[data-astro-cid-bbe6dxrz]{background-image:url(/_astro/hero-background-mobile.C8bjnTaN.png);background-position:90% center}}.dark[data-astro-cid-bbe6dxrz] #hero-background[data-astro-cid-bbe6dxrz]{background-image:url(/_astro/hero-background-dark-theme-toggle.CPBmY1DZ.png)}@keyframes fadeInUp{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.swiper-button-prev[data-astro-cid-j7pv25f6],.swiper-button-next[data-astro-cid-j7pv25f6]{color:var(--swiper-navigation-color, var(--testimonial-text))}.swiper-pagination-bullet[data-astro-cid-j7pv25f6]{background:var(--swiper-pagination-color, var(--testimonial-text))}.why-different[data-astro-cid-j7pv25f6]{width:270ch;overflow:hidden;white-space:wrap;text-overflow:ellipsis}.icon-checkmark[data-astro-cid-j7pv25f6]{transition:transform .3s ease-in-out,opacity .3s ease-in-out}li[data-astro-cid-j7pv25f6]:hover .icon-checkmark[data-astro-cid-j7pv25f6]{transform:scale(1.3);opacity:1}li[data-astro-cid-j7pv25f6]:hover span[data-astro-cid-j7pv25f6]{color:#1d4ed8;font-weight:500}
+</style><script type="module" src="/_astro/hoisted.Ccdy_SOm.js"></script></head> <body> <header class="sticky top-0 z-20 transition-all bg-gradient-to-r from-gray-800 to-blue-950 dark:bg-gradient-to-r dark:from-black dark:to-gray-900" data-astro-cid-3ef6ksr2> <div class="py-5" data-astro-cid-3ef6ksr2>  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6"> <div class="flex justify-between items-center h-16"> <!-- Enhanced Logo --> <div class="flex-shrink-0 flex items-center"> <a href="/" class="flex items-center p-2 rounded-lg logo-container"> <span class="text-xl lg:text-2xl font-semibold logo-text"> <span class="bracket">&lt;</span> <span class="name">matt birch</span> <span class="bracket">&gt;</span> </span> </a> </div> <!-- Desktop menu --> <div class="hidden md:block"> <nav> <ul class="flex items-center space-x-2 lg:space-x-4"> <li class="mr-4"> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();;(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z1vTw8t" prefix="r5" component-url="/_astro/ThemeToggle.D6S9RlKQ.js" component-export="default" renderer-url="/_astro/client.CrecIO_h.js" props="{}" ssr="" client="load" opts="{&quot;name&quot;:&quot;ThemeToggle&quot;,&quot;value&quot;:true}" await-children=""><div><button class="theme-toggle bg-transparent border-none cursor-pointer p-2 transition-colors" aria-label="Switch to dark mode"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 theme-toggle-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><!--astro:end--></astro-island> </li> <li class="relative group"> <a href="/" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg inline-flex items-center h-full transition-all duration-200 neumorphic-button"> <span class="relative z-10">Home</span> </a> </li><li class="relative group"> <a href="/about" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg inline-flex items-center h-full transition-all duration-200 neumorphic-button"> <span class="relative z-10">About</span> </a> </li><li class="relative group"> <a href="/blog" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg inline-flex items-center h-full transition-all duration-200 neumorphic-button"> <span class="relative z-10">Blog</span> </a> </li><li class="relative group"> <a href="/contact" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg inline-flex items-center h-full transition-all duration-200 neumorphic-button"> <span class="relative z-10">Contact</span> </a> </li><li class="relative group"> <div class="relative inline-flex items-center h-full"> <button class="text-gray-300 hover:text-white px-4 py-2 rounded-lg inline-flex items-center transition-all duration-200 neumorphic-button"> <span>Skills</span> <svg class="ml-2 h-5 w-5 transform transition-transform duration-200 group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path> </svg> </button> <ul class="absolute left-0 top-full mt-2 w-48 rounded-lg shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-200 neumorphic-dropdown"> <li> <a href="/skills/soft-skills" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-150 rounded-lg"> EQ </a> </li><li> <a href="/skills/technical-skills" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-150 rounded-lg"> Technical </a> </li> </ul> </div> </li><li class="relative group"> <a href="/projects" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg inline-flex items-center h-full transition-all duration-200 neumorphic-button"> <span class="relative z-10">Work</span> </a> </li> </ul> </nav> </div> <!-- Mobile menu and ThemeToggle --> <div class="md:hidden flex items-center"> <!-- ThemeToggle Button moved to the left --> <astro-island uid="Z1vTw8t" prefix="r6" component-url="/_astro/ThemeToggle.D6S9RlKQ.js" component-export="default" renderer-url="/_astro/client.CrecIO_h.js" props="{}" ssr="" client="load" opts="{&quot;name&quot;:&quot;ThemeToggle&quot;,&quot;value&quot;:true}" await-children=""><div><button class="theme-toggle bg-transparent border-none cursor-pointer p-2 transition-colors" aria-label="Switch to dark mode"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 theme-toggle-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><!--astro:end--></astro-island> <!-- Mobile menu button moved to the right --> <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-lg text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-200 neumorphic-button ml-4" aria-expanded="false"> <span class="sr-only">Open main menu</span> <span class="astronav-open-icon astronav-open-icon block h-6 w-6"> <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </span> <span class="astronav-close-icon astronav-close-icon hidden h-6 w-6"> <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> </svg> </span> </button> </div> <!-- Mobile menu --> <div class="md:hidden hidden" id="mobile-menu"> <div class="px-2 pt-2 pb-3 space-y-1 rounded-lg mt-2"> <div class="mobile-menu-item" style="animation-delay: 0s;"> <a href="/" class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"> <span class="mobile-link-text">Home</span> </a> </div><div class="mobile-menu-item" style="animation-delay: 0.1s;"> <a href="/about" class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"> <span class="mobile-link-text">About</span> </a> </div><div class="mobile-menu-item" style="animation-delay: 0.2s;"> <a href="/blog" class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"> <span class="mobile-link-text">Blog</span> </a> </div><div class="mobile-menu-item" style="animation-delay: 0.30000000000000004s;"> <a href="/contact" class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"> <span class="mobile-link-text">Contact</span> </a> </div><div class="mobile-menu-item" style="animation-delay: 0.4s;"> <div class="relative"> <button class="mobile-dropdown-toggle w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium flex items-center justify-between transition-all duration-200" aria-expanded="false"> <span class="mobile-link-text">Skills</span> <svg class="ml-2 h-5 w-5 transform transition-transform duration-200 group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path> </svg> </button> <div class="mobile-dropdown-menu hidden mt-2 pl-4 space-y-1"> <a href="/skills/soft-skills" class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200" style="animation-delay: 0.45s;"> <span class="mobile-link-text">EQ</span> </a><a href="/skills/technical-skills" class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200" style="animation-delay: 0.5s;"> <span class="mobile-link-text">Technical</span> </a> </div> </div> </div><div class="mobile-menu-item" style="animation-delay: 0.5s;"> <a href="/projects" class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"> <span class="mobile-link-text">Work</span> </a> </div> </div> </div> </div> </div>  <script>(function(){const closeOnClick = false;
+
+  ["DOMContentLoaded", "astro:after-swap"].forEach((event) => {
+    document.addEventListener(event, addListeners);
+  });
+
+  function cloneAndReplace(element) {
+    const clone = element.cloneNode(true);
+    element.parentNode.replaceChild(clone, element);
+  }
+  function addListeners() {
+    const oldMenuButton = document.getElementById("astronav-menu");
+    if (oldMenuButton) {
+      cloneAndReplace(oldMenuButton);
+    }
+
+    const oldDropdownMenus = document.querySelectorAll(".astronav-dropdown");
+    oldDropdownMenus.forEach((menu) => {
+      cloneAndReplace(menu);
+    });
+
+    // Mobile nav toggle
+    const menuButton = document.getElementById("astronav-menu");
+    menuButton && menuButton.addEventListener("click", toggleMobileNav);
+
+    // Dropdown menus
+    const dropdownMenus = document.querySelectorAll(".astronav-dropdown");
+    dropdownMenus.forEach((menu) => {
+      const button = menu.querySelector("button");
+      button &&
+        button.addEventListener("click", (event) =>
+          toggleDropdownMenu(event, menu, dropdownMenus)
+        );
+
+      // Handle Submenu Dropdowns
+      const dropDownSubmenus = menu.querySelectorAll(
+        ".astronav-dropdown-submenu"
+      );
+
+      dropDownSubmenus.forEach((submenu) => {
+        const submenuButton = submenu.querySelector("button");
+        submenuButton &&
+          submenuButton.addEventListener("click", (event) => {
+            event.stopImmediatePropagation();
+            toggleSubmenuDropdown(event, submenu);
+          });
+      });
+    });
+
+    // Clicking away from dropdown = remove dropdown class
+    document.addEventListener("click", closeAllDropdowns);
+
+    if (closeOnClick) {
+      handleCloseOnClick();
+    }
+  }
+
+  function toggleMobileNav() {
+    [...document.querySelectorAll(".astronav-toggle")].forEach((el) => {
+      el.classList.toggle("hidden");
+    });
+  }
+
+  function toggleDropdownMenu(event, menu, dropdownMenus) {
+    toggleMenu(menu);
+
+    // Closes one dropdown when I'm selecting another
+    Array.from(dropdownMenus)
+      .filter((el) => el !== menu && !menu.contains(el))
+      .forEach(closeMenu);
+
+    event.stopPropagation();
+  }
+
+  function toggleSubmenuDropdown(event, submenu) {
+    event.stopPropagation();
+    toggleMenu(submenu);
+
+    // Close sibling submenus @ same nesting level
+    const siblingSubmenus = submenu
+      .closest(".astronav-dropdown")
+      .querySelectorAll(".astronav-dropdown-submenu");
+    Array.from(siblingSubmenus)
+      .filter((el) => el !== submenu && !submenu.contains(el))
+      .forEach(closeMenu);
+  }
+
+  function closeAllDropdowns(event) {
+    const dropdownMenus = document.querySelectorAll(".dropdown-toggle");
+    const dropdownParent = document.querySelectorAll(
+      ".astronav-dropdown, .astronav-dropdown-submenu"
+    );
+    const isButtonInsideDropdown = [
+      ...document.querySelectorAll(
+        ".astronav-dropdown button, .astronav-dropdown-submenu button, #astronav-menu"
+      ),
+    ].some((button) => button.contains(event.target));
+    if (!isButtonInsideDropdown) {
+      dropdownMenus.forEach((d) => {
+        // if (!d.contains(event.target)) {
+        d.classList.remove("open");
+        d.removeAttribute("open");
+        d.classList.add("hidden");
+        // }
+      });
+      dropdownParent.forEach((d) => {
+        d.classList.remove("open");
+        d.removeAttribute("open");
+        d.setAttribute("aria-expanded", "false");
+      });
+    }
+  }
+
+  function toggleMenu(menu) {
+    menu.classList.toggle("open");
+    const expanded = menu.getAttribute("aria-expanded") === "true";
+    menu.setAttribute("aria-expanded", expanded ? "false" : "true");
+    menu.hasAttribute("open")
+      ? menu.removeAttribute("open")
+      : menu.setAttribute("open", "");
+
+    const dropdownToggle = menu.querySelector(".dropdown-toggle");
+    const dropdownExpanded = dropdownToggle.getAttribute("aria-expanded");
+    dropdownToggle.classList.toggle("hidden");
+    dropdownToggle.setAttribute(
+      "aria-expanded",
+      dropdownExpanded === "true" ? "false" : "true"
+    );
+  }
+
+  function closeMenu(menu) {
+    menu.classList.remove("open");
+    menu.removeAttribute("open");
+    menu.setAttribute("aria-expanded", "false");
+    const dropdownToggles = menu.querySelectorAll(".dropdown-toggle");
+    dropdownToggles.forEach((toggle) => {
+      toggle.classList.add("hidden");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function handleCloseOnClick() {
+    const navMenuItems = document.querySelector(".astronav-items");
+    const navToggle = document.getElementById("astronav-menu");
+    const navLink = navMenuItems && navMenuItems.querySelectorAll("a");
+
+    const MenuIcons = navToggle.querySelectorAll(".astronav-toggle");
+
+    navLink &&
+      navLink.forEach((item) => {
+        item.addEventListener("click", () => {
+          navMenuItems?.classList.add("hidden");
+          MenuIcons.forEach((el) => {
+            el.classList.toggle("hidden");
+          });
+        });
+      });
+  }
+})();</script>  </div> </header>  <main class="w-full">   <section data-astro-cid-j7pv25f6> <div class="relative h-screen flex items-center overflow-hidden pb-16" data-astro-cid-bbe6dxrz> <div id="hero-background" class="absolute inset-0 z-0 bg-cover bg-center transition-all duration-300" data-astro-cid-bbe6dxrz> <div class="hero-gradient-overlay" data-astro-cid-bbe6dxrz></div> <div class="hero-dim-overlay" data-astro-cid-bbe6dxrz></div> </div> <div class="relative z-10 w-full" data-astro-cid-bbe6dxrz> <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8" data-astro-cid-bbe6dxrz> <div class="flex justify-between items-start" data-astro-cid-bbe6dxrz> <div class="max-w-3xl mt-16 sm:mt-32" data-astro-cid-bbe6dxrz> <h1 class="hero-title mt-6 font-extrabold tracking-tight text-5xl md:text-6xl lg:text-7xl mb-2 opacity-0 transform translate-y-4 transition-all duration-1000 sm:max-w-sm md:max-w-md lg:max-w-full" id="heroTitle" data-astro-cid-bbe6dxrz> <span class="gradient-text bg-gradient-to-r from-blue-600 to-blue-400 text-transparent bg-clip-text" data-astro-cid-bbe6dxrz>
+A Front-End Web Developer
+</span> </h1> <p class="hero-tagline mt-6 text-2xl sm:text-3xl md:text-4xl text-gray-700 dark:text-gray-300 sm:mt-8 max-w-2xl opacity-0 transform translate-y-4 transition-all duration-1000 delay-500" id="heroTagline" data-astro-cid-bbe6dxrz>
+Who can write clean code <span class="hero-pulse text-blue-800 lg:text-blue-600 dark:text-blue-400 font-bold animate-pulse" data-astro-cid-bbe6dxrz>and</span> copy!
+</p> <div class="mt-10 opacity-0 transform translate-y-4 transition-all duration-1000 delay-1000" id="heroCta" data-astro-cid-bbe6dxrz> <a href="#contact" class="inline-block bg-gradient-to-r from-blue-600
+            to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white
+            font-bold py-4 px-8 rounded-full transition-all duration-300
+            transform hover:scale-105 hover:shadow-lg" data-astro-cid-bbe6dxrz>
+Get in Touch
+</a> </div> </div> </div> </div> </div> </div> <script>(function(){const lightBackground = "/images/hero-background-light-theme-toggle.png";
+const darkBackground = "/images/hero-background-dark-theme-toggle.png";
+
+  function updateTheme() {
+    const isDarkMode = document.documentElement.classList.contains("dark");
+    const heroBackground = document.getElementById("hero-background");
+    const isSmallScreen = window.innerWidth <= 1024;
+
+    if (heroBackground) {
+      if (isDarkMode) {
+        heroBackground.style.backgroundImage = `url(${darkBackground})`;
+      } else if (!isSmallScreen) {
+        heroBackground.style.backgroundImage = `url(${lightBackground})`;
+      } else {
+        // For small screens in light mode, let CSS handle it
+        heroBackground.style.backgroundImage = "";
+      }
+    }
+  }
+
+  function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
+
+  const debouncedUpdateTheme = debounce(updateTheme, 100);
+
+  function animateHeroElements() {
+    const elements = ["heroTitle", "heroTagline", "heroCta"];
+    elements.forEach((id, index) => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.classList.remove("opacity-0", "translate-y-4");
+      }
+    });
+  }
+
+  function init() {
+    updateTheme();
+    animateHeroElements();
+  }
+
+  // Initialize on page load
+  document.addEventListener("DOMContentLoaded", init);
+
+  // Re-initialize when the page content is updated (for Astro view transitions)
+  document.addEventListener("astro:page-load", init);
+
+  // Update theme on resize
+  window.addEventListener("resize", debouncedUpdateTheme);
+
+  // Observe for dark mode changes
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "class"
+      ) {
+        debouncedUpdateTheme();
+      }
+    });
+  });
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+})();</script>  </section>  <section class="py-16 sm:py-24 md:py-32  bg-[#E9EEF4] dark:bg-gray-900 transition-colors duration-300" data-astro-cid-j7pv25f6> <div class="max-w-screen-2xl  mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-between gap-8" data-astro-cid-j7pv25f6> <!-- Text Column --> <div class="w-full lg:w-3/4 mb-8 lg:mb-0" data-astro-cid-j7pv25f6> <!-- Add mb-8 for spacing between text and image in smaller screens --> <h2 class="h2-text mb-6 text-gray-800 dark:text-gray-100" data-astro-cid-j7pv25f6>
+What I Can Do for You
+</h2> <p class="text-lg mb-6 text-gray-600 dark:text-gray-300 leading-relaxed" data-astro-cid-j7pv25f6>
+I help businesses grow their online presence by building user-friendly websites with custom copywriting 
+        so they can achieve their goals. My entreprenurial mindset and unique mix of technical and soft skills gets the job done <span class="text-blue-700 italic" data-astro-cid-j7pv25f6>on time</span>. Here's what I deliver for clients:
+</p> <div class="grid grid-cols-1 sm:grid-cols-2 gap-8" data-astro-cid-j7pv25f6> <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300" data-astro-cid-j7pv25f6> <!-- Container for title and icon --> <div class="flex items-center group" data-astro-cid-j7pv25f6> <!-- Hover effect for title --> <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" data-astro-cid-j7pv25f6> Custom Web Development </h3> <!-- Hover effect for icon --> <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" class="svg-inline--fa fa-chevron-right w-6 h-6 ml-2 text-blue-500 dark:text-blue-400 p-2 rounded-full transition-all duration-300 group-hover:bg-blue-100 dark:group-hover:bg-blue-900 group-hover:scale-110 group-hover:shadow-md" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-astro-cid-j7pv25f6="true"><path fill="currentColor" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg> </div> <p class="text-gray-600 dark:text-gray-300" data-astro-cid-j7pv25f6> Build websites using HTML, CSS and JavaScript. </p> </div><div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300" data-astro-cid-j7pv25f6> <!-- Container for title and icon --> <div class="flex items-center group" data-astro-cid-j7pv25f6> <!-- Hover effect for title --> <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" data-astro-cid-j7pv25f6> Results-Driven Copywriting </h3> <!-- Hover effect for icon --> <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" class="svg-inline--fa fa-chevron-right w-6 h-6 ml-2 text-blue-500 dark:text-blue-400 p-2 rounded-full transition-all duration-300 group-hover:bg-blue-100 dark:group-hover:bg-blue-900 group-hover:scale-110 group-hover:shadow-md" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-astro-cid-j7pv25f6="true"><path fill="currentColor" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg> </div> <p class="text-gray-600 dark:text-gray-300" data-astro-cid-j7pv25f6> copy that ACHIEVERS THEIR GOALS. </p> </div><div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300" data-astro-cid-j7pv25f6> <!-- Container for title and icon --> <div class="flex items-center group" data-astro-cid-j7pv25f6> <!-- Hover effect for title --> <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" data-astro-cid-j7pv25f6> Responsive Design </h3> <!-- Hover effect for icon --> <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" class="svg-inline--fa fa-chevron-right w-6 h-6 ml-2 text-blue-500 dark:text-blue-400 p-2 rounded-full transition-all duration-300 group-hover:bg-blue-100 dark:group-hover:bg-blue-900 group-hover:scale-110 group-hover:shadow-md" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-astro-cid-j7pv25f6="true"><path fill="currentColor" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg> </div> <p class="text-gray-600 dark:text-gray-300" data-astro-cid-j7pv25f6> Ensure your website looks great and functions flawlessly on all devices. </p> </div><div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300" data-astro-cid-j7pv25f6> <!-- Container for title and icon --> <div class="flex items-center group" data-astro-cid-j7pv25f6> <!-- Hover effect for title --> <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" data-astro-cid-j7pv25f6> *Ongoing Support* </h3> <!-- Hover effect for icon --> <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" class="svg-inline--fa fa-chevron-right w-6 h-6 ml-2 text-blue-500 dark:text-blue-400 p-2 rounded-full transition-all duration-300 group-hover:bg-blue-100 dark:group-hover:bg-blue-900 group-hover:scale-110 group-hover:shadow-md" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-astro-cid-j7pv25f6="true"><path fill="currentColor" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg> </div> <p class="text-gray-600 dark:text-gray-300" data-astro-cid-j7pv25f6> Regular maintenance and updates to keep your website secure and up-to-date. </p> </div> </div> </div> <!-- Image Column --> <div class="w-full lg:w-1/4 flex justify-center" data-astro-cid-j7pv25f6> <img src="/images/matt-hero-image.png" alt="Matt showcasing skills for clients" class="w-4/5 h-auto object-cover" data-astro-cid-j7pv25f6> </div> </div></section> <section class="testimonials-section max-w-7xl pt-16 sm:pt-24 md:pt-32 pb-8 sm:pb-12 md:pb-16 mx-auto px-4 sm:px-6" data-astro-cid-j7pv25f6> <h2 class="h2-text text-center mb-16 sm:mb-24 md:mb-32 relative" data-astro-cid-j7pv25f6>
+Just ask my clients what they think...
+</h2> <div class="testimonial-container overflow-hidden rounded-full max-w-7xl mx-auto" data-astro-cid-j7pv25f6> <div class="swiper-container relative testimonial-container rounded-full transition-all duration-300" data-astro-cid-aadlzisc> <div class="swiper-wrapper" data-astro-cid-aadlzisc> <div class="swiper-slide" data-astro-cid-aadlzisc> <div class="testimonial-card rounded-full p-6 shadow-lg text-white relative overflow-hidden max-w-xs md:max-w-md lg:max-w-lg mx-auto" data-astro-cid-aadlzisc> <div class="testimonial-photo-wrapper" data-astro-cid-aadlzisc> <img src="/images/cho-headshot.png" alt="Headshot of Dr. Jay Cho" class="testimonial-photo w-24 h-24 rounded-full object-cover mx-auto shadow-lg mb-4" loading="lazy" data-astro-cid-aadlzisc> </div> <div class="text-center" data-astro-cid-aadlzisc> <p class="text-2xl font-semibold" data-astro-cid-aadlzisc>Dr. Jay Cho</p> <p class="text-sm text-gray-500 dark:text-gray-400" data-astro-cid-aadlzisc> Active Care </p> <p class="text-gray-600 dark:text-gray-200 italic mt-4" data-astro-cid-aadlzisc>
+"Matt made a new website for my business. It was the best choice I&#39;ve made so far, because it looks great. Very reasonable and very professional. And he made it all in time even with an urgent request."
+</p> </div> </div> </div><div class="swiper-slide" data-astro-cid-aadlzisc> <div class="testimonial-card rounded-full p-6 shadow-lg text-white relative overflow-hidden max-w-xs md:max-w-md lg:max-w-lg mx-auto" data-astro-cid-aadlzisc> <div class="testimonial-photo-wrapper" data-astro-cid-aadlzisc> <img src="/images/cg-headshot.jpg" alt="Headshot of Chris Gordon" class="testimonial-photo w-24 h-24 rounded-full object-cover mx-auto shadow-lg mb-4" loading="lazy" data-astro-cid-aadlzisc> </div> <div class="text-center" data-astro-cid-aadlzisc> <p class="text-2xl font-semibold" data-astro-cid-aadlzisc>Chris Gordon</p> <p class="text-sm text-gray-500 dark:text-gray-400" data-astro-cid-aadlzisc> CGN </p> <p class="text-gray-600 dark:text-gray-200 italic mt-4" data-astro-cid-aadlzisc>
+"Excellent work! I have a terrific new website that is everything I wanted. I was guided through the whole process in a collaborative process. Matt Birch was patient and professional. My highest recommendation!"
+</p> </div> </div> </div><div class="swiper-slide" data-astro-cid-aadlzisc> <div class="testimonial-card rounded-full p-6 shadow-lg text-white relative overflow-hidden max-w-xs md:max-w-md lg:max-w-lg mx-auto" data-astro-cid-aadlzisc> <div class="testimonial-photo-wrapper" data-astro-cid-aadlzisc> <img src="/images/bc-headshot.jpg" alt="Headshot of Bridget Costello" class="testimonial-photo w-24 h-24 rounded-full object-cover mx-auto shadow-lg mb-4" loading="lazy" data-astro-cid-aadlzisc> </div> <div class="text-center" data-astro-cid-aadlzisc> <p class="text-2xl font-semibold" data-astro-cid-aadlzisc>Bridget Costello</p> <p class="text-sm text-gray-500 dark:text-gray-400" data-astro-cid-aadlzisc> Lynch&#39;s Landing </p> <p class="text-gray-600 dark:text-gray-200 italic mt-4" data-astro-cid-aadlzisc>
+"I can&#39;t say enough about how swift and professional our experience with this company has been. Matt created a beautiful new website for our business. We are very happy with his work."
+</p> </div> </div> </div><div class="swiper-slide" data-astro-cid-aadlzisc> <div class="testimonial-card rounded-full p-6 shadow-lg text-white relative overflow-hidden max-w-xs md:max-w-md lg:max-w-lg mx-auto" data-astro-cid-aadlzisc> <div class="testimonial-photo-wrapper" data-astro-cid-aadlzisc> <img src="/images/ag-headshot.jpg" alt="Headshot of Ann Gorman" class="testimonial-photo w-24 h-24 rounded-full object-cover mx-auto shadow-lg mb-4" loading="lazy" data-astro-cid-aadlzisc> </div> <div class="text-center" data-astro-cid-aadlzisc> <p class="text-2xl font-semibold" data-astro-cid-aadlzisc>Ann Gorman</p> <p class="text-sm text-gray-500 dark:text-gray-400" data-astro-cid-aadlzisc> Blacktop Ohio </p> <p class="text-gray-600 dark:text-gray-200 italic mt-4" data-astro-cid-aadlzisc>
+"Matt was great to work with, I love the website he built for me, I have already recommended him to a few of my family members who are also business owners."
+</p> </div> </div> </div> </div> <div class="swiper-button-prev" data-astro-cid-aadlzisc></div> <div class="swiper-button-next" data-astro-cid-aadlzisc></div> <div class="swiper-pagination" data-astro-cid-aadlzisc></div> </div>   </div> </section>  <section class="pb-16 sm:pb-24 md:pb-32 pt-8 sm:pt-12 md:pt-16 max-w-screen-2xl mx-auto px-4 sm:px-6" data-astro-cid-j7pv25f6> <h2 class="h2-text mb-6 sm:mb-8" data-astro-cid-j7pv25f6>
+...They Know What Separates Me From Other Web Developers
+</h2> <div class="px-4 sm:px-6 max-w-7xl" data-astro-cid-j7pv25f6> <!-- Reduced max-width for content --> <!-- Flexbox container for the two columns --> <div class="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0 md:space-x-8" data-astro-cid-j7pv25f6> <!-- Left column: 2 list items --> <ul class="list-disc space-y-4 w-full md:w-1/2" data-astro-cid-j7pv25f6> <li data-astro-cid-j7pv25f6>A cross-functional expert who understands how systems fit together.</li> <li data-astro-cid-j7pv25f6>*EXPERIENCED*</li> </ul> <!-- Right column: 2 list items --> <ul class="list-disc space-y-4 w-full md:w-1/2" data-astro-cid-j7pv25f6> <li data-astro-cid-j7pv25f6>Strong awareness of how to both fulfill user needs and achieve business goals.</li> <li data-astro-cid-j7pv25f6>Team-focused, collaborative mindset with great communication skills</li> </ul> </div> </div> </section>  <section class="bg-[#e6ebf2] dark:bg-gray-900 py-16 sm:py-24 md:py-32" data-astro-cid-j7pv25f6> <div class="max-w-7xl mx-auto px-4 sm:px-6" data-astro-cid-j7pv25f6> <astro-island uid="JPpSD" prefix="r4" component-url="/_astro/SkillsSection.B9LCmrz3.js" component-export="default" renderer-url="/_astro/client.CrecIO_h.js" props="{&quot;data-astro-cid-j7pv25f6&quot;:[0,true]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;SkillsSection&quot;,&quot;value&quot;:true}" await-children=""><section class="skills-section"><div class="max-w-7xl mx-auto px-4 sm:px-6"><h2 class="h2-text  mb-12 pb-2 text-center">Skills</h2><div class="max-w-7xl mx-auto px-4 relative z-10"><div class="grid grid-cols-1 md:grid-cols-3 gap-8"><div class="transform transition-all duration-300 "><div class="bg-gradient-to-r from-blue-100 to-blue-50 dark:from-zinc-900 dark:to-zinc-800 rounded-lg p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-t-4 border-blue-500 "><div class="flex justify-between items-start mb-4"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="code" class="svg-inline--fa fa-code text-blue-500 w-12 h-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg><div class="text-blue-600 dark:text-blue-400 text-xs font-semibold px-2 py-1 rounded-full bg-opacity-20 bg-blue-500">Expert</div></div><h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Front-end Web Developer</h3><p class="text-gray-600 dark:text-gray-300 mb-4">Building responsive and dynamic websites with modern frameworks.</p><button class="text-blue-600 dark:text-blue-400 flex items-center hover:underline group">Learn More<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" class="svg-inline--fa fa-chevron-right ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg></button></div></div><div class="transform transition-all duration-300 "><div class="bg-gradient-to-r from-blue-100 to-blue-50 dark:from-zinc-900 dark:to-zinc-800 rounded-lg p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-t-4 border-green-500 md:mt-8"><div class="flex justify-between items-start mb-4"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="robot" class="svg-inline--fa fa-robot text-green-500 w-12 h-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M320 0c17.7 0 32 14.3 32 32l0 64 120 0c39.8 0 72 32.2 72 72l0 272c0 39.8-32.2 72-72 72l-304 0c-39.8 0-72-32.2-72-72l0-272c0-39.8 32.2-72 72-72l120 0 0-64c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224l16 0 0 192-16 0c-26.5 0-48-21.5-48-48l0-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48l-16 0 0-192 16 0z"></path></svg><div class="text-green-600 dark:text-green-400 text-xs font-semibold px-2 py-1 rounded-full bg-opacity-20 bg-green-500">Expert</div></div><h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Prompt Engineer</h3><p class="text-gray-600 dark:text-gray-300 mb-4">Crafting and optimizing prompts for cutting-edge AI models.</p><button class="text-green-600 dark:text-green-400 flex items-center hover:underline group">Learn More<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" class="svg-inline--fa fa-chevron-right ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg></button></div></div><div class="transform transition-all duration-300 "><div class="bg-gradient-to-r from-blue-100 to-blue-50 dark:from-zinc-900 dark:to-zinc-800 rounded-lg p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-t-4 border-purple-500 "><div class="flex justify-between items-start mb-4"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen-fancy" class="svg-inline--fa fa-pen-fancy text-purple-500 w-12 h-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M373.5 27.1C388.5 9.9 410.2 0 433 0c43.6 0 79 35.4 79 79c0 22.8-9.9 44.6-27.1 59.6L277.7 319l-10.3-10.3-64-64L193 234.3 373.5 27.1zM170.3 256.9l10.4 10.4 64 64 10.4 10.4-19.2 83.4c-3.9 17.1-16.9 30.7-33.8 35.4L24.3 510.3l95.4-95.4c2.6 .7 5.4 1.1 8.3 1.1c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32c0 2.9 .4 5.6 1.1 8.3L1.7 487.6 51.5 310c4.7-16.9 18.3-29.9 35.4-33.8l83.4-19.2z"></path></svg><div class="text-purple-600 dark:text-purple-400 text-xs font-semibold px-2 py-1 rounded-full bg-opacity-20 bg-purple-500">Expert</div></div><h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Copywriter</h3><p class="text-gray-600 dark:text-gray-300 mb-4">Creating compelling and persuasive content that converts.</p><button class="text-purple-600 dark:text-purple-400 flex items-center hover:underline group">Learn More<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" class="svg-inline--fa fa-chevron-right ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"></path></svg></button></div></div></div></div></div></section><!--astro:end--></astro-island> </div> </section> <section class="py-16 sm:py-24 md:py-32 max-w-screen-xl mx-auto px-4 sm:px-6 text-center" data-astro-cid-j7pv25f6> <h2 class="h2-text mb-10 text-center text-gray-800 dark:text-gray-100" data-astro-cid-j7pv25f6>
+What You See Is What You Get
+</h2> <div class="flex justify-center" data-astro-cid-j7pv25f6> <div class="grid grid-cols-1 md:grid-cols-2 gap-12 justify-items-center" data-astro-cid-j7pv25f6> <!-- Left Column --> <ul class="space-y-6" data-astro-cid-j7pv25f6> <li class="flex items-start text-lg text-gray-700 dark:text-gray-300 hover:transform hover:scale-110 transition duration-300" data-astro-cid-j7pv25f6> <svg class="icon-checkmark w-6 h-6 mr-3 text-blue-700 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" data-astro-cid-j7pv25f6> <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" data-astro-cid-j7pv25f6></path> </svg> <span data-astro-cid-j7pv25f6>Reliable</span> </li> <li class="flex items-start text-lg text-gray-700 dark:text-gray-300 hover:transform hover:scale-110 transition duration-300" data-astro-cid-j7pv25f6> <svg class="icon-checkmark w-6 h-6 mr-3 text-blue-700 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" data-astro-cid-j7pv25f6> <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" data-astro-cid-j7pv25f6></path> </svg> <span data-astro-cid-j7pv25f6>Multi-skilled</span> </li> </ul> <!-- Right Column --> <ul class="space-y-6" data-astro-cid-j7pv25f6> <li class="flex items-start text-lg text-gray-700 dark:text-gray-300 hover:transform hover:scale-110 transition duration-300" data-astro-cid-j7pv25f6> <svg class="icon-checkmark w-6 h-6 mr-3 text-blue-700 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" data-astro-cid-j7pv25f6> <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" data-astro-cid-j7pv25f6></path> </svg> <span data-astro-cid-j7pv25f6>Experienced</span> </li> <li class="flex items-start text-lg text-gray-700 dark:text-gray-300 hover:transform hover:scale-110 transition duration-300" data-astro-cid-j7pv25f6> <svg class="icon-checkmark w-6 h-6 mr-3 text-blue-700 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" data-astro-cid-j7pv25f6> <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" data-astro-cid-j7pv25f6></path> </svg> <span data-astro-cid-j7pv25f6>Passionate</span> </li> </ul> </div> </div> <!-- Subtle underline effect --> <div class="flex justify-center my-12" data-astro-cid-j7pv25f6> <div class="w-12 border-t-2 border-gray-300 dark:border-gray-600" data-astro-cid-j7pv25f6></div> </div> <!-- CTA Card --> <section class="pt-8 sm:pt-12 md:pt-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="bg-gradient-to-br from-[var(--cta-bg-from)] via-[var(--cta-bg-via)] to-[var(--cta-bg-to)] rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-[1.02] hover:rotate-1" style="--tw-bg-opacity: var(--cta-bg-opacity);"> <div class="backdrop-blur-sm p-1" style="background-color: rgba(var(--cta-backdrop), var(--cta-backdrop-opacity));"> <div class="bg-[var(--cta-content-bg)] rounded-md"> <div class="max-w-xl mx-auto px-6 py-10 text-center"> <h2 class="text-2xl font-bold text-[var(--cta-heading-text)] mb-4">
+Ready to Elevate Your Web Presence?
+</h2> <p class="text-lg text-[var(--cta-subtext)] mb-6">
+Let's collaborate and bring your vision to life!
+</p> <a href="#contact" class="inline-block bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500] text-[var(--cta-button-text)] font-semibold py-2 px-6 rounded-full shadow-md hover:bg-[var(--cta-button-hover-bg)] transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+Get in Touch
+</a> </div> </div> </div> </div> </section> </section>  </main> <footer class="bg-gradient-to-r from-gray-800 to-blue-950 mt-auto"> <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6"> <div class="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-6"></div> <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"> <div class="p-3 rounded-lg"> <p class="text-sm text-gray-400">
+&copy; 2024 Matt Birch. All rights reserved.
+</p> </div> <nav class="flex space-x-6"> <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="neumorphic-button p-2 rounded-full text-gray-400 hover:text-white transition-colors duration-200" aria-label="GitHub"> <span class="sr-only">GitHub</span> <i class="fab fa-github text-xl" aria-hidden="true"></i> </a><a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="neumorphic-button p-2 rounded-full text-gray-400 hover:text-white transition-colors duration-200" aria-label="LinkedIn"> <span class="sr-only">LinkedIn</span> <i class="fab fa-linkedin text-xl" aria-hidden="true"></i> </a><a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" class="neumorphic-button p-2 rounded-full text-gray-400 hover:text-white transition-colors duration-200" aria-label="Twitter"> <span class="sr-only">Twitter</span> <i class="fab fa-twitter text-xl" aria-hidden="true"></i> </a> </nav> </div> </div> </footer>  </body> </html>
