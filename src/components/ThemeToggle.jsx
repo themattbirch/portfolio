@@ -1,26 +1,25 @@
-import { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 const ThemeToggle = () => {
+  // Safely access localStorage only on the client
   const [theme, setTheme] = useState(() => {
-    if (typeof localStorage !== "undefined") {
+    if (typeof window !== "undefined") {
       return localStorage.getItem("theme") || "light";
     }
     return "light"; // Default fallback for SSR
   });
 
   const applyTheme = useCallback((newTheme) => {
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-    localStorage.setItem("theme", newTheme);
-    if (window.initializeSkillToggles) {
-      requestAnimationFrame(() => {
-        console.log("Reinitializing skill toggles after theme change");
-        window.initializeSkillToggles();
-      });
+    if (typeof window !== "undefined") {
+      document.documentElement.classList.toggle("dark", newTheme === "dark");
+      localStorage.setItem("theme", newTheme);
     }
   }, []);
 
   useEffect(() => {
-    applyTheme(theme);
+    if (typeof window !== "undefined") {
+      applyTheme(theme);
+    }
   }, [theme, applyTheme]);
 
   const toggleTheme = useCallback(() => {
@@ -28,30 +27,13 @@ const ThemeToggle = () => {
   }, []);
 
   const LightModeIcon = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6 theme-toggle-icon"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 theme-toggle-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
     </svg>
   );
 
   const DarkModeIcon = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6 theme-toggle-icon"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 theme-toggle-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <circle cx="12" cy="12" r="5" />
       <line x1="12" y1="1" x2="12" y2="3" />
       <line x1="12" y1="21" x2="12" y2="23" />
@@ -71,7 +53,7 @@ const ThemeToggle = () => {
         className="theme-toggle bg-transparent border-none cursor-pointer p-2 transition-colors"
         aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
       >
-        {theme === 'light' ? <LightModeIcon /> : <DarkModeIcon />}
+        {theme === "light" ? <LightModeIcon /> : <DarkModeIcon />}
       </button>
     </div>
   );
