@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(() => {
@@ -65,18 +65,15 @@ const ThemeToggle = () => {
   );
 
    return (
-    <div>
       <button
-        onClick={toggleTheme}
-        className="theme-toggle bg-transparent border-none cursor-pointer p-2 transition-colors"
-        aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-      >
-        {theme === 'light' ? <LightModeIcon /> : <DarkModeIcon />}
-      </button>
-    </div>
+      onClick={toggleTheme}
+      className="theme-toggle bg-transparent border-none cursor-pointer p-2 transition-colors"
+      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+    >
+      {theme === "light" ? <LightModeIcon /> : <DarkModeIcon />}
+    </button>
   );
 };
-
 
 
 export default ThemeToggle;
