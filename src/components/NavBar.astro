@@ -184,21 +184,20 @@ const { menuItems } = Astro.props;
 
 <!-- JavaScript to handle mobile menu and event listeners -->
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  function setupMobileMenu() {
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
 
-    // Check if mobileMenuButton and mobileMenu are not null
     if (mobileMenuButton && mobileMenu) {
       const menuIcon = mobileMenuButton.querySelector(".menu-icon");
       const closeIcon = mobileMenuButton.querySelector(".close-icon");
 
       function toggleMobileMenu() {
-        mobileMenu?.classList.toggle("hidden");
-        const isExpanded = mobileMenu?.classList.contains("hidden")
+        mobileMenu!.classList.toggle("hidden");
+        const isExpanded = mobileMenu!.classList.contains("hidden")
           ? "false"
           : "true";
-        mobileMenuButton?.setAttribute("aria-expanded", isExpanded);
+        mobileMenuButton!.setAttribute("aria-expanded", isExpanded);
 
         // Toggle the visibility of menu and close icons
         menuIcon?.classList.toggle("hidden");
@@ -209,7 +208,7 @@ const { menuItems } = Astro.props;
 
       // Clean up event listeners when the component is unmounted
       document.addEventListener("astro:before-swap", () => {
-        mobileMenuButton.removeEventListener("click", toggleMobileMenu);
+        mobileMenuButton!.removeEventListener("click", toggleMobileMenu);
       });
 
       // Setup dropdown toggles in mobile menu
@@ -241,5 +240,11 @@ const { menuItems } = Astro.props;
     } else {
       console.error("Mobile menu button or menu not found");
     }
-  });
+  }
+
+  // Run on initial load
+  document.addEventListener("DOMContentLoaded", setupMobileMenu);
+
+  // Re-run after page navigation
+  document.addEventListener("astro:after-swap", setupMobileMenu);
 </script>
