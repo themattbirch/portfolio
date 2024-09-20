@@ -178,7 +178,9 @@ h6 {
 
 /*Skills Component */
 
-.skill-header[aria-expanded="true"] .toggle-icon {
+
+
+.skill-header[aria-expanded="true"]  {
     transform: rotate(180deg) translateY(-50%);
 }
 /* Background Gradients */

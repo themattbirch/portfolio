@@ -7,37 +7,37 @@ const skills = [
     name: "HTML",
     description:
       "Proficient in creating structured, semantic markup for web pages.",
-    icon: "🖥️",
+    icon: "fa-handshake",
     level: "Beginner",
   },
   {
     name: "CSS",
     description:
       "Skilled in creating interactive web experiences and manipulating the DOM.",
-    icon: "⚙️",
+    icon: "fa-handshake",
     level: "Skill",
   },
   {
     name: "JavaScript",
     description: "Text coming.",
-    icon: "🖥️",
+    icon: "fa-handshake",
     level: "Advanced",
   },
   {
     name: "React",
     description: "Update coming.",
-    icon: "⚙️",
+    icon: "fa-handshake",
     level: "Dumb",
   },
 ];
+
 
 // Split the skills array into two parts
 const half = Math.ceil(skills.length / 2);
 const skillsPart1 = skills.slice(0, half);
 const skillsPart2 = skills.slice(half);
 
-const teamworkphoto = "/images/teamwork.jpeg";
-const pageTitle = "Technical Skills I've Learned";
+const pageTitle = "Technical Skills I've Acquired";
 const pageDescription = "The technical skills I possess.";
 ---
 
@@ -99,6 +99,7 @@ const pageDescription = "The technical skills I possess.";
       </div>
     </section>
   </div>
+  </Layout>
 
   <style>
     .horizontal-gradient-wrapper-1 {
@@ -170,4 +171,3 @@ const pageDescription = "The technical skills I possess.";
         .forEach((el) => el.classList.add("visible"));
     }
   </script>
-</Layout>

@@ -6,27 +6,27 @@ const skills = [
   {
     name: "Empathy",
     description:
-      "Proficient in creating structured, semantic markup for web pages.",
-    icon: "🖥️",
+      "Proficient in understanding and sharing the feelings of others.",
+    icon: "fa-heart",
     level: "Beginner",
   },
   {
     name: "Awareness",
     description:
-      "Skilled in creating interactive web experiences and manipulating the DOM.",
-    icon: "⚙️",
+      "Skilled in being conscious of your own feelings and those of others.",
+    icon: "fa-eye",
     level: "Skill",
   },
   {
     name: "Communication",
     description: "Excellent communication skills, both written and verbal.",
-    icon: "💬",
+    icon: "fa-comments",
     level: "Expert",
   },
   {
     name: "Teamwork",
     description: "Strong ability to work in collaborative environments.",
-    icon: "🤝",
+    icon: "fa-handshake",
     level: "Advanced",
   },
   // Add more skills as needed
@@ -38,7 +38,7 @@ const skillsPart1 = skills.slice(0, half);
 const skillsPart2 = skills.slice(half);
 
 const pageTitle = "Emotional Quotient Skills I've Built";
-const pageDescription = "The emotional quotient sklills I've built.";
+const pageDescription = "The emotional quotient skills I've built.";
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -79,6 +79,8 @@ const pageDescription = "The emotional quotient sklills I've built.";
       </div>
     </section>
   </div>
+    </Layout>
+
 
   <style>
     .horizontal-gradient-wrapper-1 {
@@ -97,8 +99,6 @@ const pageDescription = "The emotional quotient sklills I've built.";
     :global(.dark) .horizontal-gradient-wrapper-2 {
       background: linear-gradient(to bottom, #3b536a, #1f2937);
     }
-
-    
   </style>
 
   <script>
@@ -144,4 +144,3 @@ const pageDescription = "The emotional quotient sklills I've built.";
         .forEach((el) => el.classList.add("visible"));
     }
   </script>
-</Layout>
