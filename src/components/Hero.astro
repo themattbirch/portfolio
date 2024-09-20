@@ -121,15 +121,15 @@ const darkBackground = "/images/hero-background-dark-theme-toggle.png";
     transition: background-image 0.5s ease;
   }
 
+  .dark #hero-background {
+    background-image: url("/images/hero-background-dark-theme-toggle.png");
+  }
+
   @media (max-width: 1024px) {
-    :root:not(.dark) #hero-background {
+    #hero-background {
       background-image: url("/images/hero_background_mobile.jpg");
       background-position: 90% center;
     }
-  }
-
-  .dark #hero-background {
-    background-image: url("/images/hero-background-dark-theme-toggle.png");
   }
 
   .gradient-text {

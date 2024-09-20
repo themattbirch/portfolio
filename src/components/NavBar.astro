@@ -1,7 +1,5 @@
 ---
 import PortfolioNav from "./PortfolioNav.astro";
-import OpenIcon from "./OpenIcon.astro";
-import CloseIcon from "./CloseIcon.astro";
 import ThemeToggle from "./ThemeToggle.jsx";
 
 interface MenuItem {
@@ -89,18 +87,38 @@ const { menuItems } = Astro.props;
 
       <!-- Mobile menu and ThemeToggle -->
       <div class="md:hidden flex items-center">
-        <!-- ThemeToggle Button moved to the left -->
+        <!-- ThemeToggle Button -->
         <ThemeToggle client:load />
 
-        <!-- Mobile menu button moved to the right -->
+        <!-- Mobile menu button -->
         <button
           id="mobile-menu-button"
           class="inline-flex items-center justify-center p-2 rounded-lg text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-200 neumorphic-button ml-4"
           aria-expanded="false"
         >
-          <span class="sr-only">Open main menu</span>
-          <OpenIcon class="astronav-open-icon block h-6 w-6" />
-          <CloseIcon class="astronav-close-icon hidden h-6 w-6" />
+          <span class="sr-only">Toggle main menu</span>
+          <svg
+            class="h-6 w-6 mobile-menu-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <!-- Menu icon -->
+            <path
+              class="menu-icon"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+            <!-- Close icon -->
+            <path
+              class="close-icon hidden"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
@@ -128,7 +146,7 @@ const { menuItems } = Astro.props;
                     >
                       <span class="mobile-link-text">{item.title}</span>
                       <svg
-                        class="ml-2 h-5 w-5 transform transition-transform duration-200 group-hover:rotate-180"
+                        class="ml-2 h-5 w-5 transform transition-transform duration-200"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
@@ -164,49 +182,64 @@ const { menuItems } = Astro.props;
   </div>
 </PortfolioNav>
 
+<!-- JavaScript to handle mobile menu and event listeners -->
 <script>
-  function setupMobileMenu() {
+  document.addEventListener("DOMContentLoaded", () => {
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
-    const openIcon = document.querySelector(".astronav-open-icon");
-    const closeIcon = document.querySelector(".astronav-close-icon");
 
-    if (mobileMenuButton && mobileMenu && openIcon && closeIcon) {
-      mobileMenuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-        openIcon.classList.toggle("hidden");
-        closeIcon.classList.toggle("hidden");
-        mobileMenuButton.setAttribute(
-          "aria-expanded",
-          mobileMenu.classList.contains("hidden") ? "false" : "true"
-        );
+    // Check if mobileMenuButton and mobileMenu are not null
+    if (mobileMenuButton && mobileMenu) {
+      const menuIcon = mobileMenuButton.querySelector(".menu-icon");
+      const closeIcon = mobileMenuButton.querySelector(".close-icon");
+
+      function toggleMobileMenu() {
+        mobileMenu?.classList.toggle("hidden");
+        const isExpanded = mobileMenu?.classList.contains("hidden")
+          ? "false"
+          : "true";
+        mobileMenuButton?.setAttribute("aria-expanded", isExpanded);
+
+        // Toggle the visibility of menu and close icons
+        menuIcon?.classList.toggle("hidden");
+        closeIcon?.classList.toggle("hidden");
+      }
+
+      mobileMenuButton.addEventListener("click", toggleMobileMenu);
+
+      // Clean up event listeners when the component is unmounted
+      document.addEventListener("astro:before-swap", () => {
+        mobileMenuButton.removeEventListener("click", toggleMobileMenu);
       });
-    }
 
-    const dropdownToggles = document.querySelectorAll(
-      ".mobile-dropdown-toggle"
-    );
-    dropdownToggles.forEach((toggle) => {
-      toggle.addEventListener("click", () => {
+      // Setup dropdown toggles in mobile menu
+      const dropdownToggles = document.querySelectorAll(
+        ".mobile-dropdown-toggle"
+      );
+      dropdownToggles.forEach((toggle) => {
         const dropdownMenu = toggle.nextElementSibling;
-        if (dropdownMenu) {
-          dropdownMenu.classList.toggle("hidden");
-          toggle.setAttribute(
-            "aria-expanded",
-            dropdownMenu.classList.contains("hidden") ? "false" : "true"
-          );
-          const arrow = toggle.querySelector("svg");
-          if (arrow) {
-            arrow.classList.toggle("rotate-180");
+        const arrowIcon = toggle.querySelector("svg");
+
+        function toggleDropdownMenu() {
+          if (dropdownMenu && dropdownMenu instanceof HTMLElement) {
+            dropdownMenu.classList.toggle("hidden");
+            const isExpanded = dropdownMenu.classList.contains("hidden")
+              ? "false"
+              : "true";
+            toggle.setAttribute("aria-expanded", isExpanded);
           }
+          arrowIcon?.classList.toggle("rotate-180");
         }
+
+        toggle.addEventListener("click", toggleDropdownMenu);
+
+        // Clean up event listeners
+        document.addEventListener("astro:before-swap", () => {
+          toggle.removeEventListener("click", toggleDropdownMenu);
+        });
       });
-    });
-  }
-
-  // Run setup on page load
-  setupMobileMenu();
-
-  // Run setup again, following Astro page transitions
-  document.addEventListener("astro:after-swap", setupMobileMenu);
+    } else {
+      console.error("Mobile menu button or menu not found");
+    }
+  });
 </script>

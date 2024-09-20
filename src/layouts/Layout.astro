@@ -25,15 +25,15 @@ const canonicalURL = Astro.url.href;
 <!doctype html>
 <html lang="en" class="min-h-screen">
   <head>
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/mb-favicon.png" type="image/png" />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" href="/mb-favicon.png" type="image/png" />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Preload critical FontAwesome stylesheet -->
+    <!-- Preload FontAwesome Stylesheet -->
     <link
       rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -43,80 +43,59 @@ const canonicalURL = Astro.url.href;
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <noscript
-      ><link
+    <noscript>
+      <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      /></noscript
-    >
+      />
+    </noscript>
 
-    <!-- Preconnect to Google Fonts for faster loading -->
+    <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Load Google Fonts asynchronously -->
+    <!-- Load Google Fonts Asynchronously -->
     <link
       href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap"
       rel="stylesheet"
       media="print"
+      onload="this.media='all'"
     />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, Astro.url)} />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.url)} />
 
-    <slot name="head" />
-
-   <!-- Simplified Theme Script -->
-   <script is:inline>
-(function() {
-  function getInitialTheme() {
-    let theme = 'light'; // Default to 'light'
-    try {
-      theme = localStorage.getItem('theme') || 'light';
-    } catch (err) {
-      console.error('Error accessing localStorage:', err);
+    <!-- JSON-LD Structured Data -->
+    <script define:vars={{ canonicalURL, title, description, ogImage }} type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": canonicalURL,
+      "name": title,
+      "description": description,
+      "publisher": {
+        "@type": "Organization",
+        "name": "Matt Birch"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": new URL(ogImage, canonicalURL).toString(),
+        "width": 1200,
+        "height": 630
+      }
     }
-    return theme;
-  }
-
-  const theme = getInitialTheme();
-  document.documentElement.classList.toggle('dark', theme === 'dark');
-  document.documentElement.style.colorScheme = theme;
-})();
-</script>
-
-    <!-- JSON-LD -->
-
-   <script define:vars={{ url: Astro.url.href, title, description, ogImage }} type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "url": url,
-    "name": title,
-    "description": description,
-    "publisher": {
-      "@type": "Organization",
-      "name": "Matt Birch"
-    },
-    "image": {
-      "@type": "ImageObject",
-      "url": new URL(ogImage, url).toString(),
-      "width": 1200,
-      "height": 630
-    }
-  }
-</script>
+    </script>
 
    <ViewTransitions />
   </head>

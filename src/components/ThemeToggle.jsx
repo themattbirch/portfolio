@@ -1,42 +1,22 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState(null);
-
-  const applyTheme = useCallback((newTheme) => {
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-    localStorage.setItem("theme", newTheme);
-    // Reinitialize any other scripts if necessary
-    if (window.initializeSkillToggles) {
-      requestAnimationFrame(() => {
-        console.log("Reinitializing skill toggles after theme change");
-        window.initializeSkillToggles();
-      });
-    }
-  }, []);
-useEffect(() => {
-  // Get the theme from localStorage or default to 'light'
-  let savedTheme = "light";
-  if (typeof localStorage !== "undefined") {
-    savedTheme = localStorage.getItem("theme") || "light";
-  }
-  setTheme(savedTheme);
-}, []);
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    if (theme) {
-      applyTheme(theme);
-    }
-  }, [theme, applyTheme]);
-
-  const toggleTheme = useCallback(() => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    document.documentElement.classList.toggle("dark", savedTheme === "dark");
+    document.documentElement.style.colorScheme = savedTheme;
   }, []);
 
-  if (theme === null) {
-    // Render nothing or a loading state until the theme is set
-    return null;
-  }
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    document.documentElement.style.colorScheme = newTheme;
+    localStorage.setItem("theme", newTheme);
+  };
 
   const LightModeIcon = () => (
     <svg
