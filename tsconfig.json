@@ -9,8 +9,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["astro/client", "svelte"]
+    "types": ["astro/client"]
   },
-  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "src/**/*.astro"],
+  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.astro"],
   "exclude": ["node_modules"]
 }

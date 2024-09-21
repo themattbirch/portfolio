@@ -1,34 +1,9 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
 
-/* Theme and Color Variables */
-/* Global CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/*Other Styles */
-html {
-    scroll-behavior: smooth;
-}
-
-/* General Body Styles */
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Source Sans 3', sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'PT Serif', serif;
-    text-wrap: balance;
-    color: var(--heading-light-color);
-}
-
-
+/* CSS Variables for Light Mode */
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
@@ -43,61 +18,82 @@ h6 {
     --skills-text: #1f2937;
     --skills-card-border: #3b82f6;
     --cta-bg-from: #dbeafe;
-        /* blue-100 */
-        --cta-bg-via: #e0e7ff;
-        /* indigo-100 */
-        --cta-bg-to: #f3e8ff;
-        /* purple-100 */
-        --cta-bg-opacity: 0.3;
-        --cta-backdrop: #ffffff;
-        --cta-backdrop-opacity: 0.5;
-        --cta-content-bg: #ffffff;
-        --cta-heading-text: #1f2937;
-        /* gray-800 */
-        --cta-subtext: #4b5563;
-        /* gray-600 */
-        --cta-button-bg: #2563eb;
-        /* blue-600 */
-        --cta-button-text: #ffffff;
-        --cta-button-hover-bg: #1d4ed8;
-        /* blue-700 */
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
+    /* blue-100 */
+    --cta-bg-via: #e0e7ff;
+    /* indigo-100 */
+    --cta-bg-to: #f3e8ff;
+    /* purple-100 */
+    --cta-bg-opacity: 0.3;
+    --cta-backdrop: #ffffff;
+    --cta-backdrop-opacity: 0.5;
+    --cta-content-bg: #ffffff;
+    --cta-heading-text: #1f2937;
+    /* gray-800 */
+    --cta-subtext: #4b5563;
+    /* gray-600 */
+    --cta-button-bg: #2563eb;
+    /* blue-600 */
+    --cta-button-text: #ffffff;
+    --cta-button-hover-bg: #1d4ed8;
+    /* blue-700 */
+}
 
+/* CSS Variables for Dark Mode */
 .dark {
     --bg-color: #000000;
     --text-color: #ffffff;
-    --primary-color: #60a5fa;
-    --secondary-color: #3b82f6;
+    /* Override other variables as needed for dark mode */
     --testimonial-bg-light: linear-gradient(to bottom right, #1f2937, #111827);
-    --testimonial-bg-dark: linear-gradient(to bottom right, #1f2937, #111827);
     --testimonial-text-light: #f3f4f6;
     --testimonial-text-dark: #f3f4f6;
-    --skills-bg: #000;
-    --skills-card-bg: linear-gradient(to bottom right, #1f2937, #111827);
-    --skills-text: #f3f4f6;
-    --skills-card-border: #60a5fa;
---cta-bg-from: #1e3a8a;
-    /* blue-900 */
-    --cta-bg-via: #312e81;
-    /* indigo-900 */
-    --cta-bg-to: #4c1d95;
-    /* purple-900 */
-    --cta-bg-opacity: 0.3;
-    --cta-backdrop: #000000;
-    --cta-backdrop-opacity: 0.5;
-    --cta-content-bg: #1f2937;
-    /* gray-800 */
-    --cta-heading-text: #f3f4f6;
-    /* gray-100 */
-    --cta-subtext: #d1d5db;
-    /* gray-300 */
-    --cta-button-bg: #3b82f6;
-    /* blue-500 */
-    --cta-button-text: #ffffff;
-    --cta-button-hover-bg: #2563eb;
-    /* blue-600 */
+        --skills-bg: #000;
+        --skills-card-bg: linear-gradient(to bottom right, #1f2937, #111827);
+        --skills-text: #f3f4f6;
+        --skills-card-border: #60a5fa;
+        --cta-bg-from: #1e3a8a;
+        /* blue-900 */
+        --cta-bg-via: #312e81;
+        /* indigo-900 */
+        --cta-bg-to: #4c1d95;
+        /* purple-900 */
+        --cta-bg-opacity: 0.3;
+        --cta-backdrop: #000000;
+        --cta-backdrop-opacity: 0.5;
+        --cta-content-bg: #1f2937;
+        /* gray-800 */
+        --cta-heading-text: #f3f4f6;
+        /* gray-100 */
+        --cta-subtext: #d1d5db;
+        /* gray-300 */
+        --cta-button-bg: #3b82f6;
+        /* blue-500 */
+        --cta-button-text: #ffffff;
+        --cta-button-hover-bg: #2563eb;
+        /* blue-600 */
+    }
+/* Global CSS Properties */
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+/* Additional Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'PT Serif', serif;
+    text-wrap: balance;
+    color: var(--text-headingLight);
 }
 
 .heading-text {
@@ -106,7 +102,7 @@ h6 {
 
 /* h1 using clamp for responsive scaling */
 .h1-text {
-    font-size: clamp(2rem, 5vw + 1rem, 3.5rem);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     /* Will scale between 2rem and 3.5rem */
     line-height: 1.2;
     font-weight: 600;

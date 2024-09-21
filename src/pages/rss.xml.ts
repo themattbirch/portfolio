@@ -3,6 +3,7 @@ import { getCollection } from "astro:content"
 import sanitizeHtml from "sanitize-html"
 import MarkdownIt from "markdown-it"
 import type { APIContext } from "astro"
+import type { CollectionEntry } from 'astro:content';
 
 const parser = new MarkdownIt();
 
@@ -14,7 +15,7 @@ export async function get(context: APIContext) {
         I combine technical expertise with creative problem-solving to deliver 
         websites that not only look great but perform exceptionally.`,
         site: context.site?.toString() ?? "",
-        items: posts.map(post => ({
+        items: posts.map((post: CollectionEntry<'posts'>) => ({
             title: post.data.title,
             link: `/blog/${post.slug}`,
             pubDate: new Date(post.data.date),

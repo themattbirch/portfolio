@@ -1,15 +1,16 @@
+console.log("Loading tailwind.config.mjs");
+
+import typography from "@tailwindcss/typography";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./components/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./pages/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./layouts/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+    "./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx,vue}",
+    "./components/**/*.{astro,html,js,jsx,md,mdx,ts,tsx,vue}",
+    "./pages/**/*.{astro,html,js,jsx,md,mdx,ts,tsx,vue}",
+    "./layouts/**/*.{astro,html,js,jsx,md,mdx,ts,tsx,vue}",
     "./public/**/*.html",
   ],
-
-  darkMode: "class",
-
   theme: {
     extend: {
       colors: {
@@ -32,6 +33,10 @@ export default {
       },
     },
   },
-
-  plugins: [require("@tailwindcss/typography")],
+ plugins: [
+   require('@tailwindcss/typography'),
+  ],
+     darkMode: "class",
 };
+
+console.log("Finished loading tailwind.config.mjs");

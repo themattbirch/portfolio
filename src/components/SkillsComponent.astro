@@ -22,54 +22,79 @@ const skillsPart2 = split ? skills.slice(half) : [];
 <section>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-16">
-      {skillsPart1.map((skill, index) => (
-        <div class="skill-card bg-white dark:bg-gray-800 rounded-lg shadow-md border border-transparent dark:border-gray-700 mb-4 sm:mb-6">
-          <button class="skill-header w-full text-left p-4 sm:p-6 relative" data-skill-toggle={index} aria-expanded="false">
-            <div class="icon-wrapper absolute left-4 top-1/2 -translate-y-1/2">
-              <i class={`fas ${skill.icon} text-2xl text-blue-700`}></i>
-            </div>
-            <div class="text-wrapper sm:text-center pl-12 pr-8">
-              <div class="text-lg font-semibold text-gray-700 dark:text-gray-200">{skill.name}</div>
-            </div>
-            <span class="toggle-icon text-xl text-gray-500 dark:text-gray-200 absolute right-4 top-1/2 -translate-y-1/2">▼</span>
-          </button>
-          <div class="skill-content hidden">
-            <div class="p-4 sm:p-6 bg-gray-50 dark:bg-black rounded-b-lg">
-              <p class="text-gray-600 dark:text-gray-300 text-center">{skill.description}</p>
-              <div class="button-wrapper mt-4 text-center">
-                <button class="skill-level-btn">{skill.level}</button>
+      {
+        skillsPart1.map((skill, index) => (
+          <div class="skill-card bg-white dark:bg-gray-800 rounded-lg shadow-md border border-transparent dark:border-gray-700 mb-4 sm:mb-6">
+            <button
+              class="skill-header w-full text-left p-4 sm:p-6 relative"
+              data-skill-toggle={index}
+              aria-expanded="false"
+            >
+              <div class="icon-wrapper absolute left-4 top-1/2 -translate-y-1/2">
+                <i class={`fas ${skill.icon} text-2xl text-blue-700`} />
               </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    {split && skillsPart2.length > 0 && (
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-16 mt-8">
-        {skillsPart2.map((skill, index) => (
-          <div class="skill-card bg-white dark:bg-gray-800 rounded-lg shadow-md border border-transparent dark:border-gray-700">
-            <button class="skill-header w-full text-left flex items-center p-3 sm:p-6" data-skill-toggle={index}>
-              <div class="icon-wrapper mr-3 sm:mr-4 flex-shrink-0">
-                <i class={`fas ${skill.icon} text-xl sm:text-2xl text-blue-700`}></i>
+              <div class="text-wrapper sm:text-center pl-12 pr-8">
+                <div class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                  {skill.name}
+                </div>
               </div>
-              <div class="flex-grow sm:text-center">
-                <div class="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-200">{skill.name}</div>
-              </div>
-              <span class="toggle-icon text-lg sm:text-xl text-gray-500 dark:text-gray-200 ml-2 sm:ml-4 flex-shrink-0">▼</span>
+              <span class="toggle-icon text-xl text-gray-500 dark:text-gray-200 absolute right-4 top-1/2 -translate-y-1/2">
+                ▼
+              </span>
             </button>
             <div class="skill-content hidden">
-              <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-b-lg">
-                <p class="text-gray-600 dark:text-gray-300 text-center">{skill.description}</p>
+              <div class="p-4 sm:p-6 bg-gray-50 dark:bg-black rounded-b-lg">
+                <p class="text-gray-600 dark:text-gray-300 text-center">
+                  {skill.description}
+                </p>
                 <div class="button-wrapper mt-4 text-center">
                   <button class="skill-level-btn">{skill.level}</button>
                 </div>
               </div>
             </div>
           </div>
-        ))}
-      </div>
-    )}
+        ))
+      }
+    </div>
+
+    {
+      split && skillsPart2.length > 0 && (
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-16 mt-8">
+          {skillsPart2.map((skill, index) => (
+            <div class="skill-card bg-white dark:bg-gray-800 rounded-lg shadow-md border border-transparent dark:border-gray-700">
+              <button
+                class="skill-header w-full text-left flex items-center p-3 sm:p-6"
+                data-skill-toggle={index}
+              >
+                <div class="icon-wrapper mr-3 sm:mr-4 flex-shrink-0">
+                  <i
+                    class={`fas ${skill.icon} text-xl sm:text-2xl text-blue-700`}
+                  />
+                </div>
+                <div class="flex-grow sm:text-center">
+                  <div class="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-200">
+                    {skill.name}
+                  </div>
+                </div>
+                <span class="toggle-icon text-lg sm:text-xl text-gray-500 dark:text-gray-200 ml-2 sm:ml-4 flex-shrink-0">
+                  ▼
+                </span>
+              </button>
+              <div class="skill-content hidden">
+                <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-b-lg">
+                  <p class="text-gray-600 dark:text-gray-300 text-center">
+                    {skill.description}
+                  </p>
+                  <div class="button-wrapper mt-4 text-center">
+                    <button class="skill-level-btn">{skill.level}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )
+    }
   </div>
 </section>
 
@@ -97,12 +122,10 @@ const skillsPart2 = split ? skills.slice(half) : [];
 
   .skill-content {
     display: none;
-    padding: 1.25rem;
   }
 
   .skill-content.active {
     display: block;
-    padding: 1.5rem;
   }
 
   .skill-level-btn {
@@ -122,10 +145,6 @@ const skillsPart2 = split ? skills.slice(half) : [];
     .skill-header {
       padding: 2rem;
       min-height: 3.5rem;
-    }
-
-    .skill-content {
-      padding: 1.25rem;
     }
 
     .text-wrapper {

@@ -31,7 +31,6 @@ const skills = [
   },
 ];
 
-
 // Split the skills array into two parts
 const half = Math.ceil(skills.length / 2);
 const skillsPart1 = skills.slice(0, half);
@@ -99,75 +98,75 @@ const pageDescription = "The technical skills I possess.";
       </div>
     </section>
   </div>
-  </Layout>
+</Layout>
 
-  <style>
-    .horizontal-gradient-wrapper-1 {
-      background: linear-gradient(to bottom, #dde4ee, #ffffff);
-    }
+<style>
+  .horizontal-gradient-wrapper-1 {
+    background: linear-gradient(to bottom, #dde4ee, #ffffff);
+  }
 
-    .horizontal-gradient-wrapper-2 {
-      background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
-    }
+  .horizontal-gradient-wrapper-2 {
+    background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
+  }
 
-    .horizontal-gradient-wrapper-3 {
-      background: linear-gradient(to bottom, #ffffff, #dde4ee);
-    }
+  .horizontal-gradient-wrapper-3 {
+    background: linear-gradient(to bottom, #ffffff, #dde4ee);
+  }
 
-    /* Dark mode gradient */
-    :global(.dark) .horizontal-gradient-wrapper-1 {
-      background: linear-gradient(to bottom, #1f2937, #374d62);
-    }
+  /* Dark mode gradient */
+  :global(.dark) .horizontal-gradient-wrapper-1 {
+    background: linear-gradient(to bottom, #1f2937, #374d62);
+  }
 
-    :global(.dark) .horizontal-gradient-wrapper-2 {
-      background: linear-gradient(to bottom, #374d62, #1f2937, #374d62);
-    }
+  :global(.dark) .horizontal-gradient-wrapper-2 {
+    background: linear-gradient(to bottom, #374d62, #1f2937, #374d62);
+  }
 
-    :global(.dark) .horizontal-gradient-wrapper-3 {
-      background: linear-gradient(to bottom, #374d62, #1f2937);
-    }
-  </style>
+  :global(.dark) .horizontal-gradient-wrapper-3 {
+    background: linear-gradient(to bottom, #374d62, #1f2937);
+  }
+</style>
 
-  <script>
-    function handleFadeIn() {
-      const fadeIns = document.querySelectorAll(".fade-in");
+<script>
+  function handleFadeIn() {
+    const fadeIns = document.querySelectorAll(".fade-in");
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target); // Stop observing once visible
-            }
-          });
-        },
-        {
-          threshold: 0.2,
-          rootMargin: "0px 0px -100px 0px", // Start fading in slightly before the element is in view
-        }
-      );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target); // Stop observing once visible
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -100px 0px", // Start fading in slightly before the element is in view
+      }
+    );
 
-      fadeIns.forEach((fadeIn) => {
-        // Check if the element is already visible (e.g., on page load)
-        const rect = fadeIn.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-          fadeIn.classList.add("visible");
-        } else {
-          observer.observe(fadeIn);
-        }
-      });
-    }
+    fadeIns.forEach((fadeIn) => {
+      // Check if the element is already visible (e.g., on page load)
+      const rect = fadeIn.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        fadeIn.classList.add("visible");
+      } else {
+        observer.observe(fadeIn);
+      }
+    });
+  }
 
-    // Run on initial load
-    document.addEventListener("DOMContentLoaded", handleFadeIn);
+  // Run on initial load
+  document.addEventListener("DOMContentLoaded", handleFadeIn);
 
-    // Run on each page navigation (for SPA-like behavior)
-    document.addEventListener("astro:page-load", handleFadeIn);
+  // Run on each page navigation (for SPA-like behavior)
+  document.addEventListener("astro:page-load", handleFadeIn);
 
-    // Fallback for browsers that don't support IntersectionObserver
-    if (!("IntersectionObserver" in window)) {
-      document
-        .querySelectorAll(".fade-in")
-        .forEach((el) => el.classList.add("visible"));
-    }
-  </script>
+  // Fallback for browsers that don't support IntersectionObserver
+  if (!("IntersectionObserver" in window)) {
+    document
+      .querySelectorAll(".fade-in")
+      .forEach((el) => el.classList.add("visible"));
+  }
+</script>

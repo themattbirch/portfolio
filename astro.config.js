@@ -1,20 +1,24 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import svelte from "@astrojs/svelte";
 import react from "@astrojs/react";
 import icon from "astro-icon";
 import vercel from "@astrojs/vercel/static";
 
-export default defineConfig({
-  integrations: [tailwind(), svelte(), react(), icon()],
-  site: "https://mattbirch.co",
+console.log("Loading astro.config.js");
 
-  content: {
-    fields: [{ name: "slug", type: "string" }],
-  },
-  build: {
-    viewTransitions: true,
-  },
+
+export default defineConfig({
+  integrations: [
+    tailwind({
+      config: { path: "./tailwind.config.js" },
+    }),
+    react(),
+    icon(),
+  ],
+  site: "https://mattbirch.co",
   output: "static",
   adapter: vercel(),
 });
+
+console.log("Finished loading astro.config.js");
+
