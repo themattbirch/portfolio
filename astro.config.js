@@ -4,9 +4,6 @@ import react from "@astrojs/react";
 import icon from "astro-icon";
 import vercel from "@astrojs/vercel/static";
 
-console.log("Loading astro.config.js");
-
-
 export default defineConfig({
   integrations: [
     tailwind({
@@ -19,6 +16,3 @@ export default defineConfig({
   output: "static",
   adapter: vercel(),
 });
-
-console.log("Finished loading astro.config.js");
-

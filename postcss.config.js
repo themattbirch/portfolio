@@ -1,5 +1,3 @@
-console.log("Loading postcss.config.js");
-
 export default {
   plugins: {
     "tailwindcss/nesting": {},
@@ -7,5 +5,3 @@ export default {
     autoprefixer: {},
   },
 };
-console.log("Finished loading postcss.config.js");
-
