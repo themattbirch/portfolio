@@ -50,38 +50,30 @@ const testimonials: Testimonial[] = [
 ---
 
 <div
-  class="swiper-container relative testimonial-container rounded-full transition-all duration-300"
+  class="swiper-container relative testimonial-container rounded-full transition-all duration-300 bg-gray-100 dark:bg-gray-800"
 >
   <div class="swiper-wrapper">
     {
-      testimonials && testimonials.length > 0 ? (
-        testimonials.map((testimonial) => (
-          <div class="swiper-slide">
-            <div class="testimonial-card rounded-full p-6 shadow-lg text-white relative overflow-hidden max-w-xs md:max-w-md lg:max-w-lg mx-auto">
-              <div class="testimonial-photo-wrapper">
-                <Image
-                  src={testimonial.photo}
-                  alt={`Headshot of ${testimonial.name}`}
-                  class="testimonial-photo w-24 h-24 rounded-full object-cover mx-auto shadow-lg mb-4"
-                  width={96}
-                  height={96}
-                />
-              </div>
-              <div class="text-center">
-                <p class="text-2xl font-semibold">{testimonial.name}</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {testimonial.business}
-                </p>
-                <p class="text-gray-600 dark:text-gray-200 italic mt-4">
-                  "{testimonial.quote}"
-                </p>
-              </div>
+      testimonials.map((testimonial) => (
+        <div class="swiper-slide">
+          <div class="testimonial-card rounded-full p-6 shadow-lg relative overflow-hidden max-w-xs md:max-w-md lg:max-w-lg">
+            <div class="testimonial-photo-wrapper">
+              <Image
+                src={testimonial.photo}
+                alt={`Headshot of ${testimonial.name}`}
+                class="testimonial-photo w-24 h-24 rounded-full object-cover mx-auto shadow-lg mb-4"
+                width={96}
+                height={96}
+              />
+            </div>
+            <div class="text-center">
+              <p class="text-2xl font-semibold">{testimonial.name}</p>
+              <p class="text-sm">{testimonial.business}</p>
+              <p class="italic mt-4">"{testimonial.quote}"</p>
             </div>
           </div>
-        ))
-      ) : (
-        <p>No testimonials available.</p>
-      )
+        </div>
+      ))
     }
   </div>
 
@@ -140,7 +132,7 @@ const testimonials: Testimonial[] = [
 
   .swiper-button-prev,
   .swiper-button-next {
-    color: var(--swiper-navigation-color, var(--testimonial-text));
+    color: var(--swiper-navigation-color, var(--testimonial-text-light));
   }
 
   .swiper-button-prev {
@@ -151,99 +143,91 @@ const testimonials: Testimonial[] = [
     right: 2rem;
   }
 
-  .swiper-button-prev,
-  .swiper-button-next {
-    color: var(--swiper-navigation-color, var(--testimonial-text));
-  }
-
   .swiper-pagination-bullet {
-    background: var(--swiper-pagination-color, var(--testimonial-text));
+    background: var(--swiper-pagination-color, var(--testimonial-text-light));
   }
+  /* testimonials.astro - Styles */
 
-  .testimonial-card {
-    background: var(--testimonial-bg-light);
-    color: var(--testimonial-text-light);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Subtle, light border */
-    box-shadow:
-      0 8px 16px rgba(0, 0, 0, 0.1),
-      0 4px 8px rgba(66, 153, 225, 0.2);
-    /* Light blue shadow */
-    transition: box-shadow 0.3s ease;
-  }
-
-  .testimonial-card:hover {
-    box-shadow:
-      0 12px 24px rgba(0, 0, 0, 0.2),
-      0 6px 12px rgba(66, 153, 225, 0.3);
-    /* More prominent blue glow */
-  }
-
-  .testimonial-card p {
-    margin-bottom: 1rem;
-    /* Add space below the name and business fields */
-    line-height: 1.5;
-    /* Improve readability */
-  }
-
-  .testimonial-card p:last-of-type {
-    margin-bottom: 2rem;
-    /* Add more space for the description on the bottom */
-  }
-
-  .dark .testimonial-card {
-    background: var(--testimonial-bg-dark);
-    color: var(--testimonial-text-dark);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Subtle border for Dark Mode */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    /* Slight shadow for more depth */
-  }
-
-  .dark .testimonial-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  }
-
+  /* Testimonials Container */
+  /* Update the .testimonial-container styles */
   .testimonial-container {
-    background: var(--testimonial-bg-light);
+    @apply overflow-hidden rounded-full max-w-7xl mx-auto transition-all duration-300 relative;
     border: 0.5px solid rgba(0, 0, 0, 0.05);
-    /* Subtle, less pronounced border */
     box-shadow:
       0 0 0 1px rgba(0, 0, 0, 0.02),
       0 4px 6px -1px rgba(0, 0, 0, 0.05),
       0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    /* Subtle shadow in regular state */
     transition:
       box-shadow 0.3s ease,
       border-color 0.3s ease;
   }
 
+  /* Update the dark mode styles for .testimonial-container */
   .dark .testimonial-container {
-    background: linear-gradient(to bottom right, #1f2937, #111827);
-    border: 0.5px solid rgba(255, 255, 255, 0.05);
-    /* Subtle, less pronounced border */
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
     box-shadow:
-      0 0 0 1px rgba(255, 255, 255, 0.02),
-      0 4px 6px -1px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.05),
+      0 4px 6px -1px rgba(0, 0, 0, 0.2),
       0 2px 4px -1px rgba(0, 0, 0, 0.1);
-    /* Subtle shadow in regular state */
   }
 
   .testimonial-container:hover {
     box-shadow:
       0 0 0 1px rgba(0, 0, 0, 0.05),
       0 12px 20px -3px rgba(0, 0, 0, 0.15),
-      /* More pronounced shadow on hover */ 0 6px 10px -2px rgba(0, 0, 0, 0.1);
+      0 6px 10px -2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Update the .testimonial-card styles */
+  .testimonial-card {
+    @apply relative mx-auto p-6 rounded-full shadow-lg overflow-hidden transition-all duration-300;
+    color: var(--testimonial-text-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 8px 16px rgba(0, 0, 0, 0.1),
+      0 4px 8px rgba(66, 153, 225, 0.2);
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  /* Update the dark mode styles for .testimonial-card */
+  .dark .testimonial-card {
+    @apply text-gray-200;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.3),
+      0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .testimonial-card:hover {
+    box-shadow:
+      0 12px 24px rgba(0, 0, 0, 0.2),
+      0 6px 12px rgba(66, 153, 225, 0.3);
+  }
+
+  .testimonial-card p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .testimonial-card p:last-of-type {
+    margin-bottom: 2rem;
   }
 
   .dark .testimonial-container:hover {
     box-shadow:
       0 0 0 1px rgba(255, 255, 255, 0.1),
-      0 12px 20px -3px rgba(0, 0, 0, 0.4),
-      /* More pronounced shadow on hover */ 0 6px 10px -2px rgba(0, 0, 0, 0.3);
+      0 12px 20px -3px rgba(0, 0, 0, 0.25),
+      0 6px 10px -2px rgba(0, 0, 0, 0.15); /* More pronounced on hover */
   }
 
-  /*Media quieries for padding */
+  .dark .testimonial-card:hover {
+    box-shadow:
+      0 8px 16px rgba(0, 0, 0, 0.3),
+      0 12px 24px rgba(0, 0, 0, 0.25); /* More pronounced blue glow on hover */
+  }
+  /* Media queries for padding */
 
   @media (min-width: 640px) {
     /* sm: small devices like tablets */
