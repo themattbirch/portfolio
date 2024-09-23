@@ -1,13 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
+import { Image } from "astro:assets";
+
+// Import all project images
+import floridaGradeAndPave from "../assets/images/florida-grade-and-pave.png";
+import activeCareclinic from "../assets/images/active-care-clinic.png";
+import thePackersPost from "../assets/images/the-packers-post.png";
+import prestigeAcademia from "../assets/images/prestige-academia.png";
+import williamKerriganPainting from "../assets/images/william-kerrigan-painting.png";
+import lynchsLanding from "../assets/images/lynchs-landing-rv-park.png";
 
 const projects = [
   {
     title: "Florida Grade & Pave",
     description:
       "A paving company that handles both residential and commercial needs.",
-    imageSrc: "/images/florida-grade-and-pave.png",
+    image: floridaGradeAndPave,
     category: "Asphalt Paving",
     keyFeatures: ["Landing Page", "Services", "Book Directly"],
     link: "https://floridagradeandpave.com/",
@@ -15,7 +24,7 @@ const projects = [
   {
     title: "Active Care Clinic",
     description: "A well-known chiropractic and acupuncture clinic.",
-    imageSrc: "/images/active-care-clinic.png",
+    image: activeCareclinic,
     category: "Chiropractor",
     keyFeatures: [
       "Live Support",
@@ -27,7 +36,7 @@ const projects = [
   {
     title: "The Packers Post",
     description: "A Green Bay Packers-focused sports blog.",
-    imageSrc: "/images/the-packers-post.png",
+    image: thePackersPost,
     category: "Blog",
     keyFeatures: ["RSS Feed", "Blog Template", "Metadata"],
     link: "https://thepackerspost.com/",
@@ -35,7 +44,7 @@ const projects = [
   {
     title: "Prestige Academia",
     description: "An online academy that teaches English in Latin America.",
-    imageSrc: "images/prestige-academia.png",
+    image: prestigeAcademia,
     category: "Education",
     keyFeatures: ["Language Translator", "Registration Form", "Brochure"],
     link: "https://prestigeacademia.com/",
@@ -43,7 +52,7 @@ const projects = [
   {
     title: "William Kerrigan Painting",
     description: "A locally-owned painting company.",
-    imageSrc: "images/william-kerrigan-painting.png",
+    image: williamKerriganPainting,
     category: "House Painting",
     keyFeatures: ["Testimonials", "Services", "Bio"],
     link: "https://williamkpainting.com/",
@@ -51,7 +60,7 @@ const projects = [
   {
     title: "Lynch's Landing",
     description: "Popular hospitality business located in Florida.",
-    imageSrc: "/images/lynchs-landing-rv-park.png",
+    image: lynchsLanding,
     category: "RV Park",
     keyFeatures: ["Brochure", "Contact Form", "Live Cam"],
     link: "https://lynchslandingrvpark.com/",
@@ -95,7 +104,7 @@ const pageDescription = "All about my portfolio of work.";
               <ProjectCard
                 title={project.title}
                 description={project.description}
-                imageSrc={project.imageSrc}
+                image={project.image}
                 category={project.category}
                 keyFeatures={project.keyFeatures}
                 link={project.link}

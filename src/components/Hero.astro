@@ -1,6 +1,12 @@
 ---
-const lightBackground = "/images/hero-background-light-theme-toggle.png";
-const darkBackground = "/images/hero-background-dark-theme-toggle.png";
+import { Image } from "astro:assets";
+import lightBackgroundImage from "../assets/images/hero-background-light-theme-toggle.png";
+import darkBackgroundImage from "../assets/images/hero-background-dark-theme-toggle.png";
+import mobileBackgroundImage from "../assets/images/hero_background_mobile.jpg";
+
+const lightBackground = lightBackgroundImage.src;
+const darkBackground = darkBackgroundImage.src;
+const mobileBackground = mobileBackgroundImage.src;
 ---
 
 <div class="relative h-screen flex items-center pb-16">
@@ -44,7 +50,7 @@ const darkBackground = "/images/hero-background-dark-theme-toggle.png";
   </div>
 </div>
 
-<script define:vars={{ lightBackground, darkBackground }}>
+<script define:vars={{ lightBackground, darkBackground, mobileBackground }}>
   function updateTheme() {
     const isDarkMode = document.documentElement.classList.contains("dark");
     const heroBackground = document.getElementById("hero-background");
@@ -56,8 +62,7 @@ const darkBackground = "/images/hero-background-dark-theme-toggle.png";
       } else if (!isSmallScreen) {
         heroBackground.style.backgroundImage = `url(${lightBackground})`;
       } else {
-        // For small screens in light mode, let CSS handle it
-        heroBackground.style.backgroundImage = "";
+        heroBackground.style.backgroundImage = `url(${mobileBackground})`;
       }
     }
   }
@@ -115,21 +120,8 @@ const darkBackground = "/images/hero-background-dark-theme-toggle.png";
 </script>
 
 <style>
-  /* Apply default background image for Light Mode on large screens */
   #hero-background {
-    background-image: url("/images/hero-background-light-theme-toggle.png");
     transition: background-image 0.5s ease;
-  }
-
-  .dark #hero-background {
-    background-image: url("/images/hero-background-dark-theme-toggle.png");
-  }
-
-  @media (max-width: 1024px) {
-    #hero-background {
-      background-image: url("/images/hero_background_mobile.jpg");
-      background-position: 90% center;
-    }
   }
 
   .gradient-text {
@@ -196,22 +188,6 @@ const darkBackground = "/images/hero-background-dark-theme-toggle.png";
       ); /* blue-900 to blue-800 */
     }
   }
-
-  /*
-
-  @media (max-width: 768px) {
-    #hero-background {
-      background-position: 80% center;
-    }
-  }
-
-  @media (max-width: 640px) {
-    #hero-background {
-      background-position: 50% center;
-    }
-  }
-
-  */
 
   @keyframes fadeInUp {
     from {

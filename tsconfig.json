@@ -1,16 +1,22 @@
 {
+  "$schema": "./schema/tsconfig.schema.json",
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "strict": true,
     "allowJs": true,
+      "skipLibCheck": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["astro/client"]
-  },
-  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.astro"],
-  "exclude": ["node_modules"]
+     "typeRoots": ["./src/types", "./node_modules/@types"],
+    "types": ["astro/client"],
+    "moduleResolution": "node",
+"esModuleInterop": true,
+"allowSyntheticDefaultImports": true
+ },
+"include": ["src", "tests", "scripts"],
+"exclude": ["node_modules", "dist"]
 }
