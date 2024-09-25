@@ -88,119 +88,115 @@ import meHeroImg from "../assets/images/matt-pointing.webp";
         />
       </div>
     </div>
-
-    <section
-      class="testimonials-section max-w-7xl pt-16 sm:pt-24 md:pt-32 pb-8 sm:pb-12 md:pb-16 mx-auto px-4 sm:px-6 transition-colors duration-300"
-    >
-      <h2
-        class="h2-text text-center mb-16 sm:mb-24 md:mb-32 relative text-headingLight dark:text-headingDark"
-      >
-        Just ask my clients what they think...
-      </h2>
-      <div
-        class="testimonial-container overflow-hidden rounded-full max-w-7xl mx-auto transition-colors duration-300"
-      >
-        <Testimonials />
-      </div>
-    </section>
-
-    <!-- Unique Sales Proposition Area -->
-    <section
-      class="pb-16 sm:pb-24 md:pb-32 pt-8 sm:pt-12 md:pt-16 max-w-screen-2xl mx-auto px-4 sm:px-6 bg-background-secondary dark:bg-background-dark transition-colors duration-300"
-    >
-      <h2 class="h2-text mb-6 sm:mb-8 text-headingLight dark:text-headingDark">
-        ...They Know What Separates Me From Other Web Developers
-      </h2>
-      <div class="px-4 sm:px-6 max-w-7xl">
-        <!-- Reduced max-width for content -->
-        <!-- Flexbox container for the two columns -->
-        <div
-          class="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0 md:space-x-8"
-        >
-          <!-- Left column: 2 list items -->
-          <ul class="list-disc space-y-4 w-full md:w-1/2">
-            <li>
-              A cross-functional expert who understands how systems fit
-              together.
-            </li>
-            <li>*EXPERIENCED*</li>
-          </ul>
-
-          <!-- Right column: 2 list items -->
-          <ul class="list-disc space-y-4 w-full md:w-1/2">
-            <li>
-              Strong awareness of how to both fulfill user needs and achieve
-              business goals.
-            </li>
-            <li>
-              Team-focused, collaborative mindset with great communication
-              skills
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section Wrapper with Background Color -->
-    <section
-      class="bg-background-skills dark:bg-background-dark py-16 sm:py-24 md:py-32 transition-colors duration-300"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <SkillsSection client:load />
-      </div>
-    </section>
-
-    <section
-      class="py-16 sm:py-24 md:py-32 max-w-screen-xl mx-auto px-4 sm:px-6 text-center bg-background-secondary dark:bg-background-dark transition-colors duration-300"
-    >
-      <h2
-        class="h2-text mb-10 text-center text-headingLight dark:text-headingDark"
-      >
-        What You See Is What You Get
-      </h2>
-
-      <div class="flex justify-center">
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-12 justify-items-center"
-        >
-          <!-- Left Column -->
-          <ul class="space-y-6">
-            {leftQualities.map((quality) => <QualityItem text={quality} />)}
-          </ul>
-
-          <!-- Right Column -->
-          <ul class="space-y-6">
-            {rightQualities.map((quality) => <QualityItem text={quality} />)}
-          </ul>
-        </div>
-      </div>
-
-      <!-- Subtle underline effect -->
-      <div class="flex justify-center my-12">
-        <div class="w-12 border-t-2 border-gray-300 dark:border-gray-600"></div>
-      </div>
-
-      <!-- CTA Card -->
-      <CTASection />
-    </section>
-
-    <style>
-      .icon-checkmark {
-        transition:
-          transform 0.3s ease-in-out,
-          opacity 0.3s ease-in-out;
-      }
-
-      /* Hover Effect for icons */
-      li:hover .icon-checkmark {
-        transform: scale(1.3);
-        opacity: 1;
-      }
-
-      li:hover span {
-        color: #1d4ed8;
-        font-weight: 500; /* Adds a color change to text on hover */
-      }
-    </style>
   </section>
+
+  <section
+    class="testimonials-section max-w-7xl pt-16 sm:pt-24 md:pt-32 pb-8 sm:pb-12 md:pb-16 mx-auto px-4 sm:px-6 transition-colors duration-300"
+  >
+    <h2
+      class="h2-text text-center mb-16 sm:mb-24 md:mb-32 relative text-headingLight dark:text-headingDark"
+    >
+      Just ask my clients what they think...
+    </h2>
+    <div
+      class="testimonial-container overflow-hidden rounded-full max-w-7xl mx-auto transition-colors duration-300"
+    >
+      <Testimonials />
+    </div>
+  </section>
+
+  <!-- Unique Sales Proposition Area -->
+  <section
+    class="pb-16 sm:pb-24 md:pb-32 pt-8 sm:pt-12 md:pt-16 max-w-screen-2xl mx-auto px-4 sm:px-6 transition-colors duration-300"
+  >
+    <h2 class="h2-text mb-6 sm:mb-8 text-headingLight dark:text-headingDark">
+      ...They Know What Separates Me From Other Web Developers
+    </h2>
+    <div class="px-4 sm:px-6 max-w-7xl">
+      <!-- Reduced max-width for content -->
+      <!-- Flexbox container for the two columns -->
+      <div
+        class="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0 md:space-x-8"
+      >
+        <!-- Left column: 2 list items -->
+        <ul class="list-disc space-y-4 w-full md:w-1/2">
+          <li>
+            A cross-functional expert who understands how systems fit together.
+          </li>
+          <li>*EXPERIENCED*</li>
+        </ul>
+
+        <!-- Right column: 2 list items -->
+        <ul class="list-disc space-y-4 w-full md:w-1/2">
+          <li>
+            Strong awareness of how to both fulfill user needs and achieve
+            business goals.
+          </li>
+          <li>
+            Team-focused, collaborative mindset with great communication skills
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section Wrapper with Background Color -->
+  <section
+    class="bg-background-skills dark:bg-background-dark py-16 sm:py-24 md:py-32 transition-colors duration-300"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <SkillsSection client:load />
+    </div>
+  </section>
+
+  <section
+    class="py-16 sm:py-24 md:py-32 max-w-screen-xl mx-auto px-4 sm:px-6 text-center transition-colors duration-300"
+  >
+    <h2
+      class="h2-text mb-10 text-center text-headingLight dark:text-headingDark"
+    >
+      What You See Is What You Get
+    </h2>
+
+    <div class="flex justify-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 justify-items-center">
+        <!-- Left Column -->
+        <ul class="space-y-6">
+          {leftQualities.map((quality) => <QualityItem text={quality} />)}
+        </ul>
+
+        <!-- Right Column -->
+        <ul class="space-y-6">
+          {rightQualities.map((quality) => <QualityItem text={quality} />)}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Subtle underline effect -->
+    <div class="flex justify-center my-12">
+      <div class="w-12 border-t-2 border-gray-300 dark:border-gray-600"></div>
+    </div>
+
+    <!-- CTA Card -->
+    <CTASection />
+  </section>
+
+  <style>
+    .icon-checkmark {
+      transition:
+        transform 0.3s ease-in-out,
+        opacity 0.3s ease-in-out;
+    }
+
+    /* Hover Effect for icons */
+    li:hover .icon-checkmark {
+      transform: scale(1.3);
+      opacity: 1;
+    }
+
+    li:hover span {
+      color: #1d4ed8;
+      font-weight: 500; /* Adds a color change to text on hover */
+    }
+  </style>
 </Layout>
