@@ -19,7 +19,7 @@ const skillsPart1 = split ? skills.slice(0, half) : skills;
 const skillsPart2 = split ? skills.slice(half) : [];
 ---
 
-<section>
+<section class="skills-section">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-16">
       {
@@ -39,49 +39,12 @@ const skillsPart2 = split ? skills.slice(half) : [];
                 </div>
               </div>
               <span class="toggle-icon text-xl text-gray-500 dark:text-gray-200 absolute right-4 top-1/2 -translate-y-1/2">
-                ▼
+                &#x25BC;
               </span>
             </button>
-            <div class="skill-content hidden">
-              <div class="p-4 sm:p-6 bg-gray-50 dark:bg-black rounded-b-lg">
-                <p class="text-gray-600 dark:text-gray-300 text-center">
-                  {skill.description}
-                </p>
-                <div class="button-wrapper mt-4 text-center">
-                  <button class="skill-level-btn">{skill.level}</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-
-    {
-      split && skillsPart2.length > 0 && (
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-16 mt-8">
-          {skillsPart2.map((skill, index) => (
-            <div class="skill-card bg-white dark:bg-gray-800 rounded-lg shadow-md border border-transparent dark:border-gray-700">
-              <button
-                class="skill-header w-full text-left flex items-center p-3 sm:p-6"
-                data-skill-toggle={index}
-              >
-                <div class="icon-wrapper mr-3 sm:mr-4 flex-shrink-0">
-                  <i
-                    class={`fas ${skill.icon} text-xl sm:text-2xl text-blue-700`}
-                  />
-                </div>
-                <div class="flex-grow sm:text-center">
-                  <div class="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    {skill.name}
-                  </div>
-                </div>
-                <span class="toggle-icon text-lg sm:text-xl text-gray-500 dark:text-gray-200 ml-2 sm:ml-4 flex-shrink-0">
-                  ▼
-                </span>
-              </button>
-              <div class="skill-content hidden">
-                <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-b-lg">
+            <div class="skill-content p-0 m-0 hidden">
+              <div class="content-wrapper p-0 m-0">
+                <div class="p-4 sm:p-6 bg-gray-50 dark:bg-black">
                   <p class="text-gray-600 dark:text-gray-300 text-center">
                     {skill.description}
                   </p>
@@ -91,10 +54,10 @@ const skillsPart2 = split ? skills.slice(half) : [];
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      )
-    }
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>
 
@@ -116,8 +79,18 @@ const skillsPart2 = split ? skills.slice(half) : [];
 
   .text-wrapper {
     width: 100%;
-    padding-left: 3.5rem;
-    padding-right: 2.5rem;
+  }
+
+  .content-wrapper {
+    width: 100%;
+  }
+  .toggle-icon {
+    transition: transform 0.3s ease;
+    display: inline-block;
+  }
+
+  .skill-header[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg);
   }
 
   .skill-content {
@@ -126,6 +99,8 @@ const skillsPart2 = split ? skills.slice(half) : [];
 
   .skill-content.active {
     display: block;
+    width: 100%; /* Full viewport width */
+    position: relative;
   }
 
   .skill-level-btn {
@@ -146,11 +121,6 @@ const skillsPart2 = split ? skills.slice(half) : [];
       padding: 2rem;
       min-height: 3.5rem;
     }
-
-    .text-wrapper {
-      padding-left: 2.5rem;
-      padding-right: 2rem;
-    }
   }
 </style>
 
@@ -161,41 +131,43 @@ const skillsPart2 = split ? skills.slice(half) : [];
     skillCards.forEach((card, index) => {
       let header = card.querySelector(".skill-header");
       const content = card.querySelector<HTMLElement>(".skill-content");
-      const icon = card.querySelector<HTMLElement>(".toggle-icon");
 
-      if (!header || !content || !icon) return;
+      if (!header || !content) return;
 
       // Clear any previous event listeners to avoid multiple bindings
       header.replaceWith(header.cloneNode(true));
       header = card.querySelector(".skill-header");
 
       header?.addEventListener("click", () => {
-        const isExpanded = content.classList.contains("active");
+        const isExpanded = header.getAttribute("aria-expanded") === "true";
 
         // Close all other cards
         skillCards.forEach((otherCard, otherIndex) => {
           if (otherIndex !== index) {
+            const otherHeader =
+              otherCard.querySelector<HTMLElement>(".skill-header");
             const otherContent =
               otherCard.querySelector<HTMLElement>(".skill-content");
-            const otherIcon =
-              otherCard.querySelector<HTMLElement>(".toggle-icon");
-            if (otherContent && otherIcon) {
+            if (otherHeader && otherContent) {
+              otherHeader.setAttribute("aria-expanded", "false");
               otherContent.style.maxHeight = "0px";
+              otherContent.style.marginBottom = "0px";
               otherContent.classList.remove("active");
-              otherIcon.textContent = "▼";
             }
           }
         });
 
         // Toggle the clicked card
         if (isExpanded) {
+          header.setAttribute("aria-expanded", "false");
           content.style.maxHeight = "0px";
+          content.style.marginBottom = "0px";
           content.classList.remove("active");
-          icon.textContent = "▼";
         } else {
-          content.style.maxHeight = content.scrollHeight + "px";
+          header.setAttribute("aria-expanded", "true");
+          content.style.maxHeight = content.scrollHeight + 40 + "px"; // Add extra space
+          content.style.marginBottom = "20px"; // Add margin at the bottom
           content.classList.add("active");
-          icon.textContent = "▲";
         }
       });
     });

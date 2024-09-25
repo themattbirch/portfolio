@@ -276,18 +276,6 @@ body {
         text-decoration: underline;
     }
 
-    .skill-header {
-        @apply flex justify-between items-center p-4;
-    }
-
-    .toggle-icon {
-        @apply ml-auto transform translate-y-1/2 transition-transform duration-300 ease;
-    }
-
-    .skill-header[aria-expanded="true"] {
-        transform: rotate(180deg) translateY(-50%);
-    }
-
     /* ---------------------------------
        Theme Toggle Icon
     --------------------------------- */
