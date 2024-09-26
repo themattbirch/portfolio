@@ -79,6 +79,26 @@ body {
         color: theme('colors.text.subtextDark');
     }
 
+        .heading-text {
+            font-size: 2.25rem;
+            /* h2 size */
+            font-weight: 700;
+            line-height: 2.5rem;
+            color: var(--color-primary);
+        }
+    
+        .subheading-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-secondary);
+        }
+    
+        .paragraph-text {
+            font-size: 1rem;
+            line-height: 1.5rem;
+            color: var(--color-text);
+        }
+
 /* h1 using clamp for responsive scaling */
 .h1-text {
     font-size: clamp(2rem, 5vw, 3.5rem);
@@ -439,21 +459,21 @@ body {
 
 
     /* Fade-in animation */
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
+   @keyframes fadeInUp {
+       from {
+           opacity: 0;
+           transform: translateY(20px);
+       }
 
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+       to {
+           opacity: 1;
+           transform: translateY(0);
+       }
+   }
 
-    .fade-in {
-        animation: fadeIn 0.6s ease-out forwards;
-    }
+   .fade-in-up {
+       animation: fadeInUp 1s forwards;
+   }
 
     /* ---------------------------------
        Additional Custom Styles
@@ -467,3 +487,46 @@ body {
         display: block;
     }
     }
+
+/*BreadCrumbs*/
+.breadcrumb {
+    @apply flex space-x-2 text-sm text-gray-500 dark:text-gray-400;
+}
+
+.breadcrumb-item::after {
+    content: '/';
+    @apply mx-2;
+}
+
+.breadcrumb-item:last-child::after {
+    content: '';
+}
+
+.breadcrumb-item a {
+    @apply text-blue-600 hover:underline;
+}
+
+/* for [slug].astro text */
+
+        .prose h1 {
+            @apply text-3xl sm:text-4xl md:text-5xl font-bold mb-4;
+        }
+    
+        .prose h2 {
+            @apply text-2xl sm:text-3xl md:text-4xl font-semibold mt-8 mb-4;
+        }
+    
+        .prose p {
+            @apply text-base sm:text-lg md:text-xl leading-relaxed;
+        }
+    
+        .prose a {
+            @apply text-blue-600 hover:underline;
+        }
+
+
+/* for underlined slug.astro text, back to all blogs */
+
+        .back-link {
+            @apply text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl mb-16 underline block transition-colors duration-200;
+        }

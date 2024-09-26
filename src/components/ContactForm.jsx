@@ -20,7 +20,7 @@ const ContactForm = () => {
       data-kw-validate-on-blur="false"
       data-kw-show-errors-on="submit"
     >
-      <div className="mb-4">
+      <div className="mb-4 form-input">
         <label htmlFor="comment" className="block text-gray-800 dark:text-white text-xl font-semibold text-center mb-6">
           Drop me a line. Any questions or feedback are welcome!
         </label>

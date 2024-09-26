@@ -1,0 +1,22 @@
+---
+export interface Props {
+  current: string;
+  parent?: string;
+}
+const { current, parent } = Astro.props;
+---
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    {
+      parent && (
+        <li class="breadcrumb-item">
+          <a href="/blog">Blog</a>
+        </li>
+      )
+    }
+    <li class="breadcrumb-item active" aria-current="page">
+      {current}
+    </li>
+  </ol>
+</nav>

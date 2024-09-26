@@ -4,7 +4,10 @@ type Props = {
 };
 
 const { category } = Astro.props;
+import BreadCrumb from "./BreadCrumb.astro";
 ---
+
+<BreadCrumb current={category} parent="Blog" />
 
 <a
   href={`/category/${category}`}

@@ -46,7 +46,7 @@ const pageDescription = "The emotional quotient skills I've built.";
     <!-- Introduction Text Section -->
     <section class="text-center mx-auto py-16 sm:py-24 md:py-32">
       <div class="max-w-screen mx-auto">
-        <h1 class="h1-text heading-text text-center mb-8 md:mb-12 fade-in">
+        <h1 class="h1-text heading-text text-center mb-8 md:mb-12 fade-in-up">
           {pageTitle}
         </h1>
         <p class="text-lg">
@@ -60,7 +60,7 @@ const pageDescription = "The emotional quotient skills I've built.";
 
   <div class="horizontal-gradient-wrapper-2">
     <!-- SkillsComponent with Split Part 1 -->
-    <section class="pb-16 sm:pb-24 md:pb-32 fade-in">
+    <section class="pb-16 sm:pb-24 md:pb-32 fade-in-up">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="h2-text heading-text font-bold text-center mb-8 sm:mb-16">
           A few soft skills I've developed
@@ -100,46 +100,4 @@ const pageDescription = "The emotional quotient skills I've built.";
   }
 </style>
 
-<script>
-  function handleFadeIn() {
-    const fadeIns = document.querySelectorAll(".fade-in");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target); // Stop observing once visible
-          }
-        });
-      },
-      {
-        threshold: 0.2,
-        rootMargin: "0px 0px -100px 0px", // Start fading in slightly before the element is in view
-      }
-    );
-
-    fadeIns.forEach((fadeIn) => {
-      // Check if the element is already visible (e.g., on page load)
-      const rect = fadeIn.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        fadeIn.classList.add("visible");
-      } else {
-        observer.observe(fadeIn);
-      }
-    });
-  }
-
-  // Run on initial load
-  document.addEventListener("DOMContentLoaded", handleFadeIn);
-
-  // Run on each page navigation (for SPA-like behavior)
-  document.addEventListener("astro:page-load", handleFadeIn);
-
-  // Fallback for browsers that don't support IntersectionObserver
-  if (!("IntersectionObserver" in window)) {
-    document
-      .querySelectorAll(".fade-in")
-      .forEach((el) => el.classList.add("visible"));
-  }
-</script>
+<script type="module" src="/scripts/fadeIn.js"></script>

@@ -11,7 +11,7 @@ const { prevURL, nextURL } = Astro.props;
     prevURL ? (
       <a
         href={prevURL}
-        class="bg-teal-900 text-white py-3 px-6 rounded-xl text-xl"
+        class="btn btn-primary pagination-button rounded-xl shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         Previous
       </a>
@@ -23,7 +23,7 @@ const { prevURL, nextURL } = Astro.props;
     nextURL ? (
       <a
         href={nextURL}
-        class="btn btn-primary rounded-xl shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="btn btn-primary pagination-button rounded-xl shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         Next
       </a>
@@ -32,3 +32,8 @@ const { prevURL, nextURL } = Astro.props;
     )
   }
 </div>
+<style>
+  .pagination-button:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+</style>

@@ -77,7 +77,7 @@ const pageDescription = "All about my portfolio of work.";
       class="text-center mx-auto py-16 sm:py-24 md:py-32 px-8 sm:px-10 md:px-12"
     >
       <div class="max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="h1-text heading-text text-center mb-8 md:mb-12 fade-in">
+        <h1 class="h1-text heading-text text-center mb-8 md:mb-12 fade-in-up">
           {pageTitle}
         </h1>
         <p class="text-lg text-gray-600 dark:text-gray-300">
@@ -215,46 +215,4 @@ const pageDescription = "All about my portfolio of work.";
   }
 </style>
 
-<script>
-  function handleFadeIn() {
-    const fadeIns = document.querySelectorAll(".fade-in");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target); // Stop observing once visible
-          }
-        });
-      },
-      {
-        threshold: 0.2,
-        rootMargin: "0px 0px -100px 0px", // Start fading in slightly before the element is in view
-      }
-    );
-
-    fadeIns.forEach((fadeIn) => {
-      // Check if the element is already visible (e.g., on page load)
-      const rect = fadeIn.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
-        fadeIn.classList.add("visible");
-      } else {
-        observer.observe(fadeIn);
-      }
-    });
-  }
-
-  // Run on initial load
-  document.addEventListener("DOMContentLoaded", handleFadeIn);
-
-  // Run on each page navigation (for SPA-like behavior)
-  document.addEventListener("astro:page-load", handleFadeIn);
-
-  // Fallback for browsers that don't support IntersectionObserver
-  if (!("IntersectionObserver" in window)) {
-    document
-      .querySelectorAll(".fade-in")
-      .forEach((el) => el.classList.add("visible"));
-  }
-</script>
+<script type="module" src="/scripts/fadeIn.js"></script>
