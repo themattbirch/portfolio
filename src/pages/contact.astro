@@ -13,7 +13,7 @@ const pageDescription = "Get in touch with Matt Birch";
       class="max-w-5xl mx-auto py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8 fade-in-up transition-colors duration-300"
     >
       <div class="max-w-screen mx-auto">
-        <h1 class="h1-text heading-text text-center">
+        <h1 class="h1-text text-center">
           {pageTitle}
         </h1>
       </div>
@@ -57,10 +57,8 @@ const pageDescription = "Get in touch with Matt Birch";
     <section
       class="max-w-5xl mx-auto py-16 sm:py-24 md:py-32 px-8 sm:px-10 md:px-12"
     >
-      <div class="text-center contact-info-grid mb-12">
-        <h2
-          class="h2-text heading-text font-bold text-gray-800 dark:text-white"
-        >
+      <div class="contact-info-grid mb-12">
+        <h2 class="h2-text text-center font-bold text-gray-800 dark:text-white">
           Let's connect
         </h2>
       </div>
@@ -198,10 +196,13 @@ const pageDescription = "Get in touch with Matt Birch";
   }
 
   .contact-info-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    display: flex;
+    justify-content: center; /* Horizontally centers content */
+    align-items: center; /* Vertically centers content */
+    text-align: center; /* Ensures text inside is centered */
+    width: 100%; /* Ensure the container takes full width */
   }
+
   @media (min-width: 768px) {
     .contact-info-grid {
       grid-template-columns: repeat(3, 1fr);

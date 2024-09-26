@@ -13,7 +13,7 @@ export default {
         // Primary and Secondary Colors
         primary: {
           light: "#3b82f6", // Tailwind's blue-500
-          DEFAULT: "#2563eb", // Tailwind's blue-600
+          DEFAULT: "#172554", // Tailwind's blue-600
           dark: "#1d4ed8",
         },
         secondary: {
@@ -42,26 +42,33 @@ export default {
         "cta-subtext": "#4b5563",
         // Background Colors
         background: {
-          light: "#ffffff",
-          dark: "#000000",
+          light: "#FFFFFF",
+          dark: "#1F2937",
           secondary: "#E9EEF4", // For index.astro section
           skills: "#e6ebf2", // For Skills Section
           testimonials: "#f0f4f8", // For Testimonials Section
         },
         // Text Colors
         text: {
-          light: "#000000",
-          dark: "#ffffff",
-          headingLight: "#1f2937", // gray-800
-          headingDark: "#f3f4f6", // gray-100
-          subtextLight: "#4b5563", // gray-600
-          subtextDark: "#d1d5db", // gray-300
+          light: "#1F2937",
+          dark: "#FFFFFF",
+          headingLight: "#111827",
+          headingDark: "#E5E7EB",
+          subtextLight: "#6B7280",
+          subtextDark: "#9CA3AF",
           skillsTextLight: "#1f2937", // gray-800
           skillsTextDark: "#f3f4f6", // gray-100
           testimonialTextLight: "#1f2937", // gray-800
           testimonialTextDark: "#f3f4f6", // gray-100
         },
         darkModeText: "#ffffff",
+      },
+      primary: {
+        DEFAULT: "#2563EB",
+        dark: "#3B82F6",
+      },
+      secondary: {
+        dark: "#4B5563",
       },
       aspectRatio: {
         thumbnail: "1.5",
