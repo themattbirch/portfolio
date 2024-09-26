@@ -1,4 +1,14 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Hero from "../components/Hero.astro";
+import SkillsSection from "../components/SkillsSection.jsx";
+import CTASection from "../components/CTASection.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import QualityItem from "../components/QualityItem.astro";
+import { Image } from "astro:assets";
+import meHeroImg from "../assets/images/matt-pointing.webp";
+
 const services = [
   {
     title: "Custom Web Development",
@@ -25,19 +35,11 @@ const qualities = ["Reliable", "Multi-skilled", "Experienced", "Passionate"];
 const half = Math.ceil(qualities.length / 2);
 const leftQualities = qualities.slice(0, half);
 const rightQualities = qualities.slice(half);
-
-import Layout from "../layouts/Layout.astro";
-import Testimonials from "../components/Testimonials.astro";
-import Hero from "../components/Hero.astro";
-import SkillsSection from "../components/SkillsSection.jsx";
-import CTASection from "../components/CTASection.astro";
-import ServiceCard from "../components/ServiceCard.astro";
-import QualityItem from "../components/QualityItem.astro";
-import { Image } from "astro:assets";
-import meHeroImg from "../assets/images/matt-pointing.webp";
+const pageTitle = "Matt Birch, Front-End Web Developer";
+const pageDescription = "A web develoepr with passion";
 ---
 
-<Layout fullWidth={true}>
+<Layout title={pageTitle} description={pageDescription} fullWidth={true}>
   <!-- Hero Section -->
   <section>
     <Hero />

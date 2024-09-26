@@ -23,21 +23,21 @@ const { title, description, ogImage, canonicalURL } = Astro.props;
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
-  {
+  {JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "url": "{canonicalURL}",
-    "name": "{title}",
-    "description": "{description}",
+    "url": canonicalURL,
+    "name": title,
+    "description": description,
     "publisher": {
       "@type": "Organization",
-      "name": "Matt Birch"
+      "name": "Matt Birch",
     },
     "image": {
       "@type": "ImageObject",
-      "url": "{ogImage}",
+      "url": ogImage,
       "width": 1200,
-      "height": 630
-    }
-  }
+      "height": 630,
+    },
+  })}
 </script>
