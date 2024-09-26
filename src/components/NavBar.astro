@@ -69,7 +69,7 @@ const { menuItems } = Astro.props;
                           <li>
                             <a
                               href={child.path}
-                              class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-150 rounded-lg"
+                              class="block px-4 py-2 text-sm text-gray-300 hover:bg-blue-600 hover:text-white transition-colors duration-150 rounded-lg"
                             >
                               {child.title}
                             </a>
@@ -93,7 +93,7 @@ const { menuItems } = Astro.props;
         <!-- Mobile menu button -->
         <button
           id="mobile-menu-button"
-          class="inline-flex items-center justify-center p-2 rounded-lg text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-200 neumorphic-button ml-4"
+          class="inline-flex items-center justify-center p-2 ml-4 rounded-lg text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-200 neumorphic-button"
           aria-expanded="false"
         >
           <span class="sr-only">Toggle main menu</span>
@@ -122,7 +122,7 @@ const { menuItems } = Astro.props;
         </button>
       </div>
 
-      <!-- Mobile menu -->
+      <!-- Mobile menu content -->
       <div class="md:hidden hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1 rounded-lg mt-2">
           {
@@ -134,14 +134,14 @@ const { menuItems } = Astro.props;
                 {!item.children ? (
                   <a
                     href={item.path}
-                    class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"
+                    class="mobile-link text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"
                   >
                     <span class="mobile-link-text">{item.title}</span>
                   </a>
                 ) : (
                   <div class="relative">
                     <button
-                      class="mobile-dropdown-toggle w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium flex items-center justify-between transition-all duration-200"
+                      class="mobile-dropdown-toggle w-full text-left text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 px-3 py-2 rounded-md text-base font-medium flex items-center justify-between transition-all duration-200"
                       aria-expanded="false"
                     >
                       <span class="mobile-link-text">{item.title}</span>
@@ -164,7 +164,7 @@ const { menuItems } = Astro.props;
                         item.children.map((child, childIndex) => (
                           <a
                             href={child.path}
-                            class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200"
+                            class="mobile-link text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200"
                             style={`animation-delay: ${index * 0.1 + (childIndex + 1) * 0.05}s;`}
                           >
                             <span class="mobile-link-text">{child.title}</span>
@@ -179,72 +179,72 @@ const { menuItems } = Astro.props;
         </div>
       </div>
     </div>
-  </div>
-</PortfolioNav>
 
-<!-- JavaScript to handle mobile menu and event listeners -->
-<script>
-  function setupMobileMenu() {
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
+    <!-- JavaScript to handle mobile menu and event listeners -->
+    <script>
+      function setupMobileMenu() {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
 
-    if (mobileMenuButton && mobileMenu) {
-      const menuIcon = mobileMenuButton.querySelector(".menu-icon");
-      const closeIcon = mobileMenuButton.querySelector(".close-icon");
+        if (mobileMenuButton && mobileMenu) {
+          const menuIcon = mobileMenuButton.querySelector(".menu-icon");
+          const closeIcon = mobileMenuButton.querySelector(".close-icon");
 
-      function toggleMobileMenu() {
-        mobileMenu!.classList.toggle("hidden");
-        const isExpanded = mobileMenu!.classList.contains("hidden")
-          ? "false"
-          : "true";
-        mobileMenuButton!.setAttribute("aria-expanded", isExpanded);
-
-        // Toggle the visibility of menu and close icons
-        menuIcon?.classList.toggle("hidden");
-        closeIcon?.classList.toggle("hidden");
-      }
-
-      mobileMenuButton.addEventListener("click", toggleMobileMenu);
-
-      // Clean up event listeners when the component is unmounted
-      document.addEventListener("astro:before-swap", () => {
-        mobileMenuButton!.removeEventListener("click", toggleMobileMenu);
-      });
-
-      // Setup dropdown toggles in mobile menu
-      const dropdownToggles = document.querySelectorAll(
-        ".mobile-dropdown-toggle"
-      );
-      dropdownToggles.forEach((toggle) => {
-        const dropdownMenu = toggle.nextElementSibling;
-        const arrowIcon = toggle.querySelector("svg");
-
-        function toggleDropdownMenu() {
-          if (dropdownMenu && dropdownMenu instanceof HTMLElement) {
-            dropdownMenu.classList.toggle("hidden");
-            const isExpanded = dropdownMenu.classList.contains("hidden")
+          function toggleMobileMenu() {
+            mobileMenu!.classList.toggle("hidden");
+            const isExpanded = mobileMenu!.classList.contains("hidden")
               ? "false"
               : "true";
-            toggle.setAttribute("aria-expanded", isExpanded);
+            mobileMenuButton!.setAttribute("aria-expanded", isExpanded);
+
+            // Toggle the visibility of menu and close icons
+            menuIcon?.classList.toggle("hidden");
+            closeIcon?.classList.toggle("hidden");
           }
-          arrowIcon?.classList.toggle("rotate-180");
+
+          mobileMenuButton.addEventListener("click", toggleMobileMenu);
+
+          // Clean up event listeners when the component is unmounted
+          document.addEventListener("astro:before-swap", () => {
+            mobileMenuButton!.removeEventListener("click", toggleMobileMenu);
+          });
+
+          // Setup dropdown toggles in mobile menu
+          const dropdownToggles = document.querySelectorAll(
+            ".mobile-dropdown-toggle"
+          );
+          dropdownToggles.forEach((toggle) => {
+            const dropdownMenu = toggle.nextElementSibling;
+            const arrowIcon = toggle.querySelector("svg");
+
+            function toggleDropdownMenu() {
+              if (dropdownMenu && dropdownMenu instanceof HTMLElement) {
+                dropdownMenu.classList.toggle("hidden");
+                const isExpanded = dropdownMenu.classList.contains("hidden")
+                  ? "false"
+                  : "true";
+                toggle.setAttribute("aria-expanded", isExpanded);
+              }
+              arrowIcon?.classList.toggle("rotate-180");
+            }
+
+            toggle.addEventListener("click", toggleDropdownMenu);
+
+            // Clean up event listeners
+            document.addEventListener("astro:before-swap", () => {
+              toggle.removeEventListener("click", toggleDropdownMenu);
+            });
+          });
+        } else {
+          console.error("Mobile menu button or menu not found");
         }
+      }
 
-        toggle.addEventListener("click", toggleDropdownMenu);
+      // Run on initial load
+      document.addEventListener("DOMContentLoaded", setupMobileMenu);
 
-        // Clean up event listeners
-        document.addEventListener("astro:before-swap", () => {
-          toggle.removeEventListener("click", toggleDropdownMenu);
-        });
-      });
-    } else {
-      console.error("Mobile menu button or menu not found");
-    }
-  }
-
-  // Run on initial load
-  document.addEventListener("DOMContentLoaded", setupMobileMenu);
-
-  // Re-run after page navigation
-  document.addEventListener("astro:after-swap", setupMobileMenu);
-</script>
+      // Re-run after page navigation
+      document.addEventListener("astro:after-swap", setupMobileMenu);
+    </script>
+  </div>
+</PortfolioNav>

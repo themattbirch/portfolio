@@ -36,9 +36,10 @@ export default {
         // CTA Text Color
         "cta-text": "#ffffff", // white
         // CTA Backdrop and Content Backgrounds
-        "cta-backdrop": "rgba(0, 0, 0, 0.5)", // Example RGBA value (adjust as needed)
-        "cta-content-bg": "#ffffff", // Adjust based on design
-        "cta-subtext": "#4b5563", // gray-600
+        "cta-backdrop": "rgba(0, 0, 0, 0.5)", // Light Mode backdrop
+        "cta-backdrop-dark": "rgba(255, 255, 255, 0.3)", // Dark Mode backdrop, adjust opacity as needed
+        "cta-content-bg": "#ffffff",
+        "cta-subtext": "#4b5563",
         // Background Colors
         background: {
           light: "#ffffff",
