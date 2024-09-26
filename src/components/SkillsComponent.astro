@@ -44,15 +44,10 @@ const skillsPart2 = split ? skills.slice(half) : [];
             </button>
             <div class="skill-content p-0 m-0 hidden">
               <div class="content-wrapper p-0 m-0">
-                <div class="p-4 sm:p-6 bg-gray-50 dark:bg-black">
+                <div class="py-4 sm:py-6 lg:py-8 px-2 sm:px-6 bg-gray-50 dark:bg-black">
                   <p class="text-gray-600 dark:text-gray-300 text-center">
                     {skill.description}
                   </p>
-                  <div class="button-wrapper mt-4 text-center">
-                    <button class="btn btn-primary rounded-full shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                      {skill.level}
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -81,6 +76,17 @@ const skillsPart2 = split ? skills.slice(half) : [];
 
   .text-wrapper {
     width: 100%;
+    text-align: center; /* Center align text on mobile */
+    padding-left: 0; /* Remove left padding for center alignment */
+    padding-right: 0; /* Remove right padding for center alignment */
+  }
+
+  @media (min-width: 640px) {
+    .text-wrapper {
+      padding-left: 3rem; /* Restore left padding for larger screens */
+      padding-right: 2rem; /* Restore right padding for larger screens */
+      text-align: center; /* Align text to the left for larger screens */
+    }
   }
 
   .content-wrapper {
