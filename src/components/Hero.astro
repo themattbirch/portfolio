@@ -10,17 +10,49 @@ const mobileBackground = mobileBackgroundImage.src;
 ---
 
 <div class="relative h-screen flex items-center pb-16">
-  <div id="hero-background" class="absolute inset-0 bg-cover bg-center">
+  <!-- Preload Images Using Image Component -->
+  <!-- These images are hidden but preloaded for faster background switching -->
+  <Image
+    src={lightBackgroundImage}
+    alt="Hero Light Background"
+    class="hidden"
+    loading="lazy"
+    style={{ objectFit: "cover", width: "100%", height: "100%" }}
+  />
+  <Image
+    src={darkBackgroundImage}
+    alt="Hero Dark Background"
+    class="hidden"
+    loading="lazy"
+    style={{ objectFit: "cover", width: "100%", height: "100%" }}
+  />
+  <Image
+    src={mobileBackgroundImage}
+    alt="Hero Mobile Background"
+    class="hidden"
+    loading="lazy"
+    style={{ objectFit: "cover", width: "100%", height: "100%" }}
+  />
+
+  <!-- Hero Background Container -->
+  <div
+    id="hero-background"
+    class="absolute inset-0 bg-cover bg-center"
+    data-light-background={lightBackground}
+    data-dark-background={darkBackground}
+    data-mobile-background={mobileBackground}
+  >
     <div class="hero-gradient-overlay"></div>
     <div class="hero-dim-overlay"></div>
   </div>
 
+  <!-- Hero Content -->
   <div class="relative z-10 w-full">
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-start">
         <div class="max-w-3xl mt-16 sm:mt-32">
           <h1
-            class="hero-title mt-6 font-extrabold tracking-tight text-5xl md:text-6xl lg:text-7xl mb-2 opacity-0 transform translate-y-4 transition-all duration-1000 sm:max-w-sm md:max-w-md lg:max-w-full"
+            class="hero-title animate-fadeInUp mt-6 font-extrabold tracking-tight text-5xl md:text-6xl lg:text-7xl mb-2 opacity-0 transform translate-y-4 transition-all duration-1000 sm:max-w-sm md:max-w-md lg:max-w-full"
             id="heroTitle"
           >
             <span class="gradient-text text-transparent bg-clip-text">
@@ -33,7 +65,7 @@ const mobileBackground = mobileBackgroundImage.src;
             id="heroTagline"
           >
             Who can write clean code <span
-              class="hero-pulse text-blue-800 lg:text-blue-400 dark:text-blue-400 font-bold animate-pulse"
+              class="hero-pulse animate-subtlePulse text-blue-800 lg:text-blue-400 dark:text-blue-400 font-bold"
               >and</span
             > copy!
           </p>

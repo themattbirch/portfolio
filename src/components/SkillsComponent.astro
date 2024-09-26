@@ -115,11 +115,16 @@ const skillsPart2 = split ? skills.slice(half) : [];
   .skill-level-btn:hover {
     background-color: #1e40af;
   }
+  @media (max-width: 840px) {
+    .grid-cols-1 {
+      grid-template-columns: 1fr; /* Stacks the columns into one */
+    }
+  }
 
-  @media (max-width: 640px) {
-    .skill-header {
-      padding: 2rem;
-      min-height: 3.5rem;
+  /* For 841px and above, ensure grid remains intact */
+  @media (min-width: 801px) {
+    .grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two-column layout */
     }
   }
 </style>

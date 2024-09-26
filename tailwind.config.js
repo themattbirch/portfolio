@@ -69,6 +69,10 @@ export default {
         sans: ["Source Sans 3", "sans-serif"],
         serif: ["PT Serif", "serif"],
       },
+      animation: {
+        fadeInUp: "fadeInUp 0.6s ease-out forwards",
+        subtlePulse: "subtle-pulse 2s infinite",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
