@@ -14,51 +14,47 @@ const { title, description, image, category, keyFeatures, link } = Astro.props;
 ---
 
 <div
-  class="project-card bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl max-w-7xl mx-auto transition-all duration-300 hover:scale-105"
+  class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center"
 >
-  <div class="flex flex-col md:flex-row md:h-[450px]">
-    <Image
-      class="w-full md:w-3/5 h-64 md:h-full object-cover transition-transform duration-300"
-      src={image}
-      alt={title}
-    />
-    <div
-      class="p-8 md:w-2/5 flex flex-col items-center justify-center text-center h-full space-y-6"
+  <a href={link} target="_blank" rel="noopener noreferrer" class="w-full">
+    <Image src={image} alt={title} class="w-full h-48 object-cover" />
+  </a>
+  <div class="p-6 w-full flex flex-col items-center">
+    <span
+      class="text-sm text-blue-600 dark:text-blue-400 uppercase font-semibold"
     >
-      <span
-        class="text-gray-500 dark:text-gray-400 uppercase tracking-widest text-sm"
-      >
-        {category}
+      {category}
+    </span>
+    <h3 class="mt-2 text-2xl font-bold text-gray-800 dark:text-white">
+      {title}
+    </h3>
+    <p class="mt-2 text-gray-600 dark:text-gray-300">
+      {description}
+    </p>
+    <div class="mt-4 w-full">
+      <span class="font-semibold text-gray-700 dark:text-gray-200">
+        Key Features:
       </span>
-      <h2
-        class="font-serif text-3xl font-bold text-gray-800 dark:text-white transition-colors duration-300"
+      <ul class="mt-2 space-y-1">
+        {
+          keyFeatures.map((feature) => (
+            <li class="text-gray-600 dark:text-gray-300 flex items-center justify-center">
+              <!-- Font Awesome Checkmark Icon -->
+              <i class="fas fa-check text-blue-600 mr-2"></i> 
+              <span>{feature}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="mt-6 w-full">
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors duration-300"
       >
-        {title}
-      </h2>
-      <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-        {description}
-      </p>
-      <div>
-        <span class="font-bold text-gray-700 dark:text-gray-200 block mb-2"
-          >Key Features:</span
-        >
-        <div class="flex flex-wrap justify-center gap-3">
-          {
-            keyFeatures.map((feature) => (
-              <span class="feature-tag bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm transition-all duration-300">
-                {feature}
-              </span>
-            ))
-          }
-        </div>
-      </div>
-      <div class="space"></div>
-      <a href={link} target="_blank" rel="noopener noreferrer">
-        <button
-          class="btn btn-primary rounded-full shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          Visit Site
-        </button>
+        Visit Site
       </a>
     </div>
   </div>
@@ -75,13 +71,13 @@ const { title, description, image, category, keyFeatures, link } = Astro.props;
   .project-card:hover img {
     transform: scale(1.05);
   }
-  .project-card:hover h2 {
+  .project-card:hover h3 {
     color: #1d4ed8; /* Blue color on hover for light mode */
   }
 
   /* Dark mode styles */
-  :root.dark .project-card:hover h2,
-  [data-theme="dark"] .project-card:hover h2 {
+  :root.dark .project-card:hover h3,
+  [data-theme="dark"] .project-card:hover h3 {
     color: #3b82f6; /* Blue color on hover for dark mode */
   }
 
@@ -99,3 +95,4 @@ const { title, description, image, category, keyFeatures, link } = Astro.props;
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
   }
 </style>
+
