@@ -16,6 +16,7 @@
     /* Skills text color */
     --primary-color: theme('colors.primary.DEFAULT');
     /* Primary color for links/buttons */
+    --color-primary-button: #2563eb;
 }
 
 .dark {
@@ -363,6 +364,47 @@ body {
             @apply px-3 py-2;
         }
     }
+
+/* ---------------------------------
+       Buttons
+    --------------------------------- */
+
+           .btn {
+               @apply inline-flex items-center justify-center font-semibold transition-all duration-300 ease-in-out;
+               padding: 0.75rem 1.5rem;
+               /* Consistent padding */
+               border-radius: 9999px;
+               /* Full pill shape */
+           }
+    
+           .btn-primary {
+               background-color: var(--color-primary-button);
+               color: #fff;
+               padding: 0.625rem 1.25rem;
+               /* Reduced padding for better proportions */
+               box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+               /* Adds subtle depth */
+               transition: background-color 0.3s ease, box-shadow 0.3s ease;
+               /* Smooth transition */
+           }
+    
+           .btn-primary:hover {
+               background-color: #1e40af;
+               /* Consistent with your theme */
+               box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+               /* Enhanced shadow on hover */
+               transform: translateY(-2px);
+               /* Slight lift effect */
+           }
+    
+           .btn-primary:active {
+               background-color: #1e3a8a;
+               /* Darker active state */
+               box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+               /* Reduced shadow on click */
+               transform: translateY(0);
+               /* Reset lift on click */
+           }
 
     /* ---------------------------------
        Animations

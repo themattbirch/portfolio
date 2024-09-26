@@ -14,7 +14,7 @@ export default {
         primary: {
           light: "#3b82f6", // Tailwind's blue-500
           DEFAULT: "#2563eb", // Tailwind's blue-600
-          dark: "#1d4ed8", // Tailwind's blue-700
+          dark: "#1d4ed8",
         },
         secondary: {
           light: "#60a5fa", // Tailwind's blue-400

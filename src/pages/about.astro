@@ -46,18 +46,13 @@ const pageDescription =
       <p
         class="text-lg sm:text-xl pt-8 sm:pt-16 pb-8 leading-relaxed max-w-2xl mx-auto text-gray-700 dark:text-gray-300"
       >
-        <span class="font-bold italic text-blue-600 dark:text-blue-400"
-          >Hello!</span
-        >
-        <span class="font-medium">
-          I'm Matt Birch, a passionate front-end web developer with expertise in
-          <span class="font-semibold">HTML</span>, <span class="font-semibold"
-            >CSS</span
-          >,
-          <span class="font-semibold">JavaScript</span>, <span
-            class="font-semibold">Astro</span
-          > and
-          <span class="font-semibold">React</span>.
+        <span class="font-bold text-blue-600 dark:text-blue-400">Hello!</span>
+        <span class="intro-text">
+          I'm Matt Birch, a passionate front-end web developer with expertise in <strong
+            >HTML</strong
+          >, <strong>CSS</strong>, <strong>JavaScript</strong>, <strong
+            >Astro</strong
+          >, and <strong>React</strong>.
         </span>
 
         <!-- Styled Resume Download Button -->
@@ -66,7 +61,7 @@ const pageDescription =
             href="/path-to-your-resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center px-8 py-4 border border-transparent text-base font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition duration-150 ease-in-out shadow-md hover:shadow-lg dark:shadow-blue-500/50"
+            class="btn btn-primary rounded-full py-4 shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <svg
               class="w-5 h-5 mr-2"
@@ -270,6 +265,19 @@ const pageDescription =
   /* Dark mode gradient */
   :global(.dark) .horizontal-gradient-wrapper-2 {
     background: linear-gradient(to bottom, #1f2937, #3b536a, #1f2937);
+  }
+
+  /* global.css */
+  .intro-text {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: var(--color-secondary);
+    max-width: 40rem;
+    margin: 2rem auto;
+  }
+  .highlight {
+    font-weight: bold;
+    color: var(--color-primary);
   }
 </style>
 

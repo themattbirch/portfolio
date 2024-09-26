@@ -35,7 +35,7 @@ const ContactForm = () => {
         ></textarea>
       </div>
       <div className="flex justify-end">
-        <button type="submit" className="bg-blue-700 dark:bg-blue-400 text-white dark:text-black font-bold py-2 px-6 rounded-md transition-colors hover:bg-blue-800 dark:hover:bg-blue-500">
+        <button type="submit" className="btn btn-primary rounded-xl shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500">
           Send
         </button>
       </div>
