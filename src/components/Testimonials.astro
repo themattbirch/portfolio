@@ -50,8 +50,8 @@ const testimonials: Testimonial[] = [
 ---
 
 <div
-  class="swiper-container relative testimonial-container rounded-full transition-all duration-300 bg-gradient-to-r from-blue-50 to-blue-100
- dark:bg-gradient-to-r dark:from-gray-700 dark:to-gray-800"
+  class="swiper-container relative testimonial-container swiper-no-swiping rounded-full transition-all duration-300 bg-gradient-to-r from-blue-100 to-blue-50
+ dark:bg-gradient-to-r dark:from-zinc-900 dark:to-zinc-800"
 >
   <div class="swiper-wrapper">
     {
@@ -83,7 +83,7 @@ const testimonials: Testimonial[] = [
   <div class="swiper-pagination"></div>
 </div>
 
- <script>
+<script>
   import Swiper from "swiper";
   import { Navigation, Pagination, Autoplay } from "swiper/modules";
   import "swiper/css";
@@ -110,10 +110,6 @@ const testimonials: Testimonial[] = [
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
-      allowSlideNext: true,
-      allowSlidePrev: true,
-      noSwiping: true, // Disable swiping on certain elements
-      noSwipingClass: "testimonial-container", // Disable swipe on testimonial-container
     });
   }
 
@@ -147,35 +143,37 @@ const testimonials: Testimonial[] = [
   .swiper-pagination-bullet {
     background: var(--swiper-pagination-color, var(--testimonial-text-light));
   }
-
-  /* Testimonials Container */
-  /* Update the .testimonial-container styles */
   .testimonial-container {
-    @apply overflow-hidden rounded-full max-w-7xl mx-auto transition-all duration-300 relative;
-    border: 0.5px solid rgba(0, 0, 0, 0.05);
+    border: 2px solid rgba(0, 0, 0, 0.15); /* Slightly more prominent border */
     box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.02),
-      0 4px 6px -1px rgba(0, 0, 0, 0.05),
-      0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      0 4px 8px rgba(0, 0, 0, 0.1),
+      /* Subtle shadow */ 0 2px 4px rgba(0, 0, 0, 0.08); /* Layered shadow for depth */
     transition:
       box-shadow 0.3s ease,
       border-color 0.3s ease;
   }
 
-  /* Update the dark mode styles for .testimonial-container */
-  .dark .testimonial-container {
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    box-shadow:
-      0 0 0 1px rgba(255, 255, 255, 0.05),
-      0 4px 6px -1px rgba(0, 0, 0, 0.2),
-      0 2px 4px -1px rgba(0, 0, 0, 0.1);
-  }
-
+  /* Stronger hover state */
   .testimonial-container:hover {
     box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.05),
-      0 12px 20px -3px rgba(0, 0, 0, 0.15),
-      0 6px 10px -2px rgba(0, 0, 0, 0.1);
+      0 20px 40px -10px rgba(0, 0, 0, 0.3),
+      /* Stronger shadow on hover */ 0 10px 20px -5px rgba(0, 0, 0, 0.2); /* Second shadow for depth */
+    border: 2px solid rgba(0, 0, 0, 0.4); /* Even more prominent border on hover */
+  }
+
+  /* Dark mode styling */
+  .dark .testimonial-container {
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Stronger border in dark mode */
+    box-shadow:
+      0 4px 8px rgba(255, 255, 255, 0.1),
+      0 2px 4px rgba(255, 255, 255, 0.08);
+  }
+
+  .dark .testimonial-container:hover {
+    box-shadow:
+      0 20px 40px -10px rgba(0, 0, 0, 0.35),
+      0 10px 20px -5px rgba(0, 0, 0, 0.25); /* Stronger shadow for dark mode */
+    border: 2px solid rgba(255, 255, 255, 0.4); /* More prominent border in dark mode */
   }
 
   /* Update the .testimonial-card styles */
@@ -213,13 +211,6 @@ const testimonials: Testimonial[] = [
 
   .testimonial-card p:last-of-type {
     margin-bottom: 2rem;
-  }
-
-  .dark .testimonial-container:hover {
-    box-shadow:
-      0 0 0 1px rgba(255, 255, 255, 0.1),
-      0 12px 20px -3px rgba(0, 0, 0, 0.25),
-      0 6px 10px -2px rgba(0, 0, 0, 0.15); /* More pronounced on hover */
   }
 
   .dark .testimonial-card:hover {

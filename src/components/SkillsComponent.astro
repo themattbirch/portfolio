@@ -16,7 +16,6 @@ const { skills, split = false } = Astro.props;
 // Split skills array if split prop is true
 const half = Math.ceil(skills.length / 2);
 const skillsPart1 = split ? skills.slice(0, half) : skills;
-const skillsPart2 = split ? skills.slice(half) : [];
 ---
 
 <section class="skills-section">

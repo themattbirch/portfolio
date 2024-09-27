@@ -42,8 +42,8 @@ const pageDescription = "The emotional quotient skills I've built.";
 ---
 
 <Layout title={pageTitle} description={pageDescription} fullWidth={true}>
-  <div class="horizontal-gradient-wrapper-1">
-    <!-- Introduction Text Section -->
+  <!-- Introduction Text Section -->
+  <div class="horizontal-gradient-wrapper">
     <section class="text-center mx-auto py-16 sm:py-24 md:py-32">
       <div class="max-w-screen mx-auto">
         <h1 class="h1-text text-center mb-8 md:mb-12 fade-in-up">
@@ -56,9 +56,6 @@ const pageDescription = "The emotional quotient skills I've built.";
         </p>
       </div>
     </section>
-  </div>
-
-  <div class="horizontal-gradient-wrapper-2">
     <!-- SkillsComponent with Split Part 1 -->
     <section class="pb-16 sm:pb-24 md:pb-32 fade-in-up">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,7 +65,6 @@ const pageDescription = "The emotional quotient skills I've built.";
         <SkillsComponent skills={skillsPart1} />
       </div>
     </section>
-
     <!-- SkillsComponent with Split Part 2 -->
     <section class="pb-16 sm:pb-24 md:pb-32">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,21 +78,13 @@ const pageDescription = "The emotional quotient skills I've built.";
 </Layout>
 
 <style>
-  .horizontal-gradient-wrapper-1 {
-    background: linear-gradient(to bottom, #dde4ee, #ffffff);
-  }
-
-  .horizontal-gradient-wrapper-2 {
-    background: linear-gradient(to bottom, #ffffff, #dde4ee);
+  .horizontal-gradient-wrapper {
+    background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
   }
 
   /* Dark mode gradient */
-  :global(.dark) .horizontal-gradient-wrapper-1 {
-    background: linear-gradient(to bottom, #1f2937, #3b536a);
-  }
-
-  :global(.dark) .horizontal-gradient-wrapper-2 {
-    background: linear-gradient(to bottom, #3b536a, #1f2937);
+  :global(.dark) .horizontal-gradient-wrapper {
+    background: linear-gradient(to bottom, #45617c, #374962, #45617c);
   }
 </style>
 

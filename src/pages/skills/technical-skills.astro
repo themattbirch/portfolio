@@ -41,7 +41,7 @@ const pageDescription = "The technical skills I possess.";
 ---
 
 <Layout title={pageTitle} description={pageDescription} fullWidth={true}>
-  <div class="horizontal-gradient-wrapper-1">
+  <div class="horizontal-gradient-wrapper">
     <!-- Introduction Text Section -->
     <section class="text-center mx-auto py-16 sm:py-24 md:py-32">
       <div class="max-w-screen mx-auto">
@@ -55,9 +55,7 @@ const pageDescription = "The technical skills I possess.";
         </p>
       </div>
     </section>
-  </div>
 
-  <div class="horizontal-gradient-wrapper-2">
     <!-- SkillsComponent with Split Part 1 -->
     <section class="pb-16 sm:pb-24 md:pb-32 fade-in-up">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,7 +79,7 @@ const pageDescription = "The technical skills I possess.";
     </section>
   </div>
 
-  <div class="horizontal-gradient-wrapper-3">
+  <div class="horizontal-gradient-wrapper-1">
     <section
       class="text-center mx-auto py-16 sm:py-24 md:py-32 dark:text-white"
     >
@@ -96,33 +94,26 @@ const pageDescription = "The technical skills I possess.";
       </div>
     </section>
   </div>
+
+  <style>
+    .horizontal-gradient-wrapper {
+      background: linear-gradient(to bottom, #ffffff, #dde4ee);
+    }
+
+    .horizontal-gradient-wrapper-1 {
+      background: linear-gradient(to bottom, #dde4ee, #ffffff);
+    }
+
+    /* Dark mode gradient */
+    :global(.dark) .horizontal-gradient-wrapper {
+      background: linear-gradient(to bottom, #45617c, #374962);
+    }
+
+    /* Dark mode gradient */
+    :global(.dark) .horizontal-gradient-wrapper-1 {
+      background: linear-gradient(to bottom, #374962, #45617c);
+    }
+  </style>
+
+  <script type="module" src="/scripts/fadeIn.js"></script>
 </Layout>
-
-<style>
-  .horizontal-gradient-wrapper-1 {
-    background: linear-gradient(to bottom, #dde4ee, #ffffff);
-  }
-
-  .horizontal-gradient-wrapper-2 {
-    background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
-  }
-
-  .horizontal-gradient-wrapper-3 {
-    background: linear-gradient(to bottom, #ffffff, #dde4ee);
-  }
-
-  /* Dark mode gradient */
-  :global(.dark) .horizontal-gradient-wrapper-1 {
-    background: linear-gradient(to bottom, #1f2937, #374d62);
-  }
-
-  :global(.dark) .horizontal-gradient-wrapper-2 {
-    background: linear-gradient(to bottom, #374d62, #1f2937, #374d62);
-  }
-
-  :global(.dark) .horizontal-gradient-wrapper-3 {
-    background: linear-gradient(to bottom, #374d62, #1f2937);
-  }
-</style>
-
-<script type="module" src="/scripts/fadeIn.js"></script>

@@ -29,10 +29,13 @@ const { Content, headings } = await post.render();
   description={post.data.description}
   ogImage={post.data.image.src}
   image={post.data.image}
+  fullWidth={true}
 >
+    <div class="horizontal-gradient-wrapper">
   <section
     class="max-w-screen-2xl mx-auto py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8"
   >
+
     <div class="max-w-screen-xl mx-auto">
       <article>
         <nav>
@@ -67,6 +70,7 @@ const { Content, headings } = await post.render();
     </div>
   </section>
 </Layout>
+</div>
 
 
 <head>
@@ -89,3 +93,14 @@ const { Content, headings } = await post.render();
     })}
   </script>
 </head>
+<style>
+.horizontal-gradient-wrapper {
+    background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
+  }
+
+  /* Dark mode gradient */
+  :global(.dark) .horizontal-gradient-wrapper {
+    background: linear-gradient(to bottom, #45617c, #1f2937, #45617c);
+  }
+
+</style>

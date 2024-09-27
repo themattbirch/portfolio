@@ -14,7 +14,7 @@ const { title, description, image, category, keyFeatures, link } = Astro.props;
 ---
 
 <div
-  class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center"
+  class="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center"
 >
   <a href={link} target="_blank" rel="noopener noreferrer" class="w-full">
     <Image src={image} alt={title} class="w-full h-48 object-cover" />
@@ -52,7 +52,7 @@ const { title, description, image, category, keyFeatures, link } = Astro.props;
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors duration-300"
+        class="btn btn-primary rounded-full shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         Visit Site
       </a>
