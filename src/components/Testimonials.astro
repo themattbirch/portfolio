@@ -83,7 +83,7 @@ const testimonials: Testimonial[] = [
   <div class="swiper-pagination"></div>
 </div>
 
-<script>
+ <script>
   import Swiper from "swiper";
   import { Navigation, Pagination, Autoplay } from "swiper/modules";
   import "swiper/css";
@@ -112,8 +112,8 @@ const testimonials: Testimonial[] = [
       },
       allowSlideNext: true,
       allowSlidePrev: true,
-      noSwiping: true,
-      noSwipingClass: "testimonial-card",
+      noSwiping: true, // Disable swiping on certain elements
+      noSwipingClass: "testimonial-container", // Disable swipe on testimonial-container
     });
   }
 
