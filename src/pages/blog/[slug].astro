@@ -5,7 +5,6 @@ import Layout from "../../layouts/Layout.astro";
 import TableOfContents from "../../components/TableOfContents.astro";
 import Share from "../../components/Share.astro";
 import { Image } from "astro:assets";
-import BreadCrumb from "@/components/BreadCrumb.astro";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
@@ -15,6 +14,13 @@ export const getStaticPaths = async () => {
   }));
 };
 
+// Define the structure of a heading
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
 type Props = {
   post: CollectionEntry<"posts">;
 };
@@ -23,7 +29,6 @@ const { post } = Astro.props;
 const { Content, headings } = await post.render();
 ---
 
-
 <Layout
   title={post.data.title}
   description={post.data.description}
@@ -31,18 +36,22 @@ const { Content, headings } = await post.render();
   image={post.data.image}
   fullWidth={true}
 >
-    <div class="horizontal-gradient-wrapper">
-  <section
-    class="max-w-screen-2xl mx-auto py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8"
-  >
-
-    <div class="max-w-screen-xl mx-auto">
-      <article>
-        <nav>
-          <a href="/blog" class="back-link"> &larr; Back to all blogs </a>
+  <div class="horizontal-gradient-wrapper">
+    <section
+      class="max-w-screen-xl mx-auto py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8"
+    >
+      <article class="relative">
+        <nav class="mb-8">
+          <a
+            href="/blog"
+            class="back-link text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200"
+          >
+            &larr; Back to all blogs
+          </a>
         </nav>
-        <header>
-          <h1 class="h1-text text-center mb-8 md:mb-12">
+
+        <div class="text-center mb-16">
+          <h1 class="text-4xl md:text-5xl font-bold mb-8 sm:mb-12 md:mb-16">
             {post.data.title}
           </h1>
           <Image
@@ -50,57 +59,55 @@ const { Content, headings } = await post.render();
             alt={post.data.title}
             width={1024}
             height={1024 / 1.5}
-            class="rounded-2xl shadow-xl mb-28 aspect-thumbnail object-cover transition-transform transform hover:scale-105 duration-300"
+            class="rounded-2xl shadow-xl aspect-thumbnail object-cover transition-transform hover:scale-105 duration-300 mx-auto"
             loading="lazy"
           />
-        </header>
-        <div class="flex flex-col md:flex-row gap-8">
-          <div
-            class="md:w-3/4 prose-2xl dark:text-darkModeText overflow-visible relative"
-          >
+        </div>
 
-            <Content />
+        <div class="flex flex-col lg:flex-row lg:gap-16 relative">
+          <div class="lg:w-3/4">
+            <div class="prose prose-lg dark:prose-invert max-w-none">
+              <Content />
+            </div>
           </div>
-          <aside class="md:w-1/4">
-            <TableOfContents headings={headings} />
-            <Share post={post} />
+
+          <aside class="lg:w-1/4 mt-8 lg:mt-0 lg:absolute lg:right-0 lg:top-0">
+            <div class="lg:sticky lg:top-8 toc-wrapper">
+              <TableOfContents headings={headings as Heading[]} />
+            </div>
           </aside>
         </div>
       </article>
-    </div>
-  </section>
+      <div class="mt-16">
+        <Share post={post} />
+      </div>
+    </section>
+  </div>
 </Layout>
-</div>
 
-
-<head>
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.data.title,
-      "description": post.data.description,
-      "image": post.data.image.src,
-      "author": {
-        "@type": "Person",
-        "name": "Matt Birch"
-      },
-      "datePublished": post.data.date,
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": `https://yourdomain.com/blog/${post.slug}`
-      }
-    })}
-  </script>
-</head>
 <style>
-.horizontal-gradient-wrapper {
+  .horizontal-gradient-wrapper {
     background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
   }
 
-  /* Dark mode gradient */
   :global(.dark) .horizontal-gradient-wrapper {
     background: linear-gradient(to bottom, #45617c, #1f2937, #45617c);
   }
 
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  @media (min-width: 1024px) {
+    .sticky {
+      position: sticky;
+      top: 2rem;
+    }
+  }
+      .toc-wrapper {
+    max-width: 250px; /* Adjust this value as needed */
+    margin-left: auto;
+      }
 </style>

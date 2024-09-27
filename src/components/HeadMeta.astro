@@ -2,7 +2,6 @@
 const { title, description, ogImage, canonicalURL } = Astro.props;
 ---
 
-<!-- components/HeadMeta.astro -->
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
@@ -26,18 +25,18 @@ const { title, description, ogImage, canonicalURL } = Astro.props;
   {JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "url": canonicalURL,
-    "name": title,
-    "description": description,
-    "publisher": {
+    url: canonicalURL,
+    name: title,
+    description: description,
+    publisher: {
       "@type": "Organization",
-      "name": "Matt Birch",
+      name: "Matt Birch",
     },
-    "image": {
+    image: {
       "@type": "ImageObject",
-      "url": ogImage,
-      "width": 1200,
-      "height": 630,
+      url: ogImage,
+      width: 1200,
+      height: 630,
     },
   })}
 </script>

@@ -1,24 +1,60 @@
 ---
-type Props = {
-  category: string;
-};
-
-const { category } = Astro.props;
 import BreadCrumb from "./BreadCrumb.astro";
+
+interface Props {
+  categories: string[];
+  title?: string; // Make title optional
+  currentCategory?: string;
+}
+
+const { categories, title, currentCategory } = Astro.props;
+
+const getCategoryUrl = (category: string) =>
+  `/category/${category.toLowerCase().replace(/\s+/g, "-")}`;
 ---
 
-<BreadCrumb current={category} parent="Blog" />
+<div class="category-section my-8">
+  {
+    currentCategory && (
+      <div class="mb-6">
+        <BreadCrumb current={currentCategory} parent="Blog" />
+      </div>
+    )
+  }
 
-<a
-  href={`/category/${category}`}
-  class="dark:text-darkModeText text-teal-900 rounded-3xl p-2 uppercase text-xl border-2 border-teal-900
-    whitespace-nowrap"
->
-  {category}
-</a>
+  {title && <h2 class="text-2xl font-bold mb-4 text-center">{title}</h2>}
+  <div class="flex flex-wrap justify-center gap-4">
+    {
+      categories.map((category) => (
+        <a
+          href={getCategoryUrl(category)}
+          class:list={[
+            "category-button",
+            "text-blue-700 dark:text-white",
+            "rounded-full px-6 py-3",
+            "text-lg font-semibold",
+            "border-2 border-blue-700 dark:border-white",
+            "hover:bg-sky-100 dark:hover:bg-teal-900",
+            "transition-colors duration-300",
+            { "bg-sky-100 dark:bg-teal-900": category === currentCategory },
+          ]}
+        >
+          {category}
+        </a>
+      ))
+    }
+  </div>
+</div>
 
 <style>
-  :global(.dark) .category-text {
-    color: #ffffff;
+  .category-button {
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .category-button {
+      font-size: 0.875rem;
+      padding: 0.5rem 1rem;
+    }
   }
 </style>

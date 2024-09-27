@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import PostList from "../components/PostList.astro";
-import CategoryList from "../components/CategoryList.astro";
+import CategoryList from "@/components/CategoryList.astro";
 import Pagination from "@/components/Pagination.astro";
 
 const posts = (await getCollection("posts")).slice(0, 6);
@@ -19,19 +19,17 @@ const blogDescription =
       class="max-w-screen-2xl mx-auto py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8"
     >
       <div class="max-w-screen-xl mx-auto">
-        <!-- Added container for content alignment -->
         <header class="text-center mb-12">
-          <h1 class="h1-text text-center mb-8 md:mb-12">
+          <h1 class="h1-text heading-text mb-8 md:mb-12">
             {pageTitle}
           </h1>
           <p class="dark:text-darkModeText text-xl mb-12">
             {blogDescription}
           </p>
         </header>
-        <CategoryList categories={categories} title="Tags" />
+        <CategoryList categories={categories} title="Categories" />
         <PostList posts={posts} />
         <div class="mt-12 flex justify-end">
-          <!-- Added flex container for pagination -->
           <Pagination nextURL="/blog/2" />
         </div>
       </div>
@@ -44,16 +42,7 @@ const blogDescription =
     background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
   }
 
-  /* Dark mode gradient */
   :global(.dark) .horizontal-gradient-wrapper {
     background: linear-gradient(to bottom, #45617c, #1f2937, #45617c);
-  }
-
-  .category-badge {
-    background-color: var(--color-gray-light);
-    color: var(--color-secondary);
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.875rem;
   }
 </style>

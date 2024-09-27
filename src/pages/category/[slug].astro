@@ -1,82 +1,88 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
-import CategoryList from "../../components/CategoryList.astro";
-import Pagination from "../../components/Pagination.astro";
-import PostList from "../../components/PostList.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import PostPreview from "../../components/PostPreview.astro";
+import CategoryList from "../../components/CategoryList.astro";
 
-export const getStaticPaths = async () => {
-  const posts = await getCollection("posts");
-  const allCategories = posts.flatMap((post) => post.data.categories);
-  const categories = Array.from(new Set(allCategories));
+export async function getStaticPaths() {
+  const allPosts = await getCollection("posts");
+  const uniqueCategories = [
+    ...new Set(allPosts.flatMap((post) => post.data.categories)),
+  ];
 
-  const paths = categories.map((category) => {
-    const postsByCategory = posts.filter((post) =>
+  return uniqueCategories.map((category) => {
+    const filteredPosts = allPosts.filter((post) =>
       post.data.categories.includes(category)
     );
     return {
-      params: {
-        slug: category,
-      },
-      props: {
-        category,
-        posts: postsByCategory,
-      },
+      params: { slug: category.toLowerCase().replace(/\s+/g, "-") },
+      props: { category, posts: filteredPosts },
     };
   });
+}
 
-  return paths;
-};
-
-type Props = {
+interface Props {
   category: string;
   posts: CollectionEntry<"posts">[];
-};
+}
 
 const { category, posts } = Astro.props;
-const pageTitle = "Matt Birch | Web Developer";
-const pageDescription =
-  "Transforming ideas into powerful web experiences. I combine technical expertise with creative problem-solving to deliver websites that not only look great but perform exceptionally.";
+const sortedPosts = posts.sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+);
 ---
 
-<Layout title={`${pageTitle} - ${category} Posts`} fullWidth={true}>
+<Layout
+  title={`${category} blog posts`}
+  description={`All posts in the ${category} category`}
+  fullWidth={true}
+>
   <div class="horizontal-gradient-wrapper">
     <section
-      class="max-w-screen-2xl mx-auto py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8"
+      class="max-w-screen-xl mx-auto py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8"
     >
-      <div class="max-w-screen-xl mx-auto">
+      <nav class="mb-8">
         <a
           href="/blog"
-          class="text-zinc-500 dark:text-gray-100 text-2xl mb-16 underline block"
+          class="back-link text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200"
         >
-          ←Back to all blogs
+          &larr; Back to all blogs
         </a>
-        <h1 class="h1-text text-center mb-8 md:mb-12">
-          {pageTitle}
-        </h1>
-        <p class="dark:text-darkModeText text-2xl mb-24 max-sm:mb-14">
-          {pageDescription}
-        </p>
-        <CategoryList categories={[category]} title="Posts tagged" />
-        <div class="mb-12 flex justify-end">
-          <Pagination nextURL="/blog/2" />
-        </div>
-        <PostList posts={posts} />
-        <div class="mb-36 flex justify-end">
-          <Pagination nextURL="/blog/2" />
-        </div>
+      </nav>
+
+      <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center">
+        All "{category}"" Blog Posts
+      </h1>
+
+      <div class="mb-12">
+        <CategoryList categories={[category]} title="Category" />
+      </div>
+
+      <p class="text-xl mb-12 text-center max-w-2xl mx-auto">
+        Explore all our posts related to {category}. Here you'll find insights,
+        tips, and discussions on this topic.
+      </p>
+
+      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+        {sortedPosts.map((post) => <PostPreview post={post} />)}
       </div>
     </section>
   </div>
-
-  <style>
-    .horizontal-gradient-wrapper {
-      background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
-    }
-
-    /* Dark mode gradient */
-    :global(.dark) .horizontal-gradient-wrapper {
-      background: linear-gradient(to bottom, #45617c, #1f2937, #45617c);
-    }
-  </style>
 </Layout>
+
+<style>
+  .horizontal-gradient-wrapper {
+    background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
+  }
+
+  :global(.dark) .horizontal-gradient-wrapper {
+    background: linear-gradient(to bottom, #45617c, #1f2937, #45617c);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+</style>
