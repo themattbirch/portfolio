@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import PostList from "../components/PostList.astro";
 import CategoryList from "@/components/CategoryList.astro";
 import Pagination from "@/components/Pagination.astro";
+import Post from "@/components/Post.astro";
 
 const posts = (await getCollection("posts")).slice(0, 6);
 const allCategories = posts.flatMap((post) => post.data.categories);
@@ -18,7 +18,7 @@ const blogDescription =
     <section
       class="max-w-screen-2xl mx-auto py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8"
     >
-      <div class="max-w-screen-xl mx-auto">
+      <div class="mx-auto">
         <header class="text-center mb-12">
           <h1 class="h1-text heading-text mb-8 md:mb-12">
             {pageTitle}
@@ -28,7 +28,9 @@ const blogDescription =
           </p>
         </header>
         <CategoryList categories={categories} title="Categories" />
-        <PostList posts={posts} />
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post) => <Post post={post} />)}
+        </div>
         <div class="mt-12 flex justify-end">
           <Pagination nextURL="/blog/2" />
         </div>

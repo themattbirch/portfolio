@@ -2,7 +2,7 @@
 import type { GetStaticPathsOptions, Page } from "astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import PostList from "../../components/PostList.astro";
+import Post from "../../components/Post.astro";
 import Pagination from "../../components/Pagination.astro";
 import CategoryList from "../../components/CategoryList.astro";
 
@@ -42,22 +42,50 @@ const blogDescription =
         <div class="my-12 flex justify-end">
           <Pagination prevURL={page.url.prev} nextURL={page.url.next} />
         </div>
-        <PostList posts={posts} />
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post) => <Post post={post} />)}
+        </div>
         <div class="mt-12 flex justify-end">
           <Pagination prevURL={page.url.prev} nextURL={page.url.next} />
         </div>
       </div>
     </section>
   </div>
-  </Layout>
+</Layout>
 
-  <style>
-    .horizontal-gradient-wrapper {
-      background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
-    }
+<style>
+  .horizontal-gradient-wrapper {
+    background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
+  }
 
-    /* Dark mode gradient */
-    :global(.dark) .horizontal-gradient-wrapper {
-      background: linear-gradient(to bottom, #45617c, #1f2937, #45617c);
-    }
-  </style>
+  /* Dark mode gradient */
+  :global(.dark) .horizontal-gradient-wrapper {
+    background: linear-gradient(to bottom, #45617c, #1f2937, #45617c);
+  }
+
+  article:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+
+  article:hover h2 {
+    color: #2563eb; /* Tailwind's blue-600 */
+    transition: color 0.3s ease;
+  }
+
+  .toc-wrapper a {
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
+    display: inline-block;
+  }
+
+  .toc-wrapper a:hover {
+    color: #3b82f6; /* Tailwind's blue-500 */
+    transform: translateX(5px);
+  }
+
+  .dark .toc-wrapper a:hover {
+    color: #60a5fa; /* Tailwind's blue-400 */
+  }
+</style>

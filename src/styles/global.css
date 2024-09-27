@@ -361,12 +361,17 @@ body {
         color: #fff;
         @apply shadow-md;
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        padding: 0.75rem 1.25rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
     }
 
     .btn-primary:hover {
         background-color: #1e40af;
         /* Consistent with your theme */
         @apply shadow-lg transform -translate-y-1;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
     }
 
     .btn-primary:active {
@@ -441,6 +446,16 @@ body {
     }
 
     /* Prose Styles for [slug].astro text */
+
+.prose p {
+    @apply text-base sm:text-lg md:text-xl leading-relaxed;
+    color: var(--text-color);
+}
+
+.dark .prose p {
+    color: var(--skills-text);
+}
+
     .prose h1 {
         @apply text-3xl sm:text-4xl md:text-5xl font-bold mb-4;
     }
