@@ -1,5 +1,7 @@
 ---
 import PortfolioNav from "./PortfolioNav.astro";
+import OpenIcon from "./OpenIcon.astro";
+import CloseIcon from "./CloseIcon.astro";
 import ThemeToggle from "./ThemeToggle.jsx";
 
 interface MenuItem {
@@ -18,7 +20,7 @@ const { menuItems } = Astro.props;
 <PortfolioNav>
   <div class="max-w-screen-2xl mx-auto px-4 sm:px-6">
     <div class="flex justify-between items-center h-16">
-      <!-- Logo -->
+      <!-- Enhanced Logo -->
       <div class="flex-shrink-0 flex items-center">
         <a href="/" class="flex items-center p-2 rounded-lg logo-container">
           <span class="text-xl lg:text-2xl font-semibold logo-text">
@@ -29,11 +31,10 @@ const { menuItems } = Astro.props;
         </a>
       </div>
 
-      <!-- Desktop Menu -->
+      <!-- Desktop menu -->
       <div class="hidden md:block">
         <nav>
           <ul class="flex items-center space-x-2 lg:space-x-4">
-            <!-- ThemeToggle Button -->
             <li class="mr-4">
               <ThemeToggle client:load />
             </li>
@@ -86,100 +87,80 @@ const { menuItems } = Astro.props;
         </nav>
       </div>
 
-      <!-- Mobile Menu and ThemeToggle -->
+      <!-- Mobile menu and ThemeToggle -->
       <div class="md:hidden flex items-center">
-        <!-- ThemeToggle Button -->
+        <!-- ThemeToggle Button moved to the left -->
         <ThemeToggle client:load />
 
-        <!-- Mobile Menu Button -->
+        <!-- Mobile menu button moved to the right -->
         <button
           id="mobile-menu-button"
-          class="inline-flex items-center justify-center p-2 ml-4 rounded-lg text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-200 neumorphic-button"
+          class="inline-flex items-center justify-center p-2 rounded-lg text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-200 neumorphic-button ml-4"
           aria-expanded="false"
         >
-          <span class="sr-only">Toggle main menu</span>
-          <svg
-            class="h-6 w-6 mobile-menu-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <!-- Menu Icon -->
-            <path
-              class="menu-icon"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-            <!-- Close Icon -->
-            <path
-              class="close-icon hidden"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
+          <span class="sr-only">Open main menu</span>
+          <OpenIcon class="astronav-open-icon block h-6 w-6" />
+          <CloseIcon class="astronav-close-icon hidden h-6 w-6" />
         </button>
       </div>
-    </div>
 
-    <!-- Mobile Menu Content -->
-    <div class="md:hidden hidden" id="mobile-menu">
-      <div class="px-2 pt-2 pb-3 space-y-1 rounded-lg mt-2">
-        {
-          menuItems.map((item, index) => (
-            <div
-              class="mobile-menu-item"
-              style={`animation-delay: ${index * 0.1}s;`}
-            >
-              {!item.children ? (
-                <a
-                  href={item.path}
-                  class="mobile-link text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"
-                >
-                  <span class="mobile-link-text">{item.title}</span>
-                </a>
-              ) : (
-                <div class="relative">
-                  <button
-                    class="mobile-dropdown-toggle w-full text-left text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 px-3 py-2 rounded-md text-base font-medium flex items-center justify-between transition-all duration-200"
-                    aria-expanded="false"
+      <!-- Mobile menu -->
+      <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 rounded-lg mt-2">
+          {
+            menuItems.map((item, index) => (
+              <div
+                class="mobile-menu-item"
+                style={`animation-delay: ${index * 0.1}s;`}
+              >
+                {!item.children ? (
+                  <a
+                    href={item.path}
+                    class="mobile-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"
                   >
                     <span class="mobile-link-text">{item.title}</span>
-                    <svg
-                      class="ml-2 h-5 w-5 transform transition-transform duration-200"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      aria-hidden="true"
+                  </a>
+                ) : (
+                  <div class="relative">
+                    <button
+                      class="mobile-dropdown-toggle w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium flex items-center justify-between transition-all duration-200"
+                      aria-expanded="false"
                     >
-                      <path
-                        fill-rule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </button>
-                  <div class="mobile-dropdown-menu hidden mt-2 pl-4 space-y-1">
-                    {item.children &&
-                      item.children.map((child, childIndex) => (
-                        <a
-                          href={child.path}
-                          class="mobile-link text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200"
-                          style={`animation-delay: ${
-                            index * 0.1 + (childIndex + 1) * 0.05
-                          }s;`}
-                        >
-                          <span class="mobile-link-text">{child.title}</span>
-                        </a>
-                      ))}
+                      <span class="mobile-link-text">{item.title}</span>
+                      <svg
+                        class="ml-2 h-5 w-5 transform transition-transform duration-200"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                    <div class="mobile-dropdown-menu hidden mt-2 pl-4 space-y-1">
+                      {item.children &&
+                        item.children.map((child, childIndex) => (
+                          <a
+                            href={child.path}
+                            class="mobile-link text-gray-300 hover:text-white hover:border-b-2 hover:border-blue-400 block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200"
+                            style={`animation-delay: ${
+                              index * 0.1 + (childIndex + 1) * 0.05
+                            }s;`}
+                          >
+                            <span class="mobile-link-text">{child.title}</span>
+                          </a>
+                        ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))
-        }
+                )}
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
   </div>
@@ -189,83 +170,60 @@ const { menuItems } = Astro.props;
     function setupMobileMenu() {
       const mobileMenuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");
+      const openIcon = document.querySelector(".astronav-open-icon");
+      const closeIcon = document.querySelector(".astronav-close-icon");
 
-      // Check if mobileMenuButton exists
-      if (!mobileMenuButton) {
-        console.error("Mobile menu button not found");
-        return;
-      }
-
-      // Check if mobileMenu exists
-      if (!mobileMenu) {
-        console.error("Mobile menu not found");
-        return;
-      }
-
-      // Assign to new constants to ensure they are not null
-      const mobileMenuButtonElement = mobileMenuButton;
-      const mobileMenuElement = mobileMenu;
-
-      const menuIcon = mobileMenuButtonElement.querySelector(".menu-icon");
-      const closeIcon = mobileMenuButtonElement.querySelector(".close-icon");
-
-      function toggleMobileMenu() {
-        mobileMenuElement.classList.toggle("hidden");
-        const isExpanded = mobileMenuElement.classList.contains("hidden")
-          ? "false"
-          : "true";
-        mobileMenuButtonElement.setAttribute("aria-expanded", isExpanded);
-
-        // Toggle the visibility of menu and close icons
-        if (menuIcon && closeIcon) {
-          menuIcon.classList.toggle("hidden");
+      if (mobileMenuButton && mobileMenu && openIcon && closeIcon) {
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("mobile-menu-open");
+          openIcon.classList.toggle("hidden");
           closeIcon.classList.toggle("hidden");
-        }
-      }
-
-      mobileMenuButtonElement.addEventListener("click", toggleMobileMenu);
-
-      // Clean up event listeners when the component is unmounted
-      document.addEventListener("astro:before-swap", function cleanup() {
-        mobileMenuButtonElement.removeEventListener("click", toggleMobileMenu);
-        document.removeEventListener("astro:before-swap", cleanup);
-      });
-
-      // Setup dropdown toggles in mobile menu
-      const dropdownToggles = document.querySelectorAll(
-        ".mobile-dropdown-toggle"
-      );
-      dropdownToggles.forEach(function (toggle) {
-        const dropdownMenu = toggle.nextElementSibling;
-        const arrowIcon = toggle.querySelector("svg");
-
-        function toggleDropdownMenu() {
-          if (dropdownMenu) {
-            dropdownMenu.classList.toggle("hidden");
-            const isExpanded = dropdownMenu.classList.contains("hidden")
-              ? "false"
-              : "true";
-            toggle.setAttribute("aria-expanded", isExpanded);
-          }
-          if (arrowIcon) {
-            arrowIcon.classList.toggle("rotate-180");
-          }
-        }
-
-        toggle.addEventListener("click", toggleDropdownMenu);
-
-        // Clean up event listeners
-        document.addEventListener("astro:before-swap", function cleanup() {
-          toggle.removeEventListener("click", toggleDropdownMenu);
-          document.removeEventListener("astro:before-swap", cleanup);
+          mobileMenuButton.setAttribute(
+            "aria-expanded",
+            mobileMenu.classList.contains("mobile-menu-open") ? "true" : "false"
+          );
         });
-      });
+
+        const skillsDropdownToggle = document.querySelector(
+          ".mobile-dropdown-toggle"
+        );
+        const skillsDropdownMenu = document.querySelector(
+          ".mobile-dropdown-menu"
+        );
+        if (skillsDropdownToggle && skillsDropdownMenu) {
+          skillsDropdownToggle.addEventListener("click", () => {
+            skillsDropdownMenu.classList.toggle("hidden");
+            const arrowIcon = skillsDropdownToggle.querySelector("svg");
+            if (arrowIcon) {
+              arrowIcon.classList.toggle("rotate-180");
+            }
+          });
+        }
+
+        // Add event listener for window resize
+        window.addEventListener("resize", handleResize);
+      }
     }
 
-    // Run on initial load
-    document.addEventListener("DOMContentLoaded", setupMobileMenu);
+    function handleResize() {
+      const mobileMenu = document.getElementById("mobile-menu");
+      const openIcon = document.querySelector(".astronav-open-icon");
+      const closeIcon = document.querySelector(".astronav-close-icon");
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
 
-    // Re-run after page navigation
+      if (mobileMenu && openIcon && closeIcon && mobileMenuButton) {
+        if (window.innerWidth >= 768) {
+          // Assuming 768px is your md breakpoint
+          mobileMenu.classList.remove("mobile-menu-open");
+          mobileMenu.classList.add("hidden");
+          openIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", "false");
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", setupMobileMenu);
     document.addEventListener("astro:after-swap", setupMobileMenu);
   </script>
 </PortfolioNav>

@@ -266,7 +266,7 @@ body {
      Mobile Menu Styles
   --------------------------------- */
     @media (max-width: 768px) {
-        #mobile-menu {
+    #mobile-menu {
             background-color: #0F172A;
             position: absolute;
             top: 100%;
@@ -274,7 +274,6 @@ body {
             right: 0;
             z-index: 20;
         }
-
         .mobile-menu-item {
             margin: 1rem 0;
         }
@@ -461,5 +460,20 @@ body {
     /* Back Link Styles */
     .back-link {
         @apply text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl mb-16 underline block transition-colors duration-200;
+    }
+}
+#mobile-menu.mobile-menu-open {
+    display: block !important;
+    /* Show the mobile menu when this class is active */
+}
+
+#mobile-menu {
+    display: none;
+    /* Default hidden state */
+}
+
+@media (min-width: 768px) {
+    #mobile-menu {
+        display: none !important;
     }
 }
