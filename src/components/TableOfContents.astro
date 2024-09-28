@@ -32,13 +32,14 @@ const { headings } = Astro.props;
 
 <style>
   .table-of-contents {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #fffbe6; /* A soft, light blue */
     backdrop-filter: blur(10px);
     border-radius: 1rem;
     padding: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 0.5rem;
     text-align: center;
+    transition: all 0.3s ease; /* Smooth transition for all changes */
   }
 
   :global(.dark) .table-of-contents {
@@ -48,24 +49,23 @@ const { headings } = Astro.props;
   .toc-item {
     list-style-type: none;
   }
-
   .toc-wrapper {
-    background-color: rgba(
-      255,
-      255,
-      255,
-      0.85
-    ); /* Slight transparency for effect */
+    background-color: #e6f3ff; /* Light blue background */
+    border: 1px solid #cccccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 0.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 1rem;
-    transition: box-shadow 0.3s ease;
+    transition: all 0.3s ease; /* Smooth transition for all changes */
   }
 
   /* Hover effect for the TOC */
   .toc-wrapper:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px); /* Slight upward movement on hover */
   }
 
-  
+  .table-of-contents:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
 </style>

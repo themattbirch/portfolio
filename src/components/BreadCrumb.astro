@@ -8,10 +8,13 @@ const { current, parent } = Astro.props;
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">Home</a>
+    </li>
     {
       parent && (
         <li class="breadcrumb-item">
-          <a href="/blog">Blog</a>
+          <a href="/blog">{parent}</a>
         </li>
       )
     }
@@ -20,3 +23,51 @@ const { current, parent } = Astro.props;
     </li>
   </ol>
 </nav>
+
+<style>
+  /* Breadcrumb styles */
+  .breadcrumb {
+    @apply flex items-center text-lg text-gray-600;
+  }
+
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .breadcrumb-item:not(:last-child)::after {
+    content: "/";
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .breadcrumb-item a {
+    color: #2563eb; /* text-blue-600 */
+    text-decoration: none;
+  }
+
+  .breadcrumb-item a:hover {
+    color: #1d4ed8; /* text-blue-800 */
+  }
+
+  .breadcrumb-item.active {
+    color: #1f2937; /* text-gray-800 */
+  }
+
+  /* Dark mode styles */
+  :global(.dark) .breadcrumb {
+    color: #d4d4d8; /* dark:text-zinc-300  */
+  }
+
+  :global(.dark) .breadcrumb-item a {
+    color: #e0f2fe; /* dark:text-sky-100 */
+  }
+
+  :global(.dark) .breadcrumb-item a:hover {
+    color: #93c5fd; /* dark:text-blue-200 */
+  }
+
+  :global(.dark) .breadcrumb-item.active {
+    color: #ebe8e5; /* dark:text-gray-200 */
+  }
+</style>

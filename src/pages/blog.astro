@@ -20,18 +20,20 @@ const blogDescription =
     >
       <div class="mx-auto">
         <header class="text-center mb-12">
-          <h1 class="h1-text heading-text mb-8 md:mb-12">
+          <h1 class="h1-text heading-text mb-8 sm:mb-12 md:mb-16">
             {pageTitle}
           </h1>
-          <p class="dark:text-darkModeText text-xl mb-12">
+          <p class="dark:text-darkModeText text-xl mb-8 sm:mb-12 md:mb-16">
             {blogDescription}
           </p>
         </header>
         <CategoryList categories={categories} title="Categories" />
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 sm:mt-12 md:mt-16"
+        >
           {posts.map((post) => <Post post={post} />)}
         </div>
-        <div class="mt-12 flex justify-end">
+        <div class="mt-8 sm:mt-12 md:mt-16 flex justify-end">
           <Pagination nextURL="/blog/2" />
         </div>
       </div>
