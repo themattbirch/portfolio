@@ -39,7 +39,10 @@ const finalOgImage = image
   <head>
     <!-- Basic Meta Tags -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
     <!-- Reusable Head Meta Component -->
     <HeadMeta
@@ -87,9 +90,11 @@ const finalOgImage = image
       />
     </noscript>
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col text-base sm:text-lg md:text-xl">
     <Header />
-    <main class={fullWidth ? "w-full" : "max-w-8xl mx-auto"}>
+    <main
+      class={fullWidth ? "w-full" : "max-w-8xl mx-auto px-4 sm:px-6 lg:px-8"}
+    >
       <slot />
     </main>
     <Footer />

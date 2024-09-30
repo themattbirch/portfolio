@@ -43,13 +43,13 @@ const pageDescription = "The technical skills I possess.";
 <Layout title={pageTitle} description={pageDescription} fullWidth={true}>
   <div class="horizontal-gradient-wrapper">
     <!-- Introduction Text Section -->
-    <section class="text-center mx-auto py-16 sm:py-24 md:py-32">
+    <section class="text-center mx-auto py-12 md:py-20 lg:py-24 xl:py-32">
       <div class="max-w-screen mx-auto">
-        <h1 class="h1-text text-center mb-8 md:mb-12 fade-in-up">
+        <h1 class="h1-text mb-4 sm:mb-6 md:mb-8 fade-in-up">
           {pageTitle}
         </h1>
-        <p class="text-lg">
-          Understanding and refining these soft skills is crucial for
+        <p class="text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+          Understanding and refining these technical skills is crucial for
           professional growth, fostering strong team dynamics, and ensuring
           project success.
         </p>
@@ -57,9 +57,11 @@ const pageDescription = "The technical skills I possess.";
     </section>
 
     <!-- SkillsComponent with Split Part 1 -->
-    <section class="pb-16 sm:pb-24 md:pb-32 fade-in-up">
+    <section class="pb-12 md:pb-20 lg:pb-24 xl:pb-32 fade-in-up">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="h2-text font-bold text-center mb-8 sm:mb-16">
+        <h2
+          class="text-2xl md:text-3xl lg:text-4xl skills-heading-color font-bold text-center mb-6 sm:mb-8 md:mb-12"
+        >
           Knowledgeable in
         </h2>
         <SkillsComponent skills={skillsPart1} />
@@ -69,23 +71,27 @@ const pageDescription = "The technical skills I possess.";
     <!-- SkillsComponent with Split Part 2 -->
     <section>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="h2-text font-bold text-center mb-8 sm:mb-16">
-          <h2 class="h2-text font-bold text-center mb-8 sm:mb-16">
-            More skills I possess
-          </h2>
-          <SkillsComponent skills={skillsPart2} />
+        <h2
+          class="text-2xl md:text-3xl lg:text-4xl skills-heading-color font-bold text-center mb-6 sm:mb-8 md:mb-12"
+        >
+          More skills I possess
         </h2>
+        <SkillsComponent skills={skillsPart2} />
       </div>
     </section>
   </div>
 
   <div class="horizontal-gradient-wrapper-1">
     <section
-      class="text-center mx-auto py-16 sm:py-24 md:py-32 dark:text-white"
+      class="text-center mx-auto py-12 md:py-20 lg:py-24 xl:py-32 dark:text-white"
     >
-      <div class="max-w-5xl mx-auto">
-        <h2 class="h2-text text-center mb-8 md:mb-12">Also familiar with...</h2>
-        <p class="text-lg">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 sm:mb-6 md:mb-8"
+        >
+          Also familiar with...
+        </h2>
+        <p class="text-base sm:text-lg md:text-xl">
           WordPress, libraries (NextJS, Node), And don't forget about my writing
           skills. I'm an excellent copywriter. It's possible you've read some of
           my work on LinkedIn, Twitter or a popular blog. Clients hire me to
@@ -94,26 +100,30 @@ const pageDescription = "The technical skills I possess.";
       </div>
     </section>
   </div>
-
-  <style>
-    .horizontal-gradient-wrapper {
-      background: linear-gradient(to bottom, #ffffff, #dde4ee);
-    }
-
-    .horizontal-gradient-wrapper-1 {
-      background: linear-gradient(to bottom, #dde4ee, #ffffff);
-    }
-
-    /* Dark mode gradient */
-    :global(.dark) .horizontal-gradient-wrapper {
-      background: linear-gradient(to bottom, #45617c, #374962);
-    }
-
-    /* Dark mode gradient */
-    :global(.dark) .horizontal-gradient-wrapper-1 {
-      background: linear-gradient(to bottom, #374962, #45617c);
-    }
-  </style>
-
-  <script type="module" src="/scripts/fadeIn.js"></script>
 </Layout>
+
+<style>
+  .horizontal-gradient-wrapper {
+    background: linear-gradient(to bottom, #ffffff, #dde4ee);
+  }
+
+  .horizontal-gradient-wrapper-1 {
+    background: linear-gradient(to bottom, #dde4ee, #ffffff);
+  }
+
+  /* Dark mode gradient */
+  :global(.dark) .horizontal-gradient-wrapper {
+    background: linear-gradient(to bottom, #45617c, #374962);
+  }
+
+  /* Dark mode gradient */
+  :global(.dark) .horizontal-gradient-wrapper-1 {
+    background: linear-gradient(to bottom, #374962, #45617c);
+  }
+
+  .skills-heading-color {
+    color: var(--primary-color);
+  }
+</style>
+
+<script type="module" src="/scripts/fadeIn.js"></script>

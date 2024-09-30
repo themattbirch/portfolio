@@ -18,8 +18,8 @@ const { menuItems } = Astro.props;
 ---
 
 <PortfolioNav>
-  <div class="max-w-screen-2xl mx-auto">
-    <div class="flex justify-between items-center h-16">
+  <div class="navbar max-w-screen-2xl mx-auto px-4">
+    <div class="flex justify-between text-sm items-center h-16">
       <!-- Enhanced Logo -->
       <div class="flex-shrink-0 flex items-center">
         <a href="/" class="flex items-center p-2 rounded-lg logo-container">
@@ -32,7 +32,7 @@ const { menuItems } = Astro.props;
       </div>
 
       <!-- Desktop menu -->
-      <div class="hidden md:block">
+      <div class="hidden custom-md:block">
         <nav>
           <ul class="flex items-center space-x-2 lg:space-x-4">
             <li class="mr-4">
@@ -88,7 +88,7 @@ const { menuItems } = Astro.props;
       </div>
 
       <!-- Mobile menu and ThemeToggle -->
-      <div class="md:hidden flex items-center">
+      <div class="custom-md:hidden flex items-center">
         <!-- ThemeToggle Button moved to the left -->
         <ThemeToggle client:load />
 
@@ -105,7 +105,7 @@ const { menuItems } = Astro.props;
       </div>
 
       <!-- Mobile menu -->
-      <div class="md:hidden hidden" id="mobile-menu">
+      <div class="custom-md:hidden hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1 rounded-lg mt-2">
           {
             menuItems.map((item, index) => (
@@ -212,8 +212,8 @@ const { menuItems } = Astro.props;
       const mobileMenuButton = document.getElementById("mobile-menu-button");
 
       if (mobileMenu && openIcon && closeIcon && mobileMenuButton) {
-        if (window.innerWidth >= 768) {
-          // Assuming 768px is your md breakpoint
+        if (window.innerWidth >= 820) {
+          // 820px breakpoint
           mobileMenu.classList.remove("mobile-menu-open");
           mobileMenu.classList.add("hidden");
           openIcon.classList.remove("hidden");

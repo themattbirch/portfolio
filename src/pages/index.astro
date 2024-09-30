@@ -47,7 +47,7 @@ const pageDescription = "A web develoepr with passion";
 
   <!-- What I Can Do For You Section -->
   <section
-    class="py-16 sm:py-24 md:py-32 bg-background-secondary dark:bg-background-dark transition-colors duration-300"
+    class="py-12 md:py-20 lg:py-24 xl:py-32 bg-background-secondary dark:bg-background-dark transition-colors duration-300"
   >
     <div
       class="max-w-screen-2xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-between gap-8"
@@ -64,7 +64,9 @@ const pageDescription = "A web develoepr with passion";
           gets the job done <span class="text-blue-700 italic">on time</span>.
           Here's what I deliver for clients:
         </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8"
+        >
           {
             services.map((service) => (
               <ServiceCard
@@ -81,7 +83,7 @@ const pageDescription = "A web develoepr with passion";
         <Image
           src={meHeroImg}
           alt="Matt showcasing skills for clients"
-          class="w-4/5 h-auto object-cover"
+          class="w-full sm:w-4/5 md:w-3/4 lg:w-4/5 h-auto object-cover mx-auto"
           width={800}
           height={600}
           loading="lazy"
@@ -91,15 +93,15 @@ const pageDescription = "A web develoepr with passion";
   </section>
 
   <section
-    class="testimonials-section max-w-7xl pt-16 sm:pt-24 md:pt-32 pb-8 sm:pb-12 md:pb-16 mx-auto px-4 sm:px-6 transition-colors duration-300"
+    class="testimonials-section max-w-7xl pt-12 md:pt-16 lg:pt-20 pb-4 sm:pb-6 md:pb-8 lg:pb-12 mx-auto px-4 sm:px-6"
   >
     <h2
-      class="h2-text text-center mb-16 sm:mb-24 md:mb-32 relative text-headingLight dark:text-headingDark"
+      class="h2-text text-center mb-8 sm:mb-12 md:mb-20 lg:mb-24 xl:mb-32 relative text-headingLight dark:text-headingDark"
     >
       Just ask my clients what they think...
     </h2>
     <div
-      class="testimonial-container overflow-hidden rounded-full max-w-7xl mx-auto transition-colors duration-300"
+      class="testimonial-container overflow-hidden rounded-lg md:rounded-full max-w-7xl mx-auto transition-colors duration-300"
     >
       <Testimonials />
     </div>
@@ -107,7 +109,7 @@ const pageDescription = "A web develoepr with passion";
 
   <!-- Unique Sales Proposition Area -->
   <section
-    class="pb-16 sm:pb-24 md:pb-32 pt-8 sm:pt-12 md:pt-16 max-w-screen-2xl mx-auto px-4 sm:px-6 transition-colors duration-300"
+    class="pb-12 md:pb-20 lg:pb-24 xl:pb-32 pt-4 sm:pt-6 md:pt-10 lg:pt-12 xl:pt-16 max-w-screen-2xl mx-auto px-4 sm:px-6 transition-colors duration-300"
   >
     <h2 class="h2-text mb-6 sm:mb-8 text-headingLight dark:text-headingDark">
       ...They Know What Separates Me From Other Web Developers
@@ -142,7 +144,7 @@ const pageDescription = "A web develoepr with passion";
 
   <!-- Skills Section Wrapper with Background Color -->
   <section
-    class="bg-background-skills dark:bg-background-dark py-16 sm:py-24 md:py-32 transition-colors duration-300"
+    class="bg-background-skills dark:bg-background-dark py-12 md:py-20 lg:py-24 xl:py-32 transition-colors duration-300"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <SkillsSection client:load />
@@ -150,7 +152,7 @@ const pageDescription = "A web develoepr with passion";
   </section>
 
   <section
-    class="py-16 sm:py-24 md:py-32 max-w-screen-xl mx-auto px-4 sm:px-6 text-center transition-colors duration-300"
+    class="py-12 md:py-16 lg:py-20 max-w-screen-xl mx-auto px-4 sm:px-6 text-center"
   >
     <h2
       class="h2-text mb-10 text-center text-headingLight dark:text-headingDark"
@@ -199,7 +201,7 @@ const pageDescription = "A web develoepr with passion";
       font-weight: 500; /* Adds a color change to text on hover */
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 820px) {
       .flex-row {
         flex-direction: column;
       }

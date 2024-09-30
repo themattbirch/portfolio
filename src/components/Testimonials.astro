@@ -50,19 +50,19 @@ const testimonials: Testimonial[] = [
 ---
 
 <div
-  class="swiper-container relative testimonial-container swiper-no-swiping rounded-full transition-all duration-300 bg-gradient-to-r from-blue-200 to-blue-100
+  class="swiper-container relative testimonial-container swiper-no-swiping rounded-lg md:rounded-full transition-all duration-300 bg-gradient-to-r from-blue-200 to-blue-100
  dark:bg-gradient-to-r dark:from-zinc-900 dark:to-zinc-800"
 >
   <div class="swiper-wrapper">
     {
       testimonials.map((testimonial) => (
         <div class="swiper-slide">
-          <div class="testimonial-card rounded-full p-6 shadow-lg relative overflow-hidden max-w-xs md:max-w-md lg:max-w-lg">
+          <div class="testimonial-card rounded-lg md:rounded-full  p-6 shadow-lg relative overflow-hidden max-w-xs md:max-w-md lg:max-w-lg">
             <div class="testimonial-photo-wrapper">
               <Image
                 src={testimonial.photo}
                 alt={`Headshot of ${testimonial.name}`}
-                class="testimonial-photo w-24 h-24 rounded-full object-cover mx-auto shadow-lg mb-4"
+                class="testimonial-photo w-24 h-24 rounded-lg md:rounded-full  object-cover mx-auto shadow-lg mb-4"
                 width={96}
                 height={96}
               />
@@ -178,7 +178,7 @@ const testimonials: Testimonial[] = [
 
   /* Update the .testimonial-card styles */
   .testimonial-card {
-    @apply relative mx-auto p-6 rounded-full shadow-lg overflow-hidden transition-all duration-300;
+    @apply relative mx-auto p-6 shadow-lg overflow-hidden transition-all duration-300;
     color: var(--testimonial-text-light);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow:
@@ -230,7 +230,7 @@ const testimonials: Testimonial[] = [
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 820px) {
     /* md: medium devices like small laptops */
     .testimonial-card {
       padding: 4rem;

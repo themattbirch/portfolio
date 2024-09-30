@@ -81,6 +81,10 @@ export default {
         fadeInUp: "fadeInUp 0.6s ease-out forwards",
         subtlePulse: "subtle-pulse 2s infinite",
       },
+      screens: {
+        "custom-md": "820px", // Custom breakpoint at 820px
+        "custom-lg": "1180px", // Custom breakpoint at 1180px
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
