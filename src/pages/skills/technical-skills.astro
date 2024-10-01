@@ -1,32 +1,34 @@
 ---
 import SkillsComponent from "@/components/SkillsComponent.astro";
 import Layout from "@/layouts/Layout.astro";
+import { faCode } from "@fortawesome/free-solid-svg-icons";
+import { faCss3Alt, faJs, faReact } from "@fortawesome/free-brands-svg-icons";
 
 const skills = [
   {
     name: "HTML",
     description:
       "Proficient in creating structured, semantic markup for web pages.",
-    icon: "fa-handshake",
+    icon: faCode,
     level: "Beginner",
   },
   {
     name: "CSS",
     description:
       "Skilled in creating interactive web experiences and manipulating the DOM.",
-    icon: "fa-handshake",
+    icon: faCss3Alt,
     level: "Skill",
   },
   {
     name: "JavaScript",
     description: "Text coming.",
-    icon: "fa-handshake",
+    icon: faJs,
     level: "Advanced",
   },
   {
     name: "React",
     description: "Update coming.",
-    icon: "fa-handshake",
+    icon: faReact,
     level: "Dumb",
   },
 ];
@@ -64,6 +66,7 @@ const pageDescription = "The technical skills I possess.";
         >
           Knowledgeable in
         </h2>
+        <!-- Render SkillsComponent for first part of skills -->
         <SkillsComponent skills={skillsPart1} />
       </div>
     </section>
@@ -76,11 +79,13 @@ const pageDescription = "The technical skills I possess.";
         >
           More skills I possess
         </h2>
+        <!-- Render SkillsComponent for second part of skills -->
         <SkillsComponent skills={skillsPart2} />
       </div>
     </section>
   </div>
 
+  <!-- Other Sections -->
   <div class="horizontal-gradient-wrapper-1">
     <section
       class="text-center mx-auto py-12 md:py-20 lg:py-24 xl:py-32 dark:text-white"
@@ -125,5 +130,3 @@ const pageDescription = "The technical skills I possess.";
     color: var(--primary-color);
   }
 </style>
-
-<script type="module" src="/scripts/fadeIn.js"></script>

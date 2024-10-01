@@ -1,32 +1,38 @@
 ---
 import SkillsComponent from "@/components/SkillsComponent.astro";
 import Layout from "@/layouts/Layout.astro";
+import {
+  faHeart,
+  faLightbulb,
+  faComments,
+  faUserFriends,
+} from "@fortawesome/free-solid-svg-icons";
 
 const skills = [
   {
     name: "Empathy",
     description:
       "Proficient in understanding and sharing the feelings of others.",
-    icon: "fa-heart",
+    icon: faHeart,
     level: "Beginner",
   },
   {
     name: "Awareness",
     description:
       "Skilled in being conscious of your own feelings and those of others.",
-    icon: "fa-eye",
+    icon: faLightbulb,
     level: "Skill",
   },
   {
     name: "Communication",
     description: "Excellent communication skills, both written and verbal.",
-    icon: "fa-comments",
+    icon: faComments,
     level: "Expert",
   },
   {
     name: "Teamwork",
     description: "Strong ability to work in collaborative environments.",
-    icon: "fa-handshake",
+    icon: faUserFriends,
     level: "Advanced",
   },
   // Add more skills as needed
@@ -37,13 +43,14 @@ const half = Math.ceil(skills.length / 2);
 const skillsPart1 = skills.slice(0, half);
 const skillsPart2 = skills.slice(half);
 
-const pageTitle = "Emotional Quotient Skills I've Built";
-const pageDescription = "The emotional quotient skills I've built.";
+const pageTitle = "Soft Skills I've Built";
+const pageDescription =
+  "Emotional quotient skills I utilize in my daily workflow.";
 ---
 
 <Layout title={pageTitle} description={pageDescription} fullWidth={true}>
-  <!-- Introduction Text Section -->
   <div class="horizontal-gradient-wrapper">
+    <!-- Introduction Text Section -->
     <section class="text-center mx-auto py-12 md:py-20 lg:py-24 xl:py-32">
       <div class="max-w-screen mx-auto">
         <h1 class="h1-text mb-4 sm:mb-6 md:mb-8 fade-in-up">
@@ -62,38 +69,43 @@ const pageDescription = "The emotional quotient skills I've built.";
         <h2
           class="text-2xl md:text-3xl lg:text-4xl skills-heading-color font-bold text-center mb-6 sm:mb-8 md:mb-12"
         >
-          A few soft skills I've developed
+          A few soft skills I've developed...
         </h2>
+        <!-- Render SkillsComponent for first part of skills -->
         <SkillsComponent skills={skillsPart1} />
       </div>
     </section>
+
     <!-- SkillsComponent with Split Part 2 -->
-    <section class="pb-12 md:pb-20 lg:pb-24 xl:pb-32">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section>
+      <div
+        class="max-w-7xl mx-auto pb-12 md:pb-20 lg:pb-24 xl:pb-32 px-4 sm:px-6 lg:px-8"
+      >
         <h2
           class="text-2xl md:text-3xl lg:text-4xl skills-heading-color font-bold text-center mb-6 sm:mb-8 md:mb-12"
         >
-          ...A few more.
+          A few more...
         </h2>
+        <!-- Render SkillsComponent for second part of skills -->
         <SkillsComponent skills={skillsPart2} />
       </div>
     </section>
   </div>
+
+  <style>
+    .horizontal-gradient-wrapper {
+      background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
+    }
+
+    /* Dark mode gradient */
+    :global(.dark) .horizontal-gradient-wrapper {
+      background: linear-gradient(to bottom, #45617c, #374962, #45617c);
+    }
+
+    .skills-heading-color {
+      color: var(--primary-color);
+    }
+  </style>
+
+  <script type="module" src="/scripts/fadeIn.js"></script>
 </Layout>
-
-<style>
-  .horizontal-gradient-wrapper {
-    background: linear-gradient(to bottom, #ffffff, #dde4ee, #ffffff);
-  }
-
-  /* Dark mode gradient */
-  :global(.dark) .horizontal-gradient-wrapper {
-    background: linear-gradient(to bottom, #45617c, #374962, #45617c);
-  }
-
-  .skills-heading-color {
-    color: var(--primary-color);
-  }
-</style>
-
-<script type="module" src="/scripts/fadeIn.js"></script>
