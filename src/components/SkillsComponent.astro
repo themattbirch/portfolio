@@ -75,16 +75,16 @@ const skillsPart1 = split ? skills.slice(0, half) : skills;
 
   .text-wrapper {
     width: 100%;
-    text-align: center; /* Center align text on mobile */
-    padding-left: 0; /* Remove left padding for center alignment */
-    padding-right: 0; /* Remove right padding for center alignment */
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   @media (min-width: 640px) {
     .text-wrapper {
-      padding-left: 3rem; /* Restore left padding for larger screens */
-      padding-right: 2rem; /* Restore right padding for larger screens */
-      text-align: center; /* Align text to the left for larger screens */
+      padding-left: 3rem;
+      padding-right: 2rem;
+      text-align: center;
     }
   }
 
@@ -102,22 +102,33 @@ const skillsPart1 = split ? skills.slice(0, half) : skills;
 
   .skill-content {
     display: none;
+    transition:
+      max-height 0.5s ease-in,
+      opacity 0.5s ease-in,
+      height 0.5s ease-in;
   }
 
   .skill-content.active {
     display: block;
-    width: 100%; /* Full viewport width */
+    width: 100%;
     position: relative;
+    height: auto;
   }
 
-  @media (max-width: 840px) {
+  @media (max-width: 1023px) {
+    .mobile-margin {
+      margin-bottom: 40px;
+    }
+  }
+
+  @media (max-width: 1023px) {
     .grid-cols-1 {
       grid-template-columns: 1fr; /* Stacks the columns into one */
     }
   }
 
   /* For 841px and above, ensure grid remains intact */
-  @media (min-width: 801px) {
+  @media (min-width: 1024px) {
     .grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two-column layout */
     }
@@ -146,49 +157,56 @@ const skillsPart1 = split ? skills.slice(0, half) : skills;
   function initializeSkillToggles() {
     const skillCards = document.querySelectorAll<HTMLElement>(".skill-card");
 
+    function updateMargin() {
+      const isMobile = window.innerWidth <= 1023;
+      skillCards.forEach((card) => {
+        const content = card.querySelector<HTMLElement>(".skill-content");
+        if (content && content.classList.contains("active")) {
+          content.classList.toggle("mobile-margin", isMobile);
+        }
+      });
+    }
+
     skillCards.forEach((card, index) => {
-      let header = card.querySelector(".skill-header");
+      const header = card.querySelector<HTMLElement>(".skill-header");
       const content = card.querySelector<HTMLElement>(".skill-content");
 
       if (!header || !content) return;
 
-      // Clear any previous event listeners to avoid multiple bindings
-      header.replaceWith(header.cloneNode(true));
-      header = card.querySelector(".skill-header");
-
-      header?.addEventListener("click", () => {
+      header.addEventListener("click", () => {
         const isExpanded = header.getAttribute("aria-expanded") === "true";
 
-        // Close all other cards
-        skillCards.forEach((otherCard, otherIndex) => {
-          if (otherIndex !== index) {
-            const otherHeader =
-              otherCard.querySelector<HTMLElement>(".skill-header");
-            const otherContent =
-              otherCard.querySelector<HTMLElement>(".skill-content");
-            if (otherHeader && otherContent) {
-              otherHeader.setAttribute("aria-expanded", "false");
-              otherContent.style.maxHeight = "0px";
-              otherContent.style.marginBottom = "0px";
-              otherContent.classList.remove("active");
-            }
-          }
-        });
-
-        // Toggle the clicked card
         if (isExpanded) {
           header.setAttribute("aria-expanded", "false");
           content.style.maxHeight = "0px";
-          content.style.marginBottom = "0px";
-          content.classList.remove("active");
+          content.classList.remove("active", "mobile-margin");
         } else {
+          skillCards.forEach((otherCard, otherIndex) => {
+            if (otherIndex !== index) {
+              const otherHeader =
+                otherCard.querySelector<HTMLElement>(".skill-header");
+              const otherContent =
+                otherCard.querySelector<HTMLElement>(".skill-content");
+              if (otherHeader && otherContent) {
+                otherHeader.setAttribute("aria-expanded", "false");
+                otherContent.style.maxHeight = "0px";
+                otherContent.classList.remove("active", "mobile-margin");
+              }
+            }
+          });
+
           header.setAttribute("aria-expanded", "true");
-          content.style.maxHeight = content.scrollHeight + 40 + "px"; // Add extra space
-          content.style.marginBottom = "20px"; // Add margin at the bottom
+          content.style.maxHeight = content.scrollHeight + "px";
           content.classList.add("active");
+          if (window.innerWidth <= 1023) {
+            content.classList.add("mobile-margin");
+          }
         }
       });
     });
+
+    window.addEventListener("resize", updateMargin);
+    updateMargin(); // Initial call to set correct margins
   }
 
   document.addEventListener("astro:page-load", initializeSkillToggles);
