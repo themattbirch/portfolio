@@ -49,7 +49,43 @@ const testimonials: Testimonial[] = [
 ];
 ---
 
-<div class="testimonial-wrapper">
+<!-- Testimonial Cards for Mobile and Medium Screen Sizes -->
+<div class="lg:hidden grid grid-cols-1 gap-8 mb-8">
+  {
+    testimonials.map((testimonial) => (
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+        <div class="flex flex-col items-center mb-4">
+          <Image
+            src={testimonial.photo}
+            alt={`Headshot of ${testimonial.name}`}
+            class="w-20 h-20 rounded-full object-cover mb-4 border-2 border-blue-500 dark:border-blue-400"
+            width={80}
+            height={80}
+          />
+          <div class="text-center">
+            <p class="font-semibold text-lg text-blue-700 dark:text-blue-300">
+              {testimonial.name}
+            </p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              {testimonial.business}
+            </p>
+          </div>
+        </div>
+        <p class="italic text-gray-700 dark:text-gray-300 leading-relaxed text-center">
+          "{testimonial.quote}"
+        </p>
+      </div>
+    ))
+  }
+</div>
+
+<!-- Subtle underline effect -->
+<div class="flex justify-center mt-12">
+  <div class="w-12 border-t-2 border-gray-300 dark:border-gray-600"></div>
+</div>
+
+<!-- Testimonial Slider for Desktop Screens (MD and Up) -->
+<div class="hidden md:block">
   <div
     class="swiper-container relative testimonial-container swiper-no-swiping rounded-lg md:rounded-full transition-all duration-300 bg-gradient-to-r from-blue-100 to-blue-50 dark:bg-gradient-to-r dark:from-zinc-900 dark:to-zinc-800 p-4 sm:p-6 md:p-8"
   >
@@ -91,12 +127,32 @@ const testimonials: Testimonial[] = [
   import "swiper/css/navigation";
   import "swiper/css/pagination";
 
+  let swiper: Swiper | null = null;
+
+  function handleResize() {
+    const swiperContainer = document.querySelector(
+      ".swiper-container"
+    ) as HTMLElement | null;
+
+    if (window.innerWidth <= 1023) {
+      if (swiper) {
+        swiper.destroy(true, true);
+        swiper = null;
+      }
+    } else {
+      if (!swiper) {
+        initSwiper();
+      }
+    }
+  }
+
   function initSwiper() {
-    if (
-      window.innerWidth > 767 &&
-      !document.querySelector(".swiper-initialized")
-    ) {
-      new Swiper(".swiper-container", {
+    const swiperContainer = document.querySelector(
+      ".swiper-container"
+    ) as HTMLElement | null;
+
+    if (swiperContainer && !swiper) {
+      swiper = new Swiper(swiperContainer, {
         modules: [Navigation, Pagination, Autoplay],
         loop: true,
         slidesPerView: 1,
@@ -117,19 +173,6 @@ const testimonials: Testimonial[] = [
     }
   }
 
-  function handleResize() {
-    if (window.innerWidth <= 767) {
-      const swiperContainer = document.querySelector(
-        ".swiper-container"
-      ) as HTMLElement | null;
-      if (swiperContainer && "swiper" in swiperContainer) {
-        (swiperContainer as any).swiper.destroy(true, true);
-      }
-    } else {
-      initSwiper();
-    }
-  }
-
   document.addEventListener("DOMContentLoaded", handleResize);
   document.addEventListener("astro:page-load", handleResize);
   window.addEventListener("resize", handleResize);
@@ -143,7 +186,7 @@ const testimonials: Testimonial[] = [
   .swiper-container {
     width: 100%;
     height: auto;
-    padding: 3rem 4rem; /* Increased padding for better spacing */
+    padding: 3rem 4rem;
     overflow: hidden;
   }
 
@@ -205,7 +248,7 @@ const testimonials: Testimonial[] = [
     width: 95%;
     max-width: 600px;
     height: auto;
-    min-height: 350px; /* Ensure enough vertical space */
+    min-height: 350px;
   }
 
   .testimonial-photo-wrapper {
@@ -217,11 +260,11 @@ const testimonials: Testimonial[] = [
   }
 
   .testimonial-card p {
-    @apply mb-3 text-base sm:text-lg md:text-xl leading-relaxed; /* Improved line height and spacing */
+    @apply mb-3 text-base sm:text-lg md:text-xl leading-relaxed;
   }
 
   .testimonial-card p:last-of-type {
-    margin-bottom: 0; /* Ensure no extra margin on the last paragraph */
+    margin-bottom: 0;
   }
 
   .testimonial-card:hover {
@@ -244,7 +287,6 @@ const testimonials: Testimonial[] = [
       0 12px 24px rgba(0, 0, 0, 0.25);
   }
 
-  /* Responsive adjustments */
   @media (min-width: 640px) {
     .testimonial-card {
       width: 90%;
@@ -263,9 +305,57 @@ const testimonials: Testimonial[] = [
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
+    .grid {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    .grid > div {
+      transition: all 0.3s ease;
+    }
+    .grid > div:hover {
+      transform: translateY(-5px);
+      box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .testimonials-section {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .testimonial-wrapper {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 16px; /* Add padding to the left and right */
+    padding-right: 16px;
+  }
+
+  /* Remove rounded edges on medium screens */
+  @media (max-width: 1023px) {
     .swiper-container {
-      display: none;
+      display: none; /* Hide the slider entirely */
+    }
+
+    /* Fix for cards not displaying properly */
+    .testimonial-container {
+      border-radius: 0 !important;
+      padding: 0 !important;
+    }
+
+    .cards-container {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
 </style>
