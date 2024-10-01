@@ -10,31 +10,38 @@ const { post } = Astro.props;
 ---
 
 <article
-  class="grid grid-cols-2 gap-x-12 gap-y-5 mb-28 max-lg:grid-cols-1 max-sm:mb-12"
+  class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 md:mb-16"
 >
   <a
     href={`/blog/${post.slug}`}
     aria-label={`Read more about ${post.data.title}`}
   >
-    <Image
-      src={post.data.image}
-      alt={post.data.title}
-      width={1024}
-      height={1024 / 1.5}
-      class="rounded-2xl aspect-thumbnail object-cover"
-      loading="lazy"
-    />
   </a>
-  <div>
-    <CategoryList categories={post.data.categories} />
-    <h2 class="text-5xl text-zinc-900 mb-4 font-bold">
-      <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-    </h2>
-    <p class="text-zinc-500 text-2xl mb-9 line-clamp-3 max-xl:line-clamp-2">
-      {post.body.slice(0, 200)}...
-    </p>
-    <time datetime={post.data.date} class="text-zinc-700 text-xl">
-      {post.data.date}
-    </time>
-  </div>
+  <Image
+    src={post.data.image}
+    alt={post.data.title}
+    width={1024}
+    height={1024 / 1.5}
+    class="rounded-lg sm:rounded-xl md:rounded-2xl aspect-thumbnail object-cover"
+    loading="lazy"
+  />
 </article>
+<div>
+  <CategoryList categories={post.data.categories} />
+  <h2
+    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-zinc-900 mb-2 sm:mb-3 md:mb-4 font-bold"
+  >
+    <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+  </h2>
+  <p
+    class="text-zinc-500 text-base sm:text-lg md:text-xl mb-3 sm:mb-4 md:mb-6 line-clamp-3 max-xl:line-clamp-2"
+  >
+    {post.body.slice(0, 200)}...
+  </p>
+  <time
+    datetime={post.data.date}
+    class="text-zinc-700 text-sm sm:text-base md:text-lg"
+  >
+    {post.data.date}
+  </time>
+</div>

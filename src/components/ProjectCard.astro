@@ -19,40 +19,46 @@ const { title, description, image, category, keyFeatures, link } = Astro.props;
   <a href={link} target="_blank" rel="noopener noreferrer" class="w-full">
     <Image src={image} alt={title} class="w-full h-48 object-cover" />
   </a>
-  <div class="p-6 w-full flex flex-col items-center">
+  <div class="p-4 sm:p-6 w-full flex flex-col items-center">
     <span
-      class="text-sm text-blue-600 dark:text-blue-400 uppercase font-semibold"
+      class="text-xs sm:text-sm text-blue-600 dark:text-blue-400 uppercase font-semibold"
     >
       {category}
     </span>
-    <h3 class="mt-2 text-2xl font-bold text-gray-800 dark:text-white">
+    <h3
+      class="mt-2 text-xl sm:text-2xl font-bold text-gray-800 dark:text-white"
+    >
       {title}
     </h3>
-    <p class="mt-2 text-gray-600 dark:text-gray-300">
+    <p class="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-300">
       {description}
     </p>
     <div class="mt-4 w-full">
-      <span class="font-semibold text-gray-700 dark:text-gray-200">
+      <span
+        class="font-semibold text-sm sm:text-base text-gray-700 dark:text-gray-200"
+      >
         Key Features:
       </span>
-      <ul class="mt-2 space-y-1">
+      <ul class="mt-2 space-y-1 text-sm sm:text-base">
         {
           keyFeatures.map((feature) => (
             <li class="text-gray-600 dark:text-gray-300 flex items-center justify-center">
-              <!-- Font Awesome Checkmark Icon -->
-              <i class="fas fa-check text-blue-600 mr-2"></i> 
+              <i class="fas fa-check text-blue-600 mr-2 text-xs sm:text-sm" />
               <span>{feature}</span>
             </li>
           ))
         }
       </ul>
     </div>
-    <div class="mt-6 w-full">
+    <div class="mt-4 sm:mt-6 w-full">
       <a
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-projects rounded-full shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="btn-projects rounded-full
+      shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1
+      hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm
+      sm:text-base py-2 px-4 sm:py-3 sm:px-6"
       >
         Visit Site
       </a>
@@ -95,28 +101,28 @@ const { title, description, image, category, keyFeatures, link } = Astro.props;
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
   }
 
- .btn-projects {
+  .btn-projects {
     @apply inline-flex items-center justify-center font-semibold transition-all duration-300 ease-in-out px-4 py-2 rounded-full shadow-md;
     background-color: #1e3a8a;
     color: #fff;
     padding: 0.75rem 1.25rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
+    transition:
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
 
- .btn-projects:hover {
-        background-color: #172554;
-        /* Consistent with your theme */
-        @apply shadow-lg transform -translate-y-1;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            transform: translateY(-2px);
-    }
+  .btn-projects:hover {
+    background-color: #172554;
+    /* Consistent with your theme */
+    @apply shadow-lg transform -translate-y-1;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
 
-    .btn-projects:active {
-        background-color: #1e3a8a;
-        /* Darker active state */
-        @apply shadow-md transform translate-y-0;
-    }
-
+  .btn-projects:active {
+    background-color: #1e3a8a;
+    /* Darker active state */
+    @apply shadow-md transform translate-y-0;
+  }
 </style>
-

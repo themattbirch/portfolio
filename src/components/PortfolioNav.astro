@@ -50,6 +50,20 @@ const { children } = Astro.props;
       }
     }
 
+    // Add this function to handle screen resize
+    function handleResize() {
+      if (window.innerWidth >= 768) {
+        // Adjust this breakpoint as needed
+        mobileMenuElement.classList.add("hidden");
+        if (menuIcon && closeIcon) {
+          menuIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        }
+      }
+    }
+
+    window.addEventListener("resize", handleResize);
+
     mobileMenuButtonElement.addEventListener("click", toggleMobileMenu);
 
     if (closeOnClick) {
@@ -67,6 +81,7 @@ const { children } = Astro.props;
           item.removeEventListener("click", toggleMobileMenu);
         });
       }
+      window.removeEventListener("resize", handleResize);
     };
   }
 

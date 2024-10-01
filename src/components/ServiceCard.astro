@@ -10,20 +10,20 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 ---
 
 <div
-  class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+  class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
 >
   <div class="flex items-center group">
     <h3
-      class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400"
+      class="text-lg sm:text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400"
     >
       {title}
     </h3>
     <FontAwesomeIcon
       icon={faChevronRight}
-      className="w-6 h-6 ml-2 text-blue-500 dark:text-blue-400 p-2 rounded-full transition-all duration-300 group-hover:bg-blue-100 dark:group-hover:bg-blue-900 group-hover:scale-110 group-hover:shadow-md"
+      className="w-5 h-5 sm:w-6 sm:h-6 ml-2 text-blue-500 dark:text-blue-400 p-1 sm:p-2 rounded-full transition-all duration-300 group-hover:bg-blue-100 dark:group-hover:bg-blue-900 group-hover:scale-110 group-hover:shadow-md"
     />
   </div>
-  <p class="text-gray-600 dark:text-gray-300">
+  <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300">
     {description}
   </p>
 </div>

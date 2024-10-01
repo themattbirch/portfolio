@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faRobot, faPenFancy, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const SkillCard = ({ icon, title, description, color, extraClass }) => (
-  <div className={`bg-gradient-to-r from-blue-100 to-blue-50 dark:from-zinc-900 dark:to-zinc-800 rounded-lg p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-t-4 ${color.border} ${extraClass}`}>
-    <div className="flex justify-between items-start mb-4">
-      <FontAwesomeIcon icon={icon} className={`${color.icon} w-12 h-12`} />
-      <div className={`${color.text} text-xs font-semibold px-2 py-1 rounded-full bg-opacity-20 ${color.bgOpacity}`}>
-        Expert
-      </div>
+  <div className={`bg-gradient-to-r from-blue-100 to-blue-50 dark:from-zinc-900 dark:to-zinc-800 rounded-lg p-4 sm:p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-t-4 ${color.border} ${extraClass}`}>
+  <div className="flex justify-between items-start mb-3 sm:mb-4">
+    <FontAwesomeIcon icon={icon} className={`${color.icon} w-8 h-8 sm:w-12 sm:h-12`} />
+    <div className={`${color.text} text-xs font-semibold px-2 py-1 rounded-full bg-opacity-20 ${color.bgOpacity}`}>
+      Expert
     </div>
+  </div>
     <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{title}</h3>
     <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
     <button className={`${color.text} flex items-center hover:underline group`}>
@@ -62,7 +62,7 @@ const SkillsSection = () => {
   ];
 
   return (
-   <section className="skills-section">
+<section className="skills-section">
   <div className="max-w-7xl mx-auto px-4 sm:px-6">
     <h2 className="h2-text  mb-12 pb-2 text-center">Skills</h2> 
     <div className="max-w-7xl mx-auto px-4 relative z-10">

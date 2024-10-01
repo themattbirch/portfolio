@@ -11,7 +11,6 @@ const mobileBackground = mobileBackgroundImage.src;
 
 <div class="relative h-screen flex items-center pb-8 md:pb-12 lg:pb-16">
   <!-- Preload Images Using Image Component -->
-  <!-- These images are hidden but preloaded for faster background switching -->
   <Image
     src={lightBackgroundImage}
     alt="Hero Light Background"
@@ -50,9 +49,9 @@ const mobileBackground = mobileBackgroundImage.src;
   <div class="relative z-10 w-full">
     <div class="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-start">
-        <div class="max-w-3xl mt-16 sm:mt-32">
+        <div class="max-w-3xl mt-8 sm:mt-16 md:mt-24 lg:mt-32">
           <h1
-            class="hero-title animate-fadeInUp mt-6 font-extrabold tracking-tight text-5xl md:text-6xl lg:text-7xl mb-2 opacity-0 transform translate-y-4 transition-all duration-1000 sm:max-w-sm md:max-w-md lg:max-w-full"
+            class="hero-title animate-fadeInUp font-extrabold tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-2 opacity-0 transform translate-y-4 transition-all duration-1000 sm:max-w-sm md:max-w-md lg:max-w-full"
             id="heroTitle"
           >
             <span class="gradient-text text-transparent bg-clip-text">
@@ -61,7 +60,7 @@ const mobileBackground = mobileBackgroundImage.src;
           </h1>
 
           <p
-            class="hero-tagline mt-6 text-2xl sm:text-3xl md:text-4xl text-gray-700 dark:text-gray-300 sm:mt-8 max-w-2xl opacity-0 transform translate-y-4 transition-all duration-1000 delay-500"
+            class="hero-tagline mt-4 sm:mt-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-700 dark:text-gray-300 max-w-2xl opacity-0 transform translate-y-4 transition-all duration-1000 delay-500"
             id="heroTagline"
           >
             Who can write clean code <span
@@ -71,10 +70,15 @@ const mobileBackground = mobileBackgroundImage.src;
           </p>
 
           <div
-            class="mt-10 opacity-0 transform translate-y-4 transition-all duration-1000 delay-1000"
+            class="mt-6 sm:mt-8 md:mt-10 opacity-0 transform translate-y-4 transition-all duration-1000 delay-1000"
             id="heroCta"
           >
-            <a href="#contact" class="hero-button"> Get in Touch </a>
+            <a
+              href="#contact"
+              class="hero-button text-sm sm:text-base md:text-lg"
+            >
+              Get in Touch
+            </a>
           </div>
         </div>
       </div>
@@ -179,16 +183,18 @@ const mobileBackground = mobileBackgroundImage.src;
 
   .hero-button {
     display: inline-block;
-    background-image: linear-gradient(
-      to right,
-      #2563eb,
-      #3b82f6
-    ); /* blue-600 to blue-500 */
+    background-image: linear-gradient(to right, #2563eb, #3b82f6);
     color: white;
     font-weight: bold;
-    padding: 1rem 2rem; /* py-4 px-8 */
-    border-radius: 9999px; /* rounded-full */
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
     transition: all 0.3s ease;
+  }
+
+  @media (min-width: 640px) {
+    .hero-button {
+      padding: 1rem 2rem;
+    }
   }
 
   .hero-button:hover {
